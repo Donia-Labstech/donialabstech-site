@@ -5787,17 +5787,21 @@ ${kb.services.join(" | ")}
                 // Override the send button behavior to use Claude API
                 const newSendBtn = sendBtn.cloneNode(true);
                 sendBtn.parentNode.replaceChild(newSendBtn, sendBtn);
-                
+
+                const newChatInput = chatInput.cloneNode(true);
+                chatInput.parentNode.replaceChild(newChatInput, chatInput);
+
                 newSendBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    e.stopPropagation();
-                    this.handleMessage(chatInput, chatMessages, newSendBtn);
+                    e.stopImmediatePropagation();
+                    this.handleMessage(newChatInput, chatMessages, newSendBtn);
                 });
 
-                chatInput.addEventListener('keypress', (e) => {
+                newChatInput.addEventListener('keypress', (e) => {
                     if (e.which === 13 && !e.shiftKey) {
                         e.preventDefault();
-                        this.handleMessage(chatInput, chatMessages, newSendBtn);
+                        e.stopImmediatePropagation();
+                        this.handleMessage(newChatInput, chatMessages, newSendBtn);
                     }
                 });
             }
@@ -5917,13 +5921,17 @@ ${kb.services.join(" | ")}
             }
         }
 
-        // Initialize Enhanced AI after DOM ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                window.__enhancedAI = new EnhancedAIChatSystem();
-            });
-        } else {
+        // Initialize Enhanced AI after the OLDER AIChatSystem has fully finished
+        // attaching its own listeners (window 'load' always fires strictly after
+        // DOMContentLoaded/jQuery's $(document).ready, so this removes the race
+        // condition where AIChatSystem's old handler could win the #sendMessage button).
+        function __initEnhancedAI() {
             window.__enhancedAI = new EnhancedAIChatSystem();
+        }
+        if (document.readyState === 'complete') {
+            __initEnhancedAI();
+        } else {
+            window.addEventListener('load', __initEnhancedAI);
         }
 
     })();
