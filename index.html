@@ -5034,7 +5034,7 @@
                 this.SCHEDULE_HOUR_GMT = 18;
                 this.SCHEDULE_MINUTE_GMT = 0;
                 // Claude API proxy endpoint (replace with your server-side proxy)
-                this.API_ENDPOINT = '/api/claude-blog'; // Must proxy to Anthropic API server-side
+                this.API_ENDPOINT = 'https://donialabstech.daoud1touina.workers.dev/api/claude-blog'; // Worker مباشرة (محمي بـ CORS) — لا يحتاج Route في Cloudflare
                 
                 this.articles = this.loadArticles();
                 this.schedulerTimer = null;
@@ -5693,7 +5693,7 @@
         class EnhancedAIChatSystem {
             constructor() {
                 // Claude API endpoint (server-side proxy recommended)
-                this.API_ENDPOINT = '/api/chat'; // Must proxy to Cloudflare Worker — never call Anthropic/Gemini directly from the browser
+                this.API_ENDPOINT = 'https://donialabstech.daoud1touina.workers.dev/api/chat'; // Worker مباشرة (محمي بـ CORS) — لا يحتاج Route في Cloudflare
                 this.MODEL = 'claude-sonnet-4-20250514';
                 this.conversationHistory = [];
                 this.isLoading = false;
