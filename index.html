@@ -16,6 +16,27 @@
     <meta property="og:image" content="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
     <meta property="og:url" content="https://donialabs.tech">
     <meta property="og:type" content="website">
+
+    <!-- ===== [NEW ADDITION 4] ORGANIZATION STRUCTURED DATA (SEO) ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "DONIA LABS TECH",
+      "alternateName": "مختبر الأفكار الذكية والتكنولوجيا المتقدمة",
+      "url": "https://donialabstech.online",
+      "slogan": "Innovative Digital Solutions | حلول رقمية مبتكرة",
+      "description": "DONIA LABS TECH is dedicated to building intelligent digital ecosystems that empower educational institutions, businesses, and organizations through advanced technologies, Artificial Intelligence, SaaS platforms, automation, and digital transformation solutions.",
+      "sameAs": [
+        "https://www.linkedin.com/in/daoud-touina-8a9049134",
+        "https://www.facebook.com/share/1An6GhVd56/",
+        "https://www.youtube.com/@DONIAEMARKETING",
+        "https://www.instagram.com/daoud_touina",
+        "https://t.me/donialabstech"
+      ]
+    }
+    </script>
+    <!-- ===== [END ADDITION 4 - JSON-LD] ===== -->
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
@@ -1751,6 +1772,141 @@
             to { transform: rotate(360deg); }
         }
         /* ===== [END ADDITION 1] ===== */
+
+        /* ===== [NEW ADDITION 5] PORTFOLIO SECTION + UNIVERSAL QR SYSTEM ===== */
+        .portfolio-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+            position: relative;
+        }
+
+        .portfolio-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            border: 2px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        var(--gradient-tech) border-box;
+            margin-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .portfolio-img-wrap {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .portfolio-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-card:hover .portfolio-img-wrap img {
+            transform: scale(1.08);
+        }
+
+        .portfolio-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(15, 23, 42, 0.85);
+            color: var(--gold-color);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .portfolio-body {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .portfolio-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 12px 0 18px;
+        }
+
+        .portfolio-tech span {
+            background: #f1f5f9;
+            color: var(--tech-blue);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 12px;
+        }
+
+        .portfolio-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .portfolio-actions .btn {
+            flex: 1;
+            font-size: 0.85rem;
+            padding: 8px 12px;
+        }
+
+        .portfolio-qr-btn {
+            background: var(--gradient-primary);
+            color: #fff;
+            border: none;
+        }
+
+        .portfolio-qr-btn:hover {
+            color: #fff;
+            opacity: 0.9;
+        }
+
+        /* Universal QR Modal */
+        .donia-qr-box {
+            width: 240px;
+            height: 240px;
+            background: #fff;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            padding: 10px;
+        }
+
+        .donia-qr-box img, .donia-qr-box canvas {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .qr-trigger-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            color: var(--gold-color);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+        /* ===== [END ADDITION 5 - CSS] ===== */
     </style>
 </head>
 <body>
@@ -1958,6 +2114,11 @@
                             <i class="fas fa-phone-alt me-2"></i><span class="nav-text">اتصل بنا</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio" data-section="portfolio">
+                            <i class="fas fa-briefcase me-2"></i><span class="nav-text" data-translate="nav.portfolio">معرض الأعمال</span>
+                        </a>
+                    </li>
                 </ul>
                 
                 <div class="d-flex mt-3 mt-lg-0">
@@ -2072,6 +2233,208 @@
             </div>
         </div>
     </section>
+
+    <!-- ===== [NEW ADDITION 5] PORTFOLIO / PROJECTS GALLERY ===== -->
+    <section id="portfolio" class="portfolio-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up" data-translate="portfolio.title">معرض الأعمال</h2>
+            <p class="text-center mb-4 fs-5" data-aos="fade-up" data-aos-delay="100" data-translate="portfolio.description">
+                مشاريع حقيقية صممناها وطورناها <span class="path-to-top">لطريقك نحو القمة</span> في التحول الرقمي
+            </p>
+            <div class="text-center mb-5" data-aos="fade-up" data-aos-delay="150">
+                <span class="qr-trigger-link"
+                      data-qr-url="https://donialabstech.online"
+                      data-qr-title="DONIA LABS TECH"
+                      data-qr-subtext="donialabstech.online">
+                    <i class="fas fa-qrcode"></i>
+                    <span data-translate="portfolio.shareQr">مشاركة موقعنا عبر QR Code</span>
+                </span>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="portfolio-card" data-real-link="">
+                        <div class="portfolio-img-wrap">
+                            <!-- ✏️ ضع هنا رابط صورة حقيقية (Screenshot) من البرنامج لاستبدال صورة Unsplash المؤقتة -->
+                            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="DONIA SMART SCHOOL">
+                            <span class="portfolio-category" data-translate="portfolio.cat.education">قطاع التعليم</span>
+                        </div>
+                        <div class="portfolio-body">
+                            <h4 data-translate="portfolio.p1.title">DONIA SMART SCHOOL</h4>
+                            <p class="text-muted" data-translate="portfolio.p1.desc">
+                                نظام متكامل لإدارة المؤسسات التعليمية يشمل الحضور والدرجات والموظفين والوثائق الرسمية، مع تكامل مباشر مع البوابات الحكومية.
+                            </p>
+                            <div class="portfolio-tech">
+                                <span>Python</span><span>Flask</span><span>SQLAlchemy</span>
+                            </div>
+                            <div class="portfolio-actions">
+                                <a href="#contact" class="btn btn-primary" data-section="contact" data-translate="portfolio.cta">تواصل لمعرفة المزيد</a>
+                                <!-- ✏️ عند توفر رابط مباشر للمشروع: احذف class="d-none" وضع الرابط في href (الزر سيظهر تلقائياً) -->
+                                <a href="#" target="_blank" class="btn btn-outline-primary d-none portfolio-visit-btn"><i class="fas fa-external-link-alt"></i></a>
+                                <button type="button" class="btn portfolio-qr-btn"
+                                        data-qr-url="https://wa.me/213674661737?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%B1%D9%81%D8%A9%20%D8%A7%D9%84%D9%85%D8%B2%D9%8A%D8%AF%20%D8%B9%D9%86%20%D9%86%D8%B8%D8%A7%D9%85%20DONIA%20SMART%20SCHOOL"
+                                        data-qr-title="DONIA SMART SCHOOL"
+                                        data-qr-subtext="استفسار واتساب مباشر">
+                                    <i class="fas fa-qrcode"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="portfolio-card" data-real-link="">
+                        <div class="portfolio-img-wrap">
+                            <!-- ✏️ ضع هنا رابط صورة حقيقية (Screenshot) من البرنامج لاستبدال صورة Unsplash المؤقتة -->
+                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="DONIA SMART TEACHER">
+                            <span class="portfolio-category" data-translate="portfolio.cat.education">قطاع التعليم</span>
+                        </div>
+                        <div class="portfolio-body">
+                            <h4 data-translate="portfolio.p2.title">DONIA SMART TEACHER</h4>
+                            <p class="text-muted" data-translate="portfolio.p2.desc">
+                                منصة لإدارة أعمال المعلم بدعم كامل للغة العربية، تحليل الدرجات الرسمية، تتبع الحضور، ومسح المستندات بالذكاء الاصطناعي.
+                            </p>
+                            <div class="portfolio-tech">
+                                <span>JavaScript</span><span>AI Integration</span><span>RTL</span>
+                            </div>
+                            <div class="portfolio-actions">
+                                <a href="#contact" class="btn btn-primary" data-section="contact" data-translate="portfolio.cta">تواصل لمعرفة المزيد</a>
+                                <!-- ✏️ عند توفر رابط مباشر للمشروع: احذف class="d-none" وضع الرابط في href (الزر سيظهر تلقائياً) -->
+                                <a href="#" target="_blank" class="btn btn-outline-primary d-none portfolio-visit-btn"><i class="fas fa-external-link-alt"></i></a>
+                                <button type="button" class="btn portfolio-qr-btn"
+                                        data-qr-url="https://wa.me/213674661737?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%B1%D9%81%D8%A9%20%D8%A7%D9%84%D9%85%D8%B2%D9%8A%D8%AF%20%D8%B9%D9%86%20DONIA%20SMART%20TEACHER"
+                                        data-qr-title="DONIA SMART TEACHER"
+                                        data-qr-subtext="استفسار واتساب مباشر">
+                                    <i class="fas fa-qrcode"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="portfolio-card" data-real-link="">
+                        <div class="portfolio-img-wrap">
+                            <!-- ✏️ ضع هنا رابط صورة حقيقية (Screenshot) من البرنامج لاستبدال صورة Unsplash المؤقتة -->
+                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="HRMS">
+                            <span class="portfolio-category" data-translate="portfolio.cat.hr">الموارد البشرية</span>
+                        </div>
+                        <div class="portfolio-body">
+                            <h4 data-translate="portfolio.p3.title">HRMS</h4>
+                            <p class="text-muted" data-translate="portfolio.p3.desc">
+                                نظام متقدم لتسيير الموارد البشرية في المؤسسات التعليمية، بنظام ترخيص آمن وتجربة مجانية تلقائية.
+                            </p>
+                            <div class="portfolio-tech">
+                                <span>Licensing Engine</span><span>HMAC-SHA256</span>
+                            </div>
+                            <div class="portfolio-actions">
+                                <a href="#contact" class="btn btn-primary" data-section="contact" data-translate="portfolio.cta">تواصل لمعرفة المزيد</a>
+                                <!-- ✏️ عند توفر رابط مباشر للمشروع: احذف class="d-none" وضع الرابط في href (الزر سيظهر تلقائياً) -->
+                                <a href="#" target="_blank" class="btn btn-outline-primary d-none portfolio-visit-btn"><i class="fas fa-external-link-alt"></i></a>
+                                <button type="button" class="btn portfolio-qr-btn"
+                                        data-qr-url="https://wa.me/213674661737?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%B1%D9%81%D8%A9%20%D8%A7%D9%84%D9%85%D8%B2%D9%8A%D8%AF%20%D8%B9%D9%86%20%D9%86%D8%B8%D8%A7%D9%85%20HRMS%20%D9%84%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D8%B1%D8%AF%20%D8%A7%D9%84%D8%A8%D8%B4%D8%B1%D9%8A%D8%A9"
+                                        data-qr-title="HRMS"
+                                        data-qr-subtext="استفسار واتساب مباشر">
+                                    <i class="fas fa-qrcode"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="portfolio-card" data-real-link="">
+                        <div class="portfolio-img-wrap">
+                            <!-- ✏️ ضع هنا رابط صورة حقيقية (Screenshot) من البرنامج لاستبدال صورة Unsplash المؤقتة -->
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Smart Stock & Canteen Manager">
+                            <span class="portfolio-category" data-translate="portfolio.cat.business">إدارة الأعمال</span>
+                        </div>
+                        <div class="portfolio-body">
+                            <h4 data-translate="portfolio.p4.title">Smart Stock &amp; Canteen Manager</h4>
+                            <p class="text-muted" data-translate="portfolio.p4.desc">
+                                تطبيق سطح مكتب لإدارة مقاصف المدارس: تتبع المخزون، الفوترة، QR Code، وامتثال كامل لمعايير وزارة التربية.
+                            </p>
+                            <div class="portfolio-tech">
+                                <span>Electron</span><span>React</span><span>Multi-AI</span>
+                            </div>
+                            <div class="portfolio-actions">
+                                <a href="#contact" class="btn btn-primary" data-section="contact" data-translate="portfolio.cta">تواصل لمعرفة المزيد</a>
+                                <!-- ✏️ عند توفر رابط مباشر للمشروع: احذف class="d-none" وضع الرابط في href (الزر سيظهر تلقائياً) -->
+                                <a href="#" target="_blank" class="btn btn-outline-primary d-none portfolio-visit-btn"><i class="fas fa-external-link-alt"></i></a>
+                                <button type="button" class="btn portfolio-qr-btn"
+                                        data-qr-url="https://wa.me/213674661737?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%B1%D9%81%D8%A9%20%D8%A7%D9%84%D9%85%D8%B2%D9%8A%D8%AF%20%D8%B9%D9%86%20%D9%86%D8%B8%D8%A7%D9%85%20%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9%20%D8%A7%D9%84%D9%85%D9%82%D8%B5%D9%81%20%D8%A7%D9%84%D8%B0%D9%83%D9%8A%20Smart%20Canteen%20Manager"
+                                        data-qr-title="Smart Canteen Manager"
+                                        data-qr-subtext="استفسار واتساب مباشر">
+                                    <i class="fas fa-qrcode"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="portfolio-card" data-real-link="">
+                        <div class="portfolio-img-wrap">
+                            <!-- ✏️ ضع هنا رابط صورة حقيقية (Screenshot) من البرنامج لاستبدال صورة Unsplash المؤقتة -->
+                            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="DONIA MIND">
+                            <span class="portfolio-category" data-translate="portfolio.cat.ai">الذكاء الاصطناعي</span>
+                        </div>
+                        <div class="portfolio-body">
+                            <h4 data-translate="portfolio.p5.title">DONIA MIND</h4>
+                            <p class="text-muted" data-translate="portfolio.p5.desc">
+                                منصة استشارية ذكية تعتمد على مجلس من أربعة وكلاء ذكاء اصطناعي لدعم القرار الاستراتيجي، مع تشفير AES-256.
+                            </p>
+                            <div class="portfolio-tech">
+                                <span>Streamlit</span><span>Groq AI</span><span>Supabase</span>
+                            </div>
+                            <div class="portfolio-actions">
+                                <a href="#contact" class="btn btn-primary" data-section="contact" data-translate="portfolio.cta">تواصل لمعرفة المزيد</a>
+                                <!-- ✏️ عند توفر رابط مباشر للمشروع: احذف class="d-none" وضع الرابط في href (الزر سيظهر تلقائياً) -->
+                                <a href="#" target="_blank" class="btn btn-outline-primary d-none portfolio-visit-btn"><i class="fas fa-external-link-alt"></i></a>
+                                <button type="button" class="btn portfolio-qr-btn"
+                                        data-qr-url="https://wa.me/213674661737?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%B1%D9%81%D8%A9%20%D8%A7%D9%84%D9%85%D8%B2%D9%8A%D8%AF%20%D8%B9%D9%86%20DONIA%20MIND"
+                                        data-qr-title="DONIA MIND"
+                                        data-qr-subtext="استفسار واتساب مباشر">
+                                    <i class="fas fa-qrcode"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="portfolio-card" data-real-link="">
+                        <div class="portfolio-img-wrap">
+                            <!-- ✏️ ضع هنا رابط صورة حقيقية (Screenshot) من البرنامج لاستبدال صورة Unsplash المؤقتة -->
+                            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Exam Supervision Scheduler">
+                            <span class="portfolio-category" data-translate="portfolio.cat.education">قطاع التعليم</span>
+                        </div>
+                        <div class="portfolio-body">
+                            <h4 data-translate="portfolio.p6.title">منظّم حراسة الامتحانات</h4>
+                            <p class="text-muted" data-translate="portfolio.p6.desc">
+                                أداة تفاعلية لتوزيع حراسة الامتحانات على المعلمين تلقائياً، مع تصدير فوري لجدول الحراسة بصيغة PDF.
+                            </p>
+                            <div class="portfolio-tech">
+                                <span>JavaScript</span><span>SheetJS</span><span>RTL Print</span>
+                            </div>
+                            <div class="portfolio-actions">
+                                <a href="#contact" class="btn btn-primary" data-section="contact" data-translate="portfolio.cta">تواصل لمعرفة المزيد</a>
+                                <!-- ✏️ عند توفر رابط مباشر للمشروع: احذف class="d-none" وضع الرابط في href (الزر سيظهر تلقائياً) -->
+                                <a href="#" target="_blank" class="btn btn-outline-primary d-none portfolio-visit-btn"><i class="fas fa-external-link-alt"></i></a>
+                                <button type="button" class="btn portfolio-qr-btn"
+                                        data-qr-url="https://wa.me/213674661737?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%B1%D9%81%D8%A9%20%D8%A7%D9%84%D9%85%D8%B2%D9%8A%D8%AF%20%D8%B9%D9%86%20%D8%A3%D8%AF%D8%A7%D8%A9%20%D8%AC%D8%AF%D9%88%D9%84%D8%A9%20%D8%AD%D8%B1%D8%A7%D8%B3%D8%A9%20%D8%A7%D9%84%D8%A7%D9%85%D8%AA%D8%AD%D8%A7%D9%86%D8%A7%D8%AA"
+                                        data-qr-title="Exam Supervision Scheduler"
+                                        data-qr-subtext="استفسار واتساب مباشر">
+                                    <i class="fas fa-qrcode"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===== [END ADDITION 5 - PORTFOLIO HTML] ===== -->
 
     <!-- Community Section -->
     <section id="community" class="community-section">
@@ -2299,6 +2662,7 @@
         </div>
     </section>
 
+
     <!-- Blog Section -->
     <section id="blog" class="blog-section">
         <div class="container">
@@ -2426,7 +2790,7 @@
                                             </div>
                                             <div>
                                                 <h5 class="mb-1" id="emailTitle">البريد الإلكتروني</h5>
-                                                <a href="mailto:info@donialabs.tech" class="text-decoration-none">info@donialabs.tech</a>
+                                                <a href="mailto:contact@donialabstech.online" class="text-decoration-none">contact@donialabstech.online</a>
                                             </div>
                                         </div>
                                     </div>
@@ -2551,6 +2915,7 @@
                         <li><a href="#community" data-section="community" id="footerLink3">المجتمع</a></li>
                         <li><a href="#blog" data-section="blog" id="footerLink4">المدونة</a></li>
                         <li><a href="#payment" data-section="payment" id="footerLink5">طرق الدفع</a></li>
+                        <li><a href="#portfolio" data-section="portfolio" id="footerLink7" data-translate="footer.link7">معرض الأعمال</a></li>
                     </ul>
                 </div>
                 
@@ -2582,6 +2947,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- ===== [NEW ADDITION 5] QR Code Engine ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- ===== [END ADDITION 5 - LIB] ===== -->
     
     <!-- Custom JavaScript -->
     <script>
@@ -2799,6 +3167,33 @@
                     "ai.quick.contact": "التواصل",
                     "ai.input.placeholder": "اكتب سؤالك هنا...",
                     
+                    
+                    // Portfolio & QR System
+                    "nav.portfolio": "معرض الأعمال",
+                    "footer.link7": "معرض الأعمال",
+                    "portfolio.title": "معرض الأعمال",
+                    "portfolio.description": "مشاريع حقيقية صممناها وطورناها <span class='path-to-top'>لطريقك نحو القمة</span> في التحول الرقمي",
+                    "portfolio.shareQr": "مشاركة موقعنا عبر QR Code",
+                    "portfolio.cta": "تواصل لمعرفة المزيد",
+                    "portfolio.cat.education": "قطاع التعليم",
+                    "portfolio.cat.hr": "الموارد البشرية",
+                    "portfolio.cat.business": "إدارة الأعمال",
+                    "portfolio.cat.ai": "الذكاء الاصطناعي",
+                    "portfolio.p1.title": "DONIA SMART SCHOOL",
+                    "portfolio.p1.desc": "نظام متكامل لإدارة المؤسسات التعليمية يشمل الحضور والدرجات والموظفين والوثائق الرسمية، مع تكامل مباشر مع البوابات الحكومية.",
+                    "portfolio.p2.title": "DONIA SMART TEACHER",
+                    "portfolio.p2.desc": "منصة لإدارة أعمال المعلم بدعم كامل للغة العربية، تحليل الدرجات الرسمية، تتبع الحضور، ومسح المستندات بالذكاء الاصطناعي.",
+                    "portfolio.p3.title": "HRMS",
+                    "portfolio.p3.desc": "نظام متقدم لتسيير الموارد البشرية في المؤسسات التعليمية، بنظام ترخيص آمن وتجربة مجانية تلقائية.",
+                    "portfolio.p4.title": "Smart Stock & Canteen Manager",
+                    "portfolio.p4.desc": "تطبيق سطح مكتب لإدارة مقاصف المدارس: تتبع المخزون، الفوترة، QR Code، وامتثال كامل لمعايير وزارة التربية.",
+                    "portfolio.p5.title": "DONIA MIND",
+                    "portfolio.p5.desc": "منصة استشارية ذكية تعتمد على مجلس من أربعة وكلاء ذكاء اصطناعي لدعم القرار الاستراتيجي، مع تشفير AES-256.",
+                    "portfolio.p6.title": "منظّم حراسة الامتحانات",
+                    "portfolio.p6.desc": "أداة تفاعلية لتوزيع حراسة الامتحانات على المعلمين تلقائياً، مع تصدير فوري لجدول الحراسة بصيغة PDF.",
+                    "qr.download": "تحميل",
+                    "qr.share": "مشاركة",
+                    
                     // Loader
                     "loader.text": "🚀 طريقك نحو القمة الرقمية"
                 };
@@ -2999,6 +3394,33 @@
                     "ai.quick.contact": "Contact",
                     "ai.input.placeholder": "Écrivez votre question ici...",
                     
+                    
+                    // Portfolio & QR System
+                    "nav.portfolio": "Portfolio",
+                    "footer.link7": "Portfolio",
+                    "portfolio.title": "Notre Portfolio",
+                    "portfolio.description": "Des projets réels que nous avons conçus et développés <span class='path-to-top'>vers votre sommet</span> de la transformation digitale",
+                    "portfolio.shareQr": "Partager notre site via QR Code",
+                    "portfolio.cta": "Contactez-nous pour en savoir plus",
+                    "portfolio.cat.education": "Secteur Éducatif",
+                    "portfolio.cat.hr": "Ressources Humaines",
+                    "portfolio.cat.business": "Gestion d'Entreprise",
+                    "portfolio.cat.ai": "Intelligence Artificielle",
+                    "portfolio.p1.title": "DONIA SMART SCHOOL",
+                    "portfolio.p1.desc": "Système intégré de gestion scolaire couvrant la présence, les notes, le personnel et les documents officiels, avec intégration directe aux portails gouvernementaux.",
+                    "portfolio.p2.title": "DONIA SMART TEACHER",
+                    "portfolio.p2.desc": "Plateforme de gestion pour enseignants avec support RTL complet, analyse des notes officielles, suivi de présence et numérisation de documents par IA.",
+                    "portfolio.p3.title": "HRMS",
+                    "portfolio.p3.desc": "Système avancé de gestion des ressources humaines pour établissements scolaires, avec licence sécurisée et essai gratuit automatique.",
+                    "portfolio.p4.title": "Smart Stock & Canteen Manager",
+                    "portfolio.p4.desc": "Application de bureau pour la gestion des cantines scolaires : suivi des stocks, facturation, QR Code, et conformité totale au Ministère de l'Éducation.",
+                    "portfolio.p5.title": "DONIA MIND",
+                    "portfolio.p5.desc": "Plateforme de conseil intelligente s'appuyant sur un conseil de quatre agents IA pour la prise de décision stratégique, avec chiffrement AES-256.",
+                    "portfolio.p6.title": "Planificateur de Surveillance d'Examens",
+                    "portfolio.p6.desc": "Outil interactif pour répartir automatiquement la surveillance des examens entre enseignants, avec export PDF instantané.",
+                    "qr.download": "Télécharger",
+                    "qr.share": "Partager",
+                    
                     // Loader
                     "loader.text": "🚀 Votre chemin vers le sommet numérique"
                 };
@@ -3198,6 +3620,33 @@
                     "ai.quick.community": "Community",
                     "ai.quick.contact": "Contact",
                     "ai.input.placeholder": "Write your question here...",
+                    
+                    
+                    // Portfolio & QR System
+                    "nav.portfolio": "Portfolio",
+                    "footer.link7": "Portfolio",
+                    "portfolio.title": "Our Portfolio",
+                    "portfolio.description": "Real projects we designed and built <span class='path-to-top'>on your path to the top</span> of digital transformation",
+                    "portfolio.shareQr": "Share our site via QR Code",
+                    "portfolio.cta": "Contact us to learn more",
+                    "portfolio.cat.education": "Education Sector",
+                    "portfolio.cat.hr": "Human Resources",
+                    "portfolio.cat.business": "Business Management",
+                    "portfolio.cat.ai": "Artificial Intelligence",
+                    "portfolio.p1.title": "DONIA SMART SCHOOL",
+                    "portfolio.p1.desc": "An integrated school management system covering attendance, grades, staff, and official documents, with direct integration into government portals.",
+                    "portfolio.p2.title": "DONIA SMART TEACHER",
+                    "portfolio.p2.desc": "A teacher management platform with full Arabic RTL support, official grade parsing, attendance tracking, and AI-powered document scanning.",
+                    "portfolio.p3.title": "HRMS",
+                    "portfolio.p3.desc": "An advanced Human Resources Management System for educational institutions, with secure licensing and an automatic free trial.",
+                    "portfolio.p4.title": "Smart Stock & Canteen Manager",
+                    "portfolio.p4.desc": "A desktop application for school canteen management: inventory tracking, billing, QR Code, and full compliance with Ministry of Education standards.",
+                    "portfolio.p5.title": "DONIA MIND",
+                    "portfolio.p5.desc": "An intelligent advisory platform powered by a council of four AI agents for strategic decision-making, with AES-256 encryption.",
+                    "portfolio.p6.title": "Exam Supervision Scheduler",
+                    "portfolio.p6.desc": "An interactive tool for automatically assigning exam supervision duties to teachers, with instant PDF export.",
+                    "qr.download": "Download",
+                    "qr.share": "Share",
                     
                     // Loader
                     "loader.text": "🚀 Your Path to Digital Summit"
@@ -3849,7 +4298,7 @@
                     'تواصل': `📞 <strong>طرق التواصل:</strong>
                     
                     📱 <strong>الواتساب:</strong> <a href="https://wa.me/213674661737" target="_blank">+213 674 66 17 37</a>
-                    📧 <strong>البريد:</strong> <a href="mailto:info@donialabs.tech">info@donialabs.tech</a>
+                    📧 <strong>البريد:</strong> <a href="mailto:contact@donialabstech.online">contact@donialabstech.online</a>
                     📱 <strong>فيسبوك:</strong> <a href="https://www.facebook.com/share/1An6GhVd56/" target="_blank">DONIA LABS TECH</a>
                     🎥 <strong>يوتيوب:</strong> <a href="https://www.youtube.com/@DONIAEMARKETING" target="_blank">DONIA E-MARKETING</a>
                     📸 <strong>إنستغرام:</strong> <a href="https://www.instagram.com/daoud_touina" target="_blank">daoud_touina</a>
@@ -3945,7 +4394,7 @@
                     'تواصل': `📞 <strong>Moyens de Contact:</strong>
                     
                     📱 <strong>WhatsApp:</strong> <a href="https://wa.me/213674661737" target="_blank">+213 674 66 17 37</a>
-                    📧 <strong>Email:</strong> <a href="mailto:info@donialabs.tech">info@donialabs.tech</a>
+                    📧 <strong>Email:</strong> <a href="mailto:contact@donialabstech.online">contact@donialabstech.online</a>
                     📱 <strong>Facebook:</strong> <a href="https://www.facebook.com/share/1An6GhVd56/" target="_blank">DONIA LABS TECH</a>
                     🎥 <strong>YouTube:</strong> <a href="https://www.youtube.com/@DONIAEMARKETING" target="_blank">DONIA E-MARKETING</a>
                     📸 <strong>Instagram:</strong> <a href="https://www.instagram.com/daoud_touina" target="_blank">daoud_touina</a>
@@ -4041,7 +4490,7 @@
                     'تواصل': `📞 <strong>Contact Methods:</strong>
                     
                     📱 <strong>WhatsApp:</strong> <a href="https://wa.me/213674661737" target="_blank">+213 674 66 17 37</a>
-                    📧 <strong>Email:</strong> <a href="mailto:info@donialabs.tech">info@donialabs.tech</a>
+                    📧 <strong>Email:</strong> <a href="mailto:contact@donialabstech.online">contact@donialabstech.online</a>
                     📱 <strong>Facebook:</strong> <a href="https://www.facebook.com/share/1An6GhVd56/" target="_blank">DONIA LABS TECH</a>
                     🎥 <strong>YouTube:</strong> <a href="https://www.youtube.com/@DONIAEMARKETING" target="_blank">DONIA E-MARKETING</a>
                     📸 <strong>Instagram:</strong> <a href="https://www.instagram.com/daoud_touina" target="_blank">daoud_touina</a>
@@ -5177,7 +5626,7 @@
                 founder: "داود توينة (Daoud Touina)",
                 location: "الجزائر",
                 phone: "+213 674 66 17 37",
-                email: "info@donialabs.tech",
+                email: "contact@donialabstech.online",
                 whatsapp: "https://wa.me/213674661737",
                 vision: "قيادة التحول الرقمي في الجزائر والعالم العربي باستخدام أحدث تقنيات الذكاء الاصطناعي"
             },
@@ -5244,7 +5693,7 @@
         class EnhancedAIChatSystem {
             constructor() {
                 // Claude API endpoint (server-side proxy recommended)
-                this.API_ENDPOINT = 'https://api.anthropic.com/v1/messages';
+                this.API_ENDPOINT = '/api/chat'; // Must proxy to Cloudflare Worker — never call Anthropic/Gemini directly from the browser
                 this.MODEL = 'claude-sonnet-4-20250514';
                 this.conversationHistory = [];
                 this.isLoading = false;
@@ -5407,14 +5856,12 @@ ${kb.services.join(" | ")}
             }
 
             async callClaudeAPI(userMessage) {
-                // NOTE: In production, use a server-side proxy to protect your API key
-                // This calls the API directly for demo purposes only
+                // المفتاح الحقيقي محفوظ بأمان داخل Cloudflare Worker (Secret) — لا يظهر هنا أبداً.
+                // الـ Worker يحاول Claude أولاً، وعند فشله يتحول تلقائياً إلى Gemini (fallback).
                 const response = await fetch(this.API_ENDPOINT, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
-                        'x-api-key': '', // Add via server-side proxy
-                        'anthropic-version': '2023-06-01'
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
                         model: this.MODEL,
@@ -5482,6 +5929,179 @@ ${kb.services.join(" | ")}
     })();
     </script>
     <!-- ===== [END ADDITION 3] ===== -->
+
+    <!-- ===== [NEW ADDITION 5] UNIVERSAL QR CODE SYSTEM ===== -->
+    <script>
+    (function() {
+        'use strict';
+
+        class DoniaQRSystem {
+            constructor() {
+                this.modalId = 'doniaQRModal';
+                this.currentURL = null;
+                this.currentDataURL = null;
+                this.ensureModal();
+                this.bindGlobalEvents();
+            }
+
+            ensureModal() {
+                if (document.getElementById(this.modalId)) return;
+                const modalHTML = `
+                    <div class="modal fade" id="${this.modalId}" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content border-0 shadow-lg">
+                                <div class="modal-header border-0">
+                                    <h5 class="modal-title" id="doniaQRModalTitle">
+                                        <i class="fas fa-qrcode me-2"></i><span id="doniaQRModalTitleText">QR Code</span>
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body text-center py-4">
+                                    <div id="doniaQRContainer" class="donia-qr-box mx-auto mb-3"></div>
+                                    <p class="text-muted small mb-3" id="doniaQRSubtext"></p>
+                                    <div class="d-flex gap-2 justify-content-center flex-wrap">
+                                        <button class="btn btn-primary" id="doniaQRDownloadBtn" type="button">
+                                            <i class="fas fa-download me-2"></i><span data-translate="qr.download">تحميل</span>
+                                        </button>
+                                        <button class="btn btn-outline-secondary" id="doniaQRShareBtn" type="button">
+                                            <i class="fas fa-share-alt me-2"></i><span data-translate="qr.share">مشاركة</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+                document.body.insertAdjacentHTML('beforeend', modalHTML);
+            }
+
+            show(title, url, subtext) {
+                this.ensureModal();
+                document.getElementById('doniaQRModalTitleText').textContent = title || 'QR Code';
+                document.getElementById('doniaQRSubtext').textContent = subtext || url || '';
+
+                const container = document.getElementById('doniaQRContainer');
+                container.innerHTML = '';
+                this.currentURL = url;
+                this.currentDataURL = null;
+                this.currentFilename = (title || 'donia-qr').toString().trim().replace(/[^a-zA-Z0-9\u0600-\u06FF_-]+/g, '-');
+
+                if (typeof QRCode === 'undefined' || !url) return;
+
+                new QRCode(container, {
+                    text: url,
+                    width: 220,
+                    height: 220,
+                    colorDark: '#0f172a',
+                    colorLight: '#ffffff',
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+
+                setTimeout(() => {
+                    const canvas = container.querySelector('canvas');
+                    const img = container.querySelector('img');
+                    this.currentDataURL = canvas ? canvas.toDataURL('image/png') : (img ? img.src : null);
+                }, 200);
+
+                const modalEl = document.getElementById(this.modalId);
+                const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+                modal.show();
+            }
+
+            download() {
+                if (!this.currentDataURL) return;
+                const a = document.createElement('a');
+                a.href = this.currentDataURL;
+                a.download = (this.currentFilename || 'donia-qr') + '.png';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+            }
+
+            async share() {
+                if (!this.currentURL) return;
+                const shareBtn = document.getElementById('doniaQRShareBtn');
+                const original = shareBtn.innerHTML;
+                if (navigator.share) {
+                    try {
+                        await navigator.share({ title: 'DONIA LABS TECH', url: this.currentURL });
+                        return;
+                    } catch (e) { /* user cancelled or unsupported, fall back below */ }
+                }
+                try {
+                    await navigator.clipboard.writeText(this.currentURL);
+                    shareBtn.innerHTML = '<i class="fas fa-check me-2"></i>تم نسخ الرابط';
+                    setTimeout(() => { shareBtn.innerHTML = original; }, 1800);
+                } catch (e) {
+                    console.warn('[DoniaQR] Unable to copy link:', e);
+                }
+            }
+
+            bindGlobalEvents() {
+                // Event delegation: ANY element on the platform with data-qr-url
+                // automatically becomes a working QR generator. No extra wiring needed.
+                document.addEventListener('click', (e) => {
+                    const trigger = e.target.closest('[data-qr-url]');
+                    if (trigger) {
+                        e.preventDefault();
+                        this.show(
+                            trigger.getAttribute('data-qr-title'),
+                            trigger.getAttribute('data-qr-url'),
+                            trigger.getAttribute('data-qr-subtext')
+                        );
+                        return;
+                    }
+                    if (e.target.closest('#doniaQRDownloadBtn')) {
+                        this.download();
+                    }
+                    if (e.target.closest('#doniaQRShareBtn')) {
+                        this.share();
+                    }
+                });
+            }
+        }
+
+        const initDoniaQR = () => { window.doniaQR = new DoniaQRSystem(); };
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initDoniaQR);
+        } else {
+            initDoniaQR();
+        }
+    })();
+    </script>
+    <!-- ===== [END ADDITION 5 - QR ENGINE] ===== -->
+
+    <!-- ===== [NEW ADDITION 6] PORTFOLIO REAL-LINK SYNC ENGINE ===== -->
+    <script>
+    (function() {
+        'use strict';
+        // عند تعبئة data-real-link على بطاقة مشروع، يظهر زر "زيارة المشروع"
+        // تلقائياً ويتحول رمز QR لتشفير الرابط الحقيقي بدل رسالة واتساب الافتراضية.
+        // لا حاجة لتعديل أي JS — فقط ضع الرابط داخل data-real-link في HTML.
+        function syncPortfolioRealLinks() {
+            document.querySelectorAll('.portfolio-card').forEach((card) => {
+                const link = (card.getAttribute('data-real-link') || '').trim();
+                if (!link) return;
+                const visitBtn = card.querySelector('.portfolio-visit-btn');
+                const qrBtn = card.querySelector('.portfolio-qr-btn');
+                if (visitBtn) {
+                    visitBtn.href = link;
+                    visitBtn.classList.remove('d-none');
+                }
+                if (qrBtn) {
+                    qrBtn.setAttribute('data-qr-url', link);
+                    qrBtn.setAttribute('data-qr-subtext', link);
+                }
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', syncPortfolioRealLinks);
+        } else {
+            syncPortfolioRealLinks();
+        }
+    })();
+    </script>
+    <!-- ===== [END ADDITION 6 - PORTFOLIO REAL-LINK SYNC] ===== -->
+
 
 </body>
 </html>
