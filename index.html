@@ -5169,7 +5169,7 @@
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({
-                                model: 'claude-sonnet-4-20250514',
+                                model: 'claude-sonnet-4-6',
                                 max_tokens: 2000,
                                 messages: [{ role: 'user', content: prompt }]
                             }),
@@ -5694,7 +5694,7 @@
             constructor() {
                 // Claude API endpoint (server-side proxy recommended)
                 this.API_ENDPOINT = 'https://donialabstech.daoud1touina.workers.dev/api/chat'; // Worker مباشرة (محمي بـ CORS) — لا يحتاج Route في Cloudflare
-                this.MODEL = 'claude-sonnet-4-20250514';
+                this.MODEL = 'claude-sonnet-4-6';
                 this.conversationHistory = [];
                 this.isLoading = false;
                 
