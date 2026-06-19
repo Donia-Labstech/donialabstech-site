@@ -5275,9 +5275,7 @@
                     .replace(/^(\d+)\. (.+)$/gm, '<li class="ai-blog-li-num"><span class="li-num">$1</span> $2</li>')
                     .replace(/^- (.+)$/gm, '<li class="ai-blog-li">✦ $1</li>')
                     .replace(/^---$/gm, '<hr class="ai-blog-hr">')
-                    .replace(/
-
-/g, '</p><p class="ai-blog-p">')
+                    .replace(/\n\n/g, '</p><p class="ai-blog-p">')
                     .replace(/^(.+)$/gm, (line) => {
                         if (line.startsWith('<')) return line;
                         return line;
