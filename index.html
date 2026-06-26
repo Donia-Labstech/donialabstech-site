@@ -1512,9 +1512,9 @@
 
         .blog-article-byline {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 0;
             color: var(--silver-color);
             font-size: 0.88rem;
             font-weight: 600;
@@ -1522,27 +1522,66 @@
         }
 
         .blog-article-byline .donia-avatar {
-            width: 32px;
-            height: 32px;
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
             border-radius: 50%;
             background: var(--gradient-community);
             color: white;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.85rem;
-            margin-left: 8px;
+            font-size: 1.05rem;
+            margin-left: 12px;
+        }
+
+        .blog-article-byline .donia-byline-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
 
         .blog-article-byline .donia-byline-name {
             color: var(--dark-color);
-            font-weight: 700;
+            font-weight: 800;
+            font-size: 0.98rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .blog-article-byline .donia-verified-badge {
+            color: var(--tech-blue);
+            font-size: 0.85rem;
+        }
+
+        .blog-article-byline .donia-byline-title {
+            color: var(--community-color);
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .blog-article-byline .donia-byline-meta {
+            color: var(--silver-color);
+            font-size: 0.78rem;
+            font-weight: 600;
         }
 
         .blog-article-byline .donia-dot::before {
             content: '•';
             margin: 0 6px;
             opacity: 0.6;
+        }
+
+        .blog-card-author-row {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .blog-card-author-row .donia-verified-badge {
+            color: var(--tech-blue);
+            font-size: 0.78rem;
         }
 
         .blog-article-title {
@@ -5400,6 +5439,8 @@
 
         const ARTICLES_JSON_URL = './articles/articles.json';
         const PAGE_SIZE = 6;
+        const DEFAULT_AUTHOR_NAME = 'Daoud Touina';
+        const DEFAULT_AUTHOR_TITLE = 'رائد أعمال | مؤسس مختبر الأفكار الذكية وقائد المشاريع';
 
         const FALLBACK_ARTICLES = [
             {
@@ -5407,7 +5448,7 @@
                 title: 'مستقبل الذكاء الاصطناعي في الأعمال',
                 excerpt: 'كيف يمكن للذكاء الاصطناعي أن يحول عملك ويوفر وقتك ويزيد أرباحك؟ اكتشف أحدث التقنيات...',
                 image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1070&q=80',
-                author: 'فريق DONIA LABS', date: '2026-01-10T18:00:00Z', dateStr: '10 جانفي 2026',
+                author: 'Daoud Touina', date: '2026-01-10T18:00:00Z', dateStr: '10 جانفي 2026',
                 readTime: '4 دقائق قراءة', views: 1200, tags: ['الذكاء الاصطناعي', 'التقنية', 'الأعمال'],
                 aiGenerated: false,
                 html: '<p>كيف يمكن للذكاء الاصطناعي أن يحول عملك ويوفر وقتك ويزيد أرباحك؟ سيُستبدل هذا المحتوى التعريفي تلقائياً بمقالات حقيقية فور ربط ملف articles.json بمصدر النشر الفعلي على GitHub.</p>'
@@ -5417,7 +5458,7 @@
                 title: 'استراتيجيات التسويق الرقمي الفعالة',
                 excerpt: 'تعرف على أحدث استراتيجيات التسويق الرقمي التي تضمن وصولك للعملاء المستهدفين...',
                 image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1070&q=80',
-                author: 'فريق DONIA LABS', date: '2026-01-05T18:00:00Z', dateStr: '5 جانفي 2026',
+                author: 'Daoud Touina', date: '2026-01-05T18:00:00Z', dateStr: '5 جانفي 2026',
                 readTime: '3 دقائق قراءة', views: 980, tags: ['التسويق', 'الرقمي', 'استراتيجيات'],
                 aiGenerated: false,
                 html: '<p>تعرف على أحدث استراتيجيات التسويق الرقمي التي تضمن وصولك للعملاء المستهدفين. سيُستبدل هذا المحتوى التعريفي تلقائياً بمقالات حقيقية فور ربط ملف articles.json بمصدر النشر الفعلي على GitHub.</p>'
@@ -5427,7 +5468,7 @@
                 title: 'أهمية تجربة المستخدم في تصميم المواقع',
                 excerpt: 'كيف تؤثر تجربة المستخدم على نجاح موقعك الإلكتروني وما أفضل الممارسات؟...',
                 image: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1169&q=80',
-                author: 'فريق DONIA LABS', date: '2026-01-01T18:00:00Z', dateStr: '1 جانفي 2026',
+                author: 'Daoud Touina', date: '2026-01-01T18:00:00Z', dateStr: '1 جانفي 2026',
                 readTime: '5 دقائق قراءة', views: 1500, tags: ['تصميم', 'مواقع', 'تجربة مستخدم'],
                 aiGenerated: false,
                 html: '<p>كيف تؤثر تجربة المستخدم على نجاح موقعك الإلكتروني؟ سيُستبدل هذا المحتوى التعريفي تلقائياً بمقالات حقيقية فور ربط ملف articles.json بمصدر النشر الفعلي على GitHub.</p>'
@@ -5641,6 +5682,7 @@
 
             cardHTML(article) {
                 const isNew = (Date.now() - new Date(article.date).getTime()) < (1000 * 60 * 60 * 24);
+                const authorName = article.author || DEFAULT_AUTHOR_NAME;
                 const tagsHTML = (article.tags || []).slice(0, 3)
                     .map(t => `<span class="blog-tag" data-tag-click="${this.escapeHTML(t)}">${this.escapeHTML(t)}</span>`).join('');
                 return `
@@ -5654,7 +5696,7 @@
                         <div class="blog-content">
                             <h4>${this.escapeHTML(article.title)}</h4>
                             <div class="blog-meta">
-                                <span><i class="fas fa-user"></i> ${this.escapeHTML(article.author || 'فريق DONIA LABS')}</span>
+                                <span class="blog-card-author-row"><i class="fas fa-user"></i> ${this.escapeHTML(authorName)}<i class="fas fa-circle-check donia-verified-badge" title="حساب موثّق"></i></span>
                                 <span><i class="fas fa-eye"></i> ${article.views || 0} مشاهدة</span>
                             </div>
                             <div class="blog-meta">
@@ -5703,14 +5745,21 @@
                     this.els.hero.classList.add('d-none');
                 }
 
-                // Byline: avatar + name + date + read time + views
+                // Byline: avatar + name + verified badge + founder title + date/read-time/views
                 const avatarIcon = article.aiGenerated ? 'fa-robot' : 'fa-user';
+                const authorName = article.author || DEFAULT_AUTHOR_NAME;
+                const authorTitle = article.authorTitle || DEFAULT_AUTHOR_TITLE;
+                const metaParts = [article.dateStr, article.readTime, (article.views || 0) + ' مشاهدة'].filter(Boolean);
                 this.els.modalByline.innerHTML = `
                     <span class="donia-avatar"><i class="fas ${avatarIcon}"></i></span>
-                    <span class="donia-byline-name">${this.escapeHTML(article.author || 'فريق DONIA LABS')}</span>
-                    <span class="donia-dot"></span><span>${this.escapeHTML(article.dateStr || '')}</span>
-                    ${article.readTime ? `<span class="donia-dot"></span><span>${this.escapeHTML(article.readTime)}</span>` : ''}
-                    <span class="donia-dot"></span><span><i class="fas fa-eye me-1"></i>${article.views || 0}</span>
+                    <div class="donia-byline-info">
+                        <div class="donia-byline-name">
+                            ${this.escapeHTML(authorName)}
+                            <i class="fas fa-circle-check donia-verified-badge" title="حساب موثّق"></i>
+                        </div>
+                        <div class="donia-byline-title">${this.escapeHTML(authorTitle)}</div>
+                        <div class="donia-byline-meta">${metaParts.map(m => this.escapeHTML(m)).join(' • ')}</div>
+                    </div>
                 `;
 
                 this.els.modalTitle.textContent = article.title;
