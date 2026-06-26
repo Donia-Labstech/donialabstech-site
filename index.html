@@ -1533,6 +1533,31 @@
             justify-content: center;
             font-size: 1.05rem;
             margin-left: 12px;
+            overflow: hidden;
+            padding: 2px;
+            box-shadow: 0 0 0 2px rgba(124,58,237,0.18);
+        }
+
+        .blog-article-byline .donia-avatar img,
+        .blog-card-author-row .donia-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
+
+        .blog-card-author-row .donia-avatar {
+            width: 22px;
+            height: 22px;
+            min-width: 22px;
+            border-radius: 50%;
+            background: var(--gradient-community);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-left: 2px;
         }
 
         .blog-article-byline .donia-byline-info {
@@ -5449,6 +5474,7 @@
         const PAGE_SIZE = 6;
         const DEFAULT_AUTHOR_NAME = 'Daoud Touina';
         const DEFAULT_AUTHOR_TITLE = 'رائد أعمال | مؤسس مختبر الأفكار الذكية وقائد المشاريع';
+        const DEFAULT_AUTHOR_AVATAR = './images/daoud-touina.jpg';
 
         const FALLBACK_ARTICLES = [
             {
@@ -5720,7 +5746,7 @@
                         <div class="blog-content">
                             <h4>${this.escapeHTML(article.title)}</h4>
                             <div class="blog-meta">
-                                <span class="blog-card-author-row"><i class="fas fa-user"></i> ${this.escapeHTML(authorName)}<i class="fas fa-circle-check donia-verified-badge" title="حساب موثّق"></i></span>
+                                <span class="blog-card-author-row">${this.avatarHTML(article, authorName)} ${this.escapeHTML(authorName)}<i class="fas fa-circle-check donia-verified-badge" title="حساب موثّق"></i></span>
                                 <span><i class="fas fa-eye"></i> ${article.views || 0} مشاهدة</span>
                             </div>
                             <div class="blog-meta">
@@ -5767,13 +5793,12 @@
                     this.els.hero.classList.add('d-none');
                 }
 
-                // Byline: avatar + name + verified badge + founder title + date/read-time/views
-                const avatarIcon = article.aiGenerated ? 'fa-robot' : 'fa-user';
+                // Byline: avatar (real photo for the founder) + name + verified badge + title + meta
                 const authorName = article.author || DEFAULT_AUTHOR_NAME;
                 const authorTitle = article.authorTitle || DEFAULT_AUTHOR_TITLE;
                 const metaParts = [article.dateStr, article.readTime, (article.views || 0) + ' مشاهدة'].filter(Boolean);
                 this.els.modalByline.innerHTML = `
-                    <span class="donia-avatar"><i class="fas ${avatarIcon}"></i></span>
+                    ${this.avatarHTML(article, authorName)}
                     <div class="donia-byline-info">
                         <div class="donia-byline-name">
                             ${this.escapeHTML(authorName)}
@@ -5886,6 +5911,16 @@
                     .replace(/^- (.+)$/gm, '<li>$1</li>')
                     .replace(/^---$/gm, '<hr>')
                     .replace(/\n\n/g, '</p><p>');
+            }
+
+            // ---- Avatar: real circular photo for the founder, icon fallback otherwise ----
+            avatarHTML(article, authorName) {
+                const photo = article.avatar || (authorName === DEFAULT_AUTHOR_NAME ? DEFAULT_AUTHOR_AVATAR : null);
+                if (photo) {
+                    return `<span class="donia-avatar"><img src="${this.escapeHTML(photo)}" alt="${this.escapeHTML(authorName)}" loading="lazy"></span>`;
+                }
+                const icon = article.aiGenerated ? 'fa-robot' : 'fa-user';
+                return `<span class="donia-avatar"><i class="fas ${icon}"></i></span>`;
             }
 
             escapeHTML(str) {
