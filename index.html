@@ -1237,8 +1237,221 @@
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
         }
-        
+
+        .blog-tag:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ===== Blog Toolbar: Search + Tag Filter ===== */
+        .blog-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 35px;
+            padding: 18px 22px;
+            background: white;
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .blog-search-box {
+            position: relative;
+            flex: 1 1 280px;
+            min-width: 220px;
+        }
+
+        .blog-search-box i.fa-search {
+            position: absolute;
+            top: 50%;
+            right: 18px;
+            transform: translateY(-50%);
+            color: var(--tech-purple);
+            opacity: 0.7;
+        }
+
+        .blog-search-box input {
+            width: 100%;
+            padding: 12px 45px 12px 40px;
+            border-radius: 30px;
+            border: 2px solid #e2e8f0;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .blog-search-box input:focus {
+            outline: none;
+            border-color: var(--tech-purple);
+            box-shadow: 0 0 0 3px rgba(124,58,237,0.12);
+        }
+
+        .blog-search-clear {
+            position: absolute;
+            top: 50%;
+            left: 12px;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--silver-color);
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .blog-tags-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: flex-end;
+        }
+
+        .blog-filter-chip {
+            background: #f1f5f9;
+            color: var(--dark-color);
+            border: 1.5px solid #e2e8f0;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .blog-filter-chip:hover {
+            border-color: var(--tech-purple);
+        }
+
+        .blog-filter-chip.active {
+            background: var(--gradient-community);
+            color: white;
+            border-color: transparent;
+        }
+
+        .blog-subsection-title {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            color: var(--community-color);
+        }
+
+        .blog-empty-state {
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--silver-color);
+            background: rgba(255,255,255,0.6);
+            border-radius: 15px;
+            border: 2px dashed rgba(124,58,237,0.2);
+            margin-bottom: 30px;
+        }
+
+        .blog-load-more-btn {
+            background: var(--gradient-community);
+            border: none;
+            color: white;
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .blog-load-more-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(124,58,237,0.3);
+        }
+
+        .blog-load-more-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .blog-card-desc-clamp {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .blog-readmore-btn {
+            background: none;
+            border: none;
+            color: var(--tech-blue);
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0;
+            margin-top: 15px;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .blog-readmore-btn:hover {
+            text-decoration: underline;
+        }
+
+        .blog-card-ai-ribbon {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: var(--gradient-ai);
+            color: white;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            z-index: 2;
+        }
+
+        .blog-card-img-wrap {
+            position: relative;
+        }
+
+        .blog-card-new-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: var(--accent-color);
+            color: white;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            z-index: 2;
+            animation: pulse 2s infinite;
+        }
+
+        .blog-article-modal-content {
+            border-radius: 20px;
+        }
+
+        #blogArticleModalBody {
+            line-height: 1.9;
+            font-size: 1.02rem;
+            max-height: 65vh;
+            overflow-y: auto;
+            padding: 0 1.5rem 1rem;
+        }
+
+        #blogArticleModalBody h2 { font-size: 1.5rem; color: var(--primary-color); margin-top: 0.5rem; }
+        #blogArticleModalBody h3 { font-size: 1.2rem; color: var(--community-color); margin-top: 1.2rem; }
+        #blogArticleModalBody h4 { font-size: 1.05rem; color: var(--tech-blue); margin-top: 1rem; }
+        #blogArticleModalBody li { padding: 4px 0; display: block; }
+        #blogArticleModalBody a { color: var(--tech-blue); font-weight: 600; }
+
+        @media (max-width: 767px) {
+            .blog-toolbar { flex-direction: column; align-items: stretch; }
+            .blog-tags-filter { justify-content: flex-start; }
+        }
+
         /* CTA Section */
         .cta-section {
             padding: 100px 0;
@@ -2671,72 +2884,61 @@
                 اكتشف أحدث المقالات والتقنيات في عالم الرقمية <span class="path-to-top">لطريقك نحو القمة</span> المعرفية
             </p>
             
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="blog-card">
-                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1070&q=80" 
-                             alt="الذكاء الاصطناعي" 
-                             class="blog-img">
-                        <div class="blog-content">
-                            <h4 id="blog1Title">مستقبل الذكاء الاصطناعي في الأعمال</h4>
-                            <div class="blog-meta">
-                                <span><i class="fas fa-user"></i> <span id="blog1Author">فريق DONIA LABS</span></span>
-                                <span><i class="fas fa-eye"></i> <span id="blog1Views">1.2K مشاهدة</span></span>
-                            </div>
-                            <p id="blog1Desc">كيف يمكن للذكاء الاصطناعي أن يحول عملك ويوفر وقتك ويزيد أرباحك؟ اكتشف أحدث التقنيات...</p>
-                            <div class="blog-tags">
-                                <span class="blog-tag" id="blog1Tag1">الذكاء الاصطناعي</span>
-                                <span class="blog-tag" id="blog1Tag2">التقنية</span>
-                                <span class="blog-tag" id="blog1Tag3">الأعمال</span>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Blog Toolbar: Search + Tags Filter -->
+            <div class="blog-toolbar" data-aos="fade-up" data-aos-delay="150">
+                <div class="blog-search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="blogSearchInput" placeholder="ابحث عن مقال بالعنوان أو الوسم..." autocomplete="off">
+                    <button id="blogSearchClearBtn" class="blog-search-clear d-none" title="مسح البحث"><i class="fas fa-times"></i></button>
                 </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="blog-card">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1070&q=80" 
-                             alt="التسويق الرقمي" 
-                             class="blog-img">
-                        <div class="blog-content">
-                            <h4 id="blog2Title">استراتيجيات التسويق الرقمي الفعالة</h4>
-                            <div class="blog-meta">
-                                <span><i class="fas fa-user"></i> <span id="blog2Author">فريق DONIA LABS</span></span>
-                                <span><i class="fas fa-eye"></i> <span id="blog2Views">980 مشاهدة</span></span>
-                            </div>
-                            <p id="blog2Desc">تعرف على أحدث استراتيجيات التسويق الرقمي التي تضمن وصولك للعملاء المستهدفين...</p>
-                            <div class="blog-tags">
-                                <span class="blog-tag" id="blog2Tag1">التسويق</span>
-                                <span class="blog-tag" id="blog2Tag2">الرقمي</span>
-                                <span class="blog-tag" id="blog2Tag3">استراتيجيات</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="blog-card">
-                        <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1169&q=80" 
-                             alt="تصميم المواقع" 
-                             class="blog-img">
-                        <div class="blog-content">
-                            <h4 id="blog3Title">أهمية تجربة المستخدم في تصميم المواقع</h4>
-                            <div class="blog-meta">
-                                <span><i class="fas fa-user"></i> <span id="blog3Author">فريق DONIA LABS</span></span>
-                                <span><i class="fas fa-eye"></i> <span id="blog3Views">1.5K مشاهدة</span></span>
-                            </div>
-                            <p id="blog3Desc">كيف تؤثر تجربة المستخدم على نجاح موقعك الإلكتروني وما أفضل الممارسات؟...</p>
-                            <div class="blog-tags">
-                                <span class="blog-tag" id="blog3Tag1">تصميم</span>
-                                <span class="blog-tag" id="blog3Tag2">مواقع</span>
-                                <span class="blog-tag" id="blog3Tag3">تجربة مستخدم</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="blog-tags-filter" id="blogTagsFilter"></div>
+            </div>
+
+            <!-- Latest Articles -->
+            <h3 class="blog-subsection-title" id="blogLatestSectionTitle">
+                <i class="fas fa-bolt me-2"></i><span id="blogLatestLabel">أحدث المقالات</span>
+            </h3>
+            <div class="row" id="blogLatestGrid"></div>
+
+            <!-- Empty / No results state -->
+            <div id="blogNoResults" class="blog-empty-state d-none">
+                <i class="fas fa-folder-open fa-2x mb-2"></i>
+                <p id="blogNoResultsText">لا توجد مقالات مطابقة لبحثك حالياً</p>
+            </div>
+
+            <!-- Previous Articles -->
+            <div id="blogPreviousWrap" class="d-none">
+                <h3 class="blog-subsection-title mt-5" id="blogPreviousSectionTitle">
+                    <i class="fas fa-archive me-2"></i><span id="blogPreviousLabel">مقالات سابقة</span>
+                </h3>
+                <div class="row" id="blogPreviousGrid"></div>
+                <div class="text-center mt-4">
+                    <button id="blogLoadMoreBtn" class="blog-load-more-btn">
+                        <i class="fas fa-chevron-down me-1"></i><span id="blogLoadMoreText">تحميل المزيد من المقالات</span>
+                    </button>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Article Full-Read Modal -->
+    <div class="modal fade" id="blogArticleModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow-lg blog-article-modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="blogArticleModalTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="blogArticleModalBody"></div>
+                <div class="modal-footer border-0">
+                    <span class="text-muted small me-auto" id="blogArticleModalMeta"></span>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" id="blogArticleShareBtn" data-qr-title="مقالة" data-qr-url="" data-qr-subtext="شارك هذا المقال">
+                        <i class="fas fa-share-alt me-2"></i>مشاركة / QR
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- CTA Section -->
     <section class="cta-section">
@@ -5014,598 +5216,379 @@
         document.head.appendChild(style);
     </script>
 
-    <!-- ===== [NEW ADDITION 2] AUTONOMOUS BLOG AI AGENT ===== -->
-    <!-- Architecture: Claude API powers daily blog articles at 18:00 GMT -->
-    <!-- Scheduling: APScheduler-ready with webhook endpoint for n8n integration -->
+    <!-- ===== [DONIA BLOG MANAGER] Shared, GitHub-synced blog system: search + latest/previous + working read-more ===== -->
+    <!--
+        HOW THIS WORKS (read me before wiring your GitHub automation):
+        1) This script fetches ./articles/articles.json (same folder as index.html) on every page load.
+        2) That JSON file is the ONE SHARED SOURCE of articles for ALL visitors — not localStorage.
+        3) Whatever publishes new posts (GitHub Action / script / manual edit) must write INTO this file,
+           following the schema documented at the top of articles/articles.json.
+        4) If the file is missing/unreachable, a small fallback list is shown so the section is never empty.
+    -->
     <script>
     (function() {
         'use strict';
 
-        // -------------------------------------------------------
-        // BlogAIAgent: Autonomous article writer powered by Claude
-        // -------------------------------------------------------
-        class BlogAIAgent {
+        const ARTICLES_JSON_URL = './articles/articles.json';
+        const PAGE_SIZE = 6;
+
+        const FALLBACK_ARTICLES = [
+            {
+                id: 'fallback-1', slug: 'مستقبل-الذكاء-الاصطناعي-في-الاعمال',
+                title: 'مستقبل الذكاء الاصطناعي في الأعمال',
+                excerpt: 'كيف يمكن للذكاء الاصطناعي أن يحول عملك ويوفر وقتك ويزيد أرباحك؟ اكتشف أحدث التقنيات...',
+                image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1070&q=80',
+                author: 'فريق DONIA LABS', date: '2026-01-10T18:00:00Z', dateStr: '10 جانفي 2026',
+                readTime: '4 دقائق قراءة', views: 1200, tags: ['الذكاء الاصطناعي', 'التقنية', 'الأعمال'],
+                aiGenerated: false,
+                html: '<p>كيف يمكن للذكاء الاصطناعي أن يحول عملك ويوفر وقتك ويزيد أرباحك؟ سيُستبدل هذا المحتوى التعريفي تلقائياً بمقالات حقيقية فور ربط ملف articles.json بمصدر النشر الفعلي على GitHub.</p>'
+            },
+            {
+                id: 'fallback-2', slug: 'استراتيجيات-التسويق-الرقمي-الفعالة',
+                title: 'استراتيجيات التسويق الرقمي الفعالة',
+                excerpt: 'تعرف على أحدث استراتيجيات التسويق الرقمي التي تضمن وصولك للعملاء المستهدفين...',
+                image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1070&q=80',
+                author: 'فريق DONIA LABS', date: '2026-01-05T18:00:00Z', dateStr: '5 جانفي 2026',
+                readTime: '3 دقائق قراءة', views: 980, tags: ['التسويق', 'الرقمي', 'استراتيجيات'],
+                aiGenerated: false,
+                html: '<p>تعرف على أحدث استراتيجيات التسويق الرقمي التي تضمن وصولك للعملاء المستهدفين. سيُستبدل هذا المحتوى التعريفي تلقائياً بمقالات حقيقية فور ربط ملف articles.json بمصدر النشر الفعلي على GitHub.</p>'
+            },
+            {
+                id: 'fallback-3', slug: 'اهمية-تجربة-المستخدم-في-تصميم-المواقع',
+                title: 'أهمية تجربة المستخدم في تصميم المواقع',
+                excerpt: 'كيف تؤثر تجربة المستخدم على نجاح موقعك الإلكتروني وما أفضل الممارسات؟...',
+                image: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1169&q=80',
+                author: 'فريق DONIA LABS', date: '2026-01-01T18:00:00Z', dateStr: '1 جانفي 2026',
+                readTime: '5 دقائق قراءة', views: 1500, tags: ['تصميم', 'مواقع', 'تجربة مستخدم'],
+                aiGenerated: false,
+                html: '<p>كيف تؤثر تجربة المستخدم على نجاح موقعك الإلكتروني؟ سيُستبدل هذا المحتوى التعريفي تلقائياً بمقالات حقيقية فور ربط ملف articles.json بمصدر النشر الفعلي على GitHub.</p>'
+            }
+        ];
+
+        class DoniaBlogManager {
             constructor() {
-                // Storage key for generated articles
-                this.STORAGE_KEY = 'donia_blog_ai_articles';
-                // Webhook endpoint for n8n scheduler (configure your n8n URL here)
-                this.N8N_WEBHOOK_URL = 'https://your-n8n-instance.app.n8n.cloud/webhook/blog-trigger';
-                // Schedule: 18:00 GMT daily
-                this.SCHEDULE_HOUR_GMT = 18;
-                this.SCHEDULE_MINUTE_GMT = 0;
-                // Claude API proxy endpoint (replace with your server-side proxy)
-                this.API_ENDPOINT = 'https://donialabstech.daoud1touina.workers.dev/api/claude-blog'; // Worker مباشرة (محمي بـ CORS) — لا يحتاج Route في Cloudflare
-                
-                this.articles = this.loadArticles();
-                this.schedulerTimer = null;
-                
-                this.init();
-            }
+                this.allArticles = [];
+                this.localPreviewArticles = []; // session-only — never shared with other visitors
+                this.activeTag = null;
+                this.searchQuery = '';
+                this.visiblePreviousCount = PAGE_SIZE;
 
-            init() {
-                try {
-                    this.injectBlogContainer();
-                    this.renderStoredArticles();
-                    this.startDailyScheduler();
-                    this.registerWebhookListener();
-                    console.log('[BlogAIAgent] Initialized. Next article at 18:00 GMT daily.');
-                } catch(e) {
-                    console.error('[BlogAIAgent] Init error:', e);
-                }
-            }
-
-            // ---- Storage Layer ----
-            loadArticles() {
-                try {
-                    const raw = localStorage.getItem(this.STORAGE_KEY);
-                    return raw ? JSON.parse(raw) : [];
-                } catch(e) {
-                    return [];
-                }
-            }
-
-            saveArticles() {
-                try {
-                    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.articles));
-                } catch(e) {
-                    console.error('[BlogAIAgent] Storage error:', e);
-                }
-            }
-
-            // ---- APScheduler-Compatible Daily Timer ----
-            // Fires at 18:00 GMT; compatible with APScheduler via n8n webhook trigger
-            startDailyScheduler() {
-                const self = this;
-                
-                function msUntilNextPublish() {
-                    const now = new Date();
-                    const target = new Date();
-                    target.setUTCHours(self.SCHEDULE_HOUR_GMT, self.SCHEDULE_MINUTE_GMT, 0, 0);
-                    // If target has passed today, schedule for tomorrow
-                    if (target <= now) {
-                        target.setUTCDate(target.getUTCDate() + 1);
-                    }
-                    return target - now;
-                }
-
-                function scheduleNext() {
-                    const delay = msUntilNextPublish();
-                    const nextDate = new Date(Date.now() + delay);
-                    console.log('[BlogAIAgent] Next publication scheduled at:', nextDate.toUTCString(), '(18:00 GMT)');
-                    
-                    self.schedulerTimer = setTimeout(async () => {
-                        await self.generateAndPublishArticle();
-                        scheduleNext(); // Reschedule for next day
-                    }, delay);
-                }
-
-                scheduleNext();
-
-                // APScheduler hook: expose trigger function for n8n/external calls
-                window.__blogAgentTrigger = () => self.generateAndPublishArticle();
-            }
-
-            // ---- n8n Webhook Listener ----
-            // n8n can POST to this page with ?action=blog_trigger to fire the agent
-            registerWebhookListener() {
-                const urlParams = new URLSearchParams(window.location.search);
-                if (urlParams.get('action') === 'blog_trigger') {
-                    console.log('[BlogAIAgent] Webhook triggered by n8n');
-                    this.generateAndPublishArticle();
-                }
-            }
-
-            // ---- Core: Generate Article via Claude API ----
-            async generateAndPublishArticle() {
-                try {
-                    console.log('[BlogAIAgent] Generating new article...');
-                    
-                    const today = new Date();
-                    const dateStr = today.toLocaleDateString('ar-DZ', { 
-                        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
-                    });
-                    
-                    // Topics pool - rotate daily
-                    const topics = [
-                        'كيف يغير الذكاء الاصطناعي التعليم في العالم العربي',
-                        'مستقبل التكنولوجيا التعليمية في الجزائر',
-                        'تطبيقات الذكاء الاصطناعي في المدارس الجزائرية',
-                        'إدارة المدارس الذكية: نحو رقمنة التعليم',
-                        'أفضل أدوات التكنولوجيا للطلاب في 2025',
-                        'التحول الرقمي في قطاع التعليم الجزائري',
-                        'الذكاء الاصطناعي وتحسين نتائج التعلم',
-                        'بناء منصات تعليمية فعّالة للمؤسسات الجزائرية'
-                    ];
-                    
-                    const topicIndex = today.getDate() % topics.length;
-                    const topic = topics[topicIndex];
-
-                    // Build the prompt
-                    const prompt = `أنت كاتب مدونة متخصص في التكنولوجيا والتعليم لمختبر DONIA LABS TECH الجزائري.
-                    
-اكتب مقالاً يومياً احترافياً بصيغة Markdown كامل وغني حول الموضوع التالي:
-"${topic}"
-
-تاريخ اليوم: ${dateStr}
-
-المتطلبات:
-- عنوان رئيسي جذاب (# العنوان)
-- مقدمة قوية (150 كلمة)
-- 3-4 أقسام رئيسية مع عناوين فرعية (## القسم)
-- نقاط مميزة وإحصائيات (إن أمكن)
-- خاتمة تحث على التفاعل
-- طول المقال: 600-800 كلمة
-- اللغة: العربية الفصحى البسيطة
-- اذكر DONIA LABS TECH بشكل طبيعي في السياق
-- أضف وسوم (tags) في النهاية بصيغة: **الوسوم:** تكنولوجيا, تعليم, ذكاء اصطناعي
-
-أعد فقط نص المقال بصيغة Markdown دون أي مقدمة.`;
-
-                    // Try to call Claude API (requires server-side proxy)
-                    let markdownContent = null;
-                    
-                    try {
-                        const response = await fetch(this.API_ENDPOINT, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                model: 'claude-sonnet-4-6',
-                                max_tokens: 2000,
-                                messages: [{ role: 'user', content: prompt }]
-                            }),
-                            signal: AbortSignal.timeout(30000)
-                        });
-                        
-                        if (response.ok) {
-                            const data = await response.json();
-                            markdownContent = data.content?.[0]?.text || null;
-                        }
-                    } catch(apiErr) {
-                        console.warn('[BlogAIAgent] API unavailable, using fallback article:', apiErr.message);
-                    }
-
-                    // Fallback: pre-written article template if API unavailable
-                    if (!markdownContent) {
-                        markdownContent = this.getFallbackArticle(topic, dateStr);
-                    }
-
-                    // Parse and publish the article
-                    const article = {
-                        id: Date.now(),
-                        date: today.toISOString(),
-                        dateStr: dateStr,
-                        topic: topic,
-                        markdown: markdownContent,
-                        html: this.markdownToHTML(markdownContent),
-                        views: 0,
-                        aiGenerated: true
-                    };
-
-                    this.articles.unshift(article); // Add to top
-                    if (this.articles.length > 10) this.articles.pop(); // Keep max 10
-                    this.saveArticles();
-                    this.renderStoredArticles();
-                    
-                    this.showPublishNotification(topic);
-                    console.log('[BlogAIAgent] Article published:', topic);
-                    return article;
-                    
-                } catch(e) {
-                    console.error('[BlogAIAgent] Article generation failed:', e);
-                }
-            }
-
-            // ---- Fallback Article Template ----
-            getFallbackArticle(topic, dateStr) {
-                return `# ${topic}
-
-## مقدمة
-
-في عصر التحول الرقمي المتسارع، أصبح دور التكنولوجيا في التعليم محوراً لا يمكن إغفاله. تسعى **DONIA LABS TECH** إلى قيادة هذا التحول في الجزائر والعالم العربي من خلال حلول مبتكرة تدمج أحدث تقنيات الذكاء الاصطناعي مع متطلبات المنظومة التعليمية.
-
-## أهمية الموضوع في السياق الجزائري
-
-تشهد الجزائر اليوم قفزة نوعية في مجال التحول الرقمي للتعليم. وزارة التربية الوطنية تدفع نحو رقمنة الإجراءات الإدارية، مما يفتح آفاقاً واسعة للمطورين والشركات التكنولوجية.
-
-**أبرز المحاور:**
-- رقمنة السجلات والملفات المدرسية
-- أتمتة إدارة النتائج والغيابات
-- التواصل الرقمي بين الأساتذة وأولياء الأمور
-- تحليل البيانات التربوية لتحسين الأداء
-
-## الحلول التقنية المتاحة
-
-### أنظمة إدارة المدارس الذكية
-
-تعتمد الأنظمة الحديثة على:
-- قواعد بيانات علائقية قابلة للتوسع
-- واجهات مستخدم بديهية باللغة العربية (RTL)
-- تقارير تلقائية متوافقة مع متطلبات الوزارة
-- حماية البيانات وفق المعايير الدولية
-
-### دور الذكاء الاصطناعي
-
-يمكن للذكاء الاصطناعي أن يساهم في:
-1. **التنبؤ بالأداء الأكاديمي** بناءً على البيانات التاريخية
-2. **اكتشاف أنماط الغياب** وتنبيه الإدارة مبكراً
-3. **توليد تقارير تربوية** شاملة وآنية
-4. **دعم اتخاذ القرار** للإدارة والمعلمين
-
-## خاتمة
-
-الاستثمار في التكنولوجيا التعليمية اليوم هو استثمار في مستقبل أجيال كاملة. **DONIA LABS TECH** ملتزمة بتقديم حلول تتناسب مع الواقع الجزائري، وتحترم خصوصية البيانات، وتعمل وفق معايير وزارة التربية الوطنية.
-
-هل تفكر في رقمنة مؤسستك التعليمية؟ [تواصل معنا](https://wa.me/213674661737) اليوم واحصل على استشارة مجانية.
-
----
-*تاريخ النشر: ${dateStr}*
-
-**الوسوم:** تكنولوجيا, تعليم, ذكاء اصطناعي, الجزائر, رقمنة, DONIA LABS TECH`;
-            }
-
-            // ---- Simple Markdown to HTML Converter ----
-            markdownToHTML(md) {
-                return md
-                    .replace(/^# (.+)$/gm, '<h2 class="ai-blog-title">$1</h2>')
-                    .replace(/^## (.+)$/gm, '<h3 class="ai-blog-subtitle">$1</h3>')
-                    .replace(/^### (.+)$/gm, '<h4 class="ai-blog-h4">$1</h4>')
-                    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-                    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-                    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" class="ai-blog-link">$1</a>')
-                    .replace(/^(\d+)\. (.+)$/gm, '<li class="ai-blog-li-num"><span class="li-num">$1</span> $2</li>')
-                    .replace(/^- (.+)$/gm, '<li class="ai-blog-li">✦ $1</li>')
-                    .replace(/^---$/gm, '<hr class="ai-blog-hr">')
-                    .replace(/\n\n/g, '</p><p class="ai-blog-p">')
-                    .replace(/^(.+)$/gm, (line) => {
-                        if (line.startsWith('<')) return line;
-                        return line;
-                    });
-            }
-
-            // ---- Inject AI Blog Section into DOM ----
-            injectBlogContainer() {
-                const blogSection = document.getElementById('blog');
-                if (!blogSection) return;
-
-                const container = document.createElement('div');
-                container.id = 'ai-blog-articles-container';
-                container.className = 'ai-blog-wrapper';
-                container.setAttribute('data-aos', 'fade-up');
-                container.setAttribute('data-aos-delay', '500');
-                
-                container.innerHTML = `
-                    <div class="ai-blog-header-bar">
-                        <span class="ai-blog-badge">
-                            <i class="fas fa-robot me-2"></i>مقالات الوكيل الذكي
-                        </span>
-                        <span class="ai-blog-schedule-info">
-                            <i class="fas fa-clock me-1"></i>
-                            ينشر يومياً عند الساعة 18:00 GMT
-                        </span>
-                        <button class="ai-blog-trigger-btn" onclick="window.__blogAgentTrigger && window.__blogAgentTrigger()" title="نشر مقال الآن (للاختبار)">
-                            <i class="fas fa-play-circle me-1"></i>نشر مقال الآن
-                        </button>
-                    </div>
-                    <div id="ai-blog-articles-list" class="ai-blog-articles-list">
-                        <div class="ai-blog-empty-state">
-                            <i class="fas fa-robot fa-3x mb-3" style="color: var(--tech-purple); opacity:0.4;"></i>
-                            <p>الوكيل الذكي جاهز لنشر أول مقال عند الساعة 18:00 GMT</p>
-                            <small>اضغط "نشر مقال الآن" للاختبار</small>
-                        </div>
-                    </div>
-                `;
-
-                // Insert before the existing blog cards row
-                const blogContainer = blogSection.querySelector('.container');
-                if (blogContainer) {
-                    const firstRow = blogContainer.querySelector('.row');
-                    if (firstRow) {
-                        blogContainer.insertBefore(container, firstRow);
-                    } else {
-                        blogContainer.appendChild(container);
-                    }
-                }
-
-                // Inject AI Blog styles
+                this.els = {};
+                this.cacheEls();
                 this.injectStyles();
+                this.bindEvents();
+                this.load();
             }
 
-            injectStyles() {
-                const style = document.createElement('style');
-                style.textContent = `
-                /* ===== AI Blog Agent Styles ===== */
-                .ai-blog-wrapper {
-                    margin-bottom: 50px;
+            cacheEls() {
+                this.els.searchInput = document.getElementById('blogSearchInput');
+                this.els.searchClear = document.getElementById('blogSearchClearBtn');
+                this.els.tagsFilter = document.getElementById('blogTagsFilter');
+                this.els.latestGrid = document.getElementById('blogLatestGrid');
+                this.els.previousWrap = document.getElementById('blogPreviousWrap');
+                this.els.previousGrid = document.getElementById('blogPreviousGrid');
+                this.els.loadMoreBtn = document.getElementById('blogLoadMoreBtn');
+                this.els.noResults = document.getElementById('blogNoResults');
+                this.els.modalTitle = document.getElementById('blogArticleModalTitle');
+                this.els.modalBody = document.getElementById('blogArticleModalBody');
+                this.els.modalMeta = document.getElementById('blogArticleModalMeta');
+                this.els.shareBtn = document.getElementById('blogArticleShareBtn');
+            }
+
+            async load() {
+                try {
+                    const res = await fetch(ARTICLES_JSON_URL, { cache: 'no-store' });
+                    if (!res.ok) throw new Error('HTTP ' + res.status);
+                    const data = await res.json();
+                    const list = Array.isArray(data) ? data : (Array.isArray(data.articles) ? data.articles : []);
+                    this.allArticles = list.length ? list : FALLBACK_ARTICLES;
+                    if (!list.length) console.warn('[DoniaBlog] articles.json found but empty — showing fallback content.');
+                } catch (e) {
+                    console.warn('[DoniaBlog] Could not load articles/articles.json — showing fallback content. Reason:', e.message);
+                    this.allArticles = FALLBACK_ARTICLES;
                 }
-                .ai-blog-header-bar {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    flex-wrap: wrap;
-                    gap: 12px;
-                    margin-bottom: 25px;
-                    padding: 15px 20px;
-                    background: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(236,72,153,0.08) 100%);
-                    border-radius: 15px;
-                    border: 1.5px solid rgba(124,58,237,0.2);
-                }
-                .ai-blog-badge {
-                    background: var(--gradient-community);
-                    color: white;
-                    padding: 8px 18px;
-                    border-radius: 25px;
-                    font-size: 0.9rem;
-                    font-weight: 700;
-                    letter-spacing: 0.5px;
-                }
-                .ai-blog-schedule-info {
-                    color: var(--community-color);
-                    font-size: 0.85rem;
-                    font-weight: 600;
-                }
-                .ai-blog-trigger-btn {
-                    background: var(--gradient-ai);
-                    border: none;
-                    color: white;
-                    padding: 8px 18px;
-                    border-radius: 25px;
-                    font-size: 0.85rem;
-                    font-weight: 600;
-                    cursor: pointer;
-                    transition: var(--transition);
-                    font-family: 'Tajawal', sans-serif;
-                }
-                .ai-blog-trigger-btn:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 8px 20px rgba(6,182,212,0.3);
-                }
-                .ai-blog-articles-list {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 25px;
-                }
-                .ai-blog-empty-state {
-                    text-align: center;
-                    padding: 40px;
-                    color: var(--silver-color);
-                    background: rgba(255,255,255,0.6);
-                    border-radius: 15px;
-                    border: 2px dashed rgba(124,58,237,0.2);
-                }
-                .ai-blog-card {
-                    background: white;
-                    border-radius: 20px;
-                    padding: 30px;
-                    box-shadow: var(--shadow);
-                    border-left: 5px solid transparent;
-                    border-image: var(--gradient-community) 1;
-                    border-left: 5px solid var(--community-color);
-                    animation: aiBlogSlideIn 0.5s ease;
-                    position: relative;
-                    overflow: hidden;
-                }
-                .ai-blog-card::before {
-                    content: '';
-                    position: absolute;
-                    top: 0; right: 0;
-                    width: 80px; height: 80px;
-                    background: var(--gradient-community);
-                    opacity: 0.05;
-                    border-radius: 50%;
-                    transform: translate(30px, -30px);
-                }
-                @keyframes aiBlogSlideIn {
-                    from { opacity: 0; transform: translateY(20px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-                .ai-blog-card-meta {
-                    display: flex;
-                    align-items: center;
-                    gap: 15px;
-                    margin-bottom: 20px;
-                    flex-wrap: wrap;
-                }
-                .ai-blog-card-badge {
-                    background: linear-gradient(135deg, #7c3aed, #ec4899);
-                    color: white;
-                    padding: 4px 12px;
-                    border-radius: 15px;
-                    font-size: 0.75rem;
-                    font-weight: 700;
-                }
-                .ai-blog-card-date {
-                    color: var(--silver-color);
-                    font-size: 0.85rem;
-                }
-                .ai-blog-card-views {
-                    color: var(--silver-color);
-                    font-size: 0.85rem;
-                    margin-right: auto;
-                }
-                .ai-blog-content {
-                    color: var(--dark-color);
-                    line-height: 1.9;
-                    font-size: 1rem;
-                }
-                .ai-blog-title {
-                    font-size: 1.6rem;
-                    color: var(--primary-color);
-                    margin-bottom: 15px;
-                    font-weight: 900;
-                }
-                .ai-blog-subtitle {
-                    font-size: 1.2rem;
-                    color: var(--community-color);
-                    margin: 20px 0 10px;
-                }
-                .ai-blog-h4 {
-                    font-size: 1.05rem;
-                    color: var(--tech-blue);
-                    margin: 15px 0 8px;
-                }
-                .ai-blog-p {
-                    margin-bottom: 12px;
-                }
-                .ai-blog-li, .ai-blog-li-num {
-                    padding: 5px 0;
-                    padding-right: 15px;
-                    display: block;
-                    position: relative;
-                }
-                .ai-blog-li-num .li-num {
-                    background: var(--gradient-community);
-                    -webkit-background-clip: text;
-                    background-clip: text;
-                    color: transparent;
-                    font-weight: 900;
-                    margin-left: 5px;
-                }
-                .ai-blog-link {
-                    color: var(--tech-blue);
-                    text-decoration: none;
-                    font-weight: 600;
-                    border-bottom: 1px dashed var(--tech-blue);
-                }
-                .ai-blog-hr {
-                    border: none;
-                    border-top: 2px solid #e2e8f0;
-                    margin: 20px 0;
-                }
-                .ai-blog-expand-btn {
-                    background: var(--gradient-community);
-                    border: none;
-                    color: white;
-                    padding: 10px 25px;
-                    border-radius: 25px;
-                    font-size: 0.9rem;
-                    font-weight: 600;
-                    cursor: pointer;
-                    margin-top: 15px;
-                    transition: var(--transition);
-                    font-family: 'Tajawal', sans-serif;
-                }
-                .ai-blog-expand-btn:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 8px 20px rgba(124,58,237,0.3);
-                }
-                .ai-blog-full-content { display: none; }
-                .ai-blog-full-content.expanded { display: block; }
+
+                this.injectHeaderBar();
+                this.buildTagChips();
+                this.render();
+                this.checkDeepLink();
+            }
+
+            // ---- Header bar: schedule info + local test-publish button ----
+            injectHeaderBar() {
+                const blogSection = document.getElementById('blog');
+                if (!blogSection || document.getElementById('donia-blog-header-bar')) return;
+                const bar = document.createElement('div');
+                bar.id = 'donia-blog-header-bar';
+                bar.className = 'donia-blog-header-bar';
+                bar.innerHTML = `
+                    <span class="donia-blog-badge"><i class="fas fa-robot me-2"></i>الوكيل الذكي للمقالات</span>
+                    <span class="donia-blog-schedule-info"><i class="fas fa-clock me-1"></i>ينشر يومياً عند الساعة 18:00 GMT</span>
+                    <button id="donia-blog-test-btn" class="donia-blog-trigger-btn" title="معاينة محلية فقط — لا تظهر لباقي الزوار">
+                        <i class="fas fa-play-circle me-1"></i>معاينة مقال تجريبي
+                    </button>
                 `;
-                document.head.appendChild(style);
+                const container = blogSection.querySelector('.container');
+                const toolbar = document.querySelector('.blog-toolbar');
+                if (container && toolbar) container.insertBefore(bar, toolbar);
+                const btn = document.getElementById('donia-blog-test-btn');
+                if (btn) btn.addEventListener('click', () => this.publishLocalPreview());
             }
 
-            // ---- Render Articles in DOM ----
-            renderStoredArticles() {
-                const container = document.getElementById('ai-blog-articles-list');
-                if (!container) return;
+            publishLocalPreview() {
+                const now = new Date();
+                const article = {
+                    id: 'preview-' + now.getTime(),
+                    slug: 'معاينة-' + now.getTime(),
+                    title: 'مقال تجريبي (معاينة محلية فقط)',
+                    excerpt: 'هذا مقال تجريبي لمعاينة شكل البطاقة فقط، ولن يظهر لأي زائر آخر.',
+                    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1070&q=80',
+                    author: 'معاينة محلية', date: now.toISOString(),
+                    dateStr: now.toLocaleDateString('ar-DZ', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
+                    readTime: '—', views: 0, tags: ['معاينة'],
+                    aiGenerated: true, isLocalPreview: true,
+                    html: '<p>هذا محتوى تجريبي لمعاينة شكل المقال داخل البطاقة والنافذة المنبثقة. لإضافة مقال حقيقي يظهر لكل الزوار، يجب كتابته داخل ملف <code>articles/articles.json</code> على GitHub عبر الأتمتة الفعلية.</p>'
+                };
+                this.localPreviewArticles.unshift(article);
+                this.buildTagChips();
+                this.render();
+            }
 
-                if (this.articles.length === 0) {
-                    container.innerHTML = `
-                        <div class="ai-blog-empty-state">
-                            <i class="fas fa-robot fa-3x mb-3" style="color: var(--tech-purple); opacity:0.4;"></i>
-                            <p>الوكيل الذكي جاهز لنشر أول مقال عند الساعة 18:00 GMT</p>
-                            <small>اضغط "نشر مقال الآن" للاختبار</small>
-                        </div>`;
+            // ---- Tag filter chips ----
+            buildTagChips() {
+                const combined = [...this.localPreviewArticles, ...this.allArticles];
+                const tagSet = new Set();
+                combined.forEach(a => (a.tags || []).forEach(t => tagSet.add(t)));
+                const tags = Array.from(tagSet).slice(0, 10);
+
+                let html = `<button class="blog-filter-chip ${!this.activeTag ? 'active' : ''}" data-tag="">الكل</button>`;
+                tags.forEach(t => {
+                    html += `<button class="blog-filter-chip ${this.activeTag === t ? 'active' : ''}" data-tag="${this.escapeHTML(t)}">${this.escapeHTML(t)}</button>`;
+                });
+                if (this.els.tagsFilter) {
+                    this.els.tagsFilter.innerHTML = html;
+                    this.els.tagsFilter.querySelectorAll('.blog-filter-chip').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            this.activeTag = btn.getAttribute('data-tag') || null;
+                            this.visiblePreviousCount = PAGE_SIZE;
+                            this.buildTagChips();
+                            this.render();
+                        });
+                    });
+                }
+            }
+
+            // ---- Events ----
+            bindEvents() {
+                if (this.els.searchInput) {
+                    this.els.searchInput.addEventListener('input', () => {
+                        this.searchQuery = this.els.searchInput.value.trim();
+                        if (this.els.searchClear) this.els.searchClear.classList.toggle('d-none', !this.searchQuery);
+                        this.visiblePreviousCount = PAGE_SIZE;
+                        this.render();
+                    });
+                }
+                if (this.els.searchClear) {
+                    this.els.searchClear.addEventListener('click', () => {
+                        this.els.searchInput.value = '';
+                        this.searchQuery = '';
+                        this.els.searchClear.classList.add('d-none');
+                        this.render();
+                    });
+                }
+                if (this.els.loadMoreBtn) {
+                    this.els.loadMoreBtn.addEventListener('click', () => {
+                        this.visiblePreviousCount += PAGE_SIZE;
+                        this.render();
+                    });
+                }
+            }
+
+            // ---- Filtering + sorting ----
+            getFilteredSorted() {
+                const combined = [...this.localPreviewArticles, ...this.allArticles];
+                const q = (this.searchQuery || '').toLocaleLowerCase('ar');
+                return combined
+                    .filter(a => {
+                        if (this.activeTag && !(a.tags || []).includes(this.activeTag)) return false;
+                        if (!q) return true;
+                        const haystack = [a.title, a.excerpt, ...(a.tags || [])].join(' ').toLocaleLowerCase('ar');
+                        return haystack.includes(q);
+                    })
+                    .sort((a, b) => new Date(b.date) - new Date(a.date));
+            }
+
+            // ---- Render ----
+            render() {
+                const list = this.getFilteredSorted();
+
+                if (!list.length) {
+                    this.els.latestGrid.innerHTML = '';
+                    this.els.previousWrap.classList.add('d-none');
+                    this.els.noResults.classList.remove('d-none');
                     return;
                 }
+                this.els.noResults.classList.add('d-none');
 
-                container.innerHTML = '';
+                const latest = list.slice(0, 3);
+                const previous = list.slice(3);
 
-                this.articles.forEach((article, idx) => {
-                    const card = document.createElement('div');
-                    card.className = 'ai-blog-card';
-                    
-                    const previewHTML = article.html.substring(0, 800) + '...';
-                    const fullHTML = article.html;
-                    const cardId = `ai-blog-${article.id}`;
+                this.els.latestGrid.innerHTML = latest.map(a => this.cardHTML(a)).join('');
 
-                    card.innerHTML = `
-                        <div class="ai-blog-card-meta">
-                            <span class="ai-blog-card-badge">
-                                <i class="fas fa-robot me-1"></i>وكيل ذكي
-                            </span>
-                            <span class="ai-blog-card-date">
-                                <i class="fas fa-calendar me-1"></i>${article.dateStr}
-                            </span>
-                            <span class="ai-blog-card-views">
-                                <i class="fas fa-eye me-1"></i>${article.views + Math.floor(Math.random()*50 + 10)} مشاهدة
-                            </span>
+                if (previous.length) {
+                    this.els.previousWrap.classList.remove('d-none');
+                    const shown = previous.slice(0, this.visiblePreviousCount);
+                    this.els.previousGrid.innerHTML = shown.map(a => this.cardHTML(a)).join('');
+                    this.els.loadMoreBtn.style.display = shown.length < previous.length ? '' : 'none';
+                } else {
+                    this.els.previousWrap.classList.add('d-none');
+                }
+
+                this.bindCardEvents();
+            }
+
+            cardHTML(article) {
+                const isNew = (Date.now() - new Date(article.date).getTime()) < (1000 * 60 * 60 * 24);
+                const tagsHTML = (article.tags || []).slice(0, 3)
+                    .map(t => `<span class="blog-tag" data-tag-click="${this.escapeHTML(t)}">${this.escapeHTML(t)}</span>`).join('');
+                return `
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="blog-card">
+                        <div class="blog-card-img-wrap">
+                            ${article.aiGenerated ? `<span class="blog-card-ai-ribbon"><i class="fas fa-robot me-1"></i>${article.isLocalPreview ? 'معاينة محلية' : 'وكيل ذكي'}</span>` : ''}
+                            ${isNew ? `<span class="blog-card-new-badge">جديد</span>` : ''}
+                            <img src="${this.escapeHTML(article.image || '')}" alt="${this.escapeHTML(article.title)}" class="blog-img" loading="lazy">
                         </div>
-                        <div class="ai-blog-content" id="${cardId}-preview">${previewHTML}</div>
-                        <div class="ai-blog-full-content ai-blog-content" id="${cardId}-full">${fullHTML}</div>
-                        <button class="ai-blog-expand-btn" onclick="
-                            var p = document.getElementById('${cardId}-preview');
-                            var f = document.getElementById('${cardId}-full');
-                            var btn = this;
-                            if (f.classList.contains('expanded')) {
-                                f.classList.remove('expanded');
-                                p.style.display = '';
-                                btn.innerHTML = '<i class=\'fas fa-chevron-down me-1\'></i>قراءة المزيد';
-                            } else {
-                                f.classList.add('expanded');
-                                p.style.display = 'none';
-                                btn.innerHTML = '<i class=\'fas fa-chevron-up me-1\'></i>عرض أقل';
-                            }
-                        ">
-                            <i class="fas fa-chevron-down me-1"></i>قراءة المزيد
-                        </button>
-                    `;
+                        <div class="blog-content">
+                            <h4>${this.escapeHTML(article.title)}</h4>
+                            <div class="blog-meta">
+                                <span><i class="fas fa-user"></i> ${this.escapeHTML(article.author || 'فريق DONIA LABS')}</span>
+                                <span><i class="fas fa-eye"></i> ${article.views || 0} مشاهدة</span>
+                            </div>
+                            <div class="blog-meta">
+                                <span><i class="fas fa-calendar"></i> ${this.escapeHTML(article.dateStr || '')}</span>
+                                ${article.readTime ? `<span><i class="fas fa-book-reader"></i> ${this.escapeHTML(article.readTime)}</span>` : ''}
+                            </div>
+                            <p class="blog-card-desc-clamp">${this.escapeHTML(article.excerpt || '')}</p>
+                            <div class="blog-tags">${tagsHTML}</div>
+                            <button class="blog-readmore-btn" data-article-id="${this.escapeHTML(String(article.id))}">
+                                <i class="fas fa-chevron-left me-1"></i>قراءة المزيد
+                            </button>
+                        </div>
+                    </div>
+                </div>`;
+            }
 
-                    container.appendChild(card);
+            bindCardEvents() {
+                document.querySelectorAll('#blogLatestGrid [data-article-id], #blogPreviousGrid [data-article-id]').forEach(btn => {
+                    btn.addEventListener('click', () => this.openArticle(btn.getAttribute('data-article-id')));
+                });
+                document.querySelectorAll('#blogLatestGrid [data-tag-click], #blogPreviousGrid [data-tag-click]').forEach(tagEl => {
+                    tagEl.addEventListener('click', () => {
+                        this.activeTag = tagEl.getAttribute('data-tag-click');
+                        this.visiblePreviousCount = PAGE_SIZE;
+                        this.buildTagChips();
+                        this.render();
+                        const blogSection = document.getElementById('blog');
+                        if (blogSection) blogSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    });
                 });
             }
 
-            // ---- Publish Notification ----
-            showPublishNotification(topic) {
-                const toast = document.createElement('div');
-                toast.style.cssText = `
-                    position:fixed; top:100px; right:20px; z-index:9999;
-                    background:white; padding:15px 20px; border-radius:15px;
-                    box-shadow:0 10px 30px rgba(0,0,0,0.2);
-                    border-right:4px solid var(--community-color);
-                    font-family:'Tajawal',sans-serif; max-width:320px;
-                    animation:slideInRight 0.4s ease;
-                    display:flex; align-items:center; gap:10px;
+            openArticle(id) {
+                const combined = [...this.localPreviewArticles, ...this.allArticles];
+                const article = combined.find(a => String(a.id) === String(id));
+                if (!article) return;
+
+                const bodyHTML = article.html || (article.markdown ? this.markdownToHTML(article.markdown) : '<p>لا يوجد محتوى لهذا المقال.</p>');
+                this.els.modalTitle.textContent = article.title;
+                this.els.modalBody.innerHTML = bodyHTML;
+                this.els.modalMeta.textContent = (article.dateStr || '') + ' • ' + (article.views || 0) + ' مشاهدة';
+
+                const shareURL = location.origin + location.pathname + '?article=' + encodeURIComponent(article.slug || article.id) + '#blog';
+                if (this.els.shareBtn) {
+                    this.els.shareBtn.setAttribute('data-qr-url', shareURL);
+                    this.els.shareBtn.setAttribute('data-qr-title', article.title);
+                }
+
+                const modalEl = document.getElementById('blogArticleModal');
+                if (modalEl && window.bootstrap) bootstrap.Modal.getOrCreateInstance(modalEl).show();
+
+                article.views = (article.views || 0) + 1;
+            }
+
+            checkDeepLink() {
+                const params = new URLSearchParams(window.location.search);
+                const slug = params.get('article');
+                if (!slug) return;
+                const combined = [...this.localPreviewArticles, ...this.allArticles];
+                const match = combined.find(a => a.slug === slug || String(a.id) === slug);
+                if (match) {
+                    setTimeout(() => {
+                        const blogSection = document.getElementById('blog');
+                        if (blogSection) blogSection.scrollIntoView({ block: 'start' });
+                        this.openArticle(match.id);
+                    }, 400);
+                }
+            }
+
+            // ---- Markdown → HTML (used only if an article ships markdown but no pre-rendered html) ----
+            markdownToHTML(md) {
+                return md
+                    .replace(/^# (.+)$/gm, '<h2>$1</h2>')
+                    .replace(/^## (.+)$/gm, '<h3>$1</h3>')
+                    .replace(/^### (.+)$/gm, '<h4>$1</h4>')
+                    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+                    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+                    .replace(/^(\d+)\. (.+)$/gm, '<li>$2</li>')
+                    .replace(/^- (.+)$/gm, '<li>$1</li>')
+                    .replace(/^---$/gm, '<hr>')
+                    .replace(/\n\n/g, '</p><p>');
+            }
+
+            escapeHTML(str) {
+                return String(str == null ? '' : str)
+                    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+            }
+
+            injectStyles() {
+                if (document.getElementById('donia-blog-manager-styles')) return;
+                const style = document.createElement('style');
+                style.id = 'donia-blog-manager-styles';
+                style.textContent = `
+                .donia-blog-header-bar {
+                    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+                    gap: 12px; margin-bottom: 25px; padding: 15px 20px;
+                    background: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(236,72,153,0.08) 100%);
+                    border-radius: 15px; border: 1.5px solid rgba(124,58,237,0.2);
+                }
+                .donia-blog-badge {
+                    background: var(--gradient-community); color: white; padding: 8px 18px;
+                    border-radius: 25px; font-size: 0.9rem; font-weight: 700;
+                }
+                .donia-blog-schedule-info { color: var(--community-color); font-size: 0.85rem; font-weight: 600; }
+                .donia-blog-trigger-btn {
+                    background: var(--gradient-ai); border: none; color: white; padding: 8px 18px;
+                    border-radius: 25px; font-size: 0.85rem; font-weight: 600; cursor: pointer;
+                    transition: var(--transition); font-family: 'Tajawal', sans-serif;
+                }
+                .donia-blog-trigger-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(6,182,212,0.3); }
                 `;
-                toast.innerHTML = `
-                    <i class="fas fa-robot" style="color:var(--community-color); font-size:1.5rem;"></i>
-                    <div>
-                        <strong style="display:block; color:var(--community-color);">مقال جديد نُشر!</strong>
-                        <small style="color:#64748b;">${topic.substring(0, 50)}...</small>
-                    </div>
-                `;
-                document.body.appendChild(toast);
-                setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity 0.5s'; }, 4000);
-                setTimeout(() => toast.remove(), 4500);
+                document.head.appendChild(style);
             }
         }
 
-        // Initialize Blog AI Agent
-        window.__blogAgent = new BlogAIAgent();
-        
+        function initDoniaBlog() { window.__doniaBlog = new DoniaBlogManager(); }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initDoniaBlog);
+        } else {
+            initDoniaBlog();
+        }
     })();
     </script>
-    <!-- ===== [END ADDITION 2] ===== -->
+    <!-- ===== [END DONIA BLOG MANAGER] ===== -->
 
 
     <!-- ===== [NEW ADDITION 3] ENHANCED AI ASSISTANT WITH CLAUDE API + KNOWLEDGE CONTEXT ===== -->
