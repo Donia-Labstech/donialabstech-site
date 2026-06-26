@@ -1631,6 +1631,13 @@
         .blog-article-content strong { color: var(--primary-color); }
         .blog-article-content hr { border: none; border-top: 1.5px solid #e2e8f0; margin: 1.5rem 0; }
 
+        .blog-article-loading {
+            text-align: center;
+            padding: 50px 10px;
+            color: var(--silver-color);
+            font-weight: 600;
+        }
+
         .blog-article-modal-footer {
             padding: 16px 24px;
             border-top: 1px solid #f1f5f9 !important;
@@ -5438,6 +5445,7 @@
         'use strict';
 
         const ARTICLES_JSON_URL = './articles/articles.json';
+        const BLOG_MANIFEST_URL = './blog/index.json';
         const PAGE_SIZE = 6;
         const DEFAULT_AUTHOR_NAME = 'Daoud Touina';
         const DEFAULT_AUTHOR_TITLE = 'رائد أعمال | مؤسس مختبر الأفكار الذكية وقائد المشاريع';
@@ -5519,26 +5527,42 @@
 
             showFallbackNotice(reasonText) {
                 if (!this.els.fallbackNotice) return;
-                this.els.fallbackNoticeText.textContent =
-                    'يتم عرض محتوى تجريبي مؤقت لأن ملف articles/articles.json لم يتم الوصول إليه (' + reasonText + '). تأكد أن الملف موجود بنفس مسار index.html على GitHub.';
+                this.els.fallbackNoticeText.textContent = 'تنبيه تشخيصي: ' + reasonText;
                 this.els.fallbackNotice.classList.remove('d-none');
             }
 
-            async load() {
+            async loadSource(url) {
                 try {
-                    const res = await fetch(ARTICLES_JSON_URL, { cache: 'no-store' });
+                    const res = await fetch(url, { cache: 'no-store' });
                     if (!res.ok) throw new Error('HTTP ' + res.status);
                     const data = await res.json();
                     const list = Array.isArray(data) ? data : (Array.isArray(data.articles) ? data.articles : []);
-                    this.allArticles = list.length ? list : FALLBACK_ARTICLES;
-                    if (!list.length) {
-                        console.warn('[DoniaBlog] articles.json found but empty — showing fallback content.');
-                        this.showFallbackNotice('الملف موجود لكنه فارغ');
-                    }
+                    return { ok: true, list };
                 } catch (e) {
-                    console.warn('[DoniaBlog] Could not load articles/articles.json — showing fallback content. Reason:', e.message);
+                    console.warn('[DoniaBlog] Could not load', url, '— Reason:', e.message);
+                    return { ok: false, list: [], error: e.message };
+                }
+            }
+
+            async load() {
+                const [manifestResult, manualResult] = await Promise.all([
+                    this.loadSource(BLOG_MANIFEST_URL),
+                    this.loadSource(ARTICLES_JSON_URL),
+                ]);
+
+                const combined = [...manifestResult.list, ...manualResult.list];
+
+                if (combined.length) {
+                    this.allArticles = combined;
+                    if (!manifestResult.ok) {
+                        this.showFallbackNotice('تعذر تحميل مقالات الوكيل اليومي من blog/index.json (' + manifestResult.error + '). يتم عرض مقالات أخرى فقط حالياً.');
+                    }
+                } else {
                     this.allArticles = FALLBACK_ARTICLES;
-                    this.showFallbackNotice(e.message);
+                    const reasons = [];
+                    if (!manifestResult.ok) reasons.push('blog/index.json: ' + manifestResult.error);
+                    if (!manualResult.ok) reasons.push('articles/articles.json: ' + manualResult.error);
+                    this.showFallbackNotice(reasons.join(' | ') || 'كل مصادر المقالات فارغة حالياً');
                 }
 
                 this.injectHeaderBar();
@@ -5729,12 +5753,10 @@
                 });
             }
 
-            openArticle(id) {
+            async openArticle(id) {
                 const combined = [...this.localPreviewArticles, ...this.allArticles];
                 const article = combined.find(a => String(a.id) === String(id));
                 if (!article) return;
-
-                const bodyHTML = article.html || (article.markdown ? this.markdownToHTML(article.markdown) : '<p>لا يوجد محتوى لهذا المقال.</p>');
 
                 // Hero image
                 if (article.image) {
@@ -5767,9 +5789,10 @@
                 this.els.modalTags.innerHTML = (article.tags || [])
                     .map(t => `<span class="blog-tag">${this.escapeHTML(t)}</span>`).join('');
 
-                this.els.modalBody.innerHTML = bodyHTML;
-
-                const shareURL = location.origin + location.pathname + '?article=' + encodeURIComponent(article.slug || article.id) + '#blog';
+                // Share / QR: prefer the real permalink (works even without JS) when one exists
+                const shareURL = article.url
+                    ? (location.origin + location.pathname.replace(/index\.html$/, '') + article.url)
+                    : (location.origin + location.pathname + '?article=' + encodeURIComponent(article.slug || article.id) + '#blog');
                 if (this.els.shareBtn) {
                     this.els.shareBtn.setAttribute('data-qr-url', shareURL);
                     this.els.shareBtn.setAttribute('data-qr-title', article.title);
@@ -5778,7 +5801,61 @@
                 const modalEl = document.getElementById('blogArticleModal');
                 if (modalEl && window.bootstrap) bootstrap.Modal.getOrCreateInstance(modalEl).show();
 
+                // Content: already inline (manual articles) vs. fetched live from the real page (daily-agent articles)
+                if (article.html || article.markdown) {
+                    this.els.modalBody.innerHTML = article.html || this.markdownToHTML(article.markdown);
+                } else if (article.url) {
+                    this.els.modalBody.innerHTML = '<div class="blog-article-loading"><i class="fas fa-circle-notch fa-spin me-2"></i>جاري تحميل المقال...</div>';
+                    try {
+                        const html = await this.fetchRealPageContent(article.url);
+                        this.els.modalBody.innerHTML = html;
+                    } catch (e) {
+                        console.warn('[DoniaBlog] Could not load real article page:', article.url, e.message);
+                        this.els.modalBody.innerHTML = `<p>تعذر تحميل محتوى المقال. يمكنك قراءته مباشرة من <a href="${this.escapeHTML(article.url)}" target="_blank" rel="noopener">هذا الرابط</a>.</p>`;
+                    }
+                } else {
+                    this.els.modalBody.innerHTML = '<p>لا يوجد محتوى لهذا المقال.</p>';
+                }
+
                 article.views = (article.views || 0) + 1;
+            }
+
+            // ---- Fetch + clean a real blog/*.html page for display inside the reader modal ----
+            async fetchRealPageContent(url) {
+                const res = await fetch(url, { cache: 'no-store' });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const rawHtml = await res.text();
+                const doc = new DOMParser().parseFromString(rawHtml, 'text/html');
+
+                // Remove chrome that's redundant with the modal's own header (back-link, meta line, duplicate H1)
+                doc.querySelectorAll('a.back, .meta, h1').forEach(el => el.remove());
+
+                // Remove the duplicate "*date | DONIA LABS TECH*" byline line and the trailing
+                // "الوسوم: ..." tags line — both are already shown in the modal's own UI
+                doc.querySelectorAll('p').forEach(p => {
+                    const text = p.textContent.trim();
+                    if (/^\*.*DONIA LABS TECH.*\*$/.test(text) || /^الوسوم[:：]/.test(text)) {
+                        p.remove();
+                    }
+                });
+
+                // The pages use literal "---" paragraphs as markdown leftovers — turn them into subtle dividers
+                doc.querySelectorAll('p').forEach(p => {
+                    if (p.textContent.trim() === '---') {
+                        const hr = doc.createElement('hr');
+                        p.replaceWith(hr);
+                    }
+                });
+
+                // Trim any divider left dangling at the very start/end after the removals above
+                while (doc.body.firstElementChild && doc.body.firstElementChild.tagName === 'HR') {
+                    doc.body.firstElementChild.remove();
+                }
+                while (doc.body.lastElementChild && doc.body.lastElementChild.tagName === 'HR') {
+                    doc.body.lastElementChild.remove();
+                }
+
+                return doc.body.innerHTML.trim() || '<p>لا يوجد محتوى لهذا المقال.</p>';
             }
 
             checkDeepLink() {
