@@ -1429,27 +1429,181 @@
             animation: pulse 2s infinite;
         }
 
+        /* ===== Fallback / diagnostic notice ===== */
+        .blog-fallback-notice {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff7ed;
+            border: 1.5px solid #fdba74;
+            color: #9a3412;
+            padding: 12px 18px;
+            border-radius: 14px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .blog-fallback-notice-close {
+            margin-right: auto;
+            background: none;
+            border: none;
+            color: #9a3412;
+            font-size: 1.3rem;
+            line-height: 1;
+            cursor: pointer;
+            padding: 0 4px;
+        }
+
+        /* ===== Article Reader Modal — professional Medium-style layout ===== */
+        .blog-article-modal-dialog {
+            max-width: 780px;
+        }
+
         .blog-article-modal-content {
-            border-radius: 20px;
+            border-radius: 22px;
+            overflow: hidden;
         }
 
-        #blogArticleModalBody {
-            line-height: 1.9;
-            font-size: 1.02rem;
-            max-height: 65vh;
+        .blog-article-modal-close {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            z-index: 5;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.55);
+            backdrop-filter: blur(6px);
+            opacity: 1;
+            filter: none;
+        }
+
+        .blog-article-modal-close::before {
+            content: '';
+        }
+
+        .blog-article-hero {
+            position: relative;
+            width: 100%;
+            height: 260px;
+            overflow: hidden;
+            background: var(--gradient-tech);
+        }
+
+        .blog-article-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .blog-article-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(15,23,42,0) 40%, rgba(15,23,42,0.15) 100%);
+        }
+
+        .blog-article-reader {
+            max-width: 660px;
+            margin: 0 auto;
+            padding: 30px 24px 10px;
+        }
+
+        .blog-article-byline {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            color: var(--silver-color);
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        .blog-article-byline .donia-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--gradient-community);
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            margin-left: 8px;
+        }
+
+        .blog-article-byline .donia-byline-name {
+            color: var(--dark-color);
+            font-weight: 700;
+        }
+
+        .blog-article-byline .donia-dot::before {
+            content: '•';
+            margin: 0 6px;
+            opacity: 0.6;
+        }
+
+        .blog-article-title {
+            font-size: 1.85rem;
+            line-height: 1.35;
+            margin-bottom: 16px;
+        }
+
+        .blog-article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .blog-article-tags .blog-tag {
+            font-size: 0.78rem;
+        }
+
+        .blog-article-divider {
+            height: 1px;
+            background: linear-gradient(90deg, rgba(124,58,237,0.35), rgba(236,72,153,0.05));
+            margin-bottom: 22px;
+        }
+
+        .blog-article-content {
+            line-height: 1.95;
+            font-size: 1.05rem;
+            color: var(--dark-color);
+            max-height: 55vh;
             overflow-y: auto;
-            padding: 0 1.5rem 1rem;
+            padding-bottom: 10px;
         }
 
-        #blogArticleModalBody h2 { font-size: 1.5rem; color: var(--primary-color); margin-top: 0.5rem; }
-        #blogArticleModalBody h3 { font-size: 1.2rem; color: var(--community-color); margin-top: 1.2rem; }
-        #blogArticleModalBody h4 { font-size: 1.05rem; color: var(--tech-blue); margin-top: 1rem; }
-        #blogArticleModalBody li { padding: 4px 0; display: block; }
-        #blogArticleModalBody a { color: var(--tech-blue); font-weight: 600; }
+        .blog-article-content > p:first-of-type {
+            font-size: 1.15rem;
+            color: #475569;
+        }
+
+        .blog-article-content h2 { font-size: 1.45rem; color: var(--primary-color); margin: 1.4rem 0 0.8rem; }
+        .blog-article-content h3 { font-size: 1.18rem; color: var(--community-color); margin: 1.3rem 0 0.6rem; }
+        .blog-article-content h4 { font-size: 1.04rem; color: var(--tech-blue); margin: 1.1rem 0 0.5rem; }
+        .blog-article-content p { margin-bottom: 1rem; }
+        .blog-article-content ul, .blog-article-content ol { margin: 0 0 1rem; padding-right: 1.3rem; }
+        .blog-article-content li { padding: 3px 0; }
+        .blog-article-content a { color: var(--tech-blue); font-weight: 600; border-bottom: 1px dashed var(--tech-blue); text-decoration: none; }
+        .blog-article-content strong { color: var(--primary-color); }
+        .blog-article-content hr { border: none; border-top: 1.5px solid #e2e8f0; margin: 1.5rem 0; }
+
+        .blog-article-modal-footer {
+            padding: 16px 24px;
+            border-top: 1px solid #f1f5f9 !important;
+            background: #fafafa;
+        }
 
         @media (max-width: 767px) {
             .blog-toolbar { flex-direction: column; align-items: stretch; }
             .blog-tags-filter { justify-content: flex-start; }
+            .blog-article-hero { height: 170px; }
+            .blog-article-title { font-size: 1.45rem; }
+            .blog-article-reader { padding: 22px 18px 5px; }
         }
 
         /* CTA Section */
@@ -2884,6 +3038,13 @@
                 اكتشف أحدث المقالات والتقنيات في عالم الرقمية <span class="path-to-top">لطريقك نحو القمة</span> المعرفية
             </p>
             
+            <!-- Diagnostic notice: shown only if articles.json could not be loaded -->
+            <div id="blogFallbackNotice" class="blog-fallback-notice d-none" role="alert">
+                <i class="fas fa-triangle-exclamation me-2"></i>
+                <span id="blogFallbackNoticeText">يتم عرض محتوى تجريبي مؤقت لأن ملف المقالات الحقيقي لم يتم الوصول إليه.</span>
+                <button type="button" id="blogFallbackNoticeClose" class="blog-fallback-notice-close" aria-label="إغلاق">&times;</button>
+            </div>
+
             <!-- Blog Toolbar: Search + Tags Filter -->
             <div class="blog-toolbar" data-aos="fade-up" data-aos-delay="150">
                 <div class="blog-search-box">
@@ -2921,17 +3082,25 @@
         </div>
     </section>
 
-    <!-- Article Full-Read Modal -->
+    <!-- Article Full-Read Modal: professional reader experience -->
     <div class="modal fade" id="blogArticleModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-dialog modal-dialog-centered modal-xl blog-article-modal-dialog">
             <div class="modal-content border-0 shadow-lg blog-article-modal-content">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title" id="blogArticleModalTitle"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close blog-article-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="blog-article-hero" id="blogArticleHero">
+                    <img id="blogArticleModalImage" src="" alt="">
+                    <div class="blog-article-hero-overlay"></div>
                 </div>
-                <div class="modal-body" id="blogArticleModalBody"></div>
-                <div class="modal-footer border-0">
-                    <span class="text-muted small me-auto" id="blogArticleModalMeta"></span>
+                <div class="modal-body p-0">
+                    <div class="blog-article-reader">
+                        <div class="blog-article-byline" id="blogArticleModalByline"></div>
+                        <h2 class="blog-article-title" id="blogArticleModalTitle"></h2>
+                        <div class="blog-article-tags" id="blogArticleModalTags"></div>
+                        <div class="blog-article-divider"></div>
+                        <div class="blog-article-content" id="blogArticleModalBody"></div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 blog-article-modal-footer">
                     <button type="button" class="btn btn-outline-secondary btn-sm" id="blogArticleShareBtn" data-qr-title="مقالة" data-qr-url="" data-qr-subtext="شارك هذا المقال">
                         <i class="fas fa-share-alt me-2"></i>مشاركة / QR
                     </button>
@@ -5289,10 +5458,29 @@
                 this.els.previousGrid = document.getElementById('blogPreviousGrid');
                 this.els.loadMoreBtn = document.getElementById('blogLoadMoreBtn');
                 this.els.noResults = document.getElementById('blogNoResults');
+                this.els.fallbackNotice = document.getElementById('blogFallbackNotice');
+                this.els.fallbackNoticeText = document.getElementById('blogFallbackNoticeText');
+                this.els.fallbackNoticeClose = document.getElementById('blogFallbackNoticeClose');
+                this.els.hero = document.getElementById('blogArticleHero');
+                this.els.modalImage = document.getElementById('blogArticleModalImage');
+                this.els.modalByline = document.getElementById('blogArticleModalByline');
+                this.els.modalTags = document.getElementById('blogArticleModalTags');
                 this.els.modalTitle = document.getElementById('blogArticleModalTitle');
                 this.els.modalBody = document.getElementById('blogArticleModalBody');
-                this.els.modalMeta = document.getElementById('blogArticleModalMeta');
                 this.els.shareBtn = document.getElementById('blogArticleShareBtn');
+
+                if (this.els.fallbackNoticeClose) {
+                    this.els.fallbackNoticeClose.addEventListener('click', () => {
+                        this.els.fallbackNotice.classList.add('d-none');
+                    });
+                }
+            }
+
+            showFallbackNotice(reasonText) {
+                if (!this.els.fallbackNotice) return;
+                this.els.fallbackNoticeText.textContent =
+                    'يتم عرض محتوى تجريبي مؤقت لأن ملف articles/articles.json لم يتم الوصول إليه (' + reasonText + '). تأكد أن الملف موجود بنفس مسار index.html على GitHub.';
+                this.els.fallbackNotice.classList.remove('d-none');
             }
 
             async load() {
@@ -5302,10 +5490,14 @@
                     const data = await res.json();
                     const list = Array.isArray(data) ? data : (Array.isArray(data.articles) ? data.articles : []);
                     this.allArticles = list.length ? list : FALLBACK_ARTICLES;
-                    if (!list.length) console.warn('[DoniaBlog] articles.json found but empty — showing fallback content.');
+                    if (!list.length) {
+                        console.warn('[DoniaBlog] articles.json found but empty — showing fallback content.');
+                        this.showFallbackNotice('الملف موجود لكنه فارغ');
+                    }
                 } catch (e) {
                     console.warn('[DoniaBlog] Could not load articles/articles.json — showing fallback content. Reason:', e.message);
                     this.allArticles = FALLBACK_ARTICLES;
+                    this.showFallbackNotice(e.message);
                 }
 
                 this.injectHeaderBar();
@@ -5501,9 +5693,32 @@
                 if (!article) return;
 
                 const bodyHTML = article.html || (article.markdown ? this.markdownToHTML(article.markdown) : '<p>لا يوجد محتوى لهذا المقال.</p>');
+
+                // Hero image
+                if (article.image) {
+                    this.els.modalImage.src = article.image;
+                    this.els.modalImage.alt = article.title;
+                    this.els.hero.classList.remove('d-none');
+                } else {
+                    this.els.hero.classList.add('d-none');
+                }
+
+                // Byline: avatar + name + date + read time + views
+                const avatarIcon = article.aiGenerated ? 'fa-robot' : 'fa-user';
+                this.els.modalByline.innerHTML = `
+                    <span class="donia-avatar"><i class="fas ${avatarIcon}"></i></span>
+                    <span class="donia-byline-name">${this.escapeHTML(article.author || 'فريق DONIA LABS')}</span>
+                    <span class="donia-dot"></span><span>${this.escapeHTML(article.dateStr || '')}</span>
+                    ${article.readTime ? `<span class="donia-dot"></span><span>${this.escapeHTML(article.readTime)}</span>` : ''}
+                    <span class="donia-dot"></span><span><i class="fas fa-eye me-1"></i>${article.views || 0}</span>
+                `;
+
                 this.els.modalTitle.textContent = article.title;
+
+                this.els.modalTags.innerHTML = (article.tags || [])
+                    .map(t => `<span class="blog-tag">${this.escapeHTML(t)}</span>`).join('');
+
                 this.els.modalBody.innerHTML = bodyHTML;
-                this.els.modalMeta.textContent = (article.dateStr || '') + ' • ' + (article.views || 0) + ' مشاهدة';
 
                 const shareURL = location.origin + location.pathname + '?article=' + encodeURIComponent(article.slug || article.id) + '#blog';
                 if (this.els.shareBtn) {
