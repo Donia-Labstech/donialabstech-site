@@ -1,14 +1,11 @@
-name: Build Blog Manifest
+name: Build Blog Manifest + RSS Feed
 
-# Rebuilds blog/index.json — the lightweight list the homepage reads to show
-# article cards. This does NOT generate articles; it only indexes the real
-# pages already published into blog/*.html by the existing daily automation.
 on:
   push:
     paths:
       - 'blog/*.html'
   schedule:
-    - cron: '30 18 * * *'   # safety net: 30 min after the daily post is expected
+    - cron: '30 18 * * *'
   workflow_dispatch: {}
 
 permissions:
@@ -26,13 +23,16 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Build manifest from blog/*.html
+      - name: Build blog/index.json from blog/*.html
         run: python scripts/build_blog_manifest.py
 
-      - name: Commit and push blog/index.json
+      - name: Build feed.xml (RSS) from blog/index.json
+        run: python scripts/build_rss_feed.py
+
+      - name: Commit and push
         run: |
           git config user.name "DONIA Blog Bot"
           git config user.email "bot@donialabstech.online"
-          git add blog/index.json
-          git diff --quiet --cached || git commit -m "🔄 تحديث فهرس المدونة (blog/index.json)"
+          git add blog/index.json feed.xml
+          git diff --quiet --cached || git commit -m "🔄 تحديث فهرس المدونة + RSS Feed"
           git push
