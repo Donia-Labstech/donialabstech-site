@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة تحكم — DONIA LABS TECH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --primary: #7c3aed;
+    --primary-light: #ede9fe;
+    --secondary: #06b6d4;
+    --accent: #ec4899;
+    --dark: #0f172a;
+    --surface: #ffffff;
+    --bg: #f8fafc;
+    --border: #e2e8f0;
+    --text: #1e293b;
+    --muted: #64748b;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --radius: 14px;
+    --shadow: 0 4px 24px rgba(124,58,237,0.10);
+    --sidebar-w: 260px;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Tajawal',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    position: fixed; top:0; right:0; width:var(--sidebar-w); height:100vh;
+    background: var(--dark); display:flex; flex-direction:column;
+    z-index:100; box-shadow: -4px 0 24px rgba(0,0,0,.18);
+  }
+  .sidebar-logo {
+    padding: 24px 20px 18px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .sidebar-logo .logo-text {
+    font-size: 1.1rem; font-weight:800; color:#fff;
+    letter-spacing:.5px;
+  }
+  .sidebar-logo .logo-sub {
+    font-size:.75rem; color:#94a3b8; margin-top:2px;
+  }
+  .sidebar-nav { flex:1; padding:16px 10px; overflow-y:auto; }
+  .nav-section-label {
+    font-size:.68rem; font-weight:700; color:#475569;
+    text-transform:uppercase; letter-spacing:1.5px;
+    padding: 14px 12px 6px;
+  }
+  .nav-item {
+    display:flex; align-items:center; gap:10px;
+    padding:10px 14px; border-radius:10px; cursor:pointer;
+    color:#cbd5e1; font-size:.92rem; font-weight:500;
+    transition:all .18s; margin-bottom:2px; border:none; background:none; width:100%;
+    text-align:right;
+  }
+  .nav-item:hover { background:rgba(124,58,237,.2); color:#fff; }
+  .nav-item.active { background:var(--primary); color:#fff; box-shadow:0 4px 14px rgba(124,58,237,.4); }
+  .nav-item i { width:20px; text-align:center; font-size:.95rem; }
+
+  .sidebar-footer {
+    padding:16px; border-top:1px solid rgba(255,255,255,.08);
+  }
+  .site-status {
+    display:flex; align-items:center; gap:8px;
+    font-size:.8rem; color:#94a3b8;
+  }
+  .status-dot {
+    width:8px; height:8px; border-radius:50%; background:var(--success);
+    animation: pulse-dot 2s infinite;
+  }
+  @keyframes pulse-dot {
+    0%,100%{opacity:1} 50%{opacity:.4}
+  }
+
+  /* ── Main ── */
+  .main { margin-right:var(--sidebar-w); min-height:100vh; }
+
+  .topbar {
+    background:var(--surface); border-bottom:1px solid var(--border);
+    padding:16px 32px; display:flex; align-items:center;
+    justify-content:space-between; position:sticky; top:0; z-index:50;
+    box-shadow:0 1px 8px rgba(0,0,0,.05);
+  }
+  .topbar-title { font-size:1.15rem; font-weight:800; color:var(--dark); }
+  .topbar-actions { display:flex; gap:10px; align-items:center; }
+
+  .btn {
+    display:inline-flex; align-items:center; gap:7px;
+    padding:9px 20px; border-radius:10px; font-size:.88rem; font-weight:700;
+    cursor:pointer; border:none; font-family:'Tajawal',sans-serif;
+    transition:all .18s;
+  }
+  .btn-primary { background:var(--primary); color:#fff; }
+  .btn-primary:hover { background:#6d28d9; transform:translateY(-1px); box-shadow:0 6px 18px rgba(124,58,237,.3); }
+  .btn-success { background:var(--success); color:#fff; }
+  .btn-success:hover { background:#059669; }
+  .btn-danger { background:var(--danger); color:#fff; }
+  .btn-danger:hover { background:#dc2626; }
+  .btn-outline { background:transparent; border:2px solid var(--border); color:var(--text); }
+  .btn-outline:hover { border-color:var(--primary); color:var(--primary); }
+  .btn-sm { padding:6px 14px; font-size:.82rem; }
+  .btn:disabled { opacity:.5; cursor:not-allowed; transform:none !important; }
+
+  .content { padding:28px 32px; }
+
+  /* ── Cards ── */
+  .card {
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:var(--radius); box-shadow:var(--shadow);
+    margin-bottom:20px; overflow:hidden;
+  }
+  .card-header {
+    padding:18px 24px; border-bottom:1px solid var(--border);
+    display:flex; align-items:center; justify-content:space-between;
+    background: linear-gradient(135deg, rgba(124,58,237,.04), rgba(6,182,212,.04));
+  }
+  .card-title { font-size:1rem; font-weight:800; color:var(--dark); display:flex; align-items:center; gap:8px; }
+  .card-body { padding:24px; }
+
+  /* ── Setup screen ── */
+  #setupScreen {
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+    background:var(--bg);
+  }
+  .setup-box {
+    background:var(--surface); border-radius:20px; padding:40px;
+    box-shadow:var(--shadow); max-width:480px; width:90%; text-align:center;
+  }
+  .setup-logo {
+    width:70px; height:70px; border-radius:50%;
+    background: linear-gradient(135deg,#7c3aed,#06b6d4);
+    display:inline-flex; align-items:center; justify-content:center;
+    font-size:1.8rem; color:#fff; margin-bottom:20px;
+  }
+  .setup-box h2 { font-size:1.5rem; font-weight:800; margin-bottom:6px; }
+  .setup-box p { color:var(--muted); font-size:.9rem; margin-bottom:28px; }
+
+  /* ── Form elements ── */
+  .form-group { margin-bottom:18px; }
+  .form-label { display:block; font-size:.88rem; font-weight:700; color:var(--text); margin-bottom:6px; }
+  .form-control {
+    width:100%; padding:10px 14px; border:2px solid var(--border);
+    border-radius:10px; font-size:.93rem; font-family:'Tajawal',sans-serif;
+    color:var(--text); background:var(--surface); transition:border-color .18s;
+    direction:rtl;
+  }
+  .form-control:focus { outline:none; border-color:var(--primary); box-shadow:0 0 0 3px rgba(124,58,237,.12); }
+  textarea.form-control { resize:vertical; min-height:90px; }
+  .form-hint { font-size:.78rem; color:var(--muted); margin-top:4px; }
+
+  /* ── Item cards (services, projects) ── */
+  .item-grid { display:grid; gap:16px; }
+  .item-card {
+    border:2px solid var(--border); border-radius:var(--radius);
+    overflow:hidden; transition:border-color .18s;
+  }
+  .item-card:hover { border-color:var(--primary); }
+  .item-card-header {
+    padding:14px 18px; background:var(--bg);
+    display:flex; align-items:center; justify-content:space-between;
+    border-bottom:1px solid var(--border);
+  }
+  .item-card-title { font-weight:800; font-size:.95rem; color:var(--dark); display:flex; align-items:center; gap:8px; }
+  .item-card-body { padding:18px; }
+  .item-card-actions { display:flex; gap:8px; }
+
+  .icon-badge {
+    width:36px; height:36px; border-radius:50%;
+    background:var(--primary-light); color:var(--primary);
+    display:inline-flex; align-items:center; justify-content:center;
+    font-size:1rem;
+  }
+
+  /* ── Toast ── */
+  #toast-container {
+    position:fixed; bottom:28px; left:28px; z-index:9999;
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .toast {
+    padding:12px 20px; border-radius:12px; font-size:.9rem; font-weight:600;
+    color:#fff; box-shadow:0 8px 24px rgba(0,0,0,.15);
+    animation:slide-in .25s ease; min-width:260px;
+  }
+  .toast-success { background:var(--success); }
+  .toast-error { background:var(--danger); }
+  .toast-info { background:var(--primary); }
+  @keyframes slide-in { from{transform:translateY(20px);opacity:0} to{transform:translateY(0);opacity:1} }
+
+  /* ── Loading ── */
+  .spinner {
+    width:40px; height:40px; border:4px solid var(--primary-light);
+    border-top-color:var(--primary); border-radius:50%;
+    animation:spin 0.7s linear infinite; margin:40px auto;
+  }
+  @keyframes spin { to{transform:rotate(360deg)} }
+
+  /* ── Stats row ── */
+  .stats-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-bottom:24px; }
+  .stat-card {
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:var(--radius); padding:20px 22px;
+    display:flex; align-items:center; gap:16px;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+  }
+  .stat-icon {
+    width:48px; height:48px; border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.2rem; flex-shrink:0;
+  }
+  .stat-icon.purple { background:var(--primary-light); color:var(--primary); }
+  .stat-icon.cyan { background:#ecfeff; color:var(--secondary); }
+  .stat-icon.pink { background:#fdf2f8; color:var(--accent); }
+  .stat-icon.green { background:#f0fdf4; color:var(--success); }
+  .stat-value { font-size:1.6rem; font-weight:800; color:var(--dark); line-height:1; }
+  .stat-label { font-size:.8rem; color:var(--muted); font-weight:600; margin-top:3px; }
+
+  /* ── Tabs ── */
+  .tab-bar { display:flex; gap:4px; border-bottom:2px solid var(--border); margin-bottom:24px; }
+  .tab-btn {
+    padding:10px 20px; border:none; background:none; cursor:pointer;
+    font-family:'Tajawal',sans-serif; font-size:.9rem; font-weight:700;
+    color:var(--muted); border-bottom:3px solid transparent;
+    margin-bottom:-2px; transition:all .18s;
+  }
+  .tab-btn.active { color:var(--primary); border-bottom-color:var(--primary); }
+  .tab-btn:hover { color:var(--primary); }
+  .tab-content { display:none; }
+  .tab-content.active { display:block; }
+
+  /* ── Misc ── */
+  .badge {
+    display:inline-flex; align-items:center; gap:4px;
+    padding:3px 10px; border-radius:20px; font-size:.75rem; font-weight:700;
+  }
+  .badge-primary { background:var(--primary-light); color:var(--primary); }
+  .badge-success { background:#f0fdf4; color:var(--success); }
+  .divider { height:1px; background:var(--border); margin:20px 0; }
+  .text-muted { color:var(--muted); font-size:.85rem; }
+  .mt-2 { margin-top:8px; }
+  .mb-3 { margin-bottom:12px; }
+
+  /* ── Page views ── */
+  .page { display:none; }
+  .page.active { display:block; }
+
+  /* ── Responsive ── */
+  @media(max-width:768px) {
+    .sidebar { width:100%; height:auto; position:relative; }
+    .main { margin-right:0; }
+    .content { padding:16px; }
+    .topbar { padding:12px 16px; }
+    .stats-row { grid-template-columns:1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════ SETUP SCREEN ══════ -->
+<div id="setupScreen">
+  <div class="setup-box">
+    <div class="setup-logo"><i class="fas fa-rocket"></i></div>
+    <h2>لوحة تحكم DONIA LABS</h2>
+    <p>أدخل بياناتك مرة واحدة فقط — ستُحفظ في المتصفح</p>
+    <div class="form-group" style="text-align:right">
+      <label class="form-label">GitHub Personal Access Token</label>
+      <input type="password" id="inputToken" class="form-control" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+      <div class="form-hint">من github.com/settings/tokens — صلاحية <strong>repo</strong></div>
+    </div>
+    <div class="form-group" style="text-align:right">
+      <label class="form-label">اسم المستودع</label>
+      <input type="text" id="inputRepo" class="form-control" value="Donia-Labstech/donialabstech-site" placeholder="owner/repo">
+    </div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="saveSetup()">
+      <i class="fas fa-unlock-alt"></i> دخول للوحة التحكم
+    </button>
+  </div>
+</div>
+
+<!-- ══════ DASHBOARD ══════ -->
+<div id="dashboard" style="display:none;min-height:100vh">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-text">🚀 DONIA LABS</div>
+      <div class="logo-sub">لوحة التحكم</div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">الرئيسية</div>
+      <button class="nav-item active" onclick="showPage('home')" id="nav-home">
+        <i class="fas fa-home"></i> نظرة عامة
+      </button>
+      <div class="nav-section-label">محتوى الموقع</div>
+      <button class="nav-item" onclick="showPage('services')" id="nav-services">
+        <i class="fas fa-cogs"></i> الخدمات
+      </button>
+      <button class="nav-item" onclick="showPage('portfolio')" id="nav-portfolio">
+        <i class="fas fa-briefcase"></i> المشاريع
+      </button>
+      <button class="nav-item" onclick="showPage('blog')" id="nav-blog">
+        <i class="fas fa-newspaper"></i> المدونة
+      </button>
+      <div class="nav-section-label">الموقع</div>
+      <button class="nav-item" onclick="showPage('links')" id="nav-links">
+        <i class="fas fa-link"></i> روابط الموقع
+      </button>
+      <button class="nav-item" onclick="showPage('settings')" id="nav-settings">
+        <i class="fas fa-sliders-h"></i> الإعدادات
+      </button>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="site-status">
+        <span class="status-dot"></span>
+        <span>donialabstech.online — نشط</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="topbar">
+      <div class="topbar-title" id="topbarTitle">نظرة عامة</div>
+      <div class="topbar-actions">
+        <a href="https://donialabstech.online" target="_blank" class="btn btn-outline btn-sm">
+          <i class="fas fa-external-link-alt"></i> عرض الموقع
+        </a>
+        <button class="btn btn-outline btn-sm" onclick="clearSetup()">
+          <i class="fas fa-sign-out-alt"></i> خروج
+        </button>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ── HOME ── -->
+      <div class="page active" id="page-home">
+        <div class="stats-row" id="statsRow">
+          <div class="stat-card">
+            <div class="stat-icon purple"><i class="fas fa-cogs"></i></div>
+            <div><div class="stat-value" id="stat-services">3</div><div class="stat-label">خدمة</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon cyan"><i class="fas fa-briefcase"></i></div>
+            <div><div class="stat-value" id="stat-projects">3</div><div class="stat-label">مشروع</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon pink"><i class="fas fa-newspaper"></i></div>
+            <div><div class="stat-value" id="stat-articles">—</div><div class="stat-label">مقال منشور</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green"><i class="fas fa-rss"></i></div>
+            <div><div class="stat-value">✅</div><div class="stat-label">RSS Feed نشط</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-bolt"></i> الوصول السريع</div>
+          </div>
+          <div class="card-body" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+            <button class="btn btn-primary" onclick="showPage('services')"><i class="fas fa-cogs"></i> إدارة الخدمات</button>
+            <button class="btn btn-outline" onclick="showPage('portfolio')"><i class="fas fa-briefcase"></i> إدارة المشاريع</button>
+            <button class="btn btn-outline" onclick="showPage('blog')"><i class="fas fa-newspaper"></i> متابعة المدونة</button>
+            <a href="https://donialabstech.online/privacy-policy.html" target="_blank" class="btn btn-outline">
+              <i class="fas fa-shield-alt"></i> سياسة الخصوصية
+            </a>
+            <a href="https://donialabstech.online/terms-of-service.html" target="_blank" class="btn btn-outline">
+              <i class="fas fa-file-contract"></i> شروط الاستخدام
+            </a>
+            <a href="https://github.com/Donia-Labstech/donialabstech-site/actions" target="_blank" class="btn btn-outline">
+              <i class="fab fa-github"></i> GitHub Actions
+            </a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-info-circle"></i> حالة المشروع</div>
+          </div>
+          <div class="card-body">
+            <div style="display:grid;gap:10px">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)">
+                <span class="text-muted">المدونة اليومية</span>
+                <span class="badge badge-success">✅ تعمل — وكيل تلقائي 18:00</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)">
+                <span class="text-muted">RSS Feed</span>
+                <span class="badge badge-success">✅ donialabstech.online/feed.xml</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)">
+                <span class="text-muted">النشر على فيسبوك</span>
+                <span class="badge badge-success">✅ Zapier — تلقائي</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0">
+                <span class="text-muted">سياسة الخصوصية / الشروط</span>
+                <span class="badge badge-primary">منشورتان على الموقع</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SERVICES ── -->
+      <div class="page" id="page-services">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-cogs"></i> إدارة الخدمات</div>
+            <button class="btn btn-primary btn-sm" onclick="saveServices()">
+              <i class="fas fa-save"></i> حفظ التعديلات
+            </button>
+          </div>
+          <div class="card-body">
+            <p class="text-muted mb-3">التعديلات تنطبق مباشرة على الموقع فور الحفظ.</p>
+            <div id="servicesContainer"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PORTFOLIO ── -->
+      <div class="page" id="page-portfolio">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-briefcase"></i> إدارة المشاريع</div>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-outline btn-sm" onclick="addProject()">
+                <i class="fas fa-plus"></i> مشروع جديد
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="savePortfolio()">
+                <i class="fas fa-save"></i> حفظ التعديلات
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div id="portfolioContainer"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BLOG ── -->
+      <div class="page" id="page-blog">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-newspaper"></i> مقالات المدونة</div>
+            <a href="https://github.com/Donia-Labstech/donialabstech-site/actions" target="_blank" class="btn btn-outline btn-sm">
+              <i class="fab fa-github"></i> GitHub Actions
+            </a>
+          </div>
+          <div class="card-body">
+            <div id="blogContainer"><div class="spinner"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── LINKS ── -->
+      <div class="page" id="page-links">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-link"></i> روابط الموقع المهمة</div>
+          </div>
+          <div class="card-body">
+            <div style="display:grid;gap:12px">
+              <div class="item-card">
+                <div class="item-card-header">
+                  <div class="item-card-title"><i class="fas fa-shield-alt" style="color:var(--primary)"></i> سياسة الخصوصية</div>
+                  <a href="https://donialabstech.online/privacy-policy.html" target="_blank" class="btn btn-outline btn-sm">
+                    <i class="fas fa-external-link-alt"></i> فتح
+                  </a>
+                </div>
+                <div class="item-card-body">
+                  <code style="font-size:.85rem;color:var(--muted)">donialabstech.online/privacy-policy.html</code>
+                </div>
+              </div>
+              <div class="item-card">
+                <div class="item-card-header">
+                  <div class="item-card-title"><i class="fas fa-file-contract" style="color:var(--secondary)"></i> شروط الاستخدام</div>
+                  <a href="https://donialabstech.online/terms-of-service.html" target="_blank" class="btn btn-outline btn-sm">
+                    <i class="fas fa-external-link-alt"></i> فتح
+                  </a>
+                </div>
+                <div class="item-card-body">
+                  <code style="font-size:.85rem;color:var(--muted)">donialabstech.online/terms-of-service.html</code>
+                </div>
+              </div>
+              <div class="item-card">
+                <div class="item-card-header">
+                  <div class="item-card-title"><i class="fas fa-rss" style="color:var(--warning)"></i> RSS Feed</div>
+                  <a href="https://donialabstech.online/feed.xml" target="_blank" class="btn btn-outline btn-sm">
+                    <i class="fas fa-external-link-alt"></i> فتح
+                  </a>
+                </div>
+                <div class="item-card-body">
+                  <code style="font-size:.85rem;color:var(--muted)">donialabstech.online/feed.xml</code>
+                </div>
+              </div>
+              <div class="item-card">
+                <div class="item-card-header">
+                  <div class="item-card-title"><i class="fas fa-newspaper" style="color:var(--accent)"></i> فهرس المدونة</div>
+                  <a href="https://donialabstech.online/blog/index.json" target="_blank" class="btn btn-outline btn-sm">
+                    <i class="fas fa-external-link-alt"></i> فتح
+                  </a>
+                </div>
+                <div class="item-card-body">
+                  <code style="font-size:.85rem;color:var(--muted)">donialabstech.online/blog/index.json</code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SETTINGS ── -->
+      <div class="page" id="page-settings">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-sliders-h"></i> الإعدادات</div>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label class="form-label">GitHub Token المحفوظ</label>
+              <input type="password" id="settingsToken" class="form-control" value="">
+              <div class="form-hint">محفوظ في المتصفح فقط — لا يُرسل لأي خادم</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">المستودع</label>
+              <input type="text" id="settingsRepo" class="form-control" value="">
+            </div>
+            <div style="display:flex;gap:10px;margin-top:4px">
+              <button class="btn btn-primary" onclick="updateSettings()"><i class="fas fa-save"></i> حفظ</button>
+              <button class="btn btn-danger" onclick="clearSetup()"><i class="fas fa-trash"></i> مسح البيانات والخروج</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </main>
+</div>
+
+<!-- Toast container -->
+<div id="toast-container"></div>
+
+<script>
+// ════════════════════════════════════════
+// CONFIG
+// ════════════════════════════════════════
+const REPO = () => localStorage.getItem('dlToken_repo') || 'Donia-Labstech/donialabstech-site';
+const TOKEN = () => localStorage.getItem('dlToken_gh') || '';
+const GH_API = 'https://api.github.com';
+
+// Default data — mirrors what's currently in index.html
+const DEFAULT_SERVICES = [
+  { id:'s1', icon:'fa-laptop-code', title:'تطوير المواقع والمنصات',
+    desc:'تصميم وتطوير مواقع إلكترونية احترافية ومنصات رقمية متكاملة باستخدام أحدث التقنيات وتجربة مستخدم استثنائية.',
+    btnText:'ابدأ طريقك للقمة' },
+  { id:'s2', icon:'fa-video', title:'المونتاج الاحترافي',
+    desc:'إنتاج ومونتاج فيديوهات احترافية بإبداعية عالية وجودة فائقة باستخدام أحدث تقنيات المونتاج لتعزيز حضورك الرقمي.',
+    btnText:'ارتقِ بفيديوهاتك' },
+  { id:'s3', icon:'fa-robot', title:'حلول الذكاء الاصطناعي',
+    desc:'تطوير حلول ذكاء اصطناعي مخصصة باستخدام تكنولوجيا المستقبل لأتمتة العمليات وتحليل البيانات وتحسين الأداء التشغيلي.',
+    btnText:'استخدم تكنولوجيا المستقبل' },
+];
+
+const DEFAULT_PROJECTS = [
+  { id:'p1', title:'DONIA SMART SCHOOL', category:'قطاع التعليم',
+    desc:'نظام متكامل لإدارة المؤسسات التعليمية يشمل الحضور والدرجات والموظفين والوثائق الرسمية، مع تكامل مباشر مع البوابات الحكومية.',
+    tech:['Python','Flask','SQLAlchemy'], image:'', link:'' },
+  { id:'p2', title:'DONIA SMART TEACHER', category:'قطاع التعليم',
+    desc:'منصة لإدارة أعمال المعلم بدعم كامل للغة العربية، تحليل الدرجات الرسمية، تتبع الحضور، ومسح المستندات بالذكاء الاصطناعي.',
+    tech:['JavaScript','AI Integration','RTL'], image:'', link:'' },
+  { id:'p3', title:'HRMS Platform', category:'الموارد البشرية',
+    desc:'منصة متكاملة لإدارة الموارد البشرية بالشركات.',
+    tech:['React','Node.js','PostgreSQL'], image:'', link:'' },
+];
+
+// ════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════
+let services = JSON.parse(localStorage.getItem('dl_services') || 'null') || DEFAULT_SERVICES;
+let projects = JSON.parse(localStorage.getItem('dl_projects') || 'null') || DEFAULT_PROJECTS;
+
+// ════════════════════════════════════════
+// SETUP
+// ════════════════════════════════════════
+function saveSetup() {
+  const t = document.getElementById('inputToken').value.trim();
+  const r = document.getElementById('inputRepo').value.trim();
+  if (!t || !r) { toast('الرجاء إدخال التوكن والمستودع', 'error'); return; }
+  localStorage.setItem('dlToken_gh', t);
+  localStorage.setItem('dlToken_repo', r);
+  initDashboard();
+}
+
+function clearSetup() {
+  if (!confirm('سيتم مسح البيانات المحفوظة. هل أنت متأكد؟')) return;
+  localStorage.removeItem('dlToken_gh');
+  localStorage.removeItem('dlToken_repo');
+  location.reload();
+}
+
+function initDashboard() {
+  if (!TOKEN()) { document.getElementById('setupScreen').style.display='flex'; document.getElementById('dashboard').style.display='none'; return; }
+  document.getElementById('setupScreen').style.display='none';
+  document.getElementById('dashboard').style.display='block';
+  document.getElementById('settingsToken').value = TOKEN();
+  document.getElementById('settingsRepo').value = REPO();
+  renderServices();
+  renderPortfolio();
+  loadBlogStats();
+}
+
+function updateSettings() {
+  const t = document.getElementById('settingsToken').value.trim();
+  const r = document.getElementById('settingsRepo').value.trim();
+  localStorage.setItem('dlToken_gh', t);
+  localStorage.setItem('dlToken_repo', r);
+  toast('تم حفظ الإعدادات ✅', 'success');
+}
+
+// ════════════════════════════════════════
+// NAVIGATION
+// ════════════════════════════════════════
+const PAGE_TITLES = {
+  home:'نظرة عامة', services:'الخدمات', portfolio:'المشاريع',
+  blog:'المدونة', links:'روابط الموقع', settings:'الإعدادات'
+};
+
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.getElementById('nav-'+id).classList.add('active');
+  document.getElementById('topbarTitle').textContent = PAGE_TITLES[id] || id;
+}
+
+// ════════════════════════════════════════
+// SERVICES — render + save
+// ════════════════════════════════════════
+function renderServices() {
+  const cont = document.getElementById('servicesContainer');
+  cont.innerHTML = services.map((s,i) => `
+    <div class="item-card mb-3" id="svc-card-${i}">
+      <div class="item-card-header">
+        <div class="item-card-title">
+          <span class="icon-badge"><i class="fas ${s.icon}"></i></span>
+          خدمة ${i+1}
+        </div>
+      </div>
+      <div class="item-card-body" style="display:grid;gap:14px">
+        <div class="form-group" style="margin:0">
+          <label class="form-label">العنوان</label>
+          <input type="text" class="form-control" id="svc-title-${i}" value="${esc(s.title)}">
+        </div>
+        <div class="form-group" style="margin:0">
+          <label class="form-label">الوصف</label>
+          <textarea class="form-control" id="svc-desc-${i}">${esc(s.desc)}</textarea>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div class="form-group" style="margin:0">
+            <label class="form-label">نص الزر</label>
+            <input type="text" class="form-control" id="svc-btn-${i}" value="${esc(s.btnText)}">
+          </div>
+          <div class="form-group" style="margin:0">
+            <label class="form-label">أيقونة Font Awesome</label>
+            <input type="text" class="form-control" id="svc-icon-${i}" value="${esc(s.icon)}" placeholder="fa-cogs">
+            <div class="form-hint">مثال: fa-robot, fa-code, fa-chart-bar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('stat-services').textContent = services.length;
+}
+
+async function saveServices() {
+  // Collect from form
+  services = services.map((s,i) => ({
+    ...s,
+    title: document.getElementById(`svc-title-${i}`).value,
+    desc: document.getElementById(`svc-desc-${i}`).value,
+    btnText: document.getElementById(`svc-btn-${i}`).value,
+    icon: document.getElementById(`svc-icon-${i}`).value,
+  }));
+  localStorage.setItem('dl_services', JSON.stringify(services));
+
+  // Patch index.html in GitHub
+  try {
+    toast('جاري حفظ التعديلات…', 'info');
+    const { content, sha } = await ghGetFile('index.html');
+    let html = content;
+
+    services.forEach((s,i) => {
+      const n = i+1;
+      html = html
+        .replace(new RegExp(`(<[^>]+id="service${n}Title"[^>]*>)[^<]*(</[^>]+>)`), `$1${escHtml(s.title)}$2`)
+        .replace(new RegExp(`(<[^>]+id="service${n}Desc"[^>]*>)[\\s\\S]*?(</[^>]+>)`), `$1\n                            ${escHtml(s.desc)}\n                        $2`)
+        .replace(new RegExp(`(<[^>]+id="service${n}BtnText"[^>]*>)[^<]*(</[^>]+>)`), `$1${escHtml(s.btnText)}$2`);
+    });
+
+    await ghUpdateFile('index.html', html, sha, `✏️ تحديث الخدمات من لوحة التحكم`);
+    toast('تم حفظ الخدمات وتحديث الموقع ✅', 'success');
+  } catch(e) {
+    toast('خطأ في الحفظ: ' + e.message, 'error');
+  }
+}
+
+// ════════════════════════════════════════
+// PORTFOLIO — render + save
+// ════════════════════════════════════════
+function renderPortfolio() {
+  const cont = document.getElementById('portfolioContainer');
+  cont.innerHTML = projects.map((p,i) => `
+    <div class="item-card mb-3">
+      <div class="item-card-header">
+        <div class="item-card-title"><i class="fas fa-briefcase" style="color:var(--secondary)"></i> مشروع ${i+1}: ${esc(p.title)}</div>
+        <div class="item-card-actions">
+          <button class="btn btn-danger btn-sm" onclick="deleteProject(${i})"><i class="fas fa-trash"></i></button>
+        </div>
+      </div>
+      <div class="item-card-body" style="display:grid;gap:14px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div class="form-group" style="margin:0">
+            <label class="form-label">اسم المشروع</label>
+            <input type="text" class="form-control" id="proj-title-${i}" value="${esc(p.title)}">
+          </div>
+          <div class="form-group" style="margin:0">
+            <label class="form-label">الفئة</label>
+            <input type="text" class="form-control" id="proj-cat-${i}" value="${esc(p.category)}" placeholder="قطاع التعليم">
+          </div>
+        </div>
+        <div class="form-group" style="margin:0">
+          <label class="form-label">الوصف</label>
+          <textarea class="form-control" id="proj-desc-${i}">${esc(p.desc)}</textarea>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div class="form-group" style="margin:0">
+            <label class="form-label">التقنيات (مفصولة بفاصلة)</label>
+            <input type="text" class="form-control" id="proj-tech-${i}" value="${esc((p.tech||[]).join(', '))}">
+          </div>
+          <div class="form-group" style="margin:0">
+            <label class="form-label">رابط المشروع (اختياري)</label>
+            <input type="url" class="form-control" id="proj-link-${i}" value="${esc(p.link||'')}" placeholder="https://...">
+          </div>
+        </div>
+        <div class="form-group" style="margin:0">
+          <label class="form-label">رابط صورة الغلاف (اختياري)</label>
+          <input type="url" class="form-control" id="proj-img-${i}" value="${esc(p.image||'')}" placeholder="https://images.unsplash.com/...">
+        </div>
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('stat-projects').textContent = projects.length;
+}
+
+function collectProjects() {
+  return projects.map((p,i) => ({
+    ...p,
+    title: document.getElementById(`proj-title-${i}`)?.value || p.title,
+    category: document.getElementById(`proj-cat-${i}`)?.value || p.category,
+    desc: document.getElementById(`proj-desc-${i}`)?.value || p.desc,
+    tech: (document.getElementById(`proj-tech-${i}`)?.value || '').split(',').map(t=>t.trim()).filter(Boolean),
+    link: document.getElementById(`proj-link-${i}`)?.value || '',
+    image: document.getElementById(`proj-img-${i}`)?.value || '',
+  }));
+}
+
+function addProject() {
+  projects = collectProjects();
+  projects.push({ id:'p'+Date.now(), title:'مشروع جديد', category:'', desc:'', tech:[], link:'', image:'' });
+  renderPortfolio();
+}
+
+function deleteProject(i) {
+  if (!confirm('حذف هذا المشروع؟')) return;
+  projects = collectProjects();
+  projects.splice(i,1);
+  renderPortfolio();
+  toast('تم حذف المشروع — اضغط "حفظ التعديلات" لتطبيق التغيير', 'info');
+}
+
+async function savePortfolio() {
+  projects = collectProjects();
+  localStorage.setItem('dl_projects', JSON.stringify(projects));
+
+  try {
+    toast('جاري حفظ المشاريع…', 'info');
+    const { content, sha } = await ghGetFile('index.html');
+    let html = content;
+
+    // Rebuild portfolio section
+    const portfolioSection = buildPortfolioHTML(projects);
+    // Find the portfolio cards block and replace it
+    html = html.replace(
+      /(<div class="row">\s*<div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="200">\s*<div class="portfolio-card")[\s\S]*?(<\/div>\s*<\/div>\s*<\/div>\s*<\/div>\s*<\/div>\s*<\/section>)/,
+      portfolioSection + '</div>\n        </div>\n    </section>'
+    );
+
+    await ghUpdateFile('index.html', html, sha, `✏️ تحديث المشاريع من لوحة التحكم`);
+    toast('تم حفظ المشاريع وتحديث الموقع ✅', 'success');
+  } catch(e) {
+    toast('خطأ في الحفظ: ' + e.message, 'error');
+  }
+}
+
+function buildPortfolioHTML(projs) {
+  return `<div class="row">
+` + projs.map((p,i) => {
+    const delay = 200 + i*50;
+    const img = p.image || `https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80`;
+    const techSpans = (p.tech||[]).map(t=>`<span>${escHtml(t)}</span>`).join('');
+    const visitBtn = p.link
+      ? `<a href="${escHtml(p.link)}" target="_blank" class="btn btn-outline-primary portfolio-visit-btn"><i class="fas fa-external-link-alt"></i></a>`
+      : `<a href="#" target="_blank" class="btn btn-outline-primary d-none portfolio-visit-btn"><i class="fas fa-external-link-alt"></i></a>`;
+    return `                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="${delay}">
+                    <div class="portfolio-card" data-real-link="${escHtml(p.link||'')}">
+                        <div class="portfolio-img-wrap">
+                            <img src="${escHtml(img)}" alt="${escHtml(p.title)}">
+                            <span class="portfolio-category">${escHtml(p.category)}</span>
+                        </div>
+                        <div class="portfolio-body">
+                            <h4>${escHtml(p.title)}</h4>
+                            <p class="text-muted">${escHtml(p.desc)}</p>
+                            <div class="portfolio-tech">${techSpans}</div>
+                            <div class="portfolio-actions">
+                                <a href="#contact" class="btn btn-primary" data-section="contact">تواصل لمعرفة المزيد</a>
+                                ${visitBtn}
+                                <button type="button" class="btn portfolio-qr-btn"
+                                        data-qr-url="https://wa.me/213674661737"
+                                        data-qr-title="${escHtml(p.title)}"
+                                        data-qr-subtext="استفسار واتساب مباشر">
+                                    <i class="fas fa-qrcode"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+  }).join('\n') + `\n            `;
+}
+
+// ════════════════════════════════════════
+// BLOG — load manifest
+// ════════════════════════════════════════
+async function loadBlogStats() {
+  const cont = document.getElementById('blogContainer');
+  try {
+    const res = await fetch('https://donialabstech.online/blog/index.json?t='+Date.now());
+    if (!res.ok) throw new Error('HTTP '+res.status);
+    const data = await res.json();
+    const articles = data.articles || [];
+    document.getElementById('stat-articles').textContent = articles.length;
+    cont.innerHTML = `
+      <p class="text-muted mb-3">${articles.length} مقال منشور — ينشر الوكيل تلقائياً كل يوم الساعة 18:00</p>
+      <div style="display:grid;gap:10px">
+        ${articles.slice(0,10).map(a => `
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border:1px solid var(--border);border-radius:10px">
+            <div>
+              <div style="font-weight:700;font-size:.93rem">${esc(a.title)}</div>
+              <div class="text-muted">${esc(a.dateStr||a.date?.slice(0,10)||'')}</div>
+            </div>
+            <a href="https://donialabstech.online/${a.url}" target="_blank" class="btn btn-outline btn-sm">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        `).join('')}
+        ${articles.length > 10 ? `<p class="text-muted" style="text-align:center">... و ${articles.length-10} مقال آخر</p>` : ''}
+      </div>
+    `;
+  } catch(e) {
+    cont.innerHTML = `<p class="text-muted">تعذر تحميل قائمة المقالات: ${e.message}</p>`;
+  }
+}
+
+// ════════════════════════════════════════
+// GITHUB API HELPERS
+// ════════════════════════════════════════
+async function ghGetFile(path) {
+  const res = await fetch(`${GH_API}/repos/${REPO()}/contents/${path}`, {
+    headers: { Authorization: `token ${TOKEN()}`, Accept: 'application/vnd.github.v3+json' }
+  });
+  if (!res.ok) throw new Error(`GitHub API ${res.status}: ${await res.text()}`);
+  const data = await res.json();
+  return {
+    content: atob(data.content.replace(/\n/g,'')),
+    sha: data.sha
+  };
+}
+
+async function ghUpdateFile(path, content, sha, message) {
+  const res = await fetch(`${GH_API}/repos/${REPO()}/contents/${path}`, {
+    method: 'PUT',
+    headers: {
+      Authorization: `token ${TOKEN()}`,
+      Accept: 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      message,
+      content: btoa(unescape(encodeURIComponent(content))),
+      sha,
+    })
+  });
+  if (!res.ok) throw new Error(`GitHub PUT ${res.status}: ${await res.text()}`);
+  return res.json();
+}
+
+// ════════════════════════════════════════
+// UTILS
+// ════════════════════════════════════════
+function esc(str) {
+  return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function escHtml(str) {
+  return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function toast(msg, type='info') {
+  const el = document.createElement('div');
+  el.className = `toast toast-${type}`;
+  el.textContent = msg;
+  document.getElementById('toast-container').appendChild(el);
+  setTimeout(() => el.remove(), 3500);
+}
+
+// ════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', initDashboard);
+</script>
+</body>
+</html>
