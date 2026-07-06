@@ -7,7 +7,7 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا والذكاء الاصطناعي من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Sun, 05 Jul 2026 19:49:35 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 06 Jul 2026 18:00:59 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <managingEditor>daoud1touina@gmail.com (Daoud Touina)</managingEditor>
   <image>
@@ -15,6 +15,18 @@
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>الذكاء الاصطناعي وتحسين نتائج التعلم</title>
+    <link>https://donialabstech.online/blog/2026-07-06.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-07-06.html</guid>
+    <description>الذكاء الاصطناعي وتحسين نتائج التعلم</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Mon, 06 Jul 2026 00:00:00 +0000</pubDate>
+    <category>تكنولوجيا</category>
+    <category>تعليم</category>
+    <category>ذكاء اصطناعي</category>
+    <enclosure url="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1070&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>التحول الرقمي في قطاع التعليم الجزائري</title>
     <link>https://donialabstech.online/blog/2026-07-05.html</link>
