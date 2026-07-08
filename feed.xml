@@ -7,7 +7,7 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا والذكاء الاصطناعي من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Tue, 07 Jul 2026 20:23:17 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 08 Jul 2026 18:01:13 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <managingEditor>daoud1touina@gmail.com (Daoud Touina)</managingEditor>
   <image>
@@ -15,6 +15,18 @@
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>كيف يغير الذكاء الاصطناعي التعليم في العالم العربي</title>
+    <link>https://donialabstech.online/blog/2026-07-08.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-07-08.html</guid>
+    <description>كيف يغير الذكاء الاصطناعي التعليم في العالم العربي</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+    <category>تكنولوجيا</category>
+    <category>تعليم</category>
+    <category>ذكاء اصطناعي</category>
+    <enclosure url="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1070&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>بناء منصات تعليمية فعّالة للمؤسسات الجزائرية</title>
     <link>https://donialabstech.online/blog/2026-07-07.html</link>
