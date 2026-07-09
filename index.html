@@ -519,22 +519,24 @@
         }
         
         .logo-text .main {
-            font-size: 1.8rem;
+            font-size: 1.55rem;
             font-weight: 900;
-            color: white;
-            letter-spacing: 1px;
-            line-height: 1.2;
-            background: linear-gradient(90deg, #fff, #f59e0b);
+            letter-spacing: 2.5px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 30%, #67e8f9 65%, #f9a8d4 100%);
             -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             background-clip: text;
-            color: transparent;
+            filter: drop-shadow(0 0 10px rgba(167,139,250,0.9)) drop-shadow(0 0 24px rgba(103,232,249,0.6)) drop-shadow(0 2px 6px rgba(0,0,0,0.5));
         }
         
         .logo-text .sub {
-            font-size: 0.7rem;
-            color: var(--gold-color);
-            letter-spacing: 2px;
-            font-weight: 600;
+            font-size: 0.62rem;
+            color: rgba(167,139,250,0.92);
+            letter-spacing: 3px;
+            font-weight: 700;
+            text-transform: uppercase;
+            filter: drop-shadow(0 0 5px rgba(103,232,249,0.7));
         }
         
         .nav-link {
@@ -2515,6 +2517,120 @@
             width: 0%;
             transition: width 0.1s linear;
         }
+
+        /* ══════════════════════════════════════
+           NAVBAR PREMIUM COMPACT RESPONSIVE
+        ══════════════════════════════════════ */
+        .navbar { padding: 8px 0; transition: padding 0.3s ease; }
+        .navbar.scrolled { padding: 4px 0; }
+
+        /* Compact lang pills */
+        .lang-pills {
+            display: flex;
+            gap: 2px;
+            background: rgba(255,255,255,0.07);
+            border-radius: 20px;
+            padding: 3px;
+            border: 1px solid rgba(124,58,237,0.2);
+        }
+        .lang-pill {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.6);
+            padding: 3px 10px;
+            border-radius: 16px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Cairo','Tajawal',sans-serif;
+            line-height: 1.6;
+        }
+        .lang-pill.active, .lang-pill:hover {
+            background: linear-gradient(135deg,#7c3aed,#06b6d4);
+            color: #fff;
+        }
+        /* Hide old language-switcher */
+        .language-switcher { display: none !important; }
+
+        /* Nav link — icon size consistent */
+        .navbar-nav .nav-link {
+            padding: 7px 11px !important;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.85);
+        }
+        .navbar-nav .nav-link i { font-size: 0.95rem; }
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            background: rgba(124,58,237,0.18);
+            color: #fff;
+        }
+
+        /* Mobile menu */
+        @media (max-width: 991.98px) {
+            #navbarNav {
+                background: rgba(8,4,24,0.97);
+                border-radius: 14px;
+                padding: 14px;
+                margin-top: 8px;
+                border: 1px solid rgba(124,58,237,0.25);
+                backdrop-filter: blur(18px);
+                -webkit-backdrop-filter: blur(18px);
+            }
+            .navbar-nav .nav-link span { display: inline !important; margin-right: 8px; }
+            .navbar-nav .nav-link { padding: 10px 14px !important; font-size: 0.95rem; }
+            .journey-start-btn { width: 100%; justify-content: center; text-align: center; }
+            .lang-pills { justify-content: center; }
+        }
+
+        /* Logo responsive */
+        @media (max-width: 575.98px) {
+            .logo-text .main { font-size: 1.1rem; letter-spacing: 1.5px; }
+            .logo-text .sub { font-size: 0.55rem; letter-spacing: 2px; }
+            .logo-container { width: 44px; height: 44px; }
+            .journey-start-btn span { display: none !important; }
+        }
+
+        /* ══════════════════════════════════════
+           GLOBAL RESPONSIVE EXCELLENCE
+        ══════════════════════════════════════ */
+        html { scroll-behavior: smooth; }
+
+        /* Fluid font sizing */
+        @media (max-width: 767px) {
+            .section-title { font-size: clamp(1.4rem, 5vw, 2rem) !important; }
+            .hero-section h1 { font-size: clamp(1.6rem, 6vw, 2.4rem) !important; line-height: 1.25 !important; }
+            .hero-section .fs-5 { font-size: clamp(0.9rem, 3.5vw, 1.1rem) !important; }
+            .tech-badge { font-size: 0.72rem; padding: 4px 10px; }
+            .service-card, .portfolio-card, .blog-card { margin-bottom: 16px; }
+            .blog-toolbar { flex-direction: column; gap: 10px; }
+            .blog-search-box { width: 100%; }
+            .hero-stat-item { min-width: unset; flex: 1 1 calc(50% - 8px); }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section h1 { font-size: 1.55rem !important; }
+            .hero-stat-value { font-size: 1.4rem !important; }
+            .hero-btn-group { flex-direction: column; gap: 10px; }
+            .hero-btn-group .btn { width: 100%; justify-content: center; }
+            .doc-section, .who-card { padding: 22px 16px !important; }
+        }
+
+        @media (max-width: 360px) {
+            .logo-text .main { font-size: 0.95rem; }
+            .hero-section h1 { font-size: 1.35rem !important; }
+        }
+
+        /* Touch-friendly tap targets */
+        @media (hover: none) {
+            .nav-link, .btn, .lang-pill, .dark-mode-toggle {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -2666,8 +2782,10 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="#">
+        <div class="container-fluid px-3 px-lg-5">
+
+            <!-- Brand -->
+            <a class="navbar-brand flex-shrink-0" href="#">
                 <div class="navbar-logo">
                     <div class="logo-container">
                         <div class="logo-img"></div>
@@ -2678,63 +2796,73 @@
                     </div>
                 </div>
             </a>
-            
-            <!-- Language Switcher -->
-            <div class="language-switcher me-3">
-                <button class="lang-btn active" data-lang="ar">عربي</button>
-                <button class="lang-btn" data-lang="fr">Français</button>
-                <button class="lang-btn" data-lang="en">English</button>
+
+            <!-- Mobile controls: dark toggle + toggler -->
+            <div class="d-flex align-items-center gap-2 d-lg-none ms-auto">
+                <button class="dark-mode-toggle" id="darkModeToggle" title="الوضع الليلي">
+                    <i class="fas fa-moon" id="darkModeIcon"></i>
+                </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon" style="filter:invert(1)"></span>
+                </button>
             </div>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
-            </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+
+                <!-- Nav links (icon-only on large, icon+label on xl) -->
+                <ul class="navbar-nav mx-auto gap-1">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#home" data-section="home">
-                            <i class="fas fa-home me-2"></i><span class="nav-text">الرئيسية</span>
+                        <a class="nav-link active" href="#home" data-section="home" title="الرئيسية">
+                            <i class="fas fa-home"></i><span class="d-none d-xl-inline ms-1">الرئيسية</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#services" data-section="services">
-                            <i class="fas fa-cogs me-2"></i><span class="nav-text">خدماتنا</span>
+                        <a class="nav-link" href="#services" data-section="services" title="خدماتنا">
+                            <i class="fas fa-cogs"></i><span class="d-none d-xl-inline ms-1">خدماتنا</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#community" data-section="community">
-                            <i class="fas fa-users me-2"></i><span class="nav-text">المجتمع</span>
+                        <a class="nav-link" href="#portfolio" data-section="portfolio" title="الأعمال">
+                            <i class="fas fa-briefcase"></i><span class="d-none d-xl-inline ms-1" data-translate="nav.portfolio">الأعمال</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#subscriptions" data-section="subscriptions">
-                            <i class="fas fa-crown me-2"></i><span class="nav-text">الباقات</span>
+                        <a class="nav-link" href="#subscriptions" data-section="subscriptions" title="الباقات">
+                            <i class="fas fa-crown"></i><span class="d-none d-xl-inline ms-1">الباقات</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#blog" data-section="blog">
-                            <i class="fas fa-blog me-2"></i><span class="nav-text">المدونة</span>
+                        <a class="nav-link" href="#blog" data-section="blog" title="المدونة">
+                            <i class="fas fa-blog"></i><span class="d-none d-xl-inline ms-1">المدونة</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact" data-section="contact">
-                            <i class="fas fa-phone-alt me-2"></i><span class="nav-text">اتصل بنا</span>
+                        <a class="nav-link" href="#community" data-section="community" title="المجتمع">
+                            <i class="fas fa-users"></i><span class="d-none d-xl-inline ms-1">المجتمع</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#portfolio" data-section="portfolio">
-                            <i class="fas fa-briefcase me-2"></i><span class="nav-text" data-translate="nav.portfolio">معرض الأعمال</span>
+                        <a class="nav-link" href="#contact" data-section="contact" title="اتصل بنا">
+                            <i class="fas fa-phone-alt"></i><span class="d-none d-xl-inline ms-1">اتصل بنا</span>
                         </a>
                     </li>
                 </ul>
-                
-                <div class="d-flex align-items-center mt-3 mt-lg-0 gap-2">
-                    <button class="dark-mode-toggle" id="darkModeToggle" title="الوضع الليلي" aria-label="Toggle dark mode">
-                        <i class="fas fa-moon" id="darkModeIcon"></i>
+
+                <!-- Right controls -->
+                <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+                    <!-- Compact lang switcher -->
+                    <div class="lang-pills">
+                        <button class="lang-pill active" data-lang="ar">ع</button>
+                        <button class="lang-pill" data-lang="fr">Fr</button>
+                        <button class="lang-pill" data-lang="en">En</button>
+                    </div>
+                    <!-- Dark toggle desktop -->
+                    <button class="dark-mode-toggle d-none d-lg-inline-flex" id="darkModeToggleDesktop" title="الوضع الليلي">
+                        <i class="fas fa-moon" id="darkModeIconDesktop"></i>
                     </button>
+                    <!-- CTA -->
                     <a href="#contact" class="btn btn-accent journey-start-btn" data-section="contact">
-                        <i class="fas fa-play-circle me-2"></i><span id="startJourneyText">ابدأ رحلتك</span>
+                        <i class="fas fa-rocket me-1"></i><span id="startJourneyText">ابدأ</span>
                     </a>
                 </div>
             </div>
@@ -6691,6 +6819,39 @@ ${kb.services.join(" | ")}
                 const done   = total > 0 ? (window.scrollY / total) * 100 : 0;
                 bar.style.width = done.toFixed(1) + '%';
             }, { passive: true });
+        }
+    })();
+    </script>
+
+
+    <!-- ══ Compact lang pills sync ══ -->
+    <script>
+    (function(){
+        document.querySelectorAll('.lang-pill').forEach(btn => {
+            btn.addEventListener('click', function(){
+                const lang = this.dataset.lang;
+                // Trigger existing main lang system
+                const main = document.querySelector('.lang-btn[data-lang="' + lang + '"]');
+                if (main) main.click();
+                document.querySelectorAll('.lang-pill').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Desktop dark toggle mirror
+        const dtog = document.getElementById('darkModeToggleDesktop');
+        const dicon = document.getElementById('darkModeIconDesktop');
+        const html  = document.documentElement;
+        function syncDesktopIcon(){
+            if (!dicon) return;
+            dicon.className = html.getAttribute('data-theme')==='dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+        if (dtog){
+            syncDesktopIcon();
+            dtog.addEventListener('click', () => {
+                document.getElementById('darkModeToggle')?.click();
+                setTimeout(syncDesktopIcon, 50);
+            });
         }
     })();
     </script>
