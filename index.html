@@ -2518,119 +2518,262 @@
             transition: width 0.1s linear;
         }
 
-        /* ══════════════════════════════════════
-           NAVBAR PREMIUM COMPACT RESPONSIVE
-        ══════════════════════════════════════ */
-        .navbar { padding: 8px 0; transition: padding 0.3s ease; }
-        .navbar.scrolled { padding: 4px 0; }
+        /* ═══════════════════════════════════════════
+           ✦ DONIA LABS TECH — PREMIUM DESIGN SYSTEM
+        ═══════════════════════════════════════════ */
 
-        /* Compact lang pills */
-        .lang-pills {
-            display: flex;
-            gap: 2px;
-            background: rgba(255,255,255,0.07);
-            border-radius: 20px;
-            padding: 3px;
-            border: 1px solid rgba(124,58,237,0.2);
+        /* ── Scroll progress bar ── */
+        #scroll-progress {
+            position: fixed; top: 0; left: 0; height: 3px; z-index: 10000;
+            width: 0%;
+            background: linear-gradient(90deg, #7c3aed, #06b6d4, #ec4899, #7c3aed);
+            background-size: 200% 100%;
+            animation: g-shift 3s linear infinite;
+            transition: width 0.08s linear;
         }
-        .lang-pill {
-            background: none;
-            border: none;
-            color: rgba(255,255,255,0.6);
-            padding: 3px 10px;
-            border-radius: 16px;
-            font-size: 0.78rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: 'Cairo','Tajawal',sans-serif;
-            line-height: 1.6;
-        }
-        .lang-pill.active, .lang-pill:hover {
-            background: linear-gradient(135deg,#7c3aed,#06b6d4);
-            color: #fff;
-        }
-        /* Hide old language-switcher */
-        .language-switcher { display: none !important; }
+        @keyframes g-shift { to { background-position: 200% 50%; } }
 
-        /* Nav link — icon size consistent */
+        /* ── Navbar glass ── */
+        .navbar {
+            padding: 10px 0 !important;
+            background: rgba(8, 4, 24, 0.82) !important;
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(124,58,237,0.14);
+            transition: all 0.35s ease;
+        }
+        .navbar.scrolled {
+            padding: 4px 0 !important;
+            background: rgba(8, 4, 24, 0.96) !important;
+            border-bottom-color: rgba(124,58,237,0.3);
+            box-shadow: 0 8px 32px rgba(124,58,237,0.18), 0 1px 0 rgba(103,232,249,0.08) !important;
+        }
+
+        /* ── Logo 3D glow (override any previous) ── */
+        .logo-text .main {
+            font-size: 1.45rem !important;
+            font-weight: 900 !important;
+            letter-spacing: 2px !important;
+            line-height: 1.1 !important;
+            background: linear-gradient(135deg, #fff 0%, #c4b5fd 28%, #67e8f9 62%, #f9a8d4 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            filter: drop-shadow(0 0 12px rgba(167,139,250,.95))
+                    drop-shadow(0 0 28px rgba(103,232,249,.65))
+                    drop-shadow(0 3px 6px rgba(0,0,0,.55)) !important;
+        }
+        .logo-text .sub {
+            font-size: 0.6rem !important;
+            color: rgba(167,139,250,.88) !important;
+            letter-spacing: 3px !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            filter: drop-shadow(0 0 6px rgba(103,232,249,.7)) !important;
+        }
+
+        /* ── Nav links ── */
         .navbar-nav .nav-link {
-            padding: 7px 11px !important;
+            padding: 7px 10px !important;
             border-radius: 10px;
-            font-size: 0.88rem;
+            font-size: 0.87rem;
             font-weight: 600;
-            color: rgba(255,255,255,0.85);
+            color: rgba(255,255,255,.78) !important;
+            transition: all 0.22s ease;
         }
-        .navbar-nav .nav-link i { font-size: 0.95rem; }
-        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link i { font-size: 0.9rem; }
+        .navbar-nav .nav-link:hover { color: #fff !important; background: rgba(124,58,237,.18); }
         .navbar-nav .nav-link.active {
-            background: rgba(124,58,237,0.18);
-            color: #fff;
+            color: #fff !important;
+            background: linear-gradient(135deg,rgba(124,58,237,.25),rgba(6,182,212,.15));
+            box-shadow: inset 0 0 0 1px rgba(124,58,237,.35);
         }
 
-        /* Mobile menu */
+        /* ── Compact lang switcher (uses .lang-btn, found by JS) ── */
+        .lang-pills-wrap {
+            display: flex; gap: 2px;
+            background: rgba(255,255,255,.06);
+            border: 1px solid rgba(124,58,237,.22);
+            border-radius: 22px; padding: 3px;
+        }
+        .lang-pills-wrap .lang-btn {
+            background: none !important; border: none !important;
+            color: rgba(255,255,255,.58) !important;
+            padding: 3px 10px !important; border-radius: 18px !important;
+            font-size: 0.78rem !important; font-weight: 700 !important;
+            cursor: pointer; transition: all 0.2s ease;
+            font-family: 'Cairo','Tajawal',sans-serif;
+            letter-spacing: .5px; line-height: 1.5;
+        }
+        .lang-pills-wrap .lang-btn.active,
+        .lang-pills-wrap .lang-btn:hover {
+            background: linear-gradient(135deg,#7c3aed,#06b6d4) !important;
+            color: #fff !important;
+            box-shadow: 0 2px 10px rgba(124,58,237,.4);
+        }
+
+        /* ── Dark mode toggle ── */
+        .dark-mode-toggle {
+            width: 38px; height: 38px; border-radius: 50%;
+            border: 1px solid rgba(124,58,237,.3);
+            background: rgba(124,58,237,.1); color: #c4b5fd;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: .95rem; cursor: pointer; transition: all .22s; flex-shrink: 0;
+        }
+        .dark-mode-toggle:hover {
+            background: linear-gradient(135deg,#7c3aed,#06b6d4);
+            color: #fff; border-color: transparent;
+            box-shadow: 0 4px 16px rgba(124,58,237,.45);
+            transform: translateY(-1px);
+        }
+        [data-theme="dark"] .dark-mode-toggle { color: #fbbf24; border-color: rgba(251,191,36,.35); }
+
+        /* ── CTA button ── */
+        .journey-start-btn {
+            background: linear-gradient(135deg,#7c3aed 0%,#06b6d4 100%) !important;
+            border: none !important; color: #fff !important;
+            padding: 8px 18px !important; border-radius: 22px !important;
+            font-weight: 700 !important; font-size: 0.88rem !important;
+            box-shadow: 0 4px 18px rgba(124,58,237,.4);
+            transition: all .25s ease !important; white-space: nowrap;
+        }
+        .journey-start-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 28px rgba(124,58,237,.55) !important;
+        }
+
+        /* ── Mobile nav panel ── */
         @media (max-width: 991.98px) {
             #navbarNav {
-                background: rgba(8,4,24,0.97);
-                border-radius: 14px;
-                padding: 14px;
-                margin-top: 8px;
-                border: 1px solid rgba(124,58,237,0.25);
-                backdrop-filter: blur(18px);
-                -webkit-backdrop-filter: blur(18px);
+                background: rgba(8,4,24,.97);
+                border: 1px solid rgba(124,58,237,.28);
+                border-radius: 16px; padding: 16px; margin-top: 10px;
+                backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             }
-            .navbar-nav .nav-link span { display: inline !important; margin-right: 8px; }
-            .navbar-nav .nav-link { padding: 10px 14px !important; font-size: 0.95rem; }
-            .journey-start-btn { width: 100%; justify-content: center; text-align: center; }
-            .lang-pills { justify-content: center; }
+            .navbar-nav { gap: 3px; }
+            .navbar-nav .nav-link { padding: 10px 14px !important; font-size: .95rem; }
+            .navbar-nav .nav-link span.d-none { display: inline !important; margin-right: 8px; }
+            .journey-start-btn { width: 100%; justify-content: center; }
+            .lang-pills-wrap { justify-content: center; }
+        }
+        @media (min-width: 992px) {
+            .navbar-nav .nav-link span.d-none { display: none !important; }
+        }
+        @media (min-width: 1280px) {
+            .navbar-nav .nav-link span { display: inline !important; }
         }
 
-        /* Logo responsive */
+        /* ── Logo on small screens ── */
         @media (max-width: 575.98px) {
-            .logo-text .main { font-size: 1.1rem; letter-spacing: 1.5px; }
-            .logo-text .sub { font-size: 0.55rem; letter-spacing: 2px; }
-            .logo-container { width: 44px; height: 44px; }
-            .journey-start-btn span { display: none !important; }
+            .logo-text .main { font-size: 1rem !important; letter-spacing: 1.5px !important; }
+            .logo-text .sub  { font-size: .5rem !important; letter-spacing: 2px !important; }
+            .logo-container  { width: 42px !important; height: 42px !important; }
         }
-
-        /* ══════════════════════════════════════
-           GLOBAL RESPONSIVE EXCELLENCE
-        ══════════════════════════════════════ */
-        html { scroll-behavior: smooth; }
-
-        /* Fluid font sizing */
-        @media (max-width: 767px) {
-            .section-title { font-size: clamp(1.4rem, 5vw, 2rem) !important; }
-            .hero-section h1 { font-size: clamp(1.6rem, 6vw, 2.4rem) !important; line-height: 1.25 !important; }
-            .hero-section .fs-5 { font-size: clamp(0.9rem, 3.5vw, 1.1rem) !important; }
-            .tech-badge { font-size: 0.72rem; padding: 4px 10px; }
-            .service-card, .portfolio-card, .blog-card { margin-bottom: 16px; }
-            .blog-toolbar { flex-direction: column; gap: 10px; }
-            .blog-search-box { width: 100%; }
-            .hero-stat-item { min-width: unset; flex: 1 1 calc(50% - 8px); }
-        }
-
-        @media (max-width: 480px) {
-            .hero-section h1 { font-size: 1.55rem !important; }
-            .hero-stat-value { font-size: 1.4rem !important; }
-            .hero-btn-group { flex-direction: column; gap: 10px; }
-            .hero-btn-group .btn { width: 100%; justify-content: center; }
-            .doc-section, .who-card { padding: 22px 16px !important; }
-        }
-
         @media (max-width: 360px) {
-            .logo-text .main { font-size: 0.95rem; }
-            .hero-section h1 { font-size: 1.35rem !important; }
+            .logo-text .main { font-size: .9rem !important; }
         }
 
-        /* Touch-friendly tap targets */
+        /* ── Hero premium mesh ── */
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: ''; position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 15% 40%, rgba(124,58,237,.22) 0%, transparent 55%),
+                radial-gradient(ellipse 60% 50% at 85% 30%, rgba(6,182,212,.18) 0%, transparent 55%),
+                radial-gradient(ellipse 50% 40% at 50% 100%, rgba(236,72,153,.12) 0%, transparent 60%);
+            pointer-events: none; z-index: 0;
+        }
+        .hero-section::after {
+            content: ''; position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(124,58,237,.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(124,58,237,.04) 1px, transparent 1px);
+            background-size: 50px 50px; pointer-events: none; z-index: 0;
+            mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+        }
+        .hero-section > .container { position: relative; z-index: 1; }
+
+        /* ── Cards ── */
+        .service-card {
+            border: 1px solid rgba(124,58,237,.12) !important;
+            transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease !important;
+            position: relative; overflow: hidden;
+        }
+        .service-card::after {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg,#7c3aed,#06b6d4,#ec4899);
+            border-radius: 4px 4px 0 0; opacity: 0; transition: opacity .3s;
+        }
+        .service-card:hover { transform: translateY(-8px) !important; box-shadow: 0 24px 60px rgba(124,58,237,.2) !important; border-color: rgba(124,58,237,.35) !important; }
+        .service-card:hover::after { opacity: 1; }
+
+        .portfolio-card {
+            border: 1px solid rgba(124,58,237,.1) !important;
+            transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease !important;
+        }
+        .portfolio-card:hover { transform: translateY(-6px) !important; box-shadow: 0 20px 50px rgba(124,58,237,.2) !important; border-color: rgba(124,58,237,.4) !important; }
+
+        .blog-card { transition: transform .3s ease, box-shadow .3s ease !important; }
+        .blog-card:hover { transform: translateY(-6px) !important; box-shadow: 0 20px 50px rgba(124,58,237,.18) !important; }
+
+        /* ── Section titles ── */
+        .section-title::after {
+            content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%);
+            width: 60px; height: 3px;
+            background: linear-gradient(90deg,#7c3aed,#06b6d4); border-radius: 3px;
+        }
+
+        /* ── Tech badges ── */
+        .tech-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.25);
+            color: #c4b5fd; padding: 5px 14px; border-radius: 20px;
+            font-size: .8rem; font-weight: 600; backdrop-filter: blur(8px);
+            transition: all .22s;
+        }
+        .tech-badge:hover { background: rgba(124,58,237,.2); border-color: rgba(124,58,237,.5); transform: translateY(-2px); }
+        .tech-badge::before {
+            content: ''; width: 7px; height: 7px; border-radius: 50%;
+            background: linear-gradient(135deg,#7c3aed,#06b6d4);
+            box-shadow: 0 0 6px rgba(124,58,237,.8);
+            animation: pulse-dot2 2s infinite;
+        }
+        @keyframes pulse-dot2 {
+            0%,100% { opacity:1; transform:scale(1); }
+            50% { opacity:.6; transform:scale(.8); }
+        }
+
+        /* ── Premium buttons ── */
+        .btn-primary { background: linear-gradient(135deg,#7c3aed,#06b6d4) !important; border:none !important; border-radius:12px !important; font-weight:700 !important; box-shadow:0 4px 18px rgba(124,58,237,.35); transition:all .25s ease !important; }
+        .btn-primary:hover { transform:translateY(-2px) !important; box-shadow:0 10px 28px rgba(124,58,237,.5) !important; }
+
+        /* ── Dark mode ── */
+        [data-theme="dark"] .service-card,
+        [data-theme="dark"] .portfolio-card,
+        [data-theme="dark"] .blog-card { background: rgba(30,41,59,.95) !important; border-color: rgba(124,58,237,.18) !important; }
+        [data-theme="dark"] body { background: linear-gradient(135deg,#0f172a,#1a1040) !important; }
+        [data-theme="dark"] .navbar { background: rgba(5,2,15,.9) !important; }
+        [data-theme="dark"] #navbarNav { background: rgba(5,2,15,.97) !important; }
+
+        /* ── Global responsive ── */
+        @media (max-width: 767px) {
+            .section-title { font-size: clamp(1.4rem,5vw,2rem) !important; }
+            .hero-section h1 { font-size: clamp(1.6rem,6vw,2.4rem) !important; line-height:1.25 !important; }
+            .hero-section .fs-5 { font-size: clamp(.9rem,3.5vw,1rem) !important; }
+            .tech-badge { font-size:.72rem; padding:4px 10px; }
+            .blog-toolbar { flex-direction:column; gap:10px; }
+            .blog-search-box { width:100%; }
+        }
+        @media (max-width: 480px) {
+            .hero-section h1 { font-size:1.55rem !important; }
+        }
         @media (hover: none) {
-            .nav-link, .btn, .lang-pill, .dark-mode-toggle {
-                min-height: 44px;
-                min-width: 44px;
-            }
+            .nav-link,.btn,.lang-btn,.dark-mode-toggle { min-height:44px; }
         }
-
     </style>
 </head>
 <body>
@@ -2797,7 +2940,7 @@
                 </div>
             </a>
 
-            <!-- Mobile controls: dark toggle + toggler -->
+            <!-- Mobile controls -->
             <div class="d-flex align-items-center gap-2 d-lg-none ms-auto">
                 <button class="dark-mode-toggle" id="darkModeToggle" title="الوضع الليلي">
                     <i class="fas fa-moon" id="darkModeIcon"></i>
@@ -2809,7 +2952,7 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
 
-                <!-- Nav links (icon-only on large, icon+label on xl) -->
+                <!-- Nav links -->
                 <ul class="navbar-nav mx-auto gap-1">
                     <li class="nav-item">
                         <a class="nav-link active" href="#home" data-section="home" title="الرئيسية">
@@ -2849,17 +2992,20 @@
                 </ul>
 
                 <!-- Right controls -->
-                <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
-                    <!-- Compact lang switcher -->
-                    <div class="lang-pills">
-                        <button class="lang-pill active" data-lang="ar">ع</button>
-                        <button class="lang-pill" data-lang="fr">Fr</button>
-                        <button class="lang-pill" data-lang="en">En</button>
+                <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0 flex-wrap justify-content-center justify-content-lg-end">
+
+                    <!-- Compact lang switcher — uses lang-btn class so jQuery finds it -->
+                    <div class="lang-pills-wrap">
+                        <button class="lang-btn active" data-lang="ar">ع</button>
+                        <button class="lang-btn" data-lang="fr">Fr</button>
+                        <button class="lang-btn" data-lang="en">En</button>
                     </div>
+
                     <!-- Dark toggle desktop -->
                     <button class="dark-mode-toggle d-none d-lg-inline-flex" id="darkModeToggleDesktop" title="الوضع الليلي">
                         <i class="fas fa-moon" id="darkModeIconDesktop"></i>
                     </button>
+
                     <!-- CTA -->
                     <a href="#contact" class="btn btn-accent journey-start-btn" data-section="contact">
                         <i class="fas fa-rocket me-1"></i><span id="startJourneyText">ابدأ</span>
@@ -6827,13 +6973,13 @@ ${kb.services.join(" | ")}
     <!-- ══ Compact lang pills sync ══ -->
     <script>
     (function(){
-        document.querySelectorAll('.lang-pill').forEach(btn => {
+        document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', function(){
                 const lang = this.dataset.lang;
                 // Trigger existing main lang system
                 const main = document.querySelector('.lang-btn[data-lang="' + lang + '"]');
                 if (main) main.click();
-                document.querySelectorAll('.lang-pill').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
             });
         });
