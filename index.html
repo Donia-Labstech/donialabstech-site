@@ -475,11 +475,11 @@
         .logo-img {
             width: 100%;
             height: 100%;
-            border-radius: 50%;
+            border-radius: 14px;
             object-fit: cover;
-            border: 2px solid rgba(245, 158, 11, 0.3);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: var(--transition);
+            border: 2px solid rgba(124, 58, 237, 0.4);
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.25), 0 0 0 4px rgba(124,58,237,0.08);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
             background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
             display: flex;
             align-items: center;
@@ -491,45 +491,26 @@
         }
         
         .logo-img:before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(transparent, rgba(245, 158, 11, 0.8), transparent 30%);
-            animation: rotate 4s linear infinite;
+            display: none;
         }
         
         .logo-img:after {
-            content: '🤖';
+            content: '';
             position: absolute;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             width: 95%;
             height: 95%;
-            border-radius: 50%;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes rotate {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
         }
         
         .logo-img:hover {
-            transform: rotate(15deg) scale(1.1);
-            border-color: var(--gold-color);
-            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+            transform: translateY(-2px) scale(1.04);
+            border-color: rgba(124, 58, 237, 0.8);
+            box-shadow: 0 8px 30px rgba(124, 58, 237, 0.4), 0 0 0 4px rgba(124,58,237,0.15);
         }
         
         .logo-text {
@@ -1866,8 +1847,8 @@
         .loader-logo .logo-img {
             width: 80px;
             height: 80px;
-            border-radius: 50%;
-            animation: rotate 3s linear infinite;
+            border-radius: 14px;
+            /* no spin — static logo */
         }
         
         @keyframes pulseLogo {
@@ -2818,9 +2799,9 @@
                             <span class="portfolio-category" data-translate="portfolio.cat.ai">الذكاء الاصطناعي</span>
                         </div>
                         <div class="portfolio-body">
-                            <h4 data-translate="portfolio.p5.title">DONIA MIND</h4>
+                            <h4 data-translate="portfolio.p5.title">INTELLI CORE</h4>
                             <p class="text-muted" data-translate="portfolio.p5.desc">
-                                منصة استشارية ذكية تعتمد على مجلس من أربعة وكلاء ذكاء اصطناعي لدعم القرار الاستراتيجي، مع تشفير AES-256.
+                                نواة ذكاء اصطناعي متكاملة قابلة للتضمين في أي منتج رقمي — تشمل معالجة اللغة الطبيعية، التحليل الفوري، واتخاذ القرار الذكي بتشفير AES-256.
                             </p>
                             <div class="portfolio-tech">
                                 <span>Streamlit</span><span>Groq AI</span><span>Supabase</span>
@@ -2831,7 +2812,7 @@
                                 <a href="#" target="_blank" class="btn btn-outline-primary d-none portfolio-visit-btn"><i class="fas fa-external-link-alt"></i></a>
                                 <button type="button" class="btn portfolio-qr-btn"
                                         data-qr-url="https://wa.me/213674661737?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%B1%D9%81%D8%A9%20%D8%A7%D9%84%D9%85%D8%B2%D9%8A%D8%AF%20%D8%B9%D9%86%20DONIA%20MIND"
-                                        data-qr-title="DONIA MIND"
+                                        data-qr-title="INTELLI CORE"
                                         data-qr-subtext="استفسار واتساب مباشر">
                                     <i class="fas fa-qrcode"></i>
                                 </button>
@@ -2844,24 +2825,24 @@
                     <div class="portfolio-card" data-real-link="">
                         <div class="portfolio-img-wrap">
                             <!-- ✏️ ضع هنا رابط صورة حقيقية (Screenshot) من البرنامج لاستبدال صورة Unsplash المؤقتة -->
-                            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Exam Supervision Scheduler">
-                            <span class="portfolio-category" data-translate="portfolio.cat.education">قطاع التعليم</span>
+                            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="DONIA AI PLUS">
+                            <span class="portfolio-category">الذكاء الاصطناعي</span>
                         </div>
                         <div class="portfolio-body">
-                            <h4 data-translate="portfolio.p6.title">منظّم حراسة الامتحانات</h4>
+                            <h4 data-translate="portfolio.p6.title">DONIA AI PLUS</h4>
                             <p class="text-muted" data-translate="portfolio.p6.desc">
-                                أداة تفاعلية لتوزيع حراسة الامتحانات على المعلمين تلقائياً، مع تصدير فوري لجدول الحراسة بصيغة PDF.
+                                منصة ذكاء اصطناعي متكاملة للأعمال: توليد محتوى، أتمتة مهام، تحليل بيانات، وبوتات محادثة ذكية — حل شامل لتسريع نمو مشروعك الرقمي.
                             </p>
                             <div class="portfolio-tech">
-                                <span>JavaScript</span><span>SheetJS</span><span>RTL Print</span>
+                                <span>AI Agents</span><span>NLP</span><span>Multi-Model</span>
                             </div>
                             <div class="portfolio-actions">
                                 <a href="#contact" class="btn btn-primary" data-section="contact" data-translate="portfolio.cta">تواصل لمعرفة المزيد</a>
                                 <!-- ✏️ عند توفر رابط مباشر للمشروع: احذف class="d-none" وضع الرابط في href (الزر سيظهر تلقائياً) -->
                                 <a href="#" target="_blank" class="btn btn-outline-primary d-none portfolio-visit-btn"><i class="fas fa-external-link-alt"></i></a>
                                 <button type="button" class="btn portfolio-qr-btn"
-                                        data-qr-url="https://wa.me/213674661737?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%B1%D9%81%D8%A9%20%D8%A7%D9%84%D9%85%D8%B2%D9%8A%D8%AF%20%D8%B9%D9%86%20%D8%A3%D8%AF%D8%A7%D8%A9%20%D8%AC%D8%AF%D9%88%D9%84%D8%A9%20%D8%AD%D8%B1%D8%A7%D8%B3%D8%A9%20%D8%A7%D9%84%D8%A7%D9%85%D8%AA%D8%AD%D8%A7%D9%86%D8%A7%D8%AA"
-                                        data-qr-title="Exam Supervision Scheduler"
+                                        data-qr-url="https://wa.me/213674661737?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B9%D8%B1%D9%81%D8%A9%20%D8%A7%D9%84%D9%85%D8%B2%D9%8A%D8%AF%20%D8%B9%D9%86%20DONIA%20AI%20PLUS"
+                                        data-qr-title="DONIA AI PLUS"
                                         data-qr-subtext="استفسار واتساب مباشر">
                                     <i class="fas fa-qrcode"></i>
                                 </button>
@@ -3668,10 +3649,10 @@
                     "portfolio.p3.desc": "نظام متقدم لتسيير الموارد البشرية في المؤسسات التعليمية، بنظام ترخيص آمن وتجربة مجانية تلقائية.",
                     "portfolio.p4.title": "Smart Stock & Canteen Manager",
                     "portfolio.p4.desc": "تطبيق سطح مكتب لإدارة مقاصف المدارس: تتبع المخزون، الفوترة، QR Code، وامتثال كامل لمعايير وزارة التربية.",
-                    "portfolio.p5.title": "DONIA MIND",
-                    "portfolio.p5.desc": "منصة استشارية ذكية تعتمد على مجلس من أربعة وكلاء ذكاء اصطناعي لدعم القرار الاستراتيجي، مع تشفير AES-256.",
-                    "portfolio.p6.title": "منظّم حراسة الامتحانات",
-                    "portfolio.p6.desc": "أداة تفاعلية لتوزيع حراسة الامتحانات على المعلمين تلقائياً، مع تصدير فوري لجدول الحراسة بصيغة PDF.",
+                    "portfolio.p5.title": "INTELLI CORE",
+                    "portfolio.p5.desc": "نواة ذكاء اصطناعي متكاملة قابلة للتضمين في أي منتج رقمي — تشمل معالجة اللغة الطبيعية، التحليل الفوري، واتخاذ القرار الذكي بتشفير AES-256.",
+                    "portfolio.p6.title": "DONIA AI PLUS",
+                    "portfolio.p6.desc": "منصة ذكاء اصطناعي متكاملة للأعمال: توليد محتوى، أتمتة مهام، تحليل بيانات، وبوتات محادثة — حل شامل لتسريع نمو مشروعك الرقمي.",
                     "qr.download": "تحميل",
                     "qr.share": "مشاركة",
                     
@@ -3895,10 +3876,10 @@
                     "portfolio.p3.desc": "Système avancé de gestion des ressources humaines pour établissements scolaires, avec licence sécurisée et essai gratuit automatique.",
                     "portfolio.p4.title": "Smart Stock & Canteen Manager",
                     "portfolio.p4.desc": "Application de bureau pour la gestion des cantines scolaires : suivi des stocks, facturation, QR Code, et conformité totale au Ministère de l'Éducation.",
-                    "portfolio.p5.title": "DONIA MIND",
-                    "portfolio.p5.desc": "Plateforme de conseil intelligente s'appuyant sur un conseil de quatre agents IA pour la prise de décision stratégique, avec chiffrement AES-256.",
-                    "portfolio.p6.title": "Planificateur de Surveillance d'Examens",
-                    "portfolio.p6.desc": "Outil interactif pour répartir automatiquement la surveillance des examens entre enseignants, avec export PDF instantané.",
+                    "portfolio.p5.title": "INTELLI CORE",
+                    "portfolio.p5.desc": "Noyau IA intégrable dans tout produit numérique — NLP, analyse instantanée et prise de décision intelligente avec chiffrement AES-256.",
+                    "portfolio.p6.title": "DONIA AI PLUS",
+                    "portfolio.p6.desc": "Plateforme IA complète pour les entreprises : génération de contenu, automatisation, analyse de données et chatbots intelligents.",
                     "qr.download": "Télécharger",
                     "qr.share": "Partager",
                     
@@ -4122,10 +4103,10 @@
                     "portfolio.p3.desc": "An advanced Human Resources Management System for educational institutions, with secure licensing and an automatic free trial.",
                     "portfolio.p4.title": "Smart Stock & Canteen Manager",
                     "portfolio.p4.desc": "A desktop application for school canteen management: inventory tracking, billing, QR Code, and full compliance with Ministry of Education standards.",
-                    "portfolio.p5.title": "DONIA MIND",
-                    "portfolio.p5.desc": "An intelligent advisory platform powered by a council of four AI agents for strategic decision-making, with AES-256 encryption.",
-                    "portfolio.p6.title": "Exam Supervision Scheduler",
-                    "portfolio.p6.desc": "An interactive tool for automatically assigning exam supervision duties to teachers, with instant PDF export.",
+                    "portfolio.p5.title": "INTELLI CORE",
+                    "portfolio.p5.desc": "A modular AI core embeddable in any digital product — NLP, real-time analytics, and intelligent decision-making with AES-256 encryption.",
+                    "portfolio.p6.title": "DONIA AI PLUS",
+                    "portfolio.p6.desc": "An all-in-one AI platform for businesses: content generation, task automation, data analytics, and smart chatbots.",
                     "qr.download": "Download",
                     "qr.share": "Share",
                     
