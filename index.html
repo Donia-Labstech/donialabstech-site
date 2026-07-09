@@ -2326,6 +2326,195 @@
             font-weight: 700;
         }
         /* ===== [END ADDITION 5 - CSS] ===== */
+
+        /* ══════ DARK MODE ══════ */
+        [data-theme="dark"] {
+            --dark-color: #e2e8f0;
+            --light-color: #0f172a;
+            --silver-color: #64748b;
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --bg-surface: #1e293b;
+            --border-color: rgba(255,255,255,0.08);
+            --text-muted: #94a3b8;
+        }
+
+        [data-theme="dark"] body {
+            background: linear-gradient(135deg, #0f172a 0%, #1a1040 100%);
+            color: #e2e8f0;
+        }
+
+        [data-theme="dark"] .navbar { background: rgba(15,23,42,0.95) !important; }
+
+        [data-theme="dark"] .service-card,
+        [data-theme="dark"] .portfolio-card,
+        [data-theme="dark"] .blog-card,
+        [data-theme="dark"] .community-card,
+        [data-theme="dark"] .stat-card,
+        [data-theme="dark"] .doc-section,
+        [data-theme="dark"] .blog-toolbar,
+        [data-theme="dark"] .item-card,
+        [data-theme="dark"] .contact-form {
+            background: #1e293b !important;
+            border-color: rgba(124,58,237,0.15) !important;
+            color: #e2e8f0;
+        }
+
+        [data-theme="dark"] .service-card:hover,
+        [data-theme="dark"] .portfolio-card:hover {
+            box-shadow: 0 20px 50px rgba(124,58,237,0.25) !important;
+        }
+
+        [data-theme="dark"] .portfolio-body h4,
+        [data-theme="dark"] .service-card h3,
+        [data-theme="dark"] .blog-card h4,
+        [data-theme="dark"] .section-title span {
+            color: #f1f5f9 !important;
+        }
+
+        [data-theme="dark"] .text-muted { color: #94a3b8 !important; }
+
+        [data-theme="dark"] .form-control,
+        [data-theme="dark"] .blog-search-box input {
+            background: #0f172a !important;
+            border-color: rgba(124,58,237,0.3) !important;
+            color: #e2e8f0 !important;
+        }
+
+        [data-theme="dark"] .blog-filter-chip {
+            background: #0f172a !important;
+            border-color: rgba(124,58,237,0.2) !important;
+            color: #cbd5e1 !important;
+        }
+
+        [data-theme="dark"] .footer-section { background: #060d1f !important; }
+
+        [data-theme="dark"] section { color: #e2e8f0; }
+
+        [data-theme="dark"] .pricing-card,
+        [data-theme="dark"] .faq-item,
+        [data-theme="dark"] .payment-method {
+            background: #1e293b !important;
+            border-color: rgba(124,58,237,0.15) !important;
+            color: #e2e8f0;
+        }
+
+        [data-theme="dark"] .hero-section {
+            background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1a0a3a 100%) !important;
+        }
+
+        /* ── Dark mode toggle button ── */
+        .dark-mode-toggle {
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(124,58,237,0.35);
+            background: rgba(124,58,237,0.1);
+            color: #7c3aed;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.25s;
+            margin-left: 10px;
+            flex-shrink: 0;
+        }
+        .dark-mode-toggle:hover {
+            background: var(--gradient-community);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 14px rgba(124,58,237,0.4);
+            transform: translateY(-2px);
+        }
+        [data-theme="dark"] .dark-mode-toggle {
+            background: rgba(255,255,255,0.08);
+            color: #fbbf24;
+            border-color: rgba(251,191,36,0.3);
+        }
+
+        /* ══════ PREMIUM ENHANCEMENTS ══════ */
+
+        /* Glassmorphism cards */
+        .service-card {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* Premium section separators */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(124,58,237,0.4), rgba(6,182,212,0.4), transparent);
+            margin: 0;
+        }
+
+        /* Floating particles background (subtle) */
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(124,58,237,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(6,182,212,0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Smooth section transitions */
+        section { transition: background 0.4s ease; }
+
+        /* Premium navbar glow */
+        .navbar.scrolled {
+            box-shadow: 0 4px 30px rgba(124,58,237,0.2), 0 1px 0 rgba(124,58,237,0.1) !important;
+        }
+
+        /* Gradient text for headings */
+        .gradient-heading {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Premium blog card hover */
+        .blog-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+        }
+        .blog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(124,58,237,0.18) !important;
+        }
+
+        /* Portfolio card premium border */
+        .portfolio-card {
+            border: 1px solid rgba(124,58,237,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+        }
+        .portfolio-card:hover {
+            border-color: rgba(124,58,237,0.4) !important;
+        }
+
+        /* Service card premium top accent */
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--tech-purple), var(--ai-color));
+            border-radius: 4px 4px 0 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .service-card:hover::before { opacity: 1; }
+
+        /* Smooth scroll progress indicator */
+        #scroll-progress {
+            position: fixed;
+            top: 0; left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #7c3aed, #06b6d4, #ec4899);
+            z-index: 9999;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
     </style>
 </head>
 <body>
@@ -2540,7 +2729,10 @@
                     </li>
                 </ul>
                 
-                <div class="d-flex mt-3 mt-lg-0">
+                <div class="d-flex align-items-center mt-3 mt-lg-0 gap-2">
+                    <button class="dark-mode-toggle" id="darkModeToggle" title="الوضع الليلي" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon" id="darkModeIcon"></i>
+                    </button>
                     <a href="#contact" class="btn btn-accent journey-start-btn" data-section="contact">
                         <i class="fas fa-play-circle me-2"></i><span id="startJourneyText">ابدأ رحلتك</span>
                     </a>
@@ -2801,10 +2993,10 @@
                         <div class="portfolio-body">
                             <h4 data-translate="portfolio.p5.title">INTELLI CORE</h4>
                             <p class="text-muted" data-translate="portfolio.p5.desc">
-                                نواة ذكاء اصطناعي متكاملة قابلة للتضمين في أي منتج رقمي — تشمل معالجة اللغة الطبيعية، التحليل الفوري، واتخاذ القرار الذكي بتشفير AES-256.
+                                منصة استشارية ذكية مدفوعة تعمل بمجلس من أربعة وكلاء ذكاء اصطناعي متخصصين لدعم قرارات الأعمال الاستراتيجية، مع تشفير AES-256 وتجربة مستخدم عالية الجودة.
                             </p>
                             <div class="portfolio-tech">
-                                <span>Streamlit</span><span>Groq AI</span><span>Supabase</span>
+                                <span>Multi-Agent AI</span><span>AES-256</span><span>Strategic AI</span>
                             </div>
                             <div class="portfolio-actions">
                                 <a href="#contact" class="btn btn-primary" data-section="contact" data-translate="portfolio.cta">تواصل لمعرفة المزيد</a>
@@ -2843,33 +3035,6 @@
                                 <button type="button" class="btn portfolio-qr-btn"
                                         data-qr-url="https://wa.me/213674661737?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B9%D8%B1%D9%81%D8%A9%20%D8%A7%D9%84%D9%85%D8%B2%D9%8A%D8%AF%20%D8%B9%D9%86%20DONIA%20AI%20PLUS"
                                         data-qr-title="DONIA AI PLUS"
-                                        data-qr-subtext="استفسار واتساب مباشر">
-                                    <i class="fas fa-qrcode"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="portfolio-card" data-real-link="">
-                        <div class="portfolio-img-wrap">
-                            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="INTELLI CORE">
-                            <span class="portfolio-category">الذكاء الاصطناعي</span>
-                        </div>
-                        <div class="portfolio-body">
-                            <h4>INTELLI CORE</h4>
-                            <p class="text-muted">
-                                نواة ذكاء اصطناعي متكاملة ومعيارية قابلة للتضمين في أي منتج أو خدمة. تشمل معالجة اللغة الطبيعية، تحليل البيانات الفوري، واتخاذ القرار الذكي — مصممة للشركات الناشئة والمؤسسات العربية.
-                            </p>
-                            <div class="portfolio-tech">
-                                <span>Python</span><span>LLM APIs</span><span>Modular AI</span>
-                            </div>
-                            <div class="portfolio-actions">
-                                <a href="#contact" class="btn btn-primary" data-section="contact">تواصل لمعرفة المزيد</a>
-                                <a href="#" target="_blank" class="btn btn-outline-primary d-none portfolio-visit-btn"><i class="fas fa-external-link-alt"></i></a>
-                                <button type="button" class="btn portfolio-qr-btn"
-                                        data-qr-url="https://wa.me/213674661737?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B9%D8%B1%D9%81%D8%A9%20%D8%A7%D9%84%D9%85%D8%B2%D9%8A%D8%AF%20%D8%B9%D9%86%20INTELLI%20CORE"
-                                        data-qr-title="INTELLI CORE"
                                         data-qr-subtext="استفسار واتساب مباشر">
                                     <i class="fas fa-qrcode"></i>
                                 </button>
@@ -3650,7 +3815,7 @@
                     "portfolio.p4.title": "Smart Stock & Canteen Manager",
                     "portfolio.p4.desc": "تطبيق سطح مكتب لإدارة مقاصف المدارس: تتبع المخزون، الفوترة، QR Code، وامتثال كامل لمعايير وزارة التربية.",
                     "portfolio.p5.title": "INTELLI CORE",
-                    "portfolio.p5.desc": "نواة ذكاء اصطناعي متكاملة قابلة للتضمين في أي منتج رقمي — تشمل معالجة اللغة الطبيعية، التحليل الفوري، واتخاذ القرار الذكي بتشفير AES-256.",
+                    "portfolio.p5.desc": "منصة استشارية ذكية مدفوعة تعمل بمجلس من أربعة وكلاء ذكاء اصطناعي متخصصين لدعم قرارات الأعمال الاستراتيجية، مع تشفير AES-256 وتجربة مستخدم عالية الجودة.",
                     "portfolio.p6.title": "DONIA AI PLUS",
                     "portfolio.p6.desc": "منصة ذكاء اصطناعي متكاملة للأعمال: توليد محتوى، أتمتة مهام، تحليل بيانات، وبوتات محادثة — حل شامل لتسريع نمو مشروعك الرقمي.",
                     "qr.download": "تحميل",
@@ -3877,7 +4042,7 @@
                     "portfolio.p4.title": "Smart Stock & Canteen Manager",
                     "portfolio.p4.desc": "Application de bureau pour la gestion des cantines scolaires : suivi des stocks, facturation, QR Code, et conformité totale au Ministère de l'Éducation.",
                     "portfolio.p5.title": "INTELLI CORE",
-                    "portfolio.p5.desc": "Noyau IA intégrable dans tout produit numérique — NLP, analyse instantanée et prise de décision intelligente avec chiffrement AES-256.",
+                    "portfolio.p5.desc": "Plateforme conseil premium animée par un conseil de quatre agents IA spécialisés pour les décisions stratégiques d'entreprise, avec chiffrement AES-256.",
                     "portfolio.p6.title": "DONIA AI PLUS",
                     "portfolio.p6.desc": "Plateforme IA complète pour les entreprises : génération de contenu, automatisation, analyse de données et chatbots intelligents.",
                     "qr.download": "Télécharger",
@@ -4104,7 +4269,7 @@
                     "portfolio.p4.title": "Smart Stock & Canteen Manager",
                     "portfolio.p4.desc": "A desktop application for school canteen management: inventory tracking, billing, QR Code, and full compliance with Ministry of Education standards.",
                     "portfolio.p5.title": "INTELLI CORE",
-                    "portfolio.p5.desc": "A modular AI core embeddable in any digital product — NLP, real-time analytics, and intelligent decision-making with AES-256 encryption.",
+                    "portfolio.p5.desc": "A premium advisory platform powered by a council of four specialized AI agents for strategic business decisions, with AES-256 encryption.",
                     "portfolio.p6.title": "DONIA AI PLUS",
                     "portfolio.p6.desc": "An all-in-one AI platform for businesses: content generation, task automation, data analytics, and smart chatbots.",
                     "qr.download": "Download",
@@ -6487,6 +6652,48 @@ ${kb.services.join(" | ")}
     </script>
     <!-- ===== [END ADDITION 6 - PORTFOLIO REAL-LINK SYNC] ===== -->
 
+
+
+    <!-- ══ DARK MODE + SCROLL PROGRESS ══ -->
+    <script>
+    (function() {
+        // ── Dark Mode ──
+        const toggle   = document.getElementById('darkModeToggle');
+        const icon     = document.getElementById('darkModeIcon');
+        const html     = document.documentElement;
+        const STORAGE_KEY = 'dlDarkMode';
+
+        function applyTheme(dark) {
+            html.setAttribute('data-theme', dark ? 'dark' : 'light');
+            if (icon) {
+                icon.className = dark ? 'fas fa-sun' : 'fas fa-moon';
+            }
+        }
+
+        // Restore saved preference
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved === 'dark') applyTheme(true);
+        else if (saved === null && window.matchMedia('(prefers-color-scheme: dark)').matches) applyTheme(true);
+
+        if (toggle) {
+            toggle.addEventListener('click', () => {
+                const isDark = html.getAttribute('data-theme') === 'dark';
+                applyTheme(!isDark);
+                localStorage.setItem(STORAGE_KEY, isDark ? 'light' : 'dark');
+            });
+        }
+
+        // ── Scroll progress bar ──
+        const bar = document.getElementById('scroll-progress');
+        if (bar) {
+            window.addEventListener('scroll', () => {
+                const total  = document.documentElement.scrollHeight - window.innerHeight;
+                const done   = total > 0 ? (window.scrollY / total) * 100 : 0;
+                bar.style.width = done.toFixed(1) + '%';
+            }, { passive: true });
+        }
+    })();
+    </script>
 
 </body>
 </html>
