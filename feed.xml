@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Sat, 11 Jul 2026 19:40:23 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 12 Jul 2026 18:00:58 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>أفضل أدوات التكنولوجيا للطلاب</title>
+    <link>https://donialabstech.online/blog/2026-07-12.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-07-12.html</guid>
+    <description>📝 أفضل أدوات التكنولوجيا للطلاب
+
+أصبح الطالب اليوم أمام ترسانة حقيقية من الأدوات الرقمية التي تُحوّل تجربة التعلم من مجرد حفظ ومراجعة إلى رحلة تفاعلية وممتعة. لم يعد التفوق الدراسي رهينًا بساعات طويلة أمام الكتب فحسب، بل بات مرتبطًا
+
+🔗 https://donialabstech.online/blog/2026-07-12.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Sun, 12 Jul 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1070&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>إدارة المدارس الذكية: نحو رقمنة التعليم</title>
     <link>https://donialabstech.online/blog/2026-07-11.html</link>
@@ -102,19 +115,6 @@
 🔗 https://donialabstech.online/blog/2026-07-05.html</description>
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1070&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>أفضل أدوات التكنولوجيا للطلاب</title>
-    <link>https://donialabstech.online/blog/2026-07-04.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-07-04.html</guid>
-    <description>📝 أفضل أدوات التكنولوجيا للطلاب
-
-وق، أصبح الطالب اليوم في حاجة ماسة إلى أدوات تكنولوجية تُعينه على التحصيل العلمي وتنظيم وقته واستيعاب المعلومات بفاعلية أكبر. لم تعد الكتب والأقلام وحدها كافية في عالم يعيد فيه الذكاء الاصطناعي رسم مل
-
-🔗 https://donialabstech.online/blog/2026-07-04.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Sat, 04 Jul 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1070&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
