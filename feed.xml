@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Sun, 12 Jul 2026 19:37:16 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 13 Jul 2026 18:01:34 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>التحول الرقمي في قطاع التعليم الجزائري</title>
+    <link>https://donialabstech.online/blog/2026-07-13.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-07-13.html</guid>
+    <description>📝 التحول الرقمي في قطاع التعليم الجزائري
+
+زل عن التحولات التكنولوجية الكبرى التي تعيد رسم ملامح الفصول الدراسية حول العالم. في ظل التوجهات الحكومية نحو الرقمنة الشاملة، بات واضحاً أن المنظومة التعليمية تخطو خطوات جادة نحو دمج التكنولوجيا في ص
+
+🔗 https://donialabstech.online/blog/2026-07-13.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Mon, 13 Jul 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1070&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>أفضل أدوات التكنولوجيا للطلاب</title>
     <link>https://donialabstech.online/blog/2026-07-12.html</link>
@@ -102,19 +115,6 @@
 🔗 https://donialabstech.online/blog/2026-07-06.html</description>
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Mon, 06 Jul 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1070&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>التحول الرقمي في قطاع التعليم الجزائري</title>
-    <link>https://donialabstech.online/blog/2026-07-05.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-07-05.html</guid>
-    <description>📝 التحول الرقمي في قطاع التعليم الجزائري
-
-اً جذرياً غير مسبوق، إذ باتت التكنولوجيا الرقمية تُعيد رسم ملامح الفصول الدراسية من الشمال إلى الجنوب. لم يعد الكتاب المدرسي وحده سيد الموقف، بل أصبحت المنصات التفاعلية والذكاء الاصطناعي شريكاً حقيقيا
-
-🔗 https://donialabstech.online/blog/2026-07-05.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1070&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
