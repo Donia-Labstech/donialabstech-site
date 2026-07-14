@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Mon, 13 Jul 2026 19:56:59 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 14 Jul 2026 18:01:10 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>الذكاء الاصطناعي وتحسين نتائج التعلم</title>
+    <link>https://donialabstech.online/blog/2026-07-14.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-07-14.html</guid>
+    <description>📝 الذكاء الاصطناعي وتحسين نتائج التعلم
+
+التقليدية أو الكتب المدرسية المتراصة على الرفوف. اليوم، يُعيد الذكاء الاصطناعي رسم ملامح العملية التعليمية من جذورها، ويمنح كل متعلم تجربة مصممة خصيصاً له. في DONIA LABS TECH ، نؤمن بأن التقنية الحقي
+
+🔗 https://donialabstech.online/blog/2026-07-14.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Tue, 14 Jul 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1070&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>التحول الرقمي في قطاع التعليم الجزائري</title>
     <link>https://donialabstech.online/blog/2026-07-13.html</link>
@@ -102,19 +115,6 @@
 🔗 https://donialabstech.online/blog/2026-07-07.html</description>
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Tue, 07 Jul 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1070&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>الذكاء الاصطناعي وتحسين نتائج التعلم</title>
-    <link>https://donialabstech.online/blog/2026-07-06.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-07-06.html</guid>
-    <description>📝 الذكاء الاصطناعي وتحسين نتائج التعلم
-
-التطور المتسارع لتقنيات الذكاء الاصطناعي، باتت تجربة التعلم تتشكّل من جديد على نحو لم نتخيّله من قبل. لم يعد الطالب مُلزَماً بالتكيّف مع نظام تعليمي صارم وموحّد، بل أصبح النظام هو من يتكيّف معه. في D
-
-🔗 https://donialabstech.online/blog/2026-07-06.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Mon, 06 Jul 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1070&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
