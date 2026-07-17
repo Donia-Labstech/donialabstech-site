@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Thu, 16 Jul 2026 19:40:32 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 17 Jul 2026 18:01:36 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>مستقبل التكنولوجيا التعليمية في الجزائر</title>
+    <link>https://donialabstech.online/blog/2026-07-17.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-07-17.html</guid>
+    <description>📝 مستقبل التكنولوجيا التعليمية في الجزائر
+
+جوهرياً في منظومتها التعليمية، إذ لم تعد التكنولوجيا مجرد أداة مساعدة، بل أصبحت ركيزةً أساسية في بناء جيل المستقبل. مع تسارع وتيرة التحول الرقمي على المستوى الوطني، وتنامي الاهتمام الحكومي بالاقتصاد
+
+🔗 https://donialabstech.online/blog/2026-07-17.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Fri, 17 Jul 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1070&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>كيف يغير الذكاء الاصطناعي التعليم في العالم العربي</title>
     <link>https://donialabstech.online/blog/2026-07-16.html</link>
@@ -102,19 +115,6 @@
 🔗 https://donialabstech.online/blog/2026-07-10.html</description>
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1070&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>مستقبل التكنولوجيا التعليمية في الجزائر</title>
-    <link>https://donialabstech.online/blog/2026-07-09.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-07-09.html</guid>
-    <description>📝 مستقبل التكنولوجيا التعليمية في الجزائر
-
-وهرياً في منظومتها التعليمية، إذ لم تعد التكنولوجيا مجرد أداة مساعدة، بل أصبحت شريكاً استراتيجياً في بناء الإنسان وتأهيله لسوق العمل. ومع تسارع وتيرة التحول الرقمي عالمياً، يجد القطاع التعليمي الجزائر
-
-🔗 https://donialabstech.online/blog/2026-07-09.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Thu, 09 Jul 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1070&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
