@@ -11,6 +11,11 @@ on:
       forced_area:
         description: 'القسم (marketing / tech / entrepreneurship)'
         required: false
+      force_overwrite:
+        description: 'استبدال مقال اليوم إن كان موجوداً (للاختبار فقط)'
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -31,6 +36,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           FORCED_TOPIC:      ${{ github.event.inputs.forced_topic }}
           FORCED_AREA:       ${{ github.event.inputs.forced_area }}
+          FORCE_OVERWRITE:   ${{ github.event.inputs.force_overwrite }}
         run: python scripts/generate_daily_article.py
 
       - name: Rebuild manifest + sitemap + RSS
