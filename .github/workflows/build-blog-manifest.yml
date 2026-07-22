@@ -1,4 +1,4 @@
-name: Build Blog Manifest + RSS Feed
+name: Build Blog Manifest + Sitemap + RSS
 
 on:
   push:
@@ -15,24 +15,24 @@ jobs:
   build-manifest:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Build blog/index.json from blog/*.html
+      - name: Build manifest (with dedup + SEO injection)
         run: python scripts/build_blog_manifest.py
 
-      - name: Build feed.xml (RSS) from blog/index.json
+      - name: Build sitemap.xml
+        run: python scripts/build_sitemap.py
+
+      - name: Build RSS feed
         run: python scripts/build_rss_feed.py
 
-      - name: Commit and push
+      - name: Commit & push
         run: |
           git config user.name "DONIA Blog Bot"
           git config user.email "bot@donialabstech.online"
-          git add blog/index.json feed.xml
-          git diff --quiet --cached || git commit -m "🔄 تحديث فهرس المدونة + RSS Feed"
+          git add blog/ sitemap.xml feed.xml
+          git diff --quiet --cached || git commit -m "🔄 تحديث فهرس المدونة + Sitemap + RSS"
           git push
