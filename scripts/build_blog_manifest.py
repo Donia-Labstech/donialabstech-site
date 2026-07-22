@@ -62,7 +62,12 @@ def extract(html, fname, file_date):
             excerpt = clean[150:380].strip() or title
 
     tags_m = re.search(r"الوسوم[:：]\s*</?\w*>?\s*([^\n<]+)", html)
-    tags   = [t.strip() for t in tags_m.group(1).split(",")] if tags_m else []
+    if tags_m:
+        tags = [t.strip() for t in tags_m.group(1).split(",")]
+    else:
+        # New generator (generate_daily_article.py) renders tags as
+        # <span class="tag">...</span> instead of a plain "الوسوم:" line.
+        tags = [t.strip() for t in re.findall(r'<span class="tag">(.*?)</span>', html)]
 
     body_text = re.sub(r"<[^>]+>", " ", html)
     words     = len(re.findall(r"\S+", body_text))
