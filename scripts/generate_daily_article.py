@@ -271,6 +271,20 @@ def main():
 
     area, topic = pick_area_and_topic(existing_titles, now)
 
+    # Guard against overwriting an already-published article for today when
+    # the workflow is re-run manually the same day (e.g. for testing).
+    fname = now.strftime("%Y-%m-%d") + ".html"
+    path  = os.path.join(BLOG_DIR, fname)
+    force_overwrite = os.environ.get("FORCE_OVERWRITE", "").strip().lower() == "true"
+    if os.path.exists(path) and not force_overwrite:
+        print(f"::warning::Article {fname} already exists — skipping to avoid overwriting "
+              f"today's published article. Set force_overwrite=true to replace it intentionally.")
+        gho = os.environ.get("GITHUB_OUTPUT")
+        if gho:
+            with open(gho, "a", encoding="utf-8") as f:
+                f.write("skipped=true\n")
+        return
+
     try:
         raw = call_claude(build_prompt(topic, area, date_str))
     except urllib.error.HTTPError as e:
@@ -281,8 +295,6 @@ def main():
     image = IMAGE_POOL[area]
     html  = build_html_page(p, area, now, image)
 
-    fname = now.strftime("%Y-%m-%d") + ".html"
-    path  = os.path.join(BLOG_DIR, fname)
     with open(path, "w", encoding="utf-8") as f:
         f.write(html)
     print(f"✅ Published: {fname} | Area: {area} | Title: {p['title']}")
