@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://donialabstech.online/sitemap.xml
+Sitemap: https://donialabstech.online/feed.xml
+
+# Crawl delay for bots
+Crawl-delay: 1
+
+# Disallow admin-only pages
+Disallow: /admin-dashboard.html
