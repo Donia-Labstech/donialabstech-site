@@ -31,7 +31,7 @@
         <news:language>ar</news:language>
       </news:publication>
       <news:publication_date>2026-07-22</news:publication_date>
-      <news:title>الذكاء الاصطناعي وتحسين نتائج التعلم</news:title>
+      <news:title>ابدأ مشروعك الرقمي من صفر — بدون مكتب، بدون رأس مال ضخم، بدون أعذار</news:title>
     </news:news>
   </url>
   <url>
@@ -130,6 +130,20 @@
       </news:publication>
       <news:publication_date>2026-07-15</news:publication_date>
       <news:title>بناء منصات تعليمية فعّالة للمؤسسات الجزائرية</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://donialabstech.online/blog/2026-07-14.html</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <news:news xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+      <news:publication>
+        <news:name>DONIA LABS TECH</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-14</news:publication_date>
+      <news:title>الذكاء الاصطناعي وتحسين نتائج التعلم</news:title>
     </news:news>
   </url>
 </urlset>
