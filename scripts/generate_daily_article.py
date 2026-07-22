@@ -1,335 +1,298 @@
 #!/usr/bin/env python3
 """
-generate_daily_article.py
---------------------------
-Generates one new blog article using the Claude API and inserts it at the
-top of articles/articles.json, in the exact schema the website expects.
+generate_daily_article.py v2 — Diverse topics, premium quality
+----------------------------------------------------------------
+3 topic areas rotate in a planned schedule so content stays diverse
+and consistent with the brand identity of DONIA LABS TECH:
+  Week A: Digital Marketing & Community
+  Week B: Platform Building & Technology
+  Week C: Entrepreneurship & AI Business
 
-Run by: .github/workflows/daily-blog-post.yml (cron + manual trigger)
+Required env var:
+  ANTHROPIC_API_KEY — set as GitHub secret
 
-Required environment variable:
-  ANTHROPIC_API_KEY   -- set as a GitHub Actions secret
-
-Optional environment variable:
-  FORCED_TOPIC        -- override the auto-picked topic (used for manual testing)
+Run by: .github/workflows/generate-article.yml
 """
-
-import json
-import os
-import random
-import re
-import sys
-import urllib.request
-import urllib.error
+import json, os, re, sys, urllib.request, urllib.error
 from datetime import datetime, timezone
 
-ARTICLES_PATH = os.path.join(os.path.dirname(__file__), "..", "articles", "articles.json")
-MAX_ARTICLES_KEPT = 365  # keep the file from growing forever; drop the oldest beyond this
+REPO_ROOT      = os.path.join(os.path.dirname(__file__), "..")
+BLOG_DIR       = os.path.join(REPO_ROOT, "blog")
+SITE_URL       = "https://donialabstech.online"
+AUTHOR_NAME    = "Daoud Touina"
+AUTHOR_TITLE   = "رائد أعمال | مؤسس مختبر الأفكار الذكية وقائد المشاريع"
+MAX_ARTICLES   = 60
 
-AUTHOR_NAME = "Daoud Touina"
-AUTHOR_TITLE = "رائد أعمال | مؤسس مختبر الأفكار الذكية وقائد المشاريع"
+# ─── 3 rotating areas, 6 topics each = 18 total, cycling weekly ───────────────
+TOPIC_ROTATION = {
+    # Area A — Digital Marketing & Community (days: Mon, Thu)
+    "marketing": [
+        "كيف تبني جمهوراً حقيقياً على منصات التواصل بدون إعلانات مدفوعة",
+        "المحتوى العربي وفرص النمو العضوي في 2026",
+        "قياس فعالية حملاتك الرقمية: الأرقام التي تهم فعلاً",
+        "استراتيجية المجتمع: كيف تحول متابعيك إلى عملاء وفيّين",
+        "أتمتة التسويق: أدوات تغنيك عن موظف كامل",
+        "قصة العميل كأداة تسويقية لا تُقاوَم",
+    ],
+    # Area B — Platform Building & Technology (days: Tue, Fri)
+    "tech": [
+        "كيف تختار التقنية المناسبة لبناء منتجك الرقمي",
+        "تجربة المستخدم: الفرق بين منصة تُقنع ومنصة تُنفّر",
+        "الأمن السيبراني الأساسي لكل موقع ومنصة رقمية",
+        "سرعة الموقع وتأثيرها المباشر على إيراداتك",
+        "بناء منصة SaaS: من الفكرة إلى أول مشترك",
+        "الذكاء الاصطناعي في تطوير المنتجات: كيف نستخدمه في DONIA LABS",
+    ],
+    # Area C — Entrepreneurship & AI Business (days: Wed, Sat)
+    "entrepreneurship": [
+        "كيف تبدأ مشروعاً رقمياً ناجحاً بدون مكتب أو رأس مال ضخم",
+        "خمسة أخطاء تقنية يرتكبها رواد الأعمال الرقميون",
+        "التسعير الذكي للخدمات الرقمية: نماذج واستراتيجيات",
+        "كيف تجد أول 10 عملاء لمشروعك الرقمي",
+        "وكلاء الذكاء الاصطناعي في الأعمال: ما يمكنهم فعله اليوم",
+        "بناء شبكة علاقات مهنية حقيقية في العصر الرقمي",
+    ],
+}
 
-# Rotating topic pool. Add as many as you like — the script avoids repeating
-# any topic that matches a recent article title too closely.
-TOPIC_POOL = [
-    # ── الذكاء الاصطناعي والتكنولوجيا ──
-    "كيف يغير الذكاء الاصطناعي التوظيف في المؤسسات العربية",
-    "وكلاء الذكاء الاصطناعي: الجيل القادم من الأتمتة",
-    "الفرق بين ChatGPT وأنظمة الذكاء الاصطناعي المتخصصة للأعمال",
-    "كيف تختار نموذج الذكاء الاصطناعي المناسب لمشروعك",
-    "الذكاء الاصطناعي التوليدي في خدمة المحتوى العربي",
-    "مستقبل العمل عن بُعد مع أدوات الذكاء الاصطناعي",
-    "أمان البيانات في عصر النماذج اللغوية الكبيرة",
-
-    # ── ريادة الأعمال الرقمية ──
-    "كيف تبني شركة رقمية ناجحة بدون مكتب فيزيائي",
-    "من الفكرة إلى الإطلاق: خارطة طريق المشروع الرقمي",
-    "خمسة أخطاء قاتلة يرتكبها رواد الأعمال الرقميون",
-    "بناء علامة تجارية موثوقة في العالم الرقمي",
-    "كيف تجد أول 10 عملاء لمشروعك الرقمي",
-    "التسعير الذكي للخدمات الرقمية: استراتيجيات ونماذج",
-    "العمل الحر أم الشركة: أيهما يناسبك؟",
-
-    # ── التسويق الرقمي ──
-    "التسويق بالمحتوى العربي: كيف تبني جمهوراً حقيقياً",
-    "دليل عملي لبناء حضور رقمي احترافي من الصفر",
-    "فيسبوك أم لينكدإن: أين يجب أن تكون في 2026؟",
-    "أتمتة التسويق: أدوات تغنيك عن موظف كامل",
-    "كيف تقيس فعالية حملاتك التسويقية الرقمية",
-    "قصة العميل كأداة تسويقية لا تقاوَم",
-
-    # ── التعليم والتكنولوجيا ──
-    "مستقبل التكنولوجيا التعليمية في العالم العربي",
-    "كيف يُحوّل الذكاء الاصطناعي الفصل الدراسي",
-    "أنظمة إدارة المدارس الذكية: ما الذي يجب أن تبحث عنه",
-    "الفجوة الرقمية في التعليم: المشكلة والحل",
-
-    # ── إدارة الأعمال والإنتاجية ──
-    "أتمتة الأعمال: من أين تبدأ كشركة صغيرة أو متوسطة",
-    "أدوات إدارة المشاريع التي تُضاعف إنتاجية فريقك",
-    "كيف تبني نظام عمل لا يعتمد على شخص واحد",
-    "قياس الأداء الرقمي: المؤشرات التي تهم فعلاً",
-    "إدارة العملاء عن بُعد: أفضل الممارسات والأدوات",
-
-    # ── المجتمع وبناء الشبكات ──
-    "لماذا يحتاج كل رائد أعمال إلى مجتمع احترافي",
-    "كيف تبني شبكة علاقات مهنية حقيقية في العصر الرقمي",
-    "قوة التعاون بين رواد الأعمال الرقميين",
-    "مجتمعات تيلغرام للأعمال: كيف تستفيد منها بذكاء",
-
-    # ── الأمن والخصوصية ──
-    "الأمن السيبراني الأساسي لكل موقع ومتجر إلكتروني",
-    "حماية بيانات عملائك: ما يجب على كل صاحب مشروع معرفته",
-    "كيف تختار شركة استضافة آمنة وموثوقة",
-
-    # ── تطوير المواقع والمنتجات ──
-    "تجربة المستخدم: الفرق بين موقع يُقنع وموقع يُنفّر",
-    "متجر إلكتروني ناجح: العوامل الخمسة الأساسية",
-    "تطوير تطبيقات الويب في 2026: التقنيات الأكثر طلباً",
-    "لماذا سرعة موقعك تساوي دخلك مباشرةً",
-
-    # ── مشاريع DONIA LABS TECH ──
-    "DONIA SMART SCHOOL: كيف يُحوّل إدارة المدارس رقمياً",
-    "INTELLI CORE: نواة ذكاء اصطناعي للشركات العربية",
-    "مستقبل أنظمة إدارة الموارد البشرية بالذكاء الاصطناعي",
-    "التحول الرقمي في المؤسسات التعليمية: دليل عملي",
-]
+AR_MONTHS = {1:"جانفي",2:"فيفري",3:"مارس",4:"أفريل",5:"ماي",6:"جوان",
+             7:"جويلية",8:"أوت",9:"سبتمبر",10:"أكتوبر",11:"نوفمبر",12:"ديسمبر"}
+AR_DAYS   = ["الإثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت","الأحد"]
 
 IMAGE_POOL = {
-    "default": "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1070&q=80",
-    "تعليم": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1070&q=80",
-    "ذكاء اصطناعي": "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1070&q=80",
-    "تسويق": "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1070&q=80",
-    "تصميم": "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1169&q=80",
-    "أمن سيبراني": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1070&q=80",
-    "أعمال": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1070&q=80",
+    "marketing":       "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80",
+    "tech":            "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200&q=80",
+    "entrepreneurship":"https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&q=80",
 }
 
-AR_MONTHS = {
-    1: "جانفي", 2: "فيفري", 3: "مارس", 4: "أفريل", 5: "ماي", 6: "جوان",
-    7: "جويلية", 8: "أوت", 9: "سبتمبر", 10: "أكتوبر", 11: "نوفمبر", 12: "ديسمبر",
-}
-AR_WEEKDAYS = ["الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت", "الأحد"]
+def ar_date(dt):
+    return f"{AR_DAYS[dt.weekday()]}، {dt.day} {AR_MONTHS[dt.month]} {dt.year}"
 
+def pick_area_and_topic(existing_titles, now):
+    """Pick topic area based on weekday, then rotate through unused topics."""
+    weekday = now.weekday()  # 0=Mon
+    if weekday in (0, 3):   area = "marketing"
+    elif weekday in (1, 4): area = "tech"
+    else:                   area = "entrepreneurship"
 
-def arabic_date_str(dt):
-    return f"{AR_WEEKDAYS[dt.weekday()]}، {dt.day} {AR_MONTHS[dt.month]} {dt.year}"
-
-
-def slugify(text):
-    text = text.strip()
-    text = re.sub(r"\s+", "-", text)
-    text = re.sub(r"[^\w\u0600-\u06FF\-]", "", text)
-    return text[:80] or "مقال"
-
-
-def pick_topic(existing_titles):
     forced = os.environ.get("FORCED_TOPIC")
+    forced_area = os.environ.get("FORCED_AREA", area)
     if forced:
-        return forced
-    candidates = [t for t in TOPIC_POOL if t not in existing_titles]
+        return forced_area, forced
+
+    pool       = TOPIC_ROTATION[area]
+    candidates = [t for t in pool if t not in existing_titles]
     if not candidates:
-        candidates = TOPIC_POOL
-    return random.choice(candidates)
+        candidates = pool  # All used — restart cycle
+    import random; random.shuffle(candidates)
+    return area, candidates[0]
 
+def build_prompt(topic, area, date_str):
+    area_context = {
+        "marketing":       "التسويق الرقمي وبناء المجتمعات",
+        "tech":            "بناء المنصات والتكنولوجيا",
+        "entrepreneurship":"ريادة الأعمال الرقمية والذكاء الاصطناعي",
+    }[area]
 
-def pick_image(tags):
-    for t in tags:
-        for key, url in IMAGE_POOL.items():
-            if key != "default" and key in t:
-                return url
-    return IMAGE_POOL["default"]
-
-
-def call_claude(prompt):
-    api_key = os.environ["ANTHROPIC_API_KEY"]
-    body = json.dumps({
-        "model": "claude-sonnet-4-6",
-        "max_tokens": 2200,
-        "messages": [{"role": "user", "content": prompt}],
-    }).encode("utf-8")
-    req = urllib.request.Request(
-        "https://api.anthropic.com/v1/messages",
-        data=body,
-        headers={
-            "Content-Type": "application/json",
-            "x-api-key": api_key,
-            "anthropic-version": "2023-06-01",
-        },
-    )
-    with urllib.request.urlopen(req, timeout=90) as resp:
-        data = json.loads(resp.read().decode("utf-8"))
-    return data["content"][0]["text"]
-
-
-def build_prompt(topic, date_str):
-    return f"""أنت كاتب مدونة تقنية متخصص لمختبر DONIA LABS TECH الجزائري، تكتب باسم المؤسس Daoud Touina.
-
-اكتب مقالاً يومياً احترافياً حول الموضوع التالي: "{topic}"
+    return f"""أنت كاتب متخصص في {area_context} لمختبر DONIA LABS TECH الرقمي.
+اكتب مقالاً احترافياً عملياً حول: "{topic}"
 تاريخ اليوم: {date_str}
 
-أعد الإجابة بهذا الشكل الدقيق فقط (بدون أي نص إضافي قبله أو بعده):
+القواعد الإلزامية:
+- أسلوب مباشر وعملي كأنك تتحدث لرائد أعمال يبحث عن حلول
+- لا تبدأ بـ "في عصر..." أو "في عالمنا اليوم..."
+- مثال عملي أو رقم أو حالة واقعية في كل قسم
+- اذكر DONIA LABS TECH بشكل طبيعي مرة أو مرتين فقط
+- الخاتمة: دعوة للتواصل عبر https://wa.me/213674661737
 
-عنوان: <عنوان جذاب ومباشر — يعكس صوت خبير ورائد أعمال، وليس أكاديمياً>
-ملخص: <ملخص من سطرين، يُغري القارئ بالاستمرار>
-وسوم: <3 إلى 4 وسوم مفصولة بفاصلة>
+أعد الإجابة بهذا الشكل فقط (بدون أي نص إضافي):
+
+عنوان: <عنوان جذاب ومباشر>
+ملخص: <جملتان تُغريان بالقراءة>
+وسوم: <3 وسوم مفصولة بفاصلة>
 ---
-<محتوى المقال الكامل بصيغة Markdown. القواعد الإلزامية:
-- يبدأ بـ ## (عنوان فرعي) مباشرة — لا # في البداية
-- 4 إلى 5 أقسام واضحة
-- بين 600 و900 كلمة
-- أسلوب مباشر، عملي، ومتخصص — كأنك تتحدث لرائد أعمال
-- مثال عملي أو حالة واقعية في الأقسام
-- DONIA LABS TECH تُذكر بشكل طبيعي كمختبر رقمي متخصص
-- لا تبدأ بـ "في عصر..." أو "في عالمنا اليوم..." — ابدأ بجملة مباشرة وجريئة
-- الخاتمة: دعوة للتفاعل أو التواصل عبر https://wa.me/213674661737>
-"""
+<محتوى Markdown: يبدأ بـ ## (لا #)، 4 أقسام، 600-800 كلمة>"""
 
+def call_claude(prompt):
+    body = json.dumps({
+        "model": "claude-sonnet-4-6",
+        "max_tokens": 2500,
+        "messages": [{"role": "user", "content": prompt}],
+    }).encode()
+    req = urllib.request.Request(
+        "https://api.anthropic.com/v1/messages", data=body,
+        headers={"Content-Type": "application/json",
+                 "x-api-key": os.environ["ANTHROPIC_API_KEY"],
+                 "anthropic-version": "2023-06-01"},
+    )
+    with urllib.request.urlopen(req, timeout=90) as r:
+        return json.loads(r.read())["content"][0]["text"]
 
-def parse_response(text, fallback_topic):
-    header_match = re.search(r"^---$", text, re.MULTILINE)
-    if not header_match:
-        # Could not find the separator — treat whole thing as body, use fallback topic as title
-        return {
-            "title": fallback_topic,
-            "excerpt": "",
-            "tags": [],
-            "markdown": text.strip(),
-        }
-
-    header = text[: header_match.start()]
-    body = text[header_match.end():].strip()
-
-    title_m = re.search(r"^عنوان:\s*(.+)$", header, re.MULTILINE)
-    excerpt_m = re.search(r"^ملخص:\s*(.+)$", header, re.MULTILINE)
-    tags_m = re.search(r"^وسوم:\s*(.+)$", header, re.MULTILINE)
-
-    title = title_m.group(1).strip() if title_m else fallback_topic
-    excerpt = excerpt_m.group(1).strip() if excerpt_m else ""
-    tags = [t.strip() for t in tags_m.group(1).split(",")] if tags_m else []
-
-    return {"title": title, "excerpt": excerpt, "tags": tags, "markdown": body}
-
-
-def markdown_to_html(md):
-    html = md
-    html = re.sub(r"^### (.+)$", r"<h4>\1</h4>", html, flags=re.MULTILINE)
-    html = re.sub(r"^## (.+)$", r"<h3>\1</h3>", html, flags=re.MULTILINE)
-    html = re.sub(r"^# (.+)$", r"<h2>\1</h2>", html, flags=re.MULTILINE)
-    html = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", html)
-    html = re.sub(r"\*(.+?)\*", r"<em>\1</em>", html)
-    html = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2" target="_blank" rel="noopener">\1</a>', html)
-    html = re.sub(r"^\d+\.\s+(.+)$", r'<li data-ol="1">\1</li>', html, flags=re.MULTILINE)
-    html = re.sub(r"^-\s+(.+)$", r'<li data-ol="0">\1</li>', html, flags=re.MULTILINE)
-    html = re.sub(r"^---$", r"<hr>", html, flags=re.MULTILINE)
-
-    # Wrap consecutive <li> lines in <ol>/<ul> (matching their original marker type),
-    # and remaining paragraphs in <p>
-    lines = html.split("\n")
-    out, list_tag, para = [], None, []
-    li_re = re.compile(r'^<li data-ol="(\d)">')
-
-    def flush_para():
-        if para:
-            text = " ".join(para).strip()
-            if text:
-                out.append(f"<p>{text}</p>")
-            para.clear()
-
-    def close_list():
-        nonlocal list_tag
-        if list_tag:
-            out.append(f"</{list_tag}>")
-            list_tag = None
-
-    for line in lines:
-        stripped = line.strip()
-        li_match = li_re.match(stripped)
-        if li_match:
-            flush_para()
-            wanted_tag = "ol" if li_match.group(1) == "1" else "ul"
-            if list_tag != wanted_tag:
-                close_list()
-                out.append(f"<{wanted_tag}>")
-                list_tag = wanted_tag
-            out.append(re.sub(r' data-ol="\d"', "", stripped))
-        else:
-            close_list()
-            if stripped.startswith("<h") or stripped.startswith("<hr"):
-                flush_para()
-                out.append(stripped)
-            elif stripped == "":
-                flush_para()
-            else:
-                para.append(stripped)
-    close_list()
-    flush_para()
-
-    return "\n".join(out)
-
-
-def estimate_read_time(markdown_text):
-    words = len(re.findall(r"\S+", markdown_text))
-    minutes = max(1, round(words / 180))
-    return f"{minutes} دقائق قراءة" if minutes != 1 else "دقيقة قراءة واحدة"
-
-
-def main():
-    with open(ARTICLES_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
-
-    existing_titles = {a.get("title", "") for a in data.get("articles", [])}
-    topic = pick_topic(existing_titles)
-    now = datetime.now(timezone.utc)
-    date_str = arabic_date_str(now)
-
-    prompt = build_prompt(topic, date_str)
-
-    try:
-        raw = call_claude(prompt)
-    except urllib.error.HTTPError as e:
-        print(f"::error::Claude API HTTP error: {e.code} {e.read().decode('utf-8', 'ignore')}", file=sys.stderr)
-        sys.exit(1)
-    except Exception as e:
-        print(f"::error::Claude API call failed: {e}", file=sys.stderr)
-        sys.exit(1)
-
-    parsed = parse_response(raw, topic)
-    html = markdown_to_html(parsed["markdown"])
-
-    article = {
-        "id": str(int(now.timestamp() * 1000)),
-        "slug": slugify(parsed["title"]),
-        "title": parsed["title"],
-        "excerpt": parsed["excerpt"],
-        "image": pick_image(parsed["tags"]),
-        "author": AUTHOR_NAME,
-        "authorTitle": AUTHOR_TITLE,
-        "date": now.isoformat(),
-        "dateStr": date_str,
-        "readTime": estimate_read_time(parsed["markdown"]),
-        "views": 0,
-        "tags": parsed["tags"],
-        "aiGenerated": True,
-        "html": html,
-        "markdown": parsed["markdown"],
+def parse(text, fallback_topic):
+    sep = re.search(r"^---$", text, re.MULTILINE)
+    if not sep:
+        return {"title": fallback_topic, "excerpt": "", "tags": [], "markdown": text.strip()}
+    header, body = text[:sep.start()], text[sep.end():].strip()
+    tm = re.search(r"^عنوان:\s*(.+)$", header, re.M)
+    em = re.search(r"^ملخص:\s*(.+)$",  header, re.M)
+    km = re.search(r"^وسوم:\s*(.+)$",  header, re.M)
+    return {
+        "title":    tm.group(1).strip() if tm else fallback_topic,
+        "excerpt":  em.group(1).strip() if em else "",
+        "tags":     [t.strip() for t in km.group(1).split(",")] if km else [],
+        "markdown": body,
     }
 
-    data.setdefault("articles", []).insert(0, article)
-    data["articles"] = data["articles"][:MAX_ARTICLES_KEPT]
-    data["lastUpdated"] = now.isoformat()
+def md_to_html(md):
+    h = md
+    h = re.sub(r"^### (.+)$", r"<h4>\1</h4>",  h, flags=re.M)
+    h = re.sub(r"^## (.+)$",  r"<h3>\1</h3>",  h, flags=re.M)
+    h = re.sub(r"^# (.+)$",   r"<h2>\1</h2>",  h, flags=re.M)
+    h = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", h)
+    h = re.sub(r"\*(.+?)\*",     r"<em>\1</em>", h)
+    h = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2" target="_blank" rel="noopener">\1</a>', h)
+    h = re.sub(r"^\d+\.\s+(.+)$", r'<li data-ol="1">\1</li>', h, flags=re.M)
+    h = re.sub(r"^-\s+(.+)$",     r'<li data-ol="0">\1</li>', h, flags=re.M)
+    h = re.sub(r"^---$", r"<hr>", h, flags=re.M)
+    lines, out, tag, para = h.split("\n"), [], None, []
+    li_re = re.compile(r'^<li data-ol="(\d)">')
+    def fp():
+        if para:
+            t = " ".join(para).strip()
+            if t: out.append(f"<p>{t}</p>")
+            para.clear()
+    def cl():
+        nonlocal tag
+        if tag: out.append(f"</{tag}>"); tag = None
+    for ln in lines:
+        s = ln.strip()
+        m = li_re.match(s)
+        if m:
+            fp(); want = "ol" if m.group(1)=="1" else "ul"
+            if tag != want: cl(); out.append(f"<{want}>"); tag = want
+            out.append(re.sub(r' data-ol="\d"', "", s))
+        else:
+            cl()
+            if s.startswith("<h") or s.startswith("<hr"): fp(); out.append(s)
+            elif s == "": fp()
+            else: para.append(s)
+    cl(); fp()
+    return "\n".join(out)
 
-    with open(ARTICLES_PATH, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-        f.write("\n")
+def build_html_page(p, area, now, image):
+    canonical = f"{SITE_URL}/blog/{now.strftime('%Y-%m-%d')}.html"
+    esc = lambda s: str(s).replace('"','&quot;').replace('<','&lt;').replace('>','&gt;')
+    jsonld = json.dumps({
+        "@context": "https://schema.org", "@type": "BlogPosting",
+        "headline": p["title"], "description": p["excerpt"],
+        "image": image, "datePublished": now.replace(tzinfo=timezone.utc).isoformat(),
+        "author": {"@type":"Person","name":AUTHOR_NAME,"jobTitle":AUTHOR_TITLE,"url":SITE_URL},
+        "publisher": {"@type":"Organization","name":"DONIA LABS TECH",
+                      "logo":{"@type":"ImageObject","url":f"{SITE_URL}/images/daoud-touina.jpg"}},
+        "mainEntityOfPage": {"@type":"WebPage","@id":canonical},
+        "url": canonical, "keywords": ", ".join(p["tags"]), "inLanguage": "ar",
+    }, ensure_ascii=False, indent=2)
+    body_html = md_to_html(p["markdown"])
+    return f"""<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>{esc(p['title'])} | DONIA LABS TECH</title>
+<meta name="description" content="{esc(p['excerpt'][:160])}">
+<meta name="author" content="{AUTHOR_NAME}">
+<meta property="og:type"        content="article">
+<meta property="og:title"       content="{esc(p['title'])}">
+<meta property="og:description" content="{esc(p['excerpt'][:160])}">
+<meta property="og:image"       content="{image}">
+<meta property="og:url"         content="{canonical}">
+<meta property="og:site_name"   content="DONIA LABS TECH">
+<meta name="twitter:card"       content="summary_large_image">
+<meta name="twitter:title"      content="{esc(p['title'])}">
+<meta name="twitter:description" content="{esc(p['excerpt'][:160])}">
+<meta name="twitter:image"      content="{image}">
+<link rel="canonical" href="{canonical}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{jsonld}
+</script>
+<style>
+*{{margin:0;padding:0;box-sizing:border-box}}
+body{{font-family:'Tajawal',sans-serif;background:#f8fafc;color:#1e293b;line-height:1.85;direction:rtl}}
+header{{background:linear-gradient(135deg,#0f172a,#1a0a3a);padding:40px 20px 30px;text-align:center}}
+header a{{color:#c4b5fd;font-size:.85rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:18px}}
+header h1{{color:#fff;font-size:clamp(1.5rem,4vw,2.1rem);font-weight:800;line-height:1.25;margin-bottom:12px}}
+.meta{{color:#94a3b8;font-size:.82rem;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}}
+.hero-img{{width:100%;max-height:380px;object-fit:cover;display:block}}
+.container{{max-width:760px;margin:0 auto;padding:36px 20px 60px}}
+h2{{font-size:1.5rem;color:#7c3aed;margin:2rem 0 .8rem;font-weight:800}}
+h3{{font-size:1.2rem;color:#06b6d4;margin:1.5rem 0 .6rem;font-weight:700}}
+h4{{font-size:1.05rem;color:#1e293b;margin:1.2rem 0 .5rem;font-weight:700}}
+p{{margin-bottom:1rem}}
+ul,ol{{padding-right:1.2rem;margin-bottom:1rem}}
+li{{padding:3px 0}}
+strong{{color:#0f172a}}
+a{{color:#7c3aed;text-decoration:none;border-bottom:1px dashed #7c3aed}}
+hr{{border:none;border-top:2px solid #e2e8f0;margin:2rem 0}}
+.tags{{display:flex;flex-wrap:wrap;gap:8px;margin:2rem 0 0}}
+.tag{{background:#ede9fe;color:#7c3aed;padding:4px 14px;border-radius:20px;font-size:.8rem;font-weight:700}}
+footer{{text-align:center;padding:24px;font-size:.8rem;color:#64748b;border-top:1px solid #e2e8f0}}
+</style>
+</head>
+<body>
+<header>
+  <a href="{SITE_URL}">← العودة إلى DONIA LABS TECH</a>
+  <h1>{esc(p['title'])}</h1>
+  <div class="meta">
+    <span>✍ {AUTHOR_NAME}</span>
+    <span>📅 {now.strftime('%Y-%m-%d')}</span>
+    <span>⏱ {max(1,round(len(p['markdown'].split())//180))} دقائق</span>
+  </div>
+</header>
+<img src="{image}" alt="{esc(p['title'])}" class="hero-img">
+<div class="container">
+{body_html}
+<div class="tags">{''.join(f'<span class="tag">{esc(t)}</span>' for t in p["tags"])}</div>
+</div>
+<footer>© 2026 DONIA LABS TECH — <a href="{SITE_URL}">donialabstech.online</a></footer>
+</body>
+</html>"""
 
-    print(f"Published article: {article['title']} ({article['id']})")
-    # Expose the title to the workflow step for the commit message
-    gh_output = os.environ.get("GITHUB_OUTPUT")
-    if gh_output:
-        with open(gh_output, "a", encoding="utf-8") as f:
-            f.write(f"article_title={article['title']}\n")
+def main():
+    now = datetime.now(timezone.utc)
+    date_str = f"{AR_DAYS[now.weekday()]}، {now.day} {AR_MONTHS[now.month]} {now.year}"
 
+    # Load existing titles for dedup check
+    manifest_path = os.path.join(BLOG_DIR, "index.json")
+    existing_titles = set()
+    if os.path.exists(manifest_path):
+        with open(manifest_path, encoding="utf-8") as f:
+            existing_titles = {a.get("title","") for a in json.load(f).get("articles",[])}
+
+    area, topic = pick_area_and_topic(existing_titles, now)
+
+    try:
+        raw = call_claude(build_prompt(topic, area, date_str))
+    except urllib.error.HTTPError as e:
+        print(f"::error::Claude API {e.code}: {e.read().decode('utf-8','ignore')}", file=sys.stderr)
+        sys.exit(1)
+
+    p     = parse(raw, topic)
+    image = IMAGE_POOL[area]
+    html  = build_html_page(p, area, now, image)
+
+    fname = now.strftime("%Y-%m-%d") + ".html"
+    path  = os.path.join(BLOG_DIR, fname)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"✅ Published: {fname} | Area: {area} | Title: {p['title']}")
+
+    # Expose for GitHub Actions commit message
+    gho = os.environ.get("GITHUB_OUTPUT")
+    if gho:
+        with open(gho, "a", encoding="utf-8") as f:
+            f.write(f"article_title={p['title']}\n")
+            f.write(f"article_area={area}\n")
 
 if __name__ == "__main__":
     main()
