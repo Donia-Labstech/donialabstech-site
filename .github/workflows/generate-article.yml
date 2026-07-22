@@ -1,0 +1,48 @@
+name: Generate Daily Article
+
+on:
+  schedule:
+    - cron: '0 18 * * *'   # 18:00 UTC daily
+  workflow_dispatch:
+    inputs:
+      forced_topic:
+        description: 'موضوع محدد (اختياري)'
+        required: false
+      forced_area:
+        description: 'القسم (marketing / tech / entrepreneurship)'
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate article
+        id: gen
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          FORCED_TOPIC:      ${{ github.event.inputs.forced_topic }}
+          FORCED_AREA:       ${{ github.event.inputs.forced_area }}
+        run: python scripts/generate_daily_article.py
+
+      - name: Rebuild manifest + sitemap + RSS
+        run: |
+          python scripts/build_blog_manifest.py
+          python scripts/build_sitemap.py
+          python scripts/build_rss_feed.py
+
+      - name: Commit & push
+        run: |
+          git config user.name "DONIA Blog Bot"
+          git config user.email "bot@donialabstech.online"
+          git add blog/ sitemap.xml feed.xml
+          git diff --quiet --cached || git commit -m "📝 ${{ steps.gen.outputs.article_title }} [${{ steps.gen.outputs.article_area }}]"
+          git push
