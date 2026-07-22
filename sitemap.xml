@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  <url>
+    <loc>https://donialabstech.online</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://donialabstech.online/privacy-policy.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://donialabstech.online/terms-of-service.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://donialabstech.online/blog/2026-07-21.html</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <news:news xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+      <news:publication>
+        <news:name>DONIA LABS TECH</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-21</news:publication_date>
+      <news:title>التحول الرقمي في قطاع التعليم الجزائري</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://donialabstech.online/blog/2026-07-20.html</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <news:news xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+      <news:publication>
+        <news:name>DONIA LABS TECH</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-20</news:publication_date>
+      <news:title>أفضل أدوات التكنولوجيا للطلاب</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://donialabstech.online/blog/2026-07-19.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <news:news xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+      <news:publication>
+        <news:name>DONIA LABS TECH</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-19</news:publication_date>
+      <news:title>إدارة المدارس الذكية: نحو رقمنة التعليم</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://donialabstech.online/blog/2026-07-18.html</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <news:news xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+      <news:publication>
+        <news:name>DONIA LABS TECH</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-18</news:publication_date>
+      <news:title>تطبيقات الذكاء الاصطناعي في المدارس الجزائرية</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://donialabstech.online/blog/2026-07-17.html</loc>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <news:news xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+      <news:publication>
+        <news:name>DONIA LABS TECH</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-17</news:publication_date>
+      <news:title>مستقبل التكنولوجيا التعليمية في الجزائر</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://donialabstech.online/blog/2026-07-16.html</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <news:news xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+      <news:publication>
+        <news:name>DONIA LABS TECH</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-16</news:publication_date>
+      <news:title>كيف يغير الذكاء الاصطناعي التعليم في العالم العربي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://donialabstech.online/blog/2026-07-15.html</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <news:news xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+      <news:publication>
+        <news:name>DONIA LABS TECH</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-15</news:publication_date>
+      <news:title>بناء منصات تعليمية فعّالة للمؤسسات الجزائرية</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://donialabstech.online/blog/2026-07-14.html</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <news:news xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+      <news:publication>
+        <news:name>DONIA LABS TECH</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-14</news:publication_date>
+      <news:title>الذكاء الاصطناعي وتحسين نتائج التعلم</news:title>
+    </news:news>
+  </url>
+</urlset>
