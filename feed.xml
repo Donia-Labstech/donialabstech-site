@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Wed, 05 Aug 2026 20:06:19 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 07 Aug 2026 00:03:02 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>الذكاء الاصطناعي في تطوير المنتجات: كيف نبني أسرع ونخطئ أقل</title>
+    <link>https://donialabstech.online/blog/2026-08-07.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-08-07.html</guid>
+    <description>📝 الذكاء الاصطناعي في تطوير المنتجات: كيف نبني أسرع ونخطئ أقل
+
+بناء منتج رقمي بدون الذكاء الاصطناعي اليوم يشبه الحفر بالمجرفة بينما الآخرون يستخدمون الحفارات. هذا ما نفعله فعلياً في المختبر لتسليم منتجات أسرع وأذكى.
+
+🔗 https://donialabstech.online/blog/2026-08-07.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Fri, 07 Aug 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>5 أخطاء تقنية تُغرق مشروعك الرقمي قبل أن ينطلق</title>
     <link>https://donialabstech.online/blog/2026-08-05.html</link>
@@ -258,19 +271,6 @@
 🔗 https://donialabstech.online/blog/2026-07-18.html</description>
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Sat, 18 Jul 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>مستقبل التكنولوجيا التعليمية في الجزائر</title>
-    <link>https://donialabstech.online/blog/2026-07-17.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-07-17.html</guid>
-    <description>📝 مستقبل التكنولوجيا التعليمية في الجزائر
-
-6 | DONIA LABS TECH* --- تشهد الجزائر اليوم تحولاً جوهرياً في منظومتها التعليمية، إذ لم تعد التكنولوجيا مجرد أداة مساعدة، بل أصبحت ركيزةً أساسية في بناء جيل المستقبل. مع تسارع وتيرة التحول الرقمي على المستوى الوطني، وتنامي الاهتما
-
-🔗 https://donialabstech.online/blog/2026-07-17.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Fri, 17 Jul 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
