@@ -51,4 +51,9 @@ jobs:
           git config user.email "bot@donialabstech.online"
           git add blog/ sitemap.xml feed.xml
           git diff --quiet --cached || git commit -m "📝 ${{ steps.gen.outputs.article_title }} [${{ steps.gen.outputs.article_area }}]"
-          git push
+          for i in 1 2 3 4 5; do
+            git push && break
+            echo "⚠️ Push rejected (attempt $i) — pulling latest changes and retrying..."
+            git pull --rebase origin main
+            sleep 3
+          done
