@@ -74,17 +74,17 @@ def pick_area_and_topic(existing_titles, now):
     elif weekday in (1, 4): area = "tech"
     else:                   area = "entrepreneurship"
 
-    forced = os.environ.get("FORCED_TOPIC")
-    forced_area = os.environ.get("FORCED_AREA", area)
-    if forced:
-        return forced_area, forced
+    forced_area  = os.environ.get("FORCED_AREA") or area
+    forced_topic = os.environ.get("FORCED_TOPIC")
+    if forced_topic:
+        return forced_area, forced_topic
 
-    pool       = TOPIC_ROTATION[area]
+    pool       = TOPIC_ROTATION[forced_area]
     candidates = [t for t in pool if t not in existing_titles]
     if not candidates:
         candidates = pool  # All used — restart cycle
     import random; random.shuffle(candidates)
-    return area, candidates[0]
+    return forced_area, candidates[0]
 
 def build_prompt(topic, area, date_str):
     area_context = {
@@ -138,7 +138,7 @@ def parse(text, fallback_topic):
     return {
         "title":    tm.group(1).strip() if tm else fallback_topic,
         "excerpt":  em.group(1).strip() if em else "",
-        "tags":     [t.strip() for t in km.group(1).split(",")] if km else [],
+        "tags":     [t.strip() for t in re.split(r"[,،]", km.group(1)) if t.strip()] if km else [],
         "markdown": body,
     }
 
