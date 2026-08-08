@@ -6,7 +6,7 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Sat, 08 Aug 2026 12:18:39 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 08 Aug 2026 12:30:59 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
@@ -25,6 +25,19 @@
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Sat, 08 Aug 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
+  <item>
+    <title>الاستدامة الرقمية: كيف تبني مشروعاً يدوم</title>
+    <link>https://donialabstech.online/blog/2026-08-08-am.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-08-08-am.html</guid>
+    <description>📝 الاستدامة الرقمية: كيف تبني مشروعاً يدوم
+
+المشاريع الرقمية تُولد بحماس كبير، ثم تختفي في صمت بعد أشهر قليلة. السبب ليس غياب الفكرة الجيدة، بل غياب الاستدامة كمنهج تفكير منذ اليوم الأول. الاستدامة الرقمية لا تعني فقط الاستمرار، بل تعني بناء نظام يتجدد ذاتياً، يتكيف مع التغ
+
+🔗 https://donialabstech.online/blog/2026-08-08-am.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Sat, 08 Aug 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
   <item>
     <title>الذكاء الاصطناعي في تطوير المنتجات: كيف نبني أسرع ونخطئ أقل</title>
@@ -258,19 +271,6 @@
 🔗 https://donialabstech.online/blog/2026-07-20.html</description>
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Mon, 20 Jul 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>إدارة المدارس الذكية: نحو رقمنة التعليم</title>
-    <link>https://donialabstech.online/blog/2026-07-19.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-07-19.html</guid>
-    <description>📝 إدارة المدارس الذكية: نحو رقمنة التعليم
-
-دمة يشهد العالم اليوم تحولاً جذرياً في طريقة إدارة المؤسسات التعليمية، إذ لم تعد الورقة والقلم كافيَيْن لمواكبة متطلبات العصر الرقمي. من الجدول الدراسي إلى متابعة أداء الطلاب، باتت التكنولوجيا تُعيد رسم ملامح المدرسة من الداخل. في
-
-🔗 https://donialabstech.online/blog/2026-07-19.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Sun, 19 Jul 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
