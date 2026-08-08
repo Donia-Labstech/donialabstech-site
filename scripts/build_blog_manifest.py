@@ -19,7 +19,7 @@ AUTHOR_NAME  = "Daoud Touina"
 AUTHOR_TITLE = "رائد أعمال | مؤسس مختبر الأفكار الذكية وقائد المشاريع"
 SITE_NAME    = "DONIA LABS TECH — مختبر الأفكار الذكية"
 
-DATE_RE = re.compile(r"^(\d{4})-(\d{2})-(\d{2})\.html$")
+DATE_RE = re.compile(r"^(\d{4})-(\d{2})-(\d{2})(-[a-z]+)?\.html$")
 AR_MONTHS = {1:"جانفي",2:"فيفري",3:"مارس",4:"أفريل",5:"ماي",6:"جوان",
              7:"جويلية",8:"أوت",9:"سبتمبر",10:"أكتوبر",11:"نوفمبر",12:"ديسمبر"}
 AR_DAYS   = ["الإثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت","الأحد"]
@@ -45,7 +45,7 @@ def pick_image(tags):
                 return url
     return IMAGE_POOL["default"]
 
-def extract(html, fname, file_date):
+def extract(html, fname, file_date, slug):
     title_m   = re.search(r"<title>(.*?)</title>", html)
     title     = re.sub(r"\s*\|?\s*DONIA LABS TECH\s*$", "", title_m.group(1)).strip() if title_m else fname
 
@@ -78,8 +78,8 @@ def extract(html, fname, file_date):
     url   = f"blog/{fname}"
 
     return {
-        "id":          file_date.strftime("%Y-%m-%d"),
-        "slug":        file_date.strftime("%Y-%m-%d"),
+        "id":          slug,
+        "slug":        slug,
         "title":       title,
         "excerpt":     excerpt[:240],
         "image":       image,
@@ -162,15 +162,16 @@ def main():
         m = DATE_RE.match(fname)
         if not m: continue
         file_date = datetime(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+        slug = fname[:-5]  # e.g. "2026-08-08" or "2026-08-08-am" (strip ".html")
         path = os.path.join(BLOG_DIR, fname)
         with open(path, encoding="utf-8", errors="ignore") as f:
             html = f.read()
-        raw.append((fname, file_date, html, path))
+        raw.append((fname, file_date, slug, html, path))
 
     # Deduplication — keep newest per unique title
     seen, entries = set(), []
-    for fname, file_date, html, path in raw:
-        a = extract(html, fname, file_date)
+    for fname, file_date, slug, html, path in raw:
+        a = extract(html, fname, file_date, slug)
         if a["title"] not in seen:
             seen.add(a["title"])
             entries.append(a)
