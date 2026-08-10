@@ -4,21 +4,35 @@
   xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
     <loc>https://donialabstech.online</loc>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://donialabstech.online/privacy-policy.html</loc>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://donialabstech.online/terms-of-service.html</loc>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://donialabstech.online/blog/2026-08-10-am.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <news:news xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+      <news:publication>
+        <news:name>DONIA LABS TECH</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-10</news:publication_date>
+      <news:title>كيف تستعمل الذكاء الاصطناعي لتحسين إنتاجيتك اليومية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://donialabstech.online/blog/2026-08-09.html</loc>
