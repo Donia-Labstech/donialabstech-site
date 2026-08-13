@@ -21,6 +21,20 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://donialabstech.online/blog/2026-08-13.html</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <news:news xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+      <news:publication>
+        <news:name>DONIA LABS TECH</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-13</news:publication_date>
+      <news:title>المحتوى العربي في 2026: كيف تحوّل الكلمات إلى زبائن دون إنفاق درهم واحد على الإعلانات</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://donialabstech.online/blog/2026-08-13-am.html</loc>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
