@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Sat, 15 Aug 2026 18:55:00 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 16 Aug 2026 08:01:02 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>كيف تبني علامة تجارية شخصية قوية في مجالك</title>
+    <link>https://donialabstech.online/blog/2026-08-16-am.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-08-16-am.html</guid>
+    <description>📝 كيف تبني علامة تجارية شخصية قوية في مجالك
+
+م رقمي يزداد تنافسيةً يوماً بعد يوم، لم يعد يكفي أن تمتلك مهارة أو خبرة فحسب؛ بل أصبح من الضروري أن يعرفك الناس بها. العلامة التجارية الشخصية هي الصورة التي يرسمها الآخرون عنك في أذهانهم حين يسمعون اسمك. إنها مزيج دقيق من قيمك، وأ
+
+🔗 https://donialabstech.online/blog/2026-08-16-am.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Sun, 16 Aug 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>أول 10 عملاء لمشروعك الرقمي — الطريق الأقصر الذي لا يخبرك به أحد</title>
     <link>https://donialabstech.online/blog/2026-08-15.html</link>
@@ -259,19 +272,6 @@ S TECH --- في عالم الأعمال المتسارع اليوم، لم تع�
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Tue, 04 Aug 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>أتمتة التسويق: أدوات تغنيك عن موظف كامل وتضاعف نتائجك</title>
-    <link>https://donialabstech.online/blog/2026-08-03.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-08-03.html</guid>
-    <description>📝 أتمتة التسويق: أدوات تغنيك عن موظف كامل وتضاعف نتائجك
-
-إذا كنت تقضي ساعات يومياً في مهام تسويقية متكررة، فأنت لا تدير عملاً — أنت تؤدي وظيفة. هذا المقال يريحك من هذا العبء بأدوات حقيقية وقابلة للتطبيق فوراً.
-
-🔗 https://donialabstech.online/blog/2026-08-03.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Mon, 03 Aug 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
 </rss>
