@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Sun, 16 Aug 2026 08:01:02 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 16 Aug 2026 18:30:33 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>كيف تجد أول 10 عملاء لمشروعك الرقمي (دليل عملي خطوة بخطوة)</title>
+    <link>https://donialabstech.online/blog/2026-08-16.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-08-16.html</guid>
+    <description>📝 كيف تجد أول 10 عملاء لمشروعك الرقمي (دليل عملي خطوة بخطوة)
+
+أول 10 عملاء هم الأصعب والأهم في رحلتك — لكن معظم رواد الأعمال يبحثون عنهم في المكان الخطأ. هذا الدليل يُريك بالضبط أين تجدهم وكيف تُقنعهم.
+
+🔗 https://donialabstech.online/blog/2026-08-16.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Sun, 16 Aug 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>كيف تبني علامة تجارية شخصية قوية في مجالك</title>
     <link>https://donialabstech.online/blog/2026-08-16-am.html</link>
@@ -259,19 +272,6 @@ S TECH --- في عالم الأعمال المتسارع اليوم، لم تع�
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>الذكاء الاصطناعي في تطوير المنتجات: ما الذي يعمل فعلاً وما الذي يضيع وقتك</title>
-    <link>https://donialabstech.online/blog/2026-08-04.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-08-04.html</guid>
-    <description>📝 الذكاء الاصطناعي في تطوير المنتجات: ما الذي يعمل فعلاً وما الذي يضيع وقتك
-
-كثيرون يتحدثون عن الذكاء الاصطناعي في بناء المنتجات، لكن القليل يشرح كيف يُترجم إلى قرارات يومية وكود حقيقي. هذا ما نفعله فعلاً داخل مختبرنا.
-
-🔗 https://donialabstech.online/blog/2026-08-04.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Tue, 04 Aug 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
 </rss>
