@@ -21,6 +21,20 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://donialabstech.online/blog/2026-08-20.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <news:news xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+      <news:publication>
+        <news:name>DONIA LABS TECH</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-20</news:publication_date>
+      <news:title>أتمتة التسويق: 5 أدوات تُغنيك عن توظيف مسوّق بدوام كامل</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://donialabstech.online/blog/2026-08-20-am.html</loc>
     <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>

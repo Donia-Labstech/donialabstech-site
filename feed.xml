@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Thu, 20 Aug 2026 08:01:01 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 20 Aug 2026 18:40:59 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>أتمتة التسويق: 5 أدوات تُغنيك عن توظيف مسوّق بدوام كامل</title>
+    <link>https://donialabstech.online/blog/2026-08-20.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-08-20.html</guid>
+    <description>📝 أتمتة التسويق: 5 أدوات تُغنيك عن توظيف مسوّق بدوام كامل
+
+إذا كنت تُدير مشروعك وتشعر أن التسويق يأكل وقتك ومواردك، فأنت لا تحتاج موظفاً جديداً — تحتاج نظاماً ذكياً يعمل بدلاً عنك. هذا المقال يُريك بالأرقام والأدوات كيف
+
+🔗 https://donialabstech.online/blog/2026-08-20.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Thu, 20 Aug 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>كيف تستعمل الذكاء الاصطناعي لتحسين إنتاجيتك اليومية</title>
     <link>https://donialabstech.online/blog/2026-08-20-am.html</link>
@@ -259,19 +272,6 @@ TECH* --- مقدمة في عالم التحول الرقمي المتسارع، 
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Mon, 10 Aug 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>شبكة علاقاتك المهنية هي أصلك الأكثر قيمة — إليك كيف تبنيها فعلياً</title>
-    <link>https://donialabstech.online/blog/2026-08-09.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-08-09.html</guid>
-    <description>📝 شبكة علاقاتك المهنية هي أصلك الأكثر قيمة — إليك كيف تبنيها فعلياً
-
-التواصل الحقيقي لا يُبنى بإرسال طلبات LinkedIn عشوائية، بل باستراتيجية واضحة وقيمة مقدَّمة قبل أي طلب. هذا المقال يعطيك الخارطة العملية لبناء شبكة تفتح لك أبواب
-
-🔗 https://donialabstech.online/blog/2026-08-09.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
 </rss>
