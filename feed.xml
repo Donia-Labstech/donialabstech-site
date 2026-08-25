@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Tue, 25 Aug 2026 08:01:25 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 25 Aug 2026 18:40:41 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>بناء منصة SaaS: الخطوات الحقيقية من الفكرة إلى أول مشترك يدفع</title>
+    <link>https://donialabstech.online/blog/2026-08-25.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-08-25.html</guid>
+    <description>📝 بناء منصة SaaS: الخطوات الحقيقية من الفكرة إلى أول مشترك يدفع
+
+معظم من يبنون منصات SaaS يخسرون وقتهم في التقنية قبل أن يتأكدوا من وجود سوق حقيقي. هذا المقال يأخذك عبر المسار العملي الذي يوصلك لأول مشترك دون إهدار الموارد.
+
+🔗 https://donialabstech.online/blog/2026-08-25.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Tue, 25 Aug 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>استخدام التحليلات الرقمية لفهم عملائك بشكل أعمق</title>
     <link>https://donialabstech.online/blog/2026-08-25-am.html</link>
@@ -259,19 +272,6 @@ ONIA LABS TECH --- في عالم الأعمال الرقمية المتسارع�
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Sat, 15 Aug 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>الأمن السيبراني الأساسي: ما لا يعرفه 90% من أصحاب المواقع حتى يُخترقوا</title>
-    <link>https://donialabstech.online/blog/2026-08-14.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-08-14.html</guid>
-    <description>📝 الأمن السيبراني الأساسي: ما لا يعرفه 90% من أصحاب المواقع حتى يُخترقوا
-
-موقعك الآن مستهدف حتى لو كنت تعتقد أنك &amp;quot;صغير جداً&amp;quot; لأن يهتم به أحد. هذا الدليل العملي يريك بالضبط ما تحتاج تفعله اليوم قبل أن يكون الوقت قد فات.
-
-🔗 https://donialabstech.online/blog/2026-08-14.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
 </rss>
