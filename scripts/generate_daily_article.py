@@ -121,7 +121,7 @@ def call_deepseek(prompt):
     req = urllib.request.Request(
         "https://api.deepseek.com/chat/completions", data=body,
         headers={"Content-Type": "application/json",
-                 "Authorization": "Bearer " + os.environ["DEEPSEEK_API_KEY"]},
+                 "Authorization": "Bearer " + os.environ["DEEPSEEK_API_KEY"].strip()},
     )
     with urllib.request.urlopen(req, timeout=90) as r:
         return json.loads(r.read())["choices"][0]["message"]["content"]
