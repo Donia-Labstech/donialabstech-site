@@ -9,7 +9,7 @@ and consistent with the brand identity of DONIA LABS TECH:
   Week C: Entrepreneurship & AI Business
 
 Required env var:
-  ANTHROPIC_API_KEY — set as GitHub secret
+  DEEPSEEK_API_KEY — set as GitHub secret
 
 Run by: .github/workflows/generate-article.yml
 """
@@ -112,20 +112,19 @@ def build_prompt(topic, area, date_str):
 ---
 <محتوى Markdown: يبدأ بـ ## (لا #)، 4 أقسام، 600-800 كلمة>"""
 
-def call_claude(prompt):
+def call_deepseek(prompt):
     body = json.dumps({
-        "model": "claude-sonnet-4-6",
+        "model": "deepseek-chat",
         "max_tokens": 2500,
         "messages": [{"role": "user", "content": prompt}],
     }).encode()
     req = urllib.request.Request(
-        "https://api.anthropic.com/v1/messages", data=body,
+        "https://api.deepseek.com/chat/completions", data=body,
         headers={"Content-Type": "application/json",
-                 "x-api-key": os.environ["ANTHROPIC_API_KEY"],
-                 "anthropic-version": "2023-06-01"},
+                 "Authorization": "Bearer " + os.environ["DEEPSEEK_API_KEY"]},
     )
     with urllib.request.urlopen(req, timeout=90) as r:
-        return json.loads(r.read())["content"][0]["text"]
+        return json.loads(r.read())["choices"][0]["message"]["content"]
 
 def parse(text, fallback_topic):
     sep = re.search(r"^---$", text, re.MULTILINE)
@@ -286,9 +285,9 @@ def main():
         return
 
     try:
-        raw = call_claude(build_prompt(topic, area, date_str))
+        raw = call_deepseek(build_prompt(topic, area, date_str))
     except urllib.error.HTTPError as e:
-        print(f"::error::Claude API {e.code}: {e.read().decode('utf-8','ignore')}", file=sys.stderr)
+        print(f"::error::DeepSeek API {e.code}: {e.read().decode('utf-8','ignore')}", file=sys.stderr)
         sys.exit(1)
 
     p     = parse(raw, topic)
