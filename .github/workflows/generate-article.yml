@@ -33,7 +33,7 @@ jobs:
       - name: Generate article
         id: gen
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           FORCED_TOPIC:      ${{ github.event.inputs.forced_topic }}
           FORCED_AREA:       ${{ github.event.inputs.forced_area }}
           FORCE_OVERWRITE:   ${{ github.event.inputs.force_overwrite }}
