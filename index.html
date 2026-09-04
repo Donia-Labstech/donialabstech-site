@@ -6426,8 +6426,8 @@
     <!-- ===== [END DONIA BLOG MANAGER] ===== -->
 
 
-    <!-- ===== [NEW ADDITION 3] ENHANCED AI ASSISTANT WITH CLAUDE API + KNOWLEDGE CONTEXT ===== -->
-    <!-- Integrated chatbot powered by Claude with full DONIA LABS TECH context -->
+    <!-- ===== [NEW ADDITION 3] ENHANCED AI ASSISTANT WITH DEEPSEEK API + KNOWLEDGE CONTEXT ===== -->
+    <!-- Integrated chatbot powered by DeepSeek (via Cloudflare Worker proxy) with full DONIA LABS TECH context -->
     <script>
     (function() {
         'use strict';
@@ -6504,13 +6504,13 @@
         };
 
         // -------------------------------------------------------
-        // EnhancedAIChatSystem: Extends existing chat with Claude API
+        // EnhancedAIChatSystem: Extends existing chat with DeepSeek API (via Worker proxy)
         // -------------------------------------------------------
         class EnhancedAIChatSystem {
             constructor() {
-                // Claude API endpoint (server-side proxy recommended)
+                // AI proxy endpoint (Cloudflare Worker; real API keys stay server-side)
                 this.API_ENDPOINT = 'https://donialabstech.daoud1touina.workers.dev/api/chat'; // Worker مباشرة (محمي بـ CORS) — لا يحتاج Route في Cloudflare
-                this.MODEL = 'claude-sonnet-4-6';
+                this.MODEL = 'deepseek-chat';
                 this.conversationHistory = [];
                 this.isLoading = false;
                 
@@ -6587,20 +6587,20 @@ ${kb.services.join(" | ")}
                 const aiHeader = document.querySelector('.ai-header h5');
                 if (aiHeader) {
                     const badge = document.createElement('span');
-                    badge.innerHTML = ' <span style="background: linear-gradient(135deg,#7c3aed,#ec4899); color:white; padding:2px 8px; border-radius:10px; font-size:0.65rem; font-weight:700; vertical-align:middle;">Claude AI</span>';
+                    badge.innerHTML = ' <span style="background: linear-gradient(135deg,#7c3aed,#ec4899); color:white; padding:2px 8px; border-radius:10px; font-size:0.65rem; font-weight:700; vertical-align:middle;">DeepSeek AI</span>';
                     aiHeader.appendChild(badge);
                 }
 
-                // Add Claude-powered label to input area
+                // Add AI-powered label to input area
                 const aiInputDiv = document.querySelector('.ai-input');
                 if (aiInputDiv) {
                     const label = document.createElement('div');
                     label.style.cssText = 'width:100%; padding: 0 15px 5px; font-size:0.7rem; color:#94a3b8; text-align:center;';
-                    label.innerHTML = '<i class="fas fa-bolt" style="color:#7c3aed;"></i> مدعوم بـ Claude AI · مدرّب على هوية DONIA LABS';
+                    label.innerHTML = '<i class="fas fa-bolt" style="color:#7c3aed;"></i> مدعوم بـ DeepSeek AI · مدرّب على هوية DONIA LABS';
                     aiInputDiv.parentNode.insertBefore(label, aiInputDiv);
                 }
 
-                // Override the send button behavior to use Claude API
+                // Override the send button behavior to use the AI proxy (DeepSeek via Worker)
                 const newSendBtn = sendBtn.cloneNode(true);
                 sendBtn.parentNode.replaceChild(newSendBtn, sendBtn);
 
@@ -6643,7 +6643,7 @@ ${kb.services.join(" | ")}
                 const typing = this.showTyping(chatMessages);
 
                 try {
-                    const response = await this.callClaudeAPI(message);
+                    const response = await this.callAIProxy(message);
                     typing.remove();
                     
                     const botMsg = document.createElement('div');
@@ -6675,9 +6675,9 @@ ${kb.services.join(" | ")}
                 }
             }
 
-            async callClaudeAPI(userMessage) {
+            async callAIProxy(userMessage) {
                 // المفتاح الحقيقي محفوظ بأمان داخل Cloudflare Worker (Secret) — لا يظهر هنا أبداً.
-                // الـ Worker يحاول Claude أولاً، وعند فشله يتحول تلقائياً إلى Gemini (fallback).
+                // الـ Worker يحاول DeepSeek أولاً، وعند فشله يتحول تلقائياً إلى Gemini (fallback).
                 const response = await fetch(this.API_ENDPOINT, {
                     method: 'POST',
                     headers: {
@@ -6729,7 +6729,7 @@ ${kb.services.join(" | ")}
                     <div class="typing-dot"></div>
                     <div class="typing-dot"></div>
                     <div class="typing-dot"></div>
-                    <span style="font-size:0.8rem; color:#94a3b8; margin-right:8px;">Claude يكتب...</span>
+                    <span style="font-size:0.8rem; color:#94a3b8; margin-right:8px;">يكتب...</span>
                 `;
                 chatMessages.appendChild(typing);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
