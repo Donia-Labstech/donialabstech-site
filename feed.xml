@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Tue, 08 Sep 2026 21:18:09 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 09 Sep 2026 08:00:31 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>دور التقارير الذكية في اتخاذ قرارات أعمال أسرع</title>
+    <link>https://donialabstech.online/blog/2026-09-09-am.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-09-09-am.html</guid>
+    <description>📝 دور التقارير الذكية في اتخاذ قرارات أعمال أسرع
+
+ال اليوم، لم تعد السرعة في اتخاذ القرار ترفاً، بل ضرورة للبقاء في صدارة المنافسة. فكل تأخير في قراءة السوق أو تحليل أداء المنتج قد يعني خسارة فرصة ثمينة لصالح منافس أكثر استعداداً. هنا يأتي دور التقارير الذكية، التي لم تعد مجرد جد
+
+🔗 https://donialabstech.online/blog/2026-09-09-am.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Wed, 09 Sep 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>الذكاء الاصطناعي ليس رفاهية… إنه خط الإنتاج الجديد في DONIA LABS</title>
     <link>https://donialabstech.online/blog/2026-09-08.html</link>
@@ -259,19 +272,6 @@ ONIA LABS TECH --- مقدمة في عالم المشاريع الرقمية ال
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Sat, 22 Aug 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>الأمن السيبراني الأساسي: ما لا يحق لموقعك أو منصتك الرقمية الاستغناء عنه</title>
-    <link>https://donialabstech.online/blog/2026-08-21.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-08-21.html</guid>
-    <description>📝 الأمن السيبراني الأساسي: ما لا يحق لموقعك أو منصتك الرقمية الاستغناء عنه
-
-موقعك بدون حماية كافية هو باب مفتوح لخسائر مالية وسمعة مدمرة — وأغلب الاختراقات تستهدف المشاريع الصغيرة أولاً لأنها الأقل تحصيناً. هذه ليست نظرية، بل خطوات تطبي
-
-🔗 https://donialabstech.online/blog/2026-08-21.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
 </rss>
