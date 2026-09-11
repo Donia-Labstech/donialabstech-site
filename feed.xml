@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Fri, 11 Sep 2026 08:01:01 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 11 Sep 2026 20:36:07 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>تجربة المستخدم: الفرق بين منصة تُقنع ومنصة تُنفّر</title>
+    <link>https://donialabstech.online/blog/2026-09-11.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-09-11.html</guid>
+    <description>📝 تجربة المستخدم: الفرق بين منصة تُقنع ومنصة تُنفّر
+
+الفرق بين منصة تحوّل الزائر إلى عميل ومنصة تطرده في 8 ثوانٍ لا يكمن في التصميم الجميل، بل في قرارات صغيرة تُتخذ قبل كتابة أول سطر كود. إليك كيف تبني واجهة تُقنع
+
+🔗 https://donialabstech.online/blog/2026-09-11.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Fri, 11 Sep 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>أخطاء شائعة في إدارة المشاريع الرقمية وكيف تتجنبها</title>
     <link>https://donialabstech.online/blog/2026-09-11-am.html</link>
@@ -259,19 +272,6 @@
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Mon, 24 Aug 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>الفرق بين النمو السريع والنمو المستدام لمشروعك الرقمي</title>
-    <link>https://donialabstech.online/blog/2026-08-24-am.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-08-24-am.html</guid>
-    <description>📝 الفرق بين النمو السريع والنمو المستدام لمشروعك الرقمي
-
-ONIA LABS TECH --- مقدمة في عالم المشاريع الرقمية الذي يتسارع كل يوم، يقع كثير من رواد الأعمال في فخ السعي وراء النمو السريع على حساب الاستدامة. ترى أرقاماً مبهرة في الإيرادات خلال أسابيع قليلة، أو قاعدة مستخدمين تتضاعف في زمن قيا
-
-🔗 https://donialabstech.online/blog/2026-08-24-am.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Mon, 24 Aug 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
 </rss>
