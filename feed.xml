@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Thu, 17 Sep 2026 08:00:16 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 17 Sep 2026 21:01:21 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>قصة العميل كأداة تسويقية لا تُقاوَم: كيف تحوّل تجربة واحدة إلى مبيعات متكررة؟</title>
+    <link>https://donialabstech.online/blog/2026-09-17.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-09-17.html</guid>
+    <description>📝 قصة العميل كأداة تسويقية لا تُقاوَم: كيف تحوّل تجربة واحدة إلى مبيعات متكررة؟
+
+العميل الذي يحكي قصته معك أقوى من أي إعلان تدفع مقابله. في هذا المقال، نشرح كيف تبني نظامًا يستخرج قصص عملائك ويحوّلها إلى محتوى يجلب المزيد منهم.
+
+🔗 https://donialabstech.online/blog/2026-09-17.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Thu, 17 Sep 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>أدوات الذكاء الاصطناعي التي توفر وقتك يومياً</title>
     <link>https://donialabstech.online/blog/2026-09-17-am.html</link>
@@ -259,19 +272,6 @@
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Tue, 08 Sep 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>لماذا يشتري عملاؤك قصتك قبل منتجك؟</title>
-    <link>https://donialabstech.online/blog/2026-09-07.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-09-07.html</guid>
-    <description>📝 لماذا يشتري عملاؤك قصتك قبل منتجك؟
-
-القصص الحقيقية للعملاء ترفع معدلات التحويل بنسبة تصل إلى 300% مقارنة بالإعلانات التقليدية. ستتعلم هنا كيف تحوّل تجربة عميل واحد إلى أعظم قوة بيعية لمختبرك الرقم
-
-🔗 https://donialabstech.online/blog/2026-09-07.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Mon, 07 Sep 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
 </rss>
