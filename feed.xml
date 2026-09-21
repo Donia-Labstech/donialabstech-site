@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Mon, 21 Sep 2026 08:00:55 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 21 Sep 2026 21:46:09 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>أتمتة التسويق: أدوات تغنيك عن موظف كامل</title>
+    <link>https://donialabstech.online/blog/2026-09-21.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-09-21.html</guid>
+    <description>📝 أتمتة التسويق: أدوات تغنيك عن موظف كامل
+
+موظف تسويق بدوام كامل يكلفك أكثر من 30,000 دينار سنوياً بين راتب وتأمين وتدريب. إليك الأدوات التي تؤدي 80% من مهامه بأقل من راتب شهر واحد، مع خطة تطبيق عملية تب
+
+🔗 https://donialabstech.online/blog/2026-09-21.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Mon, 21 Sep 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>أخطاء شائعة في إدارة المشاريع الرقمية وكيف تتجنبها</title>
     <link>https://donialabstech.online/blog/2026-09-21-am.html</link>
@@ -259,19 +272,6 @@
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Sat, 12 Sep 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>تجربة المستخدم: الفرق بين منصة تُقنع ومنصة تُنفّر</title>
-    <link>https://donialabstech.online/blog/2026-09-11.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-09-11.html</guid>
-    <description>📝 تجربة المستخدم: الفرق بين منصة تُقنع ومنصة تُنفّر
-
-الفرق بين منصة تحوّل الزائر إلى عميل ومنصة تطرده في 8 ثوانٍ لا يكمن في التصميم الجميل، بل في قرارات صغيرة تُتخذ قبل كتابة أول سطر كود. إليك كيف تبني واجهة تُقنع
-
-🔗 https://donialabstech.online/blog/2026-09-11.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Fri, 11 Sep 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
 </rss>
