@@ -4,21 +4,35 @@
   xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
     <loc>https://donialabstech.online</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://donialabstech.online/privacy-policy.html</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://donialabstech.online/terms-of-service.html</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://donialabstech.online/blog/2026-09-23-am.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <news:news xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+      <news:publication>
+        <news:name>DONIA LABS TECH</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-23</news:publication_date>
+      <news:title>كيف تحمي بياناتك الرقمية كصاحب مشروع صغير</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://donialabstech.online/blog/2026-09-22.html</loc>
@@ -284,20 +298,6 @@
       </news:publication>
       <news:publication_date>2026-09-13</news:publication_date>
       <news:title>التسعير الذكي للخدمات الرقمية: كيف تسعّر ما لا يمكن لمسه دون أن تخسر السوق أو قيمتك</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://donialabstech.online/blog/2026-09-13-am.html</loc>
-    <lastmod>2026-09-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-    <news:news xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
-      <news:publication>
-        <news:name>DONIA LABS TECH</news:name>
-        <news:language>ar</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-13</news:publication_date>
-      <news:title>كيف تحمي بياناتك الرقمية كصاحب مشروع صغير</news:title>
     </news:news>
   </url>
   <url>
