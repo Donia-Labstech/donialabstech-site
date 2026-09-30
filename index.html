@@ -2720,6 +2720,62 @@
         @media (hover: none) {
             .nav-link,.btn,.lang-btn,.dark-mode-toggle { min-height:44px; }
         }
+
+        /* ══════════════════════════════════════════════════════════
+           [PREMIUM POLISH] World-class visual refinement — additive
+           only, does not remove or restructure anything above.
+        ══════════════════════════════════════════════════════════ */
+        html { scroll-behavior: smooth; }
+        body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+        /* Hero: stronger depth, legible text over the photo, refined scale */
+        .hero-section {
+            background-blend-mode: normal;
+        }
+        .hero-section::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 35%, rgba(2,6,23,0.55) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero-section .container { position: relative; z-index: 1; }
+        .hero-section h1 {
+            letter-spacing: -0.5px;
+            text-shadow: 0 4px 24px rgba(0,0,0,0.35);
+        }
+        .hero-section p {
+            text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        }
+
+        /* Buttons: crisper premium feel */
+        .btn-primary, .btn-secondary {
+            letter-spacing: 0.3px;
+        }
+        .btn-primary:active, .btn-secondary:active { transform: translateY(-2px) scale(0.99); }
+
+        /* Cards: subtle glass-premium lift, consistent radius rhythm */
+        .service-card, .community-card {
+            backdrop-filter: saturate(1.05);
+        }
+
+        /* Section rhythm: consistent breathing room on large screens */
+        @media (min-width: 992px) {
+            .services-section, .community-section, #payment { padding-top: 120px; padding-bottom: 120px; }
+        }
+
+        /* Refined focus ring for accessibility + polish */
+        a:focus-visible, button:focus-visible, .btn:focus-visible {
+            outline: 2px solid var(--gold-color);
+            outline-offset: 3px;
+        }
+
+        /* Logo: subtle premium glow on hover */
+        .logo-container:hover .logo-img { filter: brightness(1.05); }
+
+        /* Smoother image rendering for hero background on high-DPI */
+        .hero-section { image-rendering: -webkit-optimize-contrast; }
     </style>
 </head>
 <body>
