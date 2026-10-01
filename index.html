@@ -51,7 +51,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -2722,60 +2722,238 @@
         }
 
         /* ══════════════════════════════════════════════════════════
-           [PREMIUM POLISH] World-class visual refinement — additive
-           only, does not remove or restructure anything above.
+           [DESIGN SYSTEM v2] Linear × Stripe visual direction.
+           Purely additive/override — no HTML structure changed, no
+           class/id removed, so the chatbot, i18n, dark-mode toggle,
+           payment panel and AOS animations keep working as-is.
+           Strategy: retint the existing CSS custom properties (used
+           everywhere already) + refine surfaces, typography, motion.
         ══════════════════════════════════════════════════════════ */
-        html { scroll-behavior: smooth; }
-        body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 
-        /* Hero: stronger depth, legible text over the photo, refined scale */
-        .hero-section {
-            background-blend-mode: normal;
+        :root {
+            --primary-color: #0a0a0f;
+            --dark-color: #16171c;
+            --gold-color: #f5a623;
+            --amber-color: #ffb347;
+            --tech-blue: #635bff;
+            --tech-purple: #7c5cff;
+            --ai-color: #06b6d4;
+            --community-color: #8b5cf6;
+            --gradient-primary: linear-gradient(135deg, #0a0a0f 0%, #17172e 100%);
+            --gradient-tech: linear-gradient(135deg, #635bff 0%, #06b6d4 100%);
+            --gradient-gold: linear-gradient(135deg, #f5a623 0%, #ffb347 100%);
+            --gradient-community: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            --shadow: 0 1px 2px rgba(10,10,15,.04), 0 8px 24px rgba(10,10,15,.06);
+            --shadow-hover: 0 4px 14px rgba(10,10,15,.08), 0 24px 48px rgba(10,10,15,.12);
+            --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            --surface: #ffffff;
+            --surface-muted: #f6f6f8;
+            --border-subtle: rgba(10,10,15,.08);
+            --text-muted-2: #63636c;
         }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', 'Tajawal', 'Cairo', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            background: #fbfbfc;
+            color: var(--dark-color);
+        }
+        body[dir="rtl"] { font-family: 'Tajawal', 'Inter', 'Cairo', sans-serif; }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cairo', 'Inter', sans-serif;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title {
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        .section-title:after {
+            width: 56px;
+            height: 3px;
+            border-radius: 3px;
+        }
+
+        /* ── Hero: depth + legibility over the photo, tighter modern scale ── */
+        .hero-section { background-blend-mode: normal; }
         .hero-section::after {
             content: "";
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at center, transparent 35%, rgba(2,6,23,0.55) 100%);
+            background: radial-gradient(ellipse at center, transparent 30%, rgba(2,3,8,0.6) 100%);
             pointer-events: none;
             z-index: 0;
         }
         .hero-section .container { position: relative; z-index: 1; }
         .hero-section h1 {
-            letter-spacing: -0.5px;
+            letter-spacing: -1.5px;
             text-shadow: 0 4px 24px rgba(0,0,0,0.35);
         }
-        .hero-section p {
-            text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        .hero-section p { text-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+        .tech-badge {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.16);
+            backdrop-filter: blur(6px);
+            font-weight: 600;
+            letter-spacing: 0.4px;
         }
 
-        /* Buttons: crisper premium feel */
+        /* ── Buttons: Stripe-style vivid pill CTAs ── */
         .btn-primary, .btn-secondary {
-            letter-spacing: 0.3px;
+            letter-spacing: 0.2px;
+            font-weight: 600;
         }
         .btn-primary:active, .btn-secondary:active { transform: translateY(-2px) scale(0.99); }
 
-        /* Cards: subtle glass-premium lift, consistent radius rhythm */
-        .service-card, .community-card {
-            backdrop-filter: saturate(1.05);
+        /* ── Cards: flat surfaces + hairline border instead of heavy shadow (Linear) ── */
+        .service-card, .portfolio-card, .blog-card, .community-card,
+        .stat-card, .doc-section, .item-card, .contact-form,
+        .faq-item, .payment-method {
+            background: var(--surface);
+            border: 1px solid var(--border-subtle) !important;
+            box-shadow: none;
+        }
+        .service-card { backdrop-filter: none; }
+        .service-card:hover, .portfolio-card:hover, .community-card:hover {
+            border-color: rgba(99,91,255,0.35) !important;
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-6px);
         }
 
-        /* Section rhythm: consistent breathing room on large screens */
+        /* ── Navbar: refined hairline + tighter blur ── */
+        .navbar {
+            background: rgba(10,10,15,0.72);
+            backdrop-filter: blur(16px) saturate(1.4);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .navbar.scrolled { background: rgba(10,10,15,0.92); }
+
+        /* ── Section rhythm: generous, consistent whitespace ── */
         @media (min-width: 992px) {
-            .services-section, .community-section, #payment { padding-top: 120px; padding-bottom: 120px; }
+            .services-section, .community-section, #payment { padding-top: 130px; padding-bottom: 130px; }
         }
 
-        /* Refined focus ring for accessibility + polish */
         a:focus-visible, button:focus-visible, .btn:focus-visible {
             outline: 2px solid var(--gold-color);
             outline-offset: 3px;
         }
 
-        /* Logo: subtle premium glow on hover */
         .logo-container:hover .logo-img { filter: brightness(1.05); }
-
-        /* Smoother image rendering for hero background on high-DPI */
         .hero-section { image-rendering: -webkit-optimize-contrast; }
+
+        /* ── Dark mode: true graphite/near-black surfaces (Linear signature) ── */
+        [data-theme="dark"] {
+            --bg-body: #08090a;
+            --bg-card: #101113;
+            --bg-surface: #101113;
+            --border-color: rgba(255,255,255,0.08);
+        }
+        [data-theme="dark"] body {
+            background: #08090a;
+            color: #e4e4e7;
+        }
+        [data-theme="dark"] .service-card,
+        [data-theme="dark"] .portfolio-card,
+        [data-theme="dark"] .blog-card,
+        [data-theme="dark"] .community-card,
+        [data-theme="dark"] .stat-card,
+        [data-theme="dark"] .doc-section,
+        [data-theme="dark"] .item-card,
+        [data-theme="dark"] .contact-form,
+        [data-theme="dark"] .faq-item,
+        [data-theme="dark"] .payment-method {
+            background: #101113 !important;
+            border-color: rgba(255,255,255,0.08) !important;
+            color: #e4e4e7;
+        }
+        [data-theme="dark"] .service-card:hover,
+        [data-theme="dark"] .portfolio-card:hover,
+        [data-theme="dark"] .community-card:hover {
+            border-color: rgba(99,91,255,0.4) !important;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.5) !important;
+        }
+        [data-theme="dark"] .footer-section { background: #05060a !important; }
+        [data-theme="dark"] .navbar { background: rgba(5,5,7,0.85) !important; }
+        [data-theme="dark"] .navbar.scrolled { background: rgba(5,5,7,0.96) !important; }
+        [data-theme="dark"] #navbarNav { background: rgba(5,5,7,0.97) !important; }
+
+        /* ══════════════════════════════════════════════════════════
+           [BRAND v3] Circular fixed logo · elegant wordmark font ·
+           hero welcome line · named assistant with the logo inside.
+           Additive only — all existing ids/classes kept intact.
+        ══════════════════════════════════════════════════════════ */
+
+        /* Logo: true circle everywhere it appears (navbar, loader, footer) */
+        .logo-img {
+            border-radius: 50% !important;
+        }
+        .logo-img:after { display: none !important; }
+
+        /* Brand wordmark: distinctive display font, elegant tracking */
+        .logo-text .main {
+            font-family: 'Poppins', 'Cairo', sans-serif;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        .logo-text .sub {
+            font-family: 'Inter', 'Tajawal', sans-serif;
+        }
+
+        /* Hero welcome eyebrow (inspired by the brand banner) */
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Inter', 'Tajawal', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: rgba(255,255,255,0.75);
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.16);
+            padding: 6px 16px;
+            border-radius: 30px;
+            margin-bottom: 1.2rem;
+            backdrop-filter: blur(6px);
+        }
+        .hero-eyebrow .brand-accent {
+            font-family: 'Poppins', 'Cairo', sans-serif;
+            font-weight: 800;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 0.5px;
+        }
+
+        /* AI assistant: circular logo inside the floating button */
+        .ai-assistant { padding: 0; overflow: hidden; }
+        .ai-assistant-logo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-image: url('images/logo.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .ai-header-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-image: url('images/logo.jpg');
+            background-size: cover;
+            background-position: center;
+            border: 2px solid rgba(255,255,255,0.5);
+            flex-shrink: 0;
+        }
+        .ai-header h5 {
+            font-family: 'Poppins', 'Cairo', sans-serif;
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
@@ -2804,7 +2982,7 @@
 
     <!-- AI Assistant -->
     <div class="ai-assistant auto-hide" id="aiAssistant">
-        <i class="fas fa-robot fa-lg"></i>
+        <div class="ai-assistant-logo"></div>
     </div>
 
     <!-- Payment Methods Floating Button -->
@@ -2895,15 +3073,18 @@
     <!-- AI Chat -->
     <div class="ai-chat" id="aiChat">
         <div class="ai-header">
-            <div>
-                <h5><i class="fas fa-robot me-2"></i><span id="aiTitle">المساعد الذكي</span></h5>
-                <small id="aiSubtitle">دونيا لابس تك - أجيب على جميع أسئلتك</small>
+            <div class="d-flex align-items-center">
+                <div class="ai-header-logo me-2"></div>
+                <div>
+                    <h5><span id="aiTitle">دونيا</span></h5>
+                    <small id="aiSubtitle">مساعدتك الذكية من DONIA LABS TECH</small>
+                </div>
             </div>
             <button class="btn-close btn-close-white" id="closeChat"></button>
         </div>
         <div class="ai-body" id="chatMessages">
             <div class="ai-message bot" id="welcomeMessage">
-                🌟 <strong>مرحباً! أنا المساعد الذكي لدونيا لابس تك.</strong>
+                🌟 <strong>مرحباً! أنا دونيا، مساعدتك الذكية من DONIA LABS TECH.</strong>
                 
                 أنا هنا لمساعدتك في:
                 📱 <strong>خدماتنا:</strong> تصميم مواقع، مونتاج، ذكاء اصطناعي، تسويق رقمي
@@ -3038,6 +3219,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+                    <div class="hero-eyebrow" id="heroWelcome">مرحباً بكم في <span class="brand-accent">DONIA LABS TECH</span></div>
                     <h1><span class="path-to-top" id="heroTitle1">طريقك نحو القمة</span> <span id="heroTitle2">الرقمية</span></h1>
                     <p class="fs-5" id="heroDescription">
                         نصنع <strong>الثورة الرقمية</strong> للعالم العربي باستخدام <strong>أحدث تقنيات الذكاء الاصطناعي</strong>. 
@@ -3820,6 +4002,7 @@
                     "nav.startJourney": "ابدأ رحلتك",
                     
                     // Hero Section
+                    "hero.welcome": "مرحباً بكم في",
                     "hero.title1": "طريقك نحو القمة",
                     "hero.title2": "الرقمية",
                     "hero.description": "نصنع <strong>الثورة الرقمية</strong> للعالم العربي باستخدام <strong>أحدث تقنيات الذكاء الاصطناعي</strong>. نقدم حلولاً متكاملة في <strong>تصميم المواقع، المونتاج الاحترافي، الذكاء الاصطناعي، والتسويق الرقمي</strong> لتحويل أفكارك إلى مشاريع ناجحة.",
@@ -3965,9 +4148,9 @@
                     "copyright.text": "© 2026 DONIA LABS TECH. جميع الحقوق محفوظة.",
                     
                     // AI Chat
-                    "ai.title": "المساعد الذكي",
-                    "ai.subtitle": "دونيا لابس تك - أجيب على جميع أسئلتك",
-                    "ai.welcome": "🌟 <strong>مرحباً! أنا المساعد الذكي لدونيا لابس تك.</strong>\n\nأنا هنا لمساعدتك في:\n📱 <strong>خدماتنا:</strong> تصميم مواقع، مونتاج، ذكاء اصطناعي، تسويق رقمي\n💳 <strong>طرق الدفع:</strong> CCP، RIB، PayPal، Google Pay وغيرها\n🛡️ <strong>الضمان:</strong> ضمان استرجاع الأموال 30 يوم\n👥 <strong>المجتمع:</strong> انضمام لمجتمع رواد الأعمال\n📞 <strong>التواصل:</strong> طرق التواصل معنا\n\n<em>ما الذي تريد معرفته؟ 😊</em>",
+                    "ai.title": "دونيا",
+                    "ai.subtitle": "مساعدتك الذكية من DONIA LABS TECH",
+                    "ai.welcome": "🌟 <strong>مرحباً! أنا دونيا، مساعدتك الذكية من DONIA LABS TECH.</strong>\n\nأنا هنا لمساعدتك في:\n📱 <strong>خدماتنا:</strong> تصميم مواقع، مونتاج، ذكاء اصطناعي، تسويق رقمي\n💳 <strong>طرق الدفع:</strong> CCP، RIB، PayPal، Google Pay وغيرها\n🛡️ <strong>الضمان:</strong> ضمان استرجاع الأموال 30 يوم\n👥 <strong>المجتمع:</strong> انضمام لمجتمع رواد الأعمال\n📞 <strong>التواصل:</strong> طرق التواصل معنا\n\n<em>ما الذي تريد معرفته؟ 😊</em>",
                     "ai.quick.services": "خدماتكم",
                     "ai.quick.prices": "طرق الدفع",
                     "ai.quick.guarantee": "الضمان",
@@ -4020,6 +4203,7 @@
                     "nav.startJourney": "Commencez votre voyage",
                     
                     // Hero Section
+                    "hero.welcome": "Bienvenue chez",
                     "hero.title1": "Votre chemin vers",
                     "hero.title2": "le sommet numérique",
                     "hero.description": "Nous créons <strong>la révolution numérique</strong> pour le monde arabe en utilisant <strong>les dernières technologies d'intelligence artificielle</strong>. Nous proposons des solutions complètes en <strong>conception de sites web, montage professionnel, intelligence artificielle et marketing numérique</strong> pour transformer vos idées en projets réussis.",
@@ -4164,9 +4348,9 @@
                     "copyright.text": "© 2026 DONIA LABS TECH. Tous droits réservés.",
                     
                     // AI Chat
-                    "ai.title": "Assistant Intelligent",
-                    "ai.subtitle": "DONIA LABS TECH - Je réponds à toutes vos questions",
-                    "ai.welcome": "🌟 <strong>Bonjour! Je suis l'assistant intelligent de DONIA LABS TECH.</strong>\n\nJe suis là pour vous aider avec:\n📱 <strong>Nos services:</strong> conception de sites, montage, IA, marketing numérique\n💳 <strong>Modes de paiement:</strong> CCP, RIB, PayPal, Google Pay et plus\n🛡️ <strong>Garantie:</strong> garantie de remboursement 30 jours\n👥 <strong>Communauté:</strong> adhésion à la communauté des entrepreneurs\n📞 <strong>Contact:</strong> moyens de nous contacter\n\n<em>Que voulez-vous savoir ? 😊</em>",
+                    "ai.title": "Donia",
+                    "ai.subtitle": "Votre assistante intelligente de DONIA LABS TECH",
+                    "ai.welcome": "🌟 <strong>Bonjour! Je suis Donia, votre assistante intelligente de DONIA LABS TECH.</strong>\n\nJe suis là pour vous aider avec:\n📱 <strong>Nos services:</strong> conception de sites, montage, IA, marketing numérique\n💳 <strong>Modes de paiement:</strong> CCP, RIB, PayPal, Google Pay et plus\n🛡️ <strong>Garantie:</strong> garantie de remboursement 30 jours\n👥 <strong>Communauté:</strong> adhésion à la communauté des entrepreneurs\n📞 <strong>Contact:</strong> moyens de nous contacter\n\n<em>Que voulez-vous savoir ? 😊</em>",
                     "ai.quick.services": "Nos services",
                     "ai.quick.prices": "Paiement",
                     "ai.quick.guarantee": "Garantie",
@@ -4219,6 +4403,7 @@
                     "nav.startJourney": "Start Your Journey",
                     
                     // Hero Section
+                    "hero.welcome": "Welcome to",
                     "hero.title1": "Your Path to",
                     "hero.title2": "Digital Summit",
                     "hero.description": "We create <strong>the digital revolution</strong> for the Arab world using <strong>the latest AI technologies</strong>. We offer integrated solutions in <strong>website design, professional editing, artificial intelligence, and digital marketing</strong> to transform your ideas into successful projects.",
@@ -4364,9 +4549,9 @@
                     "copyright.text": "© 2026 DONIA LABS TECH. All rights reserved.",
                     
                     // AI Chat
-                    "ai.title": "Smart Assistant",
-                    "ai.subtitle": "DONIA LABS TECH - I answer all your questions",
-                    "ai.welcome": "🌟 <strong>Hello! I'm the smart assistant of DONIA LABS TECH.</strong>\n\nI'm here to help you with:\n📱 <strong>Our services:</strong> website design, editing, AI, digital marketing\n💳 <strong>Payment methods:</strong> CCP, RIB, PayPal, Google Pay and more\n🛡️ <strong>Guarantee:</strong> 30-day money back guarantee\n👥 <strong>Community:</strong> entrepreneurs community membership\n📞 <strong>Contact:</strong> ways to contact us\n\n<em>What would you like to know? 😊</em>",
+                    "ai.title": "Donia",
+                    "ai.subtitle": "Your smart assistant from DONIA LABS TECH",
+                    "ai.welcome": "🌟 <strong>Hello! I'm Donia, your smart assistant from DONIA LABS TECH.</strong>\n\nI'm here to help you with:\n📱 <strong>Our services:</strong> website design, editing, AI, digital marketing\n💳 <strong>Payment methods:</strong> CCP, RIB, PayPal, Google Pay and more\n🛡️ <strong>Guarantee:</strong> 30-day money back guarantee\n👥 <strong>Community:</strong> entrepreneurs community membership\n📞 <strong>Contact:</strong> ways to contact us\n\n<em>What would you like to know? 😊</em>",
                     "ai.quick.services": "Our services",
                     "ai.quick.prices": "Payment",
                     "ai.quick.guarantee": "Guarantee",
@@ -4473,6 +4658,7 @@
                 $('#startJourneyText').text(t["nav.startJourney"]);
                 
                 // Hero
+                $('#heroWelcome').html(t["hero.welcome"] + ' <span class="brand-accent">DONIA LABS TECH</span>');
                 $('#heroTitle1').text(t["hero.title1"]);
                 $('#heroTitle2').text(t["hero.title2"]);
                 $('#heroDescription').html(t["hero.description"]);
