@@ -2532,18 +2532,18 @@
             gap: 0.4em !important;
             line-height: 1.1 !important;
         }
+        /* Solid, high-contrast color on purpose — the earlier animated
+           gradient-clipped text looked illegible on real screens
+           (gradient-on-text plus drop-shadow filter is unreliable
+           across browsers/GPUs and reads as faded or blurry). A flat
+           bright gold with a simple text-shadow is what actually
+           stays readable against the navy navbar at small sizes. */
         .logo-text .main .brand-primary {
-            font-size: 1.5rem !important;
+            font-size: 1.55rem !important;
             font-weight: 800 !important;
-            letter-spacing: 1.5px !important;
-            background: linear-gradient(110deg, #fff6da 0%, #fde68a 20%, #fbbf24 45%, #f59e0b 70%, #fde68a 100%) !important;
-            background-size: 220% auto !important;
-            -webkit-background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-            background-clip: text !important;
-            filter: drop-shadow(0 0 14px rgba(245,158,11,.5))
-                    drop-shadow(0 2px 4px rgba(0,0,0,.5)) !important;
-            animation: brandShimmer 7s linear infinite !important;
+            letter-spacing: 0.5px !important;
+            color: #fcd34d !important;
+            text-shadow: 0 1px 3px rgba(0,0,0,.6) !important;
         }
         .logo-text .main .brand-secondary {
             font-size: 0.72rem !important;
@@ -2656,15 +2656,15 @@
             }
             .navbar-nav { gap: 3px; }
             .navbar-nav .nav-link { padding: 10px 14px !important; font-size: .95rem; }
-            .navbar-nav .nav-link span.d-none { display: inline !important; margin-right: 8px; }
+            .navbar-nav .nav-link span { margin-right: 8px; }
             .journey-start-btn { width: 100%; justify-content: center; }
             .lang-pills-wrap { justify-content: center; }
         }
-        @media (min-width: 992px) {
-            .navbar-nav .nav-link span.d-none { display: none !important; }
-        }
-        @media (min-width: 1280px) {
-            .navbar-nav .nav-link span { display: inline !important; }
+        /* Nav link labels stay visible at every width now — they used to
+           vanish (icon-only, unreadable) on the very common 992–1279px
+           laptop range because of a leftover Bootstrap d-xl-inline class. */
+        @media (min-width: 992px) and (max-width: 1279.98px) {
+            .navbar-nav .nav-link span { font-size: 0.78rem; }
         }
 
         /* ── Logo on small screens ── */
@@ -3464,37 +3464,37 @@
                 <ul class="navbar-nav mx-auto gap-1">
                     <li class="nav-item">
                         <a class="nav-link active" href="#home" data-section="home" title="الرئيسية">
-                            <i class="fas fa-home"></i><span class="d-none d-xl-inline ms-1">الرئيسية</span>
+                            <i class="fas fa-home"></i><span class="ms-1">الرئيسية</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#services" data-section="services" title="خدماتنا">
-                            <i class="fas fa-cogs"></i><span class="d-none d-xl-inline ms-1">خدماتنا</span>
+                            <i class="fas fa-cogs"></i><span class="ms-1">خدماتنا</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#portfolio" data-section="portfolio" title="الأعمال">
-                            <i class="fas fa-briefcase"></i><span class="d-none d-xl-inline ms-1" data-translate="nav.portfolio">الأعمال</span>
+                            <i class="fas fa-briefcase"></i><span class="ms-1" data-translate="nav.portfolio">الأعمال</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#payment" data-section="payment" title="طرق الدفع">
-                            <i class="fas fa-credit-card"></i><span class="d-none d-xl-inline ms-1">طرق الدفع</span>
+                            <i class="fas fa-credit-card"></i><span class="ms-1">طرق الدفع</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#blog" data-section="blog" title="المدونة">
-                            <i class="fas fa-blog"></i><span class="d-none d-xl-inline ms-1">المدونة</span>
+                            <i class="fas fa-blog"></i><span class="ms-1">المدونة</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#community" data-section="community" title="المجتمع">
-                            <i class="fas fa-users"></i><span class="d-none d-xl-inline ms-1">المجتمع</span>
+                            <i class="fas fa-users"></i><span class="ms-1">المجتمع</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact" data-section="contact" title="اتصل بنا">
-                            <i class="fas fa-phone-alt"></i><span class="d-none d-xl-inline ms-1">اتصل بنا</span>
+                            <i class="fas fa-phone-alt"></i><span class="ms-1">اتصل بنا</span>
                         </a>
                     </li>
                 </ul>
@@ -5312,15 +5312,25 @@
         // Enhanced Smooth Scrolling with Offset
         $('a[href^="#"]').on('click', function(e) {
             e.preventDefault();
-            
+
+            // Close the mobile menu first — it used to stay open on top
+            // of the page after tapping a link (the "menu doesn't
+            // disappear on phone" bug), since nothing ever told
+            // Bootstrap's collapse to hide.
+            const $navbarNav = $('#navbarNav');
+            if ($navbarNav.hasClass('show')) {
+                const collapseInstance = bootstrap.Collapse.getOrCreateInstance($navbarNav[0], { toggle: false });
+                collapseInstance.hide();
+            }
+
             const target = $(this).attr('href');
             if(target === '#') return;
-            
+
             const targetElement = $(target);
             if(targetElement.length === 0) return;
-            
+
             const targetPosition = targetElement.offset().top - 70;
-            
+
             $('html, body').stop().animate({
                 scrollTop: targetPosition
             }, 800, 'swing', function() {
@@ -7101,32 +7111,56 @@ ${kb.services.join(" | ")}
                 // Intelligent fallback using knowledge base
                 const input = message.toLowerCase();
                 const kb = DONIA_KNOWLEDGE_BASE;
+                const currentLang = localStorage.getItem('donia_lang') || 'ar';
+                const L = {
+                    ar: { inquiry: 'للاستفسار', whatsapp: 'واتساب', mainFeatures: 'المميزات الرئيسية',
+                          projectsTitle: 'مشاريع DONIA LABS TECH:', l1: 'إدارة مدرسية ذكية', l2: 'إدارة مقاصف المدارس',
+                          l3: 'مستشار استراتيجي بالذكاء الاصطناعي', tapMore: 'اضغط على أي مشروع لمعرفة المزيد!',
+                          greeting: 'مرحباً! 😊 أنا مساعد', assistantOf: 'الذكي.', canHelp: 'يمكنني مساعدتك في:',
+                          help1: 'خدماتنا وحلولنا التقنية', help2: 'للاستشارات الذكية', help3: 'طرق الدفع المتاحة',
+                          help4: 'التواصل معنا', whatElse: 'ما الذي تريد معرفته تحديداً؟' },
+                    fr: { inquiry: 'Pour en savoir plus', whatsapp: 'WhatsApp', mainFeatures: 'Points forts',
+                          projectsTitle: 'Projets DONIA LABS TECH :', l1: 'Gestion scolaire intelligente', l2: 'Gestion de cantines scolaires',
+                          l3: 'Conseiller stratégique par IA', tapMore: 'Cliquez sur un projet pour en savoir plus !',
+                          greeting: 'Bonjour ! 😊 Je suis l\'assistante intelligente de', assistantOf: '.', canHelp: 'Je peux vous aider avec :',
+                          help1: 'nos services et solutions technologiques', help2: 'conseils intelligents', help3: 'nos moyens de paiement',
+                          help4: 'nous contacter', whatElse: 'Que voulez-vous savoir exactement ?' },
+                    en: { inquiry: 'To learn more', whatsapp: 'WhatsApp', mainFeatures: 'Key features',
+                          projectsTitle: 'DONIA LABS TECH projects:', l1: 'Smart school management', l2: 'School canteen management',
+                          l3: 'AI strategic advisor', tapMore: 'Tap any project to learn more!',
+                          greeting: 'Hello! 😊 I\'m the smart assistant of', assistantOf: '.', canHelp: 'I can help you with:',
+                          help1: 'our services and tech solutions', help2: 'smart consulting', help3: 'our available payment methods',
+                          help4: 'contacting us', whatElse: 'What exactly would you like to know?' }
+                };
+                const t = L[currentLang] || L.ar;
 
-                if (input.includes('smart school') || input.includes('مدرسة') || input.includes('مدارس') || input.includes('تعليم')) {
-                    return `🏫 <strong>DONIA SMART SCHOOL</strong><br><br>${kb.projects["DONIA SMART SCHOOL"].description}<br><br>المميزات الرئيسية: ${kb.projects["DONIA SMART SCHOOL"].features.slice(0,3).join(' ، ')}<br><br><em>للاستفسار: <a href="${kb.identity.whatsapp}" target="_blank">واتساب</a></em>`;
+                if (input.includes('smart school') || input.includes('مدرسة') || input.includes('مدارس') || input.includes('تعليم') || input.includes('école') || input.includes('school')) {
+                    return `🏫 <strong>DONIA SMART SCHOOL</strong><br><br>${kb.projects["DONIA SMART SCHOOL"].description}<br><br>${t.mainFeatures}: ${kb.projects["DONIA SMART SCHOOL"].features.slice(0,3).join(' ، ')}<br><br><em>${t.inquiry}: <a href="${kb.identity.whatsapp}" target="_blank">${t.whatsapp}</a></em>`;
                 }
-                if (input.includes('faras') || input.includes('مقصف') || input.includes('مخزون')) {
-                    return `🏪 <strong>Faras BEM</strong><br><br>${kb.projects["Faras BEM"].description}<br><br><em>للاستفسار: <a href="${kb.identity.whatsapp}" target="_blank">واتساب</a></em>`;
+                if (input.includes('faras') || input.includes('مقصف') || input.includes('مخزون') || input.includes('cantine') || input.includes('canteen')) {
+                    return `🏪 <strong>Faras BEM</strong><br><br>${kb.projects["Faras BEM"].description}<br><br><em>${t.inquiry}: <a href="${kb.identity.whatsapp}" target="_blank">${t.whatsapp}</a></em>`;
                 }
-                if (input.includes('donia mind') || input.includes('intellicore') || input.includes('استشار')) {
-                    return `🧠 <strong>DONIA MIND (INTELLICORE)</strong><br><br>${kb.projects["DONIA MIND (INTELLICORE)"].description}<br><br><em>للاستفسار: <a href="${kb.identity.whatsapp}" target="_blank">واتساب</a></em>`;
+                if (input.includes('donia mind') || input.includes('intellicore') || input.includes('استشار') || input.includes('conseil') || input.includes('consult')) {
+                    return `🧠 <strong>DONIA MIND (INTELLICORE)</strong><br><br>${kb.projects["DONIA MIND (INTELLICORE)"].description}<br><br><em>${t.inquiry}: <a href="${kb.identity.whatsapp}" target="_blank">${t.whatsapp}</a></em>`;
                 }
-                if (input.includes('مشاريع') || input.includes('منتج')) {
-                    return `🚀 <strong>مشاريع DONIA LABS TECH:</strong><br><br>1️⃣ <strong>DONIA SMART SCHOOL</strong> - إدارة مدرسية ذكية<br>2️⃣ <strong>Faras BEM</strong> - إدارة مقاصف المدارس<br>3️⃣ <strong>DONIA MIND</strong> - مستشار استراتيجي بالذكاء الاصطناعي<br><br><em>اضغط على أي مشروع لمعرفة المزيد!</em>`;
+                if (input.includes('مشاريع') || input.includes('منتج') || input.includes('projet') || input.includes('project')) {
+                    return `🚀 <strong>${t.projectsTitle}</strong><br><br>1️⃣ <strong>DONIA SMART SCHOOL</strong> - ${t.l1}<br>2️⃣ <strong>Faras BEM</strong> - ${t.l2}<br>3️⃣ <strong>DONIA MIND</strong> - ${t.l3}<br><br><em>${t.tapMore}</em>`;
                 }
-                
+
                 // Default knowledge-based response
-                return `مرحباً! 😊 أنا مساعد <strong>DONIA LABS TECH</strong> الذكي.<br><br>يمكنني مساعدتك في:<br>📱 خدماتنا وحلولنا التقنية<br>🏫 DONIA SMART SCHOOL و Faras BEM<br>🧠 DONIA MIND للاستشارات الذكية<br>💳 طرق الدفع المتاحة<br>📞 التواصل معنا<br><br><em>ما الذي تريد معرفته تحديداً؟</em>`;
+                return `${t.greeting} <strong>DONIA LABS TECH</strong> ${t.assistantOf}<br><br>${t.canHelp}<br>📱 ${t.help1}<br>🏫 DONIA SMART SCHOOL و Faras BEM<br>🧠 DONIA MIND ${t.help2}<br>💳 ${t.help3}<br>📞 ${t.help4}<br><br><em>${t.whatElse}</em>`;
             }
 
             showTyping(chatMessages) {
+                const typingLang = localStorage.getItem('donia_lang') || 'ar';
+                const typingText = typingLang === 'fr' ? 'En train d\'écrire...' : typingLang === 'en' ? 'Typing...' : 'يكتب...';
                 const typing = document.createElement('div');
                 typing.className = 'typing-indicator';
                 typing.innerHTML = `
                     <div class="typing-dot"></div>
                     <div class="typing-dot"></div>
                     <div class="typing-dot"></div>
-                    <span style="font-size:0.8rem; color:#94a3b8; margin-right:8px;">يكتب...</span>
+                    <span style="font-size:0.8rem; color:#94a3b8; margin-right:8px;">${typingText}</span>
                 `;
                 chatMessages.appendChild(typing);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
