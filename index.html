@@ -3139,6 +3139,80 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
+        /* ══════════════════════════════════════════════════════════
+           [MOBILE HARDENING] Fixes for parts that fail to render or
+           overlap on phones:
+           1) background-attachment:fixed is unreliable on mobile
+              Safari/Chrome-Android — the hero (and dark-mode hero)
+              background can fail to paint at all on touch devices.
+           2) Five separate fixed widgets (clock, chat, payment button
+              + panel, blog button, back-to-top) were crowding both
+              bottom corners with near-zero gap — on real phones with
+              browser-chrome safe areas this reads as broken/overlapping.
+           3) The collapsible nav menu had no height cap, so on short
+              phone screens its lower items could end up unreachable.
+           4) Long unbroken tokens (tech tags, emails) could force
+              horizontal scroll inside narrow cards.
+        ══════════════════════════════════════════════════════════ */
+        @media (max-width: 991px) {
+            .hero-section,
+            [data-theme="dark"] .hero-section {
+                background-attachment: scroll !important;
+            }
+        }
+
+        .portfolio-tech span,
+        .service-card, .community-card, .blog-card,
+        .ai-message, .footer-links a {
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                max-height: calc(100vh - 90px);
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Decorative clock dropped on phones: it was the 5th
+               fixed widget competing for the same corner as the far
+               more important chat button, right above it with no gap. */
+            .circular-clock { display: none !important; }
+
+            .ai-assistant {
+                bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+                right: 18px;
+            }
+            .ai-chat {
+                bottom: calc(90px + env(safe-area-inset-bottom, 0px));
+            }
+            .back-to-top {
+                bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+                left: 18px;
+            }
+            .blog-btn {
+                bottom: calc(82px + env(safe-area-inset-bottom, 0px));
+                left: 18px;
+            }
+            .payment-floating-btn {
+                bottom: calc(146px + env(safe-area-inset-bottom, 0px));
+                left: 18px;
+            }
+            .payment-panel {
+                bottom: calc(206px + env(safe-area-inset-bottom, 0px));
+            }
+        }
+
+        @media (max-width: 420px) {
+            .ai-assistant { width: 56px !important; height: 56px !important; }
+            .payment-floating-btn { width: 48px !important; height: 48px !important; }
+            .back-to-top { width: 44px !important; height: 44px !important; }
+            .blog-btn { padding: 10px 16px !important; font-size: 0.8rem !important; }
+        }
     </style>
 </head>
 <body>
@@ -3710,6 +3784,118 @@
                                         data-qr-url="https://wa.me/213674661737?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B9%D8%B1%D9%81%D8%A9%20%D8%A7%D9%84%D9%85%D8%B2%D9%8A%D8%AF%20%D8%B9%D9%86%20DONIA%20AI%20PLUS"
                                         data-qr-title="DONIA AI PLUS"
                                         data-qr-subtext="استفسار واتساب مباشر">
+                                    <i class="fas fa-qrcode"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="portfolio-card" data-real-link="">
+                        <div class="portfolio-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="DONIA EDU">
+                            <span class="portfolio-category">منصة تعليمية</span>
+                        </div>
+                        <div class="portfolio-body">
+                            <h4>DONIA EDU</h4>
+                            <p class="text-muted">
+                                منصة تعليمية رقمية متكاملة للمدارس والمعلمين والطلبة: دروس تفاعلية، متابعة تحصيل دراسي ذكية، ومحتوى تعليمي بدعم الذكاء الاصطناعي. <strong>تعلّم بذكاء... انطلق بلا حدود.</strong>
+                            </p>
+                            <div class="portfolio-tech">
+                                <span>EdTech</span><span>AI Tutor</span><span>RTL</span>
+                            </div>
+                            <div class="portfolio-actions">
+                                <a href="#contact" class="btn btn-primary" data-section="contact" data-translate="portfolio.cta">تواصل لمعرفة المزيد</a>
+                                <a href="#" target="_blank" class="btn btn-outline-primary d-none portfolio-visit-btn"><i class="fas fa-external-link-alt"></i></a>
+                                <button type="button" class="btn portfolio-qr-btn"
+                                        data-qr-url="https://wa.me/213674661737?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B9%D8%B1%D9%81%D8%A9%20%D8%A7%D9%84%D9%85%D8%B2%D9%8A%D8%AF%20%D8%B9%D9%86%20DONIA%20EDU"
+                                        data-qr-title="DONIA EDU"
+                                        data-qr-subtext="استفسار واتساب مباشر">
+                                    <i class="fas fa-qrcode"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="portfolio-card" data-real-link="">
+                        <div class="portfolio-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="منصة عطاء">
+                            <span class="portfolio-category">العمل الخيري والمجتمعي</span>
+                        </div>
+                        <div class="portfolio-body">
+                            <h4>منصة عطاء</h4>
+                            <p class="text-muted">
+                                منصة رقمية تربط المحسنين بالمحتاجين بكل شفافية وثقة: حملات تبرع، متابعة لحظية للمساهمات، وتقارير أثر واضحة. <strong>عطاؤك يصنع فرقاً حقيقياً.</strong>
+                            </p>
+                            <div class="portfolio-tech">
+                                <span>Donation Engine</span><span>Transparency</span><span>Community</span>
+                            </div>
+                            <div class="portfolio-actions">
+                                <a href="#contact" class="btn btn-primary" data-section="contact" data-translate="portfolio.cta">تواصل لمعرفة المزيد</a>
+                                <a href="#" target="_blank" class="btn btn-outline-primary d-none portfolio-visit-btn"><i class="fas fa-external-link-alt"></i></a>
+                                <button type="button" class="btn portfolio-qr-btn"
+                                        data-qr-url="https://wa.me/213674661737?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B9%D8%B1%D9%81%D8%A9%20%D8%A7%D9%84%D9%85%D8%B2%D9%8A%D8%AF%20%D8%B9%D9%86%20%D9%85%D9%86%D8%B5%D8%A9%20%D8%B9%D8%B7%D8%A7%D8%A1"
+                                        data-qr-title="منصة عطاء"
+                                        data-qr-subtext="استفسار واتساب مباشر">
+                                    <i class="fas fa-qrcode"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="portfolio-card" data-real-link="">
+                        <div class="portfolio-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="المدرب الرقمي">
+                            <span class="portfolio-category">التطوير الذاتي</span>
+                        </div>
+                        <div class="portfolio-body">
+                            <h4>المدرب الرقمي</h4>
+                            <p class="text-muted">
+                                مدرب افتراضي ذكي يرافقك يومياً لتطوير مهاراتك وتحقيق أهدافك: خطط شخصية، متابعة تقدم، وتحفيز مستمر بالذكاء الاصطناعي. <strong>مدربك الشخصي، متاح في جيبك.</strong>
+                            </p>
+                            <div class="portfolio-tech">
+                                <span>AI Coaching</span><span>Personal Growth</span><span>Automation</span>
+                            </div>
+                            <div class="portfolio-actions">
+                                <a href="#contact" class="btn btn-primary" data-section="contact" data-translate="portfolio.cta">تواصل لمعرفة المزيد</a>
+                                <a href="#" target="_blank" class="btn btn-outline-primary d-none portfolio-visit-btn"><i class="fas fa-external-link-alt"></i></a>
+                                <button type="button" class="btn portfolio-qr-btn"
+                                        data-qr-url="https://wa.me/213674661737?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B9%D8%B1%D9%81%D8%A9%20%D8%A7%D9%84%D9%85%D8%B2%D9%8A%D8%AF%20%D8%B9%D9%86%20%D8%A7%D9%84%D9%85%D8%AF%D8%B1%D8%A8%20%D8%A7%D9%84%D8%B1%D9%82%D9%85%D9%8A"
+                                        data-qr-title="المدرب الرقمي"
+                                        data-qr-subtext="استفسار واتساب مباشر">
+                                    <i class="fas fa-qrcode"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="350">
+                    <div class="portfolio-card" data-real-link="">
+                        <div class="portfolio-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="وكلاء الذكاء الاصطناعي">
+                            <span class="portfolio-category">الذكاء الاصطناعي</span>
+                        </div>
+                        <div class="portfolio-body">
+                            <h4>وكلاء الذكاء الاصطناعي</h4>
+                            <p class="text-muted">
+                                وكلاء ذكاء اصطناعي مخصصون يعملون نيابة عنك على مدار الساعة: رد على العملاء، إدارة المواعيد، وأتمتة مهامك المتكررة. <strong>احصل وكيلك واستثمر وقتك فيما يهم فعلاً.</strong>
+                            </p>
+                            <div class="portfolio-tech">
+                                <span>AI Agents</span><span>24/7 Automation</span><span>Custom Workflows</span>
+                            </div>
+                            <div class="portfolio-actions">
+                                <a href="#contact" class="btn btn-primary" data-section="contact" data-translate="portfolio.cta">تواصل لمعرفة المزيد</a>
+                                <a href="#" target="_blank" class="btn btn-outline-primary d-none portfolio-visit-btn"><i class="fas fa-external-link-alt"></i></a>
+                                <button type="button" class="btn portfolio-qr-btn"
+                                        data-qr-url="https://wa.me/213674661737?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A3%D8%AD%D8%B5%D9%84%20%D8%B9%D9%84%D9%89%20%D9%88%D9%83%D9%8A%D9%84%20%D8%B0%D9%83%D8%A7%D8%A1%20%D8%A7%D8%B5%D8%B7%D9%86%D8%A7%D8%B9%D9%8A%20%D8%AE%D8%A7%D8%B5%20%D8%A8%D9%8A"
+                                        data-qr-title="وكلاء الذكاء الاصطناعي"
+                                        data-qr-subtext="احصل وكيلك — استفسار واتساب مباشر">
                                     <i class="fas fa-qrcode"></i>
                                 </button>
                             </div>
