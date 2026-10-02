@@ -1695,6 +1695,17 @@
             padding-right: 25px;
         }
         
+        .footer-contact-list a,
+        .footer-contact-list li > span {
+            color: rgba(255,255,255,.8);
+            display: flex;
+            align-items: center;
+            font-size: .92rem;
+        }
+        .footer-contact-list a { text-decoration: none; transition: var(--transition); }
+        .footer-contact-list a:hover { color: var(--gold-color); }
+        .footer-contact-list i { color: var(--gold-color); width: 16px; }
+
         .footer-links a:hover {
             color: var(--gold-color);
             padding-right: 35px;
@@ -3373,7 +3384,7 @@
 
             <div class="text-center mt-3">
                 <a href="https://wa.me/213674661737" target="_blank" class="btn btn-sm" style="background: var(--gradient-gold); color:#fff; border-radius:20px; padding:8px 20px;">
-                    <i class="fab fa-whatsapp me-1"></i> احصل على أرقام الحسابات عبر واتساب
+                    <i class="fab fa-whatsapp me-1"></i> <span data-translate="payment.whatsappNumbers">احصل على أرقام الحسابات عبر واتساب</span>
                 </a>
             </div>
         </div>
@@ -3464,12 +3475,12 @@
                 <ul class="navbar-nav mx-auto gap-1">
                     <li class="nav-item">
                         <a class="nav-link active" href="#home" data-section="home" title="الرئيسية">
-                            <i class="fas fa-home"></i><span class="ms-1">الرئيسية</span>
+                            <i class="fas fa-home"></i><span class="ms-1" data-translate="nav.home">الرئيسية</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#services" data-section="services" title="خدماتنا">
-                            <i class="fas fa-cogs"></i><span class="ms-1">خدماتنا</span>
+                            <i class="fas fa-cogs"></i><span class="ms-1" data-translate="nav.services">خدماتنا</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -3479,22 +3490,22 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#payment" data-section="payment" title="طرق الدفع">
-                            <i class="fas fa-credit-card"></i><span class="ms-1">طرق الدفع</span>
+                            <i class="fas fa-credit-card"></i><span class="ms-1" data-translate="nav.payment">طرق الدفع</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#blog" data-section="blog" title="المدونة">
-                            <i class="fas fa-blog"></i><span class="ms-1">المدونة</span>
+                            <i class="fas fa-blog"></i><span class="ms-1" data-translate="nav.blog">المدونة</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#community" data-section="community" title="المجتمع">
-                            <i class="fas fa-users"></i><span class="ms-1">المجتمع</span>
+                            <i class="fas fa-users"></i><span class="ms-1" data-translate="nav.community">المجتمع</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact" data-section="contact" title="اتصل بنا">
-                            <i class="fas fa-phone-alt"></i><span class="ms-1">اتصل بنا</span>
+                            <i class="fas fa-phone-alt"></i><span class="ms-1" data-translate="nav.contact">اتصل بنا</span>
                         </a>
                     </li>
                 </ul>
@@ -4055,10 +4066,10 @@
             <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="500">
                 <p class="text-muted" id="paymentSecurityText">
                     <i class="fas fa-shield-alt me-2"></i>
-                    جميع طرق الدفع لدينا آمنة، وتفاصيل الحسابات تُرسل مباشرة عند التواصل معنا
+                    <span data-translate="payment.safeNote">جميع طرق الدفع لدينا آمنة، وتفاصيل الحسابات تُرسل مباشرة عند التواصل معنا</span>
                 </p>
                 <a href="https://wa.me/213674661737" target="_blank" class="btn mt-2" style="background: var(--gradient-gold); color:#fff; border-radius:24px; padding:10px 28px;">
-                    <i class="fab fa-whatsapp me-2"></i>تواصل معنا للحصول على تفاصيل الدفع
+                    <i class="fab fa-whatsapp me-2"></i><span data-translate="payment.contactForDetails">تواصل معنا للحصول على تفاصيل الدفع</span>
                 </a>
             </div>
         </div>
@@ -4156,7 +4167,7 @@
                 </div>
                 <div class="modal-footer border-0 blog-article-modal-footer">
                     <button type="button" class="btn btn-outline-secondary btn-sm" id="blogArticleShareBtn" data-qr-title="مقالة" data-qr-url="" data-qr-subtext="شارك هذا المقال">
-                        <i class="fas fa-share-alt me-2"></i>مشاركة / QR
+                        <i class="fas fa-share-alt me-2"></i><span data-translate="blog.shareQr">مشاركة / QR</span>
                     </button>
                 </div>
             </div>
@@ -4336,28 +4347,30 @@
                     <h5 id="footerQuickLinksTitle">روابط سريعة</h5>
                     <ul class="footer-links">
                         <li><a href="#home" data-section="home" id="footerLink1">الرئيسية</a></li>
-                        <li><a href="#services" data-section="services" id="footerLink2">خدماتنا</a></li>
+                        <li><a href="#contact" data-section="contact" id="footerLink2">اتصل بنا</a></li>
                         <li><a href="#community" data-section="community" id="footerLink3">المجتمع</a></li>
                         <li><a href="#blog" data-section="blog" id="footerLink4">المدونة</a></li>
                         <li><a href="#payment" data-section="payment" id="footerLink5">طرق الدفع</a></li>
                         <li><a href="#portfolio" data-section="portfolio" id="footerLink7" data-translate="footer.link7">معرض الأعمال</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="col-lg-3 mb-4">
-                    <h5 id="footerFollowTitle">تابعنا</h5>
-                    <p class="opacity-75 mt-3" id="footerFollowText">اشترك ليصلك كل جديد عن خدماتنا.</p>
-                    <div class="social-icons">
-                        <a href="https://wa.me/213674661737" class="social-icon" target="_blank" title="واتساب">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/daoud-touina-8a9049134?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-icon" target="_blank" title="لينكد إن">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://www.facebook.com/share/1An6GhVd56/" class="social-icon" target="_blank" title="فيسبوك">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
+                    <h5 id="footerFollowTitle">تواصل معنا</h5>
+                    <ul class="footer-links footer-contact-list">
+                        <li>
+                            <a href="tel:+213674661737" dir="ltr"><i class="fas fa-phone-alt me-2"></i>+213 674 66 17 37</a>
+                        </li>
+                        <li>
+                            <a href="mailto:contact@donialabstech.online"><i class="fas fa-envelope me-2"></i>contact@donialabstech.online</a>
+                        </li>
+                        <li>
+                            <span><i class="fas fa-map-marker-alt me-2"></i><span id="footerLocationText" data-translate="footer.contact.location">المسيلة، الجزائر</span></span>
+                        </li>
+                        <li>
+                            <span><i class="fas fa-clock me-2"></i><span data-translate="footer.contact.hours">متاحون 7 أيام في الأسبوع</span></span>
+                        </li>
+                    </ul>
                 </div>
             </div>
             
@@ -4367,12 +4380,12 @@
                 <div style="margin-top:10px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap">
                     <a href="/privacy-policy.html" style="color:rgba(255,255,255,0.6);font-size:.82rem;text-decoration:none;transition:color .2s"
                        onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">
-                        <i class="fas fa-shield-alt me-1"></i>سياسة الخصوصية
+                        <i class="fas fa-shield-alt me-1"></i><span data-translate="footer.privacyPolicy">سياسة الخصوصية</span>
                     </a>
                     <span style="color:rgba(255,255,255,0.3)">|</span>
                     <a href="/terms-of-service.html" style="color:rgba(255,255,255,0.6);font-size:.82rem;text-decoration:none;transition:color .2s"
                        onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">
-                        <i class="fas fa-file-contract me-1"></i>شروط الاستخدام
+                        <i class="fas fa-file-contract me-1"></i><span data-translate="footer.termsOfService">شروط الاستخدام</span>
                     </a>
                 </div>
             </div>
@@ -4475,6 +4488,12 @@
                     "payment.method5": "الدفع نقداً",
                     "payment.method6": "QR Code",
                     "payment.security.text": "جميع طرق الدفع لدينا آمنة، وتفاصيل الحسابات تُرسل مباشرة عند التواصل معنا",
+                    "payment.whatsappNumbers": "احصل على أرقام الحسابات عبر واتساب",
+                    "payment.safeNote": "جميع طرق الدفع لدينا آمنة، وتفاصيل الحسابات تُرسل مباشرة عند التواصل معنا",
+                    "payment.contactForDetails": "تواصل معنا للحصول على تفاصيل الدفع",
+                    "blog.shareQr": "مشاركة / QR",
+                    "footer.privacyPolicy": "سياسة الخصوصية",
+                    "footer.termsOfService": "شروط الاستخدام",
                     "payment.title": "طرق الدفع المتاحة",
                     "payment.info.title": "معلومات الدفع",
                     "payment.info.text": "نقبل جميع طرق الدفع الآمنة والمتاحة في الجزائر والعالم",
@@ -4558,12 +4577,13 @@
                     "footer.service4": "حلول الذكاء الاصطناعي",
                     "footer.links.title": "روابط سريعة",
                     "footer.link1": "الرئيسية",
-                    "footer.link2": "خدماتنا",
+                    "footer.link2": "اتصل بنا",
                     "footer.link3": "المجتمع",
                     "footer.link4": "المدونة",
                     "footer.link5": "طرق الدفع",
-                    "footer.follow.title": "تابعنا",
-                    "footer.follow.text": "اشترك ليصلك كل جديد عن خدماتنا.",
+                    "footer.follow.title": "تواصل معنا",
+                    "footer.contact.location": "المسيلة، الجزائر",
+                    "footer.contact.hours": "متاحون 7 أيام في الأسبوع",
                     "copyright.text": "© 2026 DONIA LABS TECH. جميع الحقوق محفوظة.",
                     
                     // AI Chat
@@ -4676,6 +4696,12 @@
                     "payment.method5": "Paiement en Espèces",
                     "payment.method6": "QR Code",
                     "payment.security.text": "Tous nos modes de paiement sont sécurisés ; les coordonnées du compte sont communiquées directement lors du contact",
+                    "payment.whatsappNumbers": "Obtenir les coordonnées bancaires via WhatsApp",
+                    "payment.safeNote": "Tous nos modes de paiement sont sécurisés ; les coordonnées du compte sont communiquées directement lors du contact",
+                    "payment.contactForDetails": "Contactez-nous pour les détails de paiement",
+                    "blog.shareQr": "Partager / QR",
+                    "footer.privacyPolicy": "Politique de confidentialité",
+                    "footer.termsOfService": "Conditions d'utilisation",
                     "payment.title": "Modes de Paiement Disponibles",
                     "payment.info.title": "Informations de Paiement",
                     "payment.info.text": "Nous acceptons tous les modes de paiement sécurisés disponibles en Algérie et dans le monde",
@@ -4758,12 +4784,13 @@
                     "footer.service4": "Solutions d'IA",
                     "footer.links.title": "Liens rapides",
                     "footer.link1": "Accueil",
-                    "footer.link2": "Nos Services",
+                    "footer.link2": "Contactez-nous",
                     "footer.link3": "Communauté",
                     "footer.link4": "Blog",
                     "footer.link5": "Modes de Paiement",
-                    "footer.follow.title": "Suivez-nous",
-                    "footer.follow.text": "Abonnez-vous pour recevoir toutes nos nouveautés.",
+                    "footer.follow.title": "Contactez-nous",
+                    "footer.contact.location": "M'Sila, Algérie",
+                    "footer.contact.hours": "Disponibles 7 jours sur 7",
                     "copyright.text": "© 2026 DONIA LABS TECH. Tous droits réservés.",
                     
                     // AI Chat
@@ -4876,6 +4903,12 @@
                     "payment.method5": "Cash Payment",
                     "payment.method6": "QR Code",
                     "payment.security.text": "All our payment methods are secure — account details are sent directly when you contact us",
+                    "payment.whatsappNumbers": "Get account numbers via WhatsApp",
+                    "payment.safeNote": "All our payment methods are secure — account details are sent directly when you contact us",
+                    "payment.contactForDetails": "Contact us for payment details",
+                    "blog.shareQr": "Share / QR",
+                    "footer.privacyPolicy": "Privacy Policy",
+                    "footer.termsOfService": "Terms of Service",
                     "payment.title": "Available Payment Methods",
                     "payment.info.title": "Payment Information",
                     "payment.info.text": "We accept all secure payment methods available in Algeria and worldwide",
@@ -4959,12 +4992,13 @@
                     "footer.service4": "AI Solutions",
                     "footer.links.title": "Quick Links",
                     "footer.link1": "Home",
-                    "footer.link2": "Our Services",
+                    "footer.link2": "Contact Us",
                     "footer.link3": "Community",
                     "footer.link4": "Blog",
                     "footer.link5": "Payment Methods",
-                    "footer.follow.title": "Follow Us",
-                    "footer.follow.text": "Subscribe to receive all our updates.",
+                    "footer.follow.title": "Contact Us",
+                    "footer.contact.location": "M'Sila, Algeria",
+                    "footer.contact.hours": "Available 7 days a week",
                     "copyright.text": "© 2026 DONIA LABS TECH. All rights reserved.",
                     
                     // AI Chat
@@ -5067,12 +5101,12 @@
             applyManualTranslations(lang) {
                 const t = this.translations[lang];
                 
-                // Navigation
-                $('.nav-text').each(function(index) {
-                    const texts = [t["nav.home"], t["nav.services"], t["nav.community"], t["nav.payment"], t["nav.blog"], t["nav.contact"]];
-                    if (texts[index]) $(this).text(texts[index]);
-                });
-                
+                // Navigation — the 6 main links now carry their own
+                // data-translate="nav.*" attribute and are translated by
+                // the generic loop above; this used to target a
+                // ".nav-text" class that didn't exist anywhere in the
+                // markup, so the nav bar silently never changed language.
+
                 $('#navSubtitle').text(t["nav.subtitle"]);
                 $('#startJourneyText').text(t["nav.startJourney"]);
                 
@@ -5218,7 +5252,7 @@
                 $('#footerLink4').text(t["footer.link4"]);
                 $('#footerLink5').text(t["footer.link5"]);
                 $('#footerFollowTitle').text(t["footer.follow.title"]);
-                $('#footerFollowText').text(t["footer.follow.text"]);
+                $('#footerLocationText').text(t["footer.contact.location"]);
                 $('#copyrightText').text(t["copyright.text"]);
                 
                 // AI Chat
