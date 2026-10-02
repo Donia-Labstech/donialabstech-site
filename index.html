@@ -2517,15 +2517,25 @@
             box-shadow: 0 8px 32px rgba(220,38,38,0.18), 0 1px 0 rgba(103,232,249,0.08) !important;
         }
 
-        /* ── Brand wordmark: a single, definitive gold-foil mark ──
+        /* ── Brand wordmark: a two-tier logotype, not plain text ──
+           "DONIA" carries the weight (bold gold-foil), "LABS TECH"
+           rides lighter and tracked-out beside/under it — the kind of
+           deliberate type pairing a real logo uses, instead of one
+           flat string in one weight.
            (this !important block is the one that actually wins the
            cascade, so it carries the full, final definition) */
         .logo-text .main {
             font-family: 'Outfit', 'Poppins', sans-serif !important;
+            display: flex !important;
+            align-items: baseline !important;
+            flex-wrap: wrap !important;
+            gap: 0.4em !important;
+            line-height: 1.1 !important;
+        }
+        .logo-text .main .brand-primary {
             font-size: 1.5rem !important;
             font-weight: 800 !important;
             letter-spacing: 1.5px !important;
-            line-height: 1.1 !important;
             background: linear-gradient(110deg, #fff6da 0%, #fde68a 20%, #fbbf24 45%, #f59e0b 70%, #fde68a 100%) !important;
             background-size: 220% auto !important;
             -webkit-background-clip: text !important;
@@ -2534,6 +2544,28 @@
             filter: drop-shadow(0 0 14px rgba(245,158,11,.5))
                     drop-shadow(0 2px 4px rgba(0,0,0,.5)) !important;
             animation: brandShimmer 7s linear infinite !important;
+        }
+        .logo-text .main .brand-secondary {
+            font-size: 0.72rem !important;
+            font-weight: 500 !important;
+            letter-spacing: 2.5px !important;
+            color: rgba(255,255,255,.62) !important;
+            text-transform: uppercase !important;
+            position: relative;
+            padding-inline-start: 0.5em;
+        }
+        .logo-text .main .brand-secondary::before {
+            content: '';
+            position: absolute;
+            inset-inline-start: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 0.9em;
+            background: rgba(245,158,11,.5);
+        }
+        @media (max-width: 420px) {
+            .logo-text .main .brand-secondary { display: none !important; }
         }
         .logo-text .sub {
             font-family: 'Inter', 'Tajawal', sans-serif !important;
@@ -2637,12 +2669,13 @@
 
         /* ── Logo on small screens ── */
         @media (max-width: 575.98px) {
-            .logo-text .main { font-size: 1rem !important; letter-spacing: 1.5px !important; }
+            .logo-text .main .brand-primary { font-size: 1.05rem !important; letter-spacing: 1px !important; }
+            .logo-text .main .brand-secondary { font-size: .62rem !important; letter-spacing: 1.5px !important; }
             .logo-text .sub  { font-size: .5rem !important; letter-spacing: 2px !important; }
             .logo-container  { width: 42px !important; height: 42px !important; }
         }
         @media (max-width: 360px) {
-            .logo-text .main { font-size: .9rem !important; }
+            .logo-text .main .brand-primary { font-size: .95rem !important; }
         }
 
         /* ── Hero premium mesh ── */
@@ -3409,7 +3442,7 @@
                         <div class="logo-img"></div>
                     </div>
                     <div class="logo-text">
-                        <div class="main">DONIA LABS TECH</div>
+                        <div class="main"><span class="brand-primary">DONIA</span><span class="brand-secondary">LABS TECH</span></div>
                         <div class="sub" id="navSubtitle">طريقك نحو القمة الرقمية</div>
                     </div>
                 </div>
@@ -4259,7 +4292,7 @@
                             <div class="logo-img"></div>
                         </div>
                         <div class="logo-text">
-                            <div class="main">DONIA LABS TECH</div>
+                            <div class="main"><span class="brand-primary">DONIA</span><span class="brand-secondary">LABS TECH</span></div>
                             <div class="sub" id="footerSubtitle">طريقك نحو القمة الرقمية</div>
                         </div>
                     </div>
