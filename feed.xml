@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Fri, 02 Oct 2026 08:01:29 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 02 Oct 2026 21:54:34 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>التكامل مع الذكاء الاصطناعي قبل التوسع: القرار الذي يوفّر عليك إعادة بناء منصتك من الصفر</title>
+    <link>https://donialabstech.online/blog/2026-10-02.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-10-02.html</guid>
+    <description>📝 التكامل مع الذكاء الاصطناعي قبل التوسع: القرار الذي يوفّر عليك إعادة بناء منصتك من الصفر
+
+التوسع بدون طبقة ذكاء اصطناعي جاهزة يعني دفع فاتورة مضاعفة لاحقاً في الوقت والمال. إليك كيف تبني التكامل الآن، بأرقام وحالات واقعية، قبل أن تكبر منصتك وتصبح إعا
+
+🔗 https://donialabstech.online/blog/2026-10-02.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Fri, 02 Oct 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>كيف تستخدم الترجمة الفورية بالذكاء الاصطناعي لتوفير ساعة من وقتك يومياً</title>
     <link>https://donialabstech.online/blog/2026-10-02-am.html</link>
@@ -259,19 +272,6 @@
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Wed, 23 Sep 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>الذكاء الاصطناعي في تطوير المنتجات: من فكرة إلى إطلاق في 14 يومًا</title>
-    <link>https://donialabstech.online/blog/2026-09-22.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-09-22.html</guid>
-    <description>📝 الذكاء الاصطناعي في تطوير المنتجات: من فكرة إلى إطلاق في 14 يومًا
-
-كيف تحوّل الذكاء الاصطناعي من كونه &amp;quot;أداة تجريبية&amp;quot; إلى محرّك أساسي في دورة تطوير المنتجات داخل DONIA LABS TECH؟ إليك منهجية عملية بالأرقام والأدوات، جاهزة للنسخ
-
-🔗 https://donialabstech.online/blog/2026-09-22.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Tue, 22 Sep 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
 </rss>
