@@ -1705,6 +1705,23 @@
         .footer-contact-list a { text-decoration: none; transition: var(--transition); }
         .footer-contact-list a:hover { color: var(--gold-color); }
         .footer-contact-list i { color: var(--gold-color); width: 16px; }
+        .footer-phone { font-size: 0.85rem !important; letter-spacing: 0.3px; }
+
+        /* A visible frame stands in for a text header — the links are
+           grouped by their border/card, not by a repeated title word. */
+        .footer-frame {
+            border: 1px solid rgba(245,158,11,.22);
+            border-radius: 16px;
+            padding: 24px 22px;
+            background: rgba(255,255,255,.03);
+            height: 100%;
+        }
+        .footer-icon-list { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 10px; }
+        .footer-icon-list li { margin-bottom: 8px; }
+        .footer-icon-list a { padding-right: 0; font-size: 0.92rem; }
+        @media (max-width: 575.98px) {
+            .footer-icon-list { grid-template-columns: 1fr; }
+        }
 
         .footer-links a:hover {
             color: var(--gold-color);
@@ -2543,37 +2560,31 @@
             gap: 0.4em !important;
             line-height: 1.1 !important;
         }
-        /* Solid, high-contrast color on purpose — the earlier animated
-           gradient-clipped text looked illegible on real screens
-           (gradient-on-text plus drop-shadow filter is unreliable
-           across browsers/GPUs and reads as faded or blurry). A flat
-           bright gold with a simple text-shadow is what actually
-           stays readable against the navy navbar at small sizes. */
+        /* Maximum-legibility wordmark, deliberately plain: solid opaque
+           white/gold on a dark chip, both words at a close, readable
+           size and weight. Earlier attempts (animated gradient-clip
+           text, then a faint low-opacity second word) kept reading as
+           blurry or washed out on real screens — this version removes
+           every effect that can fail and relies only on flat color +
+           a solid backing, which always renders the same everywhere. */
+        .logo-text .main {
+            background: rgba(5,10,20,.55) !important;
+            border: 1px solid rgba(245,158,11,.3) !important;
+            border-radius: 10px !important;
+            padding: 5px 12px !important;
+        }
         .logo-text .main .brand-primary {
-            font-size: 1.55rem !important;
+            font-size: 1.5rem !important;
             font-weight: 800 !important;
             letter-spacing: 0.5px !important;
             color: #fcd34d !important;
-            text-shadow: 0 1px 3px rgba(0,0,0,.6) !important;
         }
         .logo-text .main .brand-secondary {
-            font-size: 0.72rem !important;
-            font-weight: 500 !important;
-            letter-spacing: 2.5px !important;
-            color: rgba(255,255,255,.62) !important;
-            text-transform: uppercase !important;
-            position: relative;
-            padding-inline-start: 0.5em;
-        }
-        .logo-text .main .brand-secondary::before {
-            content: '';
-            position: absolute;
-            inset-inline-start: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 1px;
-            height: 0.9em;
-            background: rgba(245,158,11,.5);
+            font-size: 1.1rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.5px !important;
+            color: #ffffff !important;
+            text-transform: none !important;
         }
         @media (max-width: 420px) {
             .logo-text .main .brand-secondary { display: none !important; }
@@ -4333,44 +4344,38 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-2 col-md-6 mb-4">
-                    <h5 id="footerServicesTitle">خدماتنا</h5>
-                    <ul class="footer-links">
-                        <li><a href="#services" data-section="services" id="footerService1">تصميم المواقع</a></li>
-                        <li><a href="#services" data-section="services" id="footerService2">المونتاج الاحترافي</a></li>
-                        <li><a href="#services" data-section="services" id="footerService3">التسويق الرقمي</a></li>
-                        <li><a href="#services" data-section="services" id="footerService4">حلول الذكاء الاصطناعي</a></li>
-                    </ul>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h5 id="footerQuickLinksTitle">روابط سريعة</h5>
-                    <ul class="footer-links">
-                        <li><a href="#home" data-section="home" id="footerLink1">الرئيسية</a></li>
-                        <li><a href="#contact" data-section="contact" id="footerLink2">اتصل بنا</a></li>
-                        <li><a href="#community" data-section="community" id="footerLink3">المجتمع</a></li>
-                        <li><a href="#blog" data-section="blog" id="footerLink4">المدونة</a></li>
-                        <li><a href="#payment" data-section="payment" id="footerLink5">طرق الدفع</a></li>
-                        <li><a href="#portfolio" data-section="portfolio" id="footerLink7" data-translate="footer.link7">معرض الأعمال</a></li>
-                    </ul>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-frame">
+                        <ul class="footer-links footer-icon-list">
+                            <li><a href="#home" data-section="home"><i class="fas fa-home me-2"></i><span id="footerLink1">الرئيسية</span></a></li>
+                            <li><a href="#services" data-section="services"><i class="fas fa-cogs me-2"></i><span id="footerService1">خدماتنا</span></a></li>
+                            <li><a href="#portfolio" data-section="portfolio"><i class="fas fa-briefcase me-2"></i><span data-translate="footer.link7">معرض الأعمال</span></a></li>
+                            <li><a href="#community" data-section="community"><i class="fas fa-users me-2"></i><span id="footerLink3">المجتمع</span></a></li>
+                            <li><a href="#blog" data-section="blog"><i class="fas fa-blog me-2"></i><span id="footerLink4">المدونة</span></a></li>
+                            <li><a href="#payment" data-section="payment"><i class="fas fa-credit-card me-2"></i><span id="footerLink5">طرق الدفع</span></a></li>
+                            <li><a href="#contact" data-section="contact"><i class="fas fa-envelope-open-text me-2"></i><span id="footerLink2">اتصل بنا</span></a></li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="col-lg-3 mb-4">
-                    <h5 id="footerFollowTitle">تواصل معنا</h5>
-                    <ul class="footer-links footer-contact-list">
-                        <li>
-                            <a href="tel:+213674661737" dir="ltr"><i class="fas fa-phone-alt me-2"></i>+213 674 66 17 37</a>
-                        </li>
-                        <li>
-                            <a href="mailto:contact@donialabstech.online"><i class="fas fa-envelope me-2"></i>contact@donialabstech.online</a>
-                        </li>
-                        <li>
-                            <span><i class="fas fa-map-marker-alt me-2"></i><span id="footerLocationText" data-translate="footer.contact.location">المسيلة، الجزائر</span></span>
-                        </li>
-                        <li>
-                            <span><i class="fas fa-clock me-2"></i><span data-translate="footer.contact.hours">متاحون 7 أيام في الأسبوع</span></span>
-                        </li>
-                    </ul>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-frame">
+                        <h5 id="footerFollowTitle" class="mb-3">تواصل معنا</h5>
+                        <ul class="footer-links footer-contact-list">
+                            <li>
+                                <a href="tel:+213674661737" dir="ltr" class="footer-phone"><i class="fas fa-phone-alt me-2"></i>+213 674 66 17 37</a>
+                            </li>
+                            <li>
+                                <a href="mailto:contact@donialabstech.online"><i class="fas fa-envelope me-2"></i>contact@donialabstech.online</a>
+                            </li>
+                            <li>
+                                <span><i class="fas fa-globe me-2"></i><span data-translate="footer.contact.online">نعمل عبر الإنترنت بالكامل لخدمة عملائنا أينما كانوا</span></span>
+                            </li>
+                            <li>
+                                <span><i class="fas fa-clock me-2"></i><span data-translate="footer.contact.hours">متاحون 7 أيام في الأسبوع</span></span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             
@@ -4571,7 +4576,7 @@
                     "footer.subtitle": "طريقك نحو القمة الرقمية",
                     "footer.description": "رواد الابتكار الرقمي في العالم العربي، نقدم حلولاً تقنية متكاملة <strong>باستخدام أحدث التقنيات</strong> لتحقيق أهدافك الرقمية.",
                     "footer.services.title": "خدماتنا",
-                    "footer.service1": "تصميم المواقع",
+                    "footer.service1": "خدماتنا",
                     "footer.service2": "المونتاج الاحترافي",
                     "footer.service3": "التسويق الرقمي",
                     "footer.service4": "حلول الذكاء الاصطناعي",
@@ -4778,7 +4783,7 @@
                     "footer.subtitle": "Votre chemin vers le sommet numérique",
                     "footer.description": "Pionniers de l'innovation numérique dans le monde arabe, nous proposons des solutions technologiques complètes <strong>en utilisant les dernières technologies</strong> pour atteindre vos objectifs numériques.",
                     "footer.services.title": "Nos Services",
-                    "footer.service1": "Conception de sites web",
+                    "footer.service1": "Nos Services",
                     "footer.service2": "Montage professionnel",
                     "footer.service3": "Marketing numérique",
                     "footer.service4": "Solutions d'IA",
@@ -4986,7 +4991,7 @@
                     "footer.subtitle": "Your Path to Digital Summit",
                     "footer.description": "Pioneers of digital innovation in the Arab world, we offer complete technological solutions <strong>using the latest technologies</strong> to achieve your digital goals.",
                     "footer.services.title": "Our Services",
-                    "footer.service1": "Website Design",
+                    "footer.service1": "Our Services",
                     "footer.service2": "Professional Editing",
                     "footer.service3": "Digital Marketing",
                     "footer.service4": "AI Solutions",
@@ -5240,12 +5245,7 @@
                 // Footer
                 $('#footerSubtitle').text(t["footer.subtitle"]);
                 $('#footerDescription').html(t["footer.description"]);
-                $('#footerServicesTitle').text(t["footer.services.title"]);
                 $('#footerService1').text(t["footer.service1"]);
-                $('#footerService2').text(t["footer.service2"]);
-                $('#footerService3').text(t["footer.service3"]);
-                $('#footerService4').text(t["footer.service4"]);
-                $('#footerQuickLinksTitle').text(t["footer.links.title"]);
                 $('#footerLink1').text(t["footer.link1"]);
                 $('#footerLink2').text(t["footer.link2"]);
                 $('#footerLink3').text(t["footer.link3"]);
