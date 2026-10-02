@@ -2940,25 +2940,78 @@
             letter-spacing: 0.5px;
         }
 
-        /* AI assistant: circular logo inside the floating button */
-        .ai-assistant { padding: 0; overflow: hidden; }
+        /* AI assistant badge: a proper circular seal — brand name running
+           around the rim as curved text (instead of a flat photo squeezed
+           into a tiny circle, which read as blurry/illegible). */
+        .ai-assistant { padding: 0; overflow: visible; background: transparent; border: none; box-shadow: none; animation: none; }
         .ai-assistant-logo {
+            position: relative;
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background-image: url('images/logo.jpg');
-            background-size: cover;
-            background-position: center;
+            filter: drop-shadow(0 10px 26px rgba(15, 52, 96, 0.45));
+            transition: var(--transition);
         }
-        .ai-header-logo {
-            width: 36px;
-            height: 36px;
+        .ai-assistant:hover .ai-assistant-logo { transform: scale(1.08); }
+        .ai-logo-ring {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            animation: aiRingSpin 26s linear infinite;
+        }
+        @keyframes aiRingSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .ai-logo-core {
+            position: absolute;
+            inset: 14%;
             border-radius: 50%;
-            background-image: url('images/logo.jpg');
-            background-size: cover;
-            background-position: center;
-            border: 2px solid rgba(255,255,255,0.5);
+            background: var(--gradient-ai);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 2px 6px rgba(255,255,255,0.25), inset 0 -4px 10px rgba(0,0,0,0.25);
+            border: 2px solid rgba(255,255,255,0.65);
+        }
+        .ai-logo-core i {
+            color: #fff;
+            font-size: 1.5rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+        }
+        .ai-logo-pulse {
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 2px solid var(--gold-color);
+            opacity: 0;
+            animation: aiPulseRing 2.6s ease-out infinite;
+        }
+        @keyframes aiPulseRing {
+            0% { transform: scale(0.92); opacity: 0.55; }
+            100% { transform: scale(1.35); opacity: 0; }
+        }
+
+        /* Small header avatar (inside the open chat panel) — same family,
+           no circular text at this size (would be unreadable), just a
+           clean gradient-ringed monogram. */
+        .ai-header-logo {
+            position: relative;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
             flex-shrink: 0;
+            background: var(--gradient-ai);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255,255,255,0.6);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .ai-header-logo i {
+            color: #fff;
+            font-size: 1.05rem;
         }
         .ai-header h5 {
             font-family: 'Poppins', 'Cairo', sans-serif;
@@ -3040,7 +3093,24 @@
 
     <!-- AI Assistant -->
     <div class="ai-assistant auto-hide" id="aiAssistant">
-        <div class="ai-assistant-logo"></div>
+        <div class="ai-assistant-logo">
+            <span class="ai-logo-pulse"></span>
+            <svg class="ai-logo-ring" viewBox="0 0 100 100" aria-hidden="true">
+                <defs>
+                    <path id="aiLogoTextPath" d="M 50,50 m -42,0 a 42,42 0 1,1 84,0 a 42,42 0 1,1 -84,0" />
+                    <linearGradient id="aiLogoRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#f59e0b"/>
+                        <stop offset="50%" stop-color="#16a34a"/>
+                        <stop offset="100%" stop-color="#0f3460"/>
+                    </linearGradient>
+                </defs>
+                <circle cx="50" cy="50" r="47" fill="none" stroke="url(#aiLogoRingGrad)" stroke-width="2.5"/>
+                <text font-size="8.3" font-weight="700" letter-spacing="1.6" fill="#fff">
+                    <textPath href="#aiLogoTextPath" startOffset="2%">DONIA LABS TECH  •  SMART IDEAS LAB  •</textPath>
+                </text>
+            </svg>
+            <div class="ai-logo-core"><i class="fas fa-robot"></i></div>
+        </div>
     </div>
 
     <!-- Payment Methods Floating Button -->
@@ -3132,7 +3202,7 @@
     <div class="ai-chat" id="aiChat">
         <div class="ai-header">
             <div class="d-flex align-items-center">
-                <div class="ai-header-logo me-2"></div>
+                <div class="ai-header-logo me-2"><i class="fas fa-robot"></i></div>
                 <div>
                     <h5><span id="aiTitle">دونيا</span></h5>
                     <small id="aiSubtitle">مساعدتك الذكية من DONIA LABS TECH</small>
