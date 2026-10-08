@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Wed, 07 Oct 2026 23:14:10 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 08 Oct 2026 08:01:17 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>خمس طرق عملية لدمج تحليل البيانات بالذكاء الاصطناعي في روتين عملك</title>
+    <link>https://donialabstech.online/blog/2026-10-08-am.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-10-08-am.html</guid>
+    <description>📝 خمس طرق عملية لدمج تحليل البيانات بالذكاء الاصطناعي في روتين عملك
+
+ل الرقمية، لم يعد تحليل البيانات ترفاً يُؤجَّل، بل أصبح ضرورة يومية لاتخاذ قرارات سريعة ودقيقة. لكن التحدي الحقيقي الذي يواجه معظم رواد الأعمال ليس نقص البيانات، بل كيفية تحويلها إلى أفعال ملموسة داخل روتين العمل اليومي. هنا يظهر
+
+🔗 https://donialabstech.online/blog/2026-10-08-am.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>فريقك الرقمي من الجزائر: دليل عملي لبناء توسّع عن بعد يشتغل فعلاً</title>
     <link>https://donialabstech.online/blog/2026-10-07.html</link>
@@ -259,19 +272,6 @@
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Mon, 28 Sep 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>الاستدامة الرقمية: كيف تبني مشروعاً يدوم</title>
-    <link>https://donialabstech.online/blog/2026-09-28-am.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-09-28-am.html</guid>
-    <description>📝 الاستدامة الرقمية: كيف تبني مشروعاً يدوم
-
-ع إطلاق فكرة، لكن قلة قليلة تنجح في إبقاء مشاريعها حيّة لسنوات. كثير من المنصات الجزائرية تنطلق بحماس كبير ثم تتلاشى بعد أشهر، ليس لضعف الفكرة، بل لغياب رؤية الاستدامة. الاستدامة الرقمية ليست ترفاً تقنياً، بل شرط بقاء. إنها القدرة
-
-🔗 https://donialabstech.online/blog/2026-09-28-am.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Mon, 28 Sep 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
 </rss>
