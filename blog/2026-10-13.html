@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>التشفير بلغة الأعمال: كيف تحمي بياناتك دون أن تكتب سطر كود واحد | DONIA LABS TECH</title>
+<meta name="description" content="بروتوكولات التشفير ليست حكراً على المبرمجين، بل هي قرارات تجارية تحمي إيراداتك وسمعتك. إليك دليلاً عملياً يفكّ الغموض عن TLS وAES وE2EE بأمثلة واقعية وأرقام ملم">
+<meta name="author" content="Daoud Touina">
+<meta property="og:type"        content="article">
+<meta property="og:title"       content="التشفير بلغة الأعمال: كيف تحمي بياناتك دون أن تكتب سطر كود واحد">
+<meta property="og:description" content="بروتوكولات التشفير ليست حكراً على المبرمجين، بل هي قرارات تجارية تحمي إيراداتك وسمعتك. إليك دليلاً عملياً يفكّ الغموض عن TLS وAES وE2EE بأمثلة واقعية وأرقام ملم">
+<meta property="og:image"       content="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200&q=80">
+<meta property="og:url"         content="https://donialabstech.online/blog/2026-10-13.html">
+<meta property="og:site_name"   content="DONIA LABS TECH">
+<meta name="twitter:card"       content="summary_large_image">
+<meta name="twitter:title"      content="التشفير بلغة الأعمال: كيف تحمي بياناتك دون أن تكتب سطر كود واحد">
+<meta name="twitter:description" content="بروتوكولات التشفير ليست حكراً على المبرمجين، بل هي قرارات تجارية تحمي إيراداتك وسمعتك. إليك دليلاً عملياً يفكّ الغموض عن TLS وAES وE2EE بأمثلة واقعية وأرقام ملم">
+<meta name="twitter:image"      content="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200&q=80">
+<link rel="canonical" href="https://donialabstech.online/blog/2026-10-13.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "التشفير بلغة الأعمال: كيف تحمي بياناتك دون أن تكتب سطر كود واحد",
+  "description": "بروتوكولات التشفير ليست حكراً على المبرمجين، بل هي قرارات تجارية تحمي إيراداتك وسمعتك. إليك دليلاً عملياً يفكّ الغموض عن TLS وAES وE2EE بأمثلة واقعية وأرقام ملموسة.",
+  "image": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200&q=80",
+  "datePublished": "2026-10-13T00:14:36.840332+00:00",
+  "author": {
+    "@type": "Person",
+    "name": "Daoud Touina",
+    "jobTitle": "رائد أعمال | مؤسس مختبر الأفكار الذكية وقائد المشاريع",
+    "url": "https://donialabstech.online"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DONIA LABS TECH",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://donialabstech.online/images/daoud-touina.jpg"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://donialabstech.online/blog/2026-10-13.html"
+  },
+  "url": "https://donialabstech.online/blog/2026-10-13.html",
+  "keywords": "أمن المعلومات, التشفير للأعمال, حماية البيانات",
+  "inLanguage": "ar"
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Tajawal',sans-serif;background:#f8fafc;color:#1e293b;line-height:1.85;direction:rtl}
+header{background:linear-gradient(135deg,#0f172a,#1a0a3a);padding:40px 20px 30px;text-align:center}
+header a{color:#c4b5fd;font-size:.85rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:18px}
+header h1{color:#fff;font-size:clamp(1.5rem,4vw,2.1rem);font-weight:800;line-height:1.25;margin-bottom:12px}
+.meta{color:#94a3b8;font-size:.82rem;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.hero-img{width:100%;max-height:380px;object-fit:cover;display:block}
+.container{max-width:760px;margin:0 auto;padding:36px 20px 60px}
+h2{font-size:1.5rem;color:#7c3aed;margin:2rem 0 .8rem;font-weight:800}
+h3{font-size:1.2rem;color:#06b6d4;margin:1.5rem 0 .6rem;font-weight:700}
+h4{font-size:1.05rem;color:#1e293b;margin:1.2rem 0 .5rem;font-weight:700}
+p{margin-bottom:1rem}
+ul,ol{padding-right:1.2rem;margin-bottom:1rem}
+li{padding:3px 0}
+strong{color:#0f172a}
+a{color:#7c3aed;text-decoration:none;border-bottom:1px dashed #7c3aed}
+hr{border:none;border-top:2px solid #e2e8f0;margin:2rem 0}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:2rem 0 0}
+.tag{background:#ede9fe;color:#7c3aed;padding:4px 14px;border-radius:20px;font-size:.8rem;font-weight:700}
+footer{text-align:center;padding:24px;font-size:.8rem;color:#64748b;border-top:1px solid #e2e8f0}
+</style>
+</head>
+<body>
+<header>
+  <a href="https://donialabstech.online">← العودة إلى DONIA LABS TECH</a>
+  <h1>التشفير بلغة الأعمال: كيف تحمي بياناتك دون أن تكتب سطر كود واحد</h1>
+  <div class="meta">
+    <span>✍ Daoud Touina</span>
+    <span>📅 2026-10-13</span>
+    <span>⏱ 2 دقائق</span>
+  </div>
+</header>
+<img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200&q=80" alt="التشفير بلغة الأعمال: كيف تحمي بياناتك دون أن تكتب سطر كود واحد" class="hero-img">
+<div class="container">
+<h3>لماذا يهمّك التشفير وأنت رجل أعمال لا مبرمج؟</h3>
+<p>تخيّل أنك أرسلت فاتورة بقيمة 12,000 دولار لعميل عبر بريد إلكتروني، واعترضها طرف ثالث وعدّل رقم الحساب البنكي. هذه ليست قصة خيالية؛ خسائر الجرائم السيبرانية عالمياً تجاوزت 10.5 تريليون دولار سنوياً وفق تقديرات 2025. التشفير هو القفل الذي يمنع هذا السيناريو، وأنت لا تحتاج لفهم الرياضيات خلفه بقدر ما تحتاج لفهم ما يفعله لك.</p>
+<p>القاعدة الذهبية: التشفير يحوّل بياناتك من نص مقروء إلى رموز لا يفهمها إلا من يملك "المفتاح". كل ما تبقّى تفاصيل تنفيذية.</p>
+<h3>HTTPS وTLS: البوابة التي يراها عميلك كل يوم</h3>
+<p>عندما يزور عميل موقعك ولا يجد القفل الأخضر بجانب الرابط، 85% منهم يتخلّون عن إتمام عملية الشراء. هذا ليس رأياً، بل نتيجة قياسات سلوكية متكررة في تجارة التجزئة الرقمية.</p>
+<p>ما يحدث تقنياً: بروتوكول TLS (خليفة SSL) يفتح قناة مشفّرة بين متصفح العميل وسيرفرك. أي شخص في المنتصف — شبكة واي فاي عامة، مزوّد إنترنت فضولي — يرى فقط بيانات مشوّشة.</p>
+<p>مثال عملي: متجر إلكتروني جزائري لاحظ أن 30% من السلات تُترك عند صفحة الدفع تحديداً. السبب لم يكن السعر، بل شهادة SSL منتهية كانت تظهر تحذيراً أحمر. تجديدها بـ 60 دولاراً سنوياً أعاد 22% من تلك العمليات المتروكة. عائد استثمار لا يحتاج نقاشاً.</p>
+<p>الخلاصة العملية: تأكد أن موقعك يستخدم HTTPS على كل الصفحات، لا صفحة الدفع فقط.</p>
+<h3>AES وبياناتك المخزّنة: ما يحدث في الخلفية</h3>
+<p>HTTPS يحمي البيانات أثناء النقل، لكن ماذا عن البيانات الساكنة في قاعدة بياناتك؟ هنا يدخل AES (معيار التشفير المتقدم)، وهو المعيار الذي تستخدمه البنوك والحكومات.</p>
+<p>تخيّل أن قاعدة بياناتك سُرقت — وهذا يحدث أكثر مما تتوقع. إذا كانت الأرقام السرية وبيانات العملاء مشفّرة بـ AES-256، فما حصل عليه المهاجم هو ملف ضخم من الرموز بلا قيمة. عدد الاحتمالات لكسر مفتاح 256-bit يتجاوز عدد ذرات الكون المعروف.</p>
+<p>قرارك العملي هنا: اسأل فريقك التقني سؤالاً واحداً — "هل بيانات العملاء الحساسة مشفّرة في قاعدة البيانات، أم فقط محمية بكلمة مرور الدخول؟" الفرق بين الإجابتين قد يكون الفرق بين إغلاق الشركة وفتح تحقيق قانوني.</p>
+<h3>التشفير طرف-إلى-طرف E2EE: الثقة كمنتج</h3>
+<p>في تطبيقات المحادثة، E2EE يعني أن الرسالة تُشفَّر على جهاز المرسل وتُفكّ على جهاز المستقبل فقط. حتى الشركة المشغّلة لا تستطيع قراءتها. هذا ما يجعل واتساب وسيجنال في صدارة تطبيقات المراسلة، وما يجعل Slack وTeams تحت ضغط متزايد من عملاء المؤسسات.</p>
+<p>لماذا يهمّك؟ لأن B2B باتت تشتري "الخصوصية" كما تشتري أي ميزة. شركة قانونية تدفع 3,000 دولار شهرياً لأداة تعاون تُقدّم E2EE، بينما ترفض أداة أرخص لأنها لا تُقدّمه. الفارق ليس تقنياً، بل تجاري بحت.</p>
+<p>في DONIA LABS TECH، حين نبني منصات لعملائنا، نتعامل مع التشفير كطبقة قرار تجاري، لا كخيار تقني مؤجّل. نسأل: ما البيانات التي إن تسرّبت تُدمّر عملك؟ ثم نبني حولها الدرع المناسب.</p>
+<h3>نقطة البداية اليوم</h3>
+<p>لا تنتظر اختراقاً لتتعلم. افتح هذا الملف الآن:</p>
+<ol>
+<li>تحقق من HTTPS على موقعك عبر أدوات مجانية.</li>
+<li>اسأل فريقك عن تشفير قاعدة البيانات.</li>
+<li>حدّد البيانات "القاتلة" إن تسرّبت (هويات، أرقام بنكية، عقود).</li>
+</ol>
+<p>هذه ثلاث خطوات لا تتطلب مبرمجاً، بل وعياً تجارياً. وإن أردت مراجعة سريعة لوضعك التقني الحالي، نحن متاحون على واتساب: https://wa.me/213674661737 — جلسة 20 دقيقة قد توفّر عليك خسارة لا تُقدَّر بثمن.</p>
+<div class="tags"><span class="tag">أمن المعلومات</span><span class="tag">التشفير للأعمال</span><span class="tag">حماية البيانات</span></div>
+</div>
+<footer>© 2026 DONIA LABS TECH — <a href="https://donialabstech.online">donialabstech.online</a></footer>
+</body>
+</html>
