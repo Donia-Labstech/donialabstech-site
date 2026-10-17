@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Fri, 16 Oct 2026 21:28:36 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 17 Oct 2026 08:00:27 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>خمس طرق عملية لدمج كلمات المرور الذكية في روتين عملك</title>
+    <link>https://donialabstech.online/blog/2026-10-17-am.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-10-17-am.html</guid>
+    <description>📝 خمس طرق عملية لدمج كلمات المرور الذكية في روتين عملك
+
+السيبرانية يوماً بعد يوم، لم تعد كلمات المرور التقليدية كافية لحماية أعمالك وأصولك الرقمية. كلمات المرور الذكية — تلك المولّدة تلقائياً والمعزّزة بتقنيات التشفير والمصادقة الثنائية — أصبحت ضرورة تنافسية أكثر منها رفاهية تقنية. لك
+
+🔗 https://donialabstech.online/blog/2026-10-17-am.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>النسخ الاحتياطي التلقائي: كيف تحوّل الكارثة المحتملة إلى مجرد إشعار على هاتفك؟</title>
     <link>https://donialabstech.online/blog/2026-10-16.html</link>
@@ -259,19 +272,6 @@
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Wed, 07 Oct 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>بروتوكولات التشفير بلغة رجال الأعمال: كيف تحمي بياناتك دون أن تكتب سطر كود واحد</title>
-    <link>https://donialabstech.online/blog/2026-10-06.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-10-06.html</guid>
-    <description>📝 بروتوكولات التشفير بلغة رجال الأعمال: كيف تحمي بياناتك دون أن تكتب سطر كود واحد
-
-كل عملية رقمية تجريها اليوم — من تحويل بنكي إلى رسالة واتساب — تمر عبر بروتوكول تشفير. إليك خريطة مبسطة تفهم بها ما يحدث خلف الكواليس، وكيف تقرر أي حل يناسب مشر
-
-🔗 https://donialabstech.online/blog/2026-10-06.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Tue, 06 Oct 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
 </rss>
