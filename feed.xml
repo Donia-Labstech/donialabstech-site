@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Sun, 18 Oct 2026 08:00:20 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 18 Oct 2026 20:12:52 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>دراسة الجدوى المصغرة: دروس من الميدان لا من الكتب</title>
+    <link>https://donialabstech.online/blog/2026-10-18.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-10-18.html</guid>
+    <description>📝 دراسة الجدوى المصغرة: دروس من الميدان لا من الكتب
+
+رواد أعمال حقيقيون خسروا آلاف الدولارات لأنهم قفزوا فوق دراسة جدوى &amp;quot;بسيطة&amp;quot; ظنوها مضيعة وقت. إليك ما تعلّموه بالطريقة الصعبة، وكيف تطبّقه في 48 ساعة.
+
+🔗 https://donialabstech.online/blog/2026-10-18.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Sun, 18 Oct 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>خمس طرق عملية لدمج حماية الحسابات من الاختراق في روتين عملك</title>
     <link>https://donialabstech.online/blog/2026-10-18-am.html</link>
@@ -259,19 +272,6 @@
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>خمس طرق عملية لدمج تحليل البيانات بالذكاء الاصطناعي في روتين عملك</title>
-    <link>https://donialabstech.online/blog/2026-10-08-am.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-10-08-am.html</guid>
-    <description>📝 خمس طرق عملية لدمج تحليل البيانات بالذكاء الاصطناعي في روتين عملك
-
-ل الرقمية، لم يعد تحليل البيانات ترفاً يُؤجَّل، بل أصبح ضرورة يومية لاتخاذ قرارات سريعة ودقيقة. لكن التحدي الحقيقي الذي يواجه معظم رواد الأعمال ليس نقص البيانات، بل كيفية تحويلها إلى أفعال ملموسة داخل روتين العمل اليومي. هنا يظهر
-
-🔗 https://donialabstech.online/blog/2026-10-08-am.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
 </rss>
