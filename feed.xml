@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Fri, 06 Nov 2026 23:22:16 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 07 Nov 2026 08:00:47 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>لماذا يهمل أغلب أصحاب المشاريع تحليل البيانات بالذكاء الاصطناعي وكيف تتجنب ذلك</title>
+    <link>https://donialabstech.online/blog/2026-11-07-am.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-11-07-am.html</guid>
+    <description>📝 لماذا يهمل أغلب أصحاب المشاريع تحليل البيانات بالذكاء الاصطناعي وكيف تتجنب ذلك
+
+026، أصبحت البيانات النفط الجديد للاقتصاد الرقمي، ومع ذلك لا يزال كثير من أصحاب المشاريع في الجزائر والمنطقة العربية يديرون أعمالهم بالحدس والتقدير بدل الأرقام. المفارقة أن أدوات تحليل البيانات بالذكاء الاصطناعي لم تكن يوماً أرخص
+
+🔗 https://donialabstech.online/blog/2026-11-07-am.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Sat, 07 Nov 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>تطبيقات الويب التقدمية: كيف تحصل على تطبيق بمتجر ومتصفح دون فريق برمجة منفصل</title>
     <link>https://donialabstech.online/blog/2026-11-06.html</link>
@@ -259,19 +272,6 @@
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Tue, 27 Oct 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>خمس طرق عملية لدمج التوازن بين العمل والحياة في روتين عملك</title>
-    <link>https://donialabstech.online/blog/2026-10-27-am.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-10-27-am.html</guid>
-    <description>📝 خمس طرق عملية لدمج التوازن بين العمل والحياة في روتين عملك
-
-رقمية، حيث تتسارع وتيرة العمل وتتداخل فيه الحدود بين المكتب والمنزل، أصبح التوازن بين العمل والحياة ضرورة استراتيجية وليس رفاهية. فكثير من رواد الأعمال يقعون في فخ الإرهاق المستمر ظناً منهم أن ساعات العمل الطويلة تعني إنتاجية أعلى
-
-🔗 https://donialabstech.online/blog/2026-10-27-am.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Tue, 27 Oct 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
 </rss>
