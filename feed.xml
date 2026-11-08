@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Sun, 08 Nov 2026 08:01:03 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 08 Nov 2026 21:46:20 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>دروس من رواد أعمال حقيقيين: كيف تبني علامة تجارية يثق بها الناس؟</title>
+    <link>https://donialabstech.online/blog/2026-11-08.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-11-08.html</guid>
+    <description>📝 دروس من رواد أعمال حقيقيين: كيف تبني علامة تجارية يثق بها الناس؟
+
+الثقة ليست شعاراً تسويقياً، بل قرارات يومية صغيرة تتراكم. إليك دروساً مستخلصة من تجارب فعلية لرواد أعمال بنوا علامات بقيت بعد أن توقف الإعلان.
+
+🔗 https://donialabstech.online/blog/2026-11-08.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Sun, 08 Nov 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>لماذا يهمل أغلب أصحاب المشاريع الروبوتات المحادثية وكيف تتجنب ذلك</title>
     <link>https://donialabstech.online/blog/2026-11-08-am.html</link>
@@ -258,19 +271,6 @@
 🔗 https://donialabstech.online/blog/2026-10-29-am.html</description>
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>العائد على الاستثمار في المشاريع الرقمية: دروس من الميدان لا من الكتب</title>
-    <link>https://donialabstech.online/blog/2026-10-28.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-10-28.html</guid>
-    <description>📝 العائد على الاستثمار في المشاريع الرقمية: دروس من الميدان لا من الكتب
-
-سبعة رواد أعمال دفعوا ثمن أخطائهم في قياس العائد على الاستثمار ليختصروا عليك الطريق. هذه الدروس العملية، بأرقامها وحالاتها الواقعية، ستغير طريقة حسابك لأي مشروع
-
-🔗 https://donialabstech.online/blog/2026-10-28.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Wed, 28 Oct 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
