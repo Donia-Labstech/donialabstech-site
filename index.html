@@ -945,105 +945,26 @@
         }
         
         /* Hero Section */
-        /* ===== HERO — WORLD CLASS ===== */
-        #hero-canvas {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-        }
-        /* ===== HERO — WORLD CLASS REDESIGN ===== */
-        @keyframes hero-gradient-shift {
-            0%   { background-position: 0% 50%; }
-            50%  { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        @keyframes hero-pulse-glow {
-            0%,100% { opacity: 0.6; }
-            50%      { opacity: 1; }
-        }
         .hero-section {
-            background: #020617;
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(59, 130, 246, 0.85)), url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: white;
-            padding: 160px 0 100px;
+            padding: 180px 0 100px;
             min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
         }
-        /* Animated mesh gradient layer */
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                125deg,
-                #0d0221 0%,
-                #1a0533 15%,
-                #0a1628 30%,
-                #0d2149 45%,
-                #1b0636 60%,
-                #060d2a 75%,
-                #120328 90%,
-                #020617 100%
-            );
-            background-size: 400% 400%;
-            animation: hero-gradient-shift 12s ease infinite;
-            z-index: 0;
-        }
-        /* Neon glow blobs */
-        .hero-section::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(ellipse 60% 50% at 80% 20%, rgba(99,102,241,0.3) 0%, transparent 60%),
-                radial-gradient(ellipse 40% 40% at 15% 75%, rgba(168,85,247,0.25) 0%, transparent 55%),
-                radial-gradient(ellipse 50% 35% at 50% 50%, rgba(14,165,233,0.12) 0%, transparent 65%);
-            z-index: 0;
-            animation: hero-pulse-glow 6s ease-in-out infinite;
-            pointer-events: none;
-        }
-        #hero-canvas {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            pointer-events: none;
-        }
-        .hero-orb { position:absolute; border-radius:50%; filter:blur(90px); pointer-events:none; z-index:1; }
-        .hero-orb-1 { width:700px;height:700px;top:-200px;right:-200px;
-            background:radial-gradient(circle, rgba(99,102,241,0.22) 0%, transparent 65%);
-            animation: hero-float 14s ease-in-out infinite; }
-        .hero-orb-2 { width:500px;height:500px;bottom:-150px;left:-100px;
-            background:radial-gradient(circle, rgba(168,85,247,0.2) 0%, transparent 65%);
-            animation: hero-float 17s ease-in-out infinite reverse; }
-        .hero-orb-3 { width:350px;height:350px;top:45%;left:30%;
-            background:radial-gradient(circle, rgba(14,165,233,0.15) 0%, transparent 65%);
-            animation: hero-float 20s ease-in-out infinite; }
-        @keyframes hero-float {
-            0%,100% { transform:translate(0,0) scale(1); }
-            33%  { transform:translate(50px,-35px) scale(1.08); }
-            66%  { transform:translate(-35px,50px) scale(0.94); }
-        }
-        .hero-section .container { position:relative; z-index:2; }
-
-        /* Hero text glow effects */
-        .hero-section h1 .path-to-top {
-            background: linear-gradient(135deg, #818cf8, #c084fc, #38bdf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            filter: drop-shadow(0 0 20px rgba(129,140,248,0.5));
-        }
-
+        
         .hero-section h1 {
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             font-weight: 900;
             color: white;
             margin-bottom: 1.5rem;
             line-height: 1.2;
-            text-shadow: 0 0 40px rgba(129,140,248,0.4), 0 0 80px rgba(168,85,247,0.2);
         }
         
         .hero-section p {
@@ -2312,10 +2233,6 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
-    <canvas id="hero-canvas"></canvas>
-    <div class="hero-orb hero-orb-1"></div>
-    <div class="hero-orb hero-orb-2"></div>
-    <div class="hero-orb hero-orb-3"></div>
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
@@ -2428,217 +2345,176 @@
 
     <div class="container" style="position:relative;z-index:2;">
         <h2 class="section-title" data-translate="portfolio.title">معرض الأعمال</h2>
-        <p class="text-center mb-5" style="color:rgba(203,213,225,0.75);max-width:650px;margin:0 auto 50px;" data-translate="portfolio.subtitle">
-            ١٠ منتجات رقمية حية — صُممت بمعايير عالمية لتحويل القطاعات
+        <p class="text-center mb-5" style="color:rgba(203,213,225,0.75);max-width:600px;margin:0 auto 50px;" data-translate="portfolio.subtitle">
+            أنظمة ذكية صُممت بمعايير عالمية لتُحدث ثورة في الإدارة الرقمية
         </p>
 
-        <div class="row g-4 justify-content-center">
+        <div class="row g-4">
 
             <!-- P1: DONIA SMART SCHOOL -->
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="80">
-                <div class="portfolio-card">
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                <div class="portfolio-card" data-real-link="https://donia-labstech.github.io/dss-landing/">
                     <div class="portfolio-img-wrap">
-                        <img src="assets/img/portfolio/dss.jpg" alt="DONIA SMART SCHOOL" loading="lazy" onerror="this.src='assets/img/school-bg.jpg'">
+                        <img src="assets/img/portfolio/dss.jpg" alt="DONIA SMART SCHOOL" loading="lazy" onerror="this.src='assets/img/portfolio/p1.jpg'">
                         <span class="portfolio-category">EdTech</span>
                         <span class="portfolio-live-badge">LIVE</span>
                     </div>
                     <div class="portfolio-body">
                         <h4 class="fw-bold">DONIA SMART SCHOOL</h4>
-                        <p class="text-muted small">نظام إدارة مدرسي متكامل — الحضور الذكي، التقييمات، التواصل. النظام الرسمي لمتوسطة العقيد الحواس.</p>
-                        <div class="portfolio-tech"><span>AI</span><span>Python</span><span>Bootstrap</span><span>MySQL</span></div>
+                        <p class="text-muted small" data-translate="portfolio.p1.desc">
+                            نظام إدارة مدرسي متكامل يشمل الحضور الذكي، التقييمات، والتواصل بين الأطراف.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span>AI</span><span>Python</span><span>Bootstrap</span><span>MySQL</span>
+                        </div>
                         <div class="portfolio-actions">
-                            <a href="https://ecole-dss.org/" target="_blank" rel="noopener" class="btn btn-visit">
-                                <i class="fas fa-external-link-alt"></i> زيارة الموقع
+                            <a href="https://donia-labstech.github.io/dss-landing/" target="_blank" rel="noopener" class="btn btn-visit">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span data-translate="portfolio.visit">زيارة المشروع</span>
                             </a>
+                            <button class="portfolio-qr-btn" data-bs-toggle="modal" data-bs-target="#qrModal" data-project="dss">
+                                <i class="fas fa-qrcode"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- P2: DONIA SMART TEACHER -->
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="120">
-                <div class="portfolio-card">
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="150">
+                <div class="portfolio-card" data-real-link="">
                     <div class="portfolio-img-wrap">
-                        <img src="assets/img/portfolio/dst.jpg" alt="DONIA SMART TEACHER" loading="lazy" onerror="this.src='assets/img/teacher-bg.jpg'">
+                        <img src="assets/img/portfolio/dst.jpg" alt="DONIA SMART TEACHER" loading="lazy" onerror="this.src='assets/img/portfolio/p2.jpg'">
                         <span class="portfolio-category">EdTech</span>
-                        <span class="portfolio-live-badge">LIVE</span>
                     </div>
                     <div class="portfolio-body">
                         <h4 class="fw-bold">DONIA SMART TEACHER</h4>
-                        <p class="text-muted small">مساعد الأستاذ الذكي — تحضير الدروس، متابعة التلاميذ، توليد التقارير تلقائياً بالذكاء الاصطناعي.</p>
-                        <div class="portfolio-tech"><span>AI</span><span>Multi-AI</span><span>HTML</span><span>JS</span></div>
+                        <p class="text-muted small" data-translate="portfolio.p2.desc">
+                            مساعد ذكي للأستاذ: تحضير الدروس، متابعة التلاميذ، توليد التقارير تلقائياً.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span>AI</span><span>NLP</span><span>Python</span><span>FastAPI</span>
+                        </div>
                         <div class="portfolio-actions">
-                            <a href="https://teacher.donialabstech.online/" target="_blank" rel="noopener" class="btn btn-visit">
-                                <i class="fas fa-external-link-alt"></i> زيارة المنصة
+                            <a href="https://wa.me/213663451000" target="_blank" rel="noopener" class="btn btn-primary">
+                                <i class="fab fa-whatsapp me-1"></i>
+                                <span data-translate="portfolio.contact">تواصل معنا</span>
                             </a>
+                            <button class="portfolio-qr-btn" data-bs-toggle="modal" data-bs-target="#qrModal" data-project="dst">
+                                <i class="fas fa-qrcode"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- P3: DONIA MENTOR -->
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="160">
-                <div class="portfolio-card">
-                    <div class="portfolio-img-wrap">
-                        <img src="assets/img/portfolio/mentor.jpg" alt="DONIA MENTOR" loading="lazy" onerror="this.src='assets/img/mentor-bg.jpg'">
-                        <span class="portfolio-category">AI Coaching</span>
-                        <span class="portfolio-live-badge">LIVE</span>
-                    </div>
-                    <div class="portfolio-body">
-                        <h4 class="fw-bold">DONIA MENTOR</h4>
-                        <p class="text-muted small">منصة التوجيه الذكي — مرشد رقمي يتكيف مع مسار كل متعلم ويقترح مسارات التطوير المهني.</p>
-                        <div class="portfolio-tech"><span>AI</span><span>Coaching</span><span>Python</span><span>API</span></div>
-                        <div class="portfolio-actions">
-                            <a href="https://mentor.donialabstech.online/" target="_blank" rel="noopener" class="btn btn-visit">
-                                <i class="fas fa-external-link-alt"></i> زيارة المنصة
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- P4: ATAA Platform -->
+            <!-- P3: HRMS -->
             <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-                <div class="portfolio-card">
+                <div class="portfolio-card" data-real-link="">
                     <div class="portfolio-img-wrap">
-                        <img src="assets/img/portfolio/ataa.jpg" alt="ATAA Platform" loading="lazy" onerror="this.src='assets/img/ataa-bg.jpg'">
-                        <span class="portfolio-category">Social Tech</span>
-                        <span class="portfolio-live-badge">LIVE</span>
+                        <img src="assets/img/portfolio/hrms.jpg" alt="HRMS" loading="lazy" onerror="this.src='assets/img/portfolio/p3.jpg'">
+                        <span class="portfolio-category">HR</span>
                     </div>
                     <div class="portfolio-body">
-                        <h4 class="fw-bold">ATAA — منصة عطاء</h4>
-                        <p class="text-muted small">منصة رقمية للتبرع والمساهمة الاجتماعية — تربط المتبرعين بالمستفيدين بشفافية كاملة.</p>
-                        <div class="portfolio-tech"><span>Next.js</span><span>Vercel</span><span>i18n</span><span>AR/FR</span></div>
+                        <h4 class="fw-bold">HRMS — نظام إدارة الموارد البشرية</h4>
+                        <p class="text-muted small" data-translate="portfolio.p3.desc">
+                            إدارة الموظفين، الرواتب، الإجازات، والأداء في منصة موحدة وذكية.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span>Python</span><span>Django</span><span>PostgreSQL</span><span>Charts</span>
+                        </div>
                         <div class="portfolio-actions">
-                            <a href="https://ataa-platform-rv2y.vercel.app/ar/launch" target="_blank" rel="noopener" class="btn btn-visit">
-                                <i class="fas fa-external-link-alt"></i> زيارة المنصة
+                            <a href="https://wa.me/213663451000" target="_blank" rel="noopener" class="btn btn-primary">
+                                <i class="fab fa-whatsapp me-1"></i>
+                                <span data-translate="portfolio.contact">تواصل معنا</span>
                             </a>
+                            <button class="portfolio-qr-btn" data-bs-toggle="modal" data-bs-target="#qrModal" data-project="hrms">
+                                <i class="fas fa-qrcode"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- P5: TABIBAK -->
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="240">
-                <div class="portfolio-card">
+            <!-- P4: Smart Stock & Canteen Manager -->
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="250">
+                <div class="portfolio-card" data-real-link="">
                     <div class="portfolio-img-wrap">
-                        <img src="assets/img/portfolio/tabibak.jpg" alt="TABIBAK" loading="lazy" onerror="this.src='assets/img/health-bg.jpg'">
-                        <span class="portfolio-category">HealthTech</span>
-                        <span class="portfolio-live-badge">LIVE</span>
+                        <img src="assets/img/portfolio/stock.jpg" alt="Smart Stock & Canteen" loading="lazy" onerror="this.src='assets/img/portfolio/p4.jpg'">
+                        <span class="portfolio-category">Management</span>
                     </div>
                     <div class="portfolio-body">
-                        <h4 class="fw-bold">TABIBAK — طبيبك</h4>
-                        <p class="text-muted small">مساعد طبي ذكي — يحلل الأعراض، يقترح التشخيص الأولي، ويوجه المريض للتخصص الملائم.</p>
-                        <div class="portfolio-tech"><span>AI</span><span>MedTech</span><span>React</span><span>NLP</span></div>
+                        <h4 class="fw-bold">Smart Stock & Canteen Manager</h4>
+                        <p class="text-muted small" data-translate="portfolio.p4.desc">
+                            إدارة المخزون والمطعم المدرسي بالذكاء الاصطناعي: تنبيه النقص، تقارير الاستهلاك، والجرد الآلي.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span>IoT</span><span>AI</span><span>Python</span><span>SQLite</span>
+                        </div>
                         <div class="portfolio-actions">
-                            <a href="https://tabibak-chi.vercel.app/" target="_blank" rel="noopener" class="btn btn-visit">
-                                <i class="fas fa-external-link-alt"></i> جرب المساعد
+                            <a href="https://wa.me/213663451000" target="_blank" rel="noopener" class="btn btn-primary">
+                                <i class="fab fa-whatsapp me-1"></i>
+                                <span data-translate="portfolio.contact">تواصل معنا</span>
                             </a>
+                            <button class="portfolio-qr-btn" data-bs-toggle="modal" data-bs-target="#qrModal" data-project="stock">
+                                <i class="fas fa-qrcode"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- P6: QUALTECH -->
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="280">
-                <div class="portfolio-card">
+            <!-- P5: INTELLI CORE -->
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                <div class="portfolio-card" data-real-link="">
                     <div class="portfolio-img-wrap">
-                        <img src="assets/img/portfolio/qualtech.jpg" alt="QualTech" loading="lazy" onerror="this.src='assets/img/farm-bg.jpg'">
-                        <span class="portfolio-category">AgriTech</span>
-                        <span class="portfolio-live-badge">LIVE</span>
-                    </div>
-                    <div class="portfolio-body">
-                        <h4 class="fw-bold">QUALTECH — الفلاحة الذكية</h4>
-                        <p class="text-muted small">منصة الزراعة الذكية — تحليل التربة، الري الآلي، ومراقبة المحاصيل بالذكاء الاصطناعي لزيادة المردود.</p>
-                        <div class="portfolio-tech"><span>IoT</span><span>AI</span><span>Agriculture</span><span>Python</span></div>
-                        <div class="portfolio-actions">
-                            <a href="https://donia-labstech.github.io/QualTech/" target="_blank" rel="noopener" class="btn btn-visit">
-                                <i class="fas fa-external-link-alt"></i> استكشف المنصة
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- P7: RESIDENCE -->
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="320">
-                <div class="portfolio-card">
-                    <div class="portfolio-img-wrap">
-                        <img src="assets/img/portfolio/residence.jpg" alt="RESIDENCE" loading="lazy" onerror="this.src='assets/img/real-estate-bg.jpg'">
-                        <span class="portfolio-category">PropTech</span>
-                        <span class="portfolio-live-badge">LIVE</span>
-                    </div>
-                    <div class="portfolio-body">
-                        <h4 class="fw-bold">RESIDENCE — العقار الذكي</h4>
-                        <p class="text-muted small">منصة إدارة العقارات الذكية — بحث، تقييم، وإدارة ملفات السكن والمكاتب بأدوات ذكية متكاملة.</p>
-                        <div class="portfolio-tech"><span>PropTech</span><span>AI</span><span>Maps</span><span>JS</span></div>
-                        <div class="portfolio-actions">
-                            <a href="https://donia-labstech.github.io/RESIDENCE/" target="_blank" rel="noopener" class="btn btn-visit">
-                                <i class="fas fa-external-link-alt"></i> زيارة المنصة
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- P8: INTELLI CORE -->
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="360">
-                <div class="portfolio-card">
-                    <div class="portfolio-img-wrap">
-                        <img src="assets/img/portfolio/intellicore.jpg" alt="INTELLI CORE" loading="lazy" onerror="this.src='assets/img/ai-bg.jpg'">
+                        <img src="assets/img/portfolio/intellicore.jpg" alt="INTELLI CORE" loading="lazy" onerror="this.src='assets/img/portfolio/p5.jpg'">
                         <span class="portfolio-category">AI Engine</span>
-                        <span class="portfolio-live-badge">LIVE</span>
                     </div>
                     <div class="portfolio-body">
                         <h4 class="fw-bold">INTELLI CORE</h4>
-                        <p class="text-muted small">محرك ذكاء اصطناعي متقدم — نواة حوسبية تعتمد على LLM وتُدار بـ API احترافية لأتمتة القرارات المؤسسية.</p>
-                        <div class="portfolio-tech"><span>LLM</span><span>Python</span><span>FastAPI</span><span>CUDA</span></div>
+                        <p class="text-muted small" data-translate="portfolio.p5.desc">
+                            محرك ذكاء اصطناعي متقدم — نواة حوسبية تعتمد على LLM وتُدار بـ API احترافية لأتمتة القرارات.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span>LLM</span><span>Python</span><span>FastAPI</span><span>CUDA</span>
+                        </div>
                         <div class="portfolio-actions">
-                            <a href="https://intellicore.donialabstech.online" target="_blank" rel="noopener" class="btn btn-visit">
-                                <i class="fas fa-external-link-alt"></i> تجربة المحرك
+                            <a href="https://wa.me/213663451000" target="_blank" rel="noopener" class="btn btn-primary">
+                                <i class="fab fa-whatsapp me-1"></i>
+                                <span data-translate="portfolio.paid">مدفوع — تواصل</span>
                             </a>
+                            <button class="portfolio-qr-btn" data-bs-toggle="modal" data-bs-target="#qrModal" data-project="intelli">
+                                <i class="fas fa-qrcode"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- P9: DONIA VOTE -->
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
-                <div class="portfolio-card">
+            <!-- P6: DONIA AI PLUS -->
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="350">
+                <div class="portfolio-card" data-real-link="">
                     <div class="portfolio-img-wrap">
-                        <img src="assets/img/portfolio/vote.jpg" alt="DONIA VOTE" loading="lazy" onerror="this.src='assets/img/vote-bg.jpg'">
-                        <span class="portfolio-category">GovTech</span>
-                        <span class="portfolio-live-badge">LIVE</span>
+                        <img src="assets/img/portfolio/doniaaiplus.jpg" alt="DONIA AI PLUS" loading="lazy" onerror="this.src='assets/img/portfolio/p6.jpg'">
+                        <span class="portfolio-category">AI SaaS</span>
                     </div>
                     <div class="portfolio-body">
-                        <h4 class="fw-bold">DONIA VOTE</h4>
-                        <p class="text-muted small">منصة الحملات الانتخابية الرقمية — إدارة المرشحين، البرامج الانتخابية، والتواصل مع الناخبين لانتخابات APC/APW.</p>
-                        <div class="portfolio-tech"><span>GovTech</span><span>SaaS</span><span>Next.js</span><span>AR</span></div>
-                        <div class="portfolio-actions">
-                            <a href="https://donia-vote.vercel.app/" target="_blank" rel="noopener" class="btn btn-visit">
-                                <i class="fas fa-external-link-alt"></i> زيارة المنصة
-                            </a>
+                        <h4 class="fw-bold">DONIA AI PLUS</h4>
+                        <p class="text-muted small" data-translate="portfolio.p6.desc">
+                            منصة ذكاء اصطناعي شاملة: توليد المحتوى، التحليل، وأتمتة المهام بمعايير احترافية عالمية.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span>AI</span><span>SaaS</span><span>Cloud</span><span>API</span>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- P10: DONIA PRINCIPAL AGENT -->
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="440">
-                <div class="portfolio-card">
-                    <div class="portfolio-img-wrap">
-                        <img src="assets/img/portfolio/principal.jpg" alt="DONIA Principal Agent" loading="lazy" onerror="this.src='assets/img/admin-bg.jpg'">
-                        <span class="portfolio-category">AI Agent</span>
-                        <span class="portfolio-live-badge">LIVE</span>
-                    </div>
-                    <div class="portfolio-body">
-                        <h4 class="fw-bold">مساعد المدير الذكي</h4>
-                        <p class="text-muted small">وكيل ذكاء اصطناعي لمدير المدرسة — يُدير الجداول، التقارير، المراسلات الإدارية، ويتخذ القرارات بشكل استباقي.</p>
-                        <div class="portfolio-tech"><span>AI Agent</span><span>Vercel</span><span>LLM</span><span>Admin</span></div>
                         <div class="portfolio-actions">
-                            <a href="https://donia-principal-agent.vercel.app" target="_blank" rel="noopener" class="btn btn-visit">
-                                <i class="fas fa-external-link-alt"></i> تجربة الوكيل
+                            <a href="https://wa.me/213663451000" target="_blank" rel="noopener" class="btn btn-primary">
+                                <i class="fab fa-whatsapp me-1"></i>
+                                <span data-translate="portfolio.contact">تواصل معنا</span>
                             </a>
+                            <button class="portfolio-qr-btn" data-bs-toggle="modal" data-bs-target="#qrModal" data-project="doniaaiplus">
+                                <i class="fas fa-qrcode"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -6322,75 +6198,5 @@ ${kb.services.join(" | ")}
     <!-- ===== [END ADDITION 6 - PORTFOLIO REAL-LINK SYNC] ===== -->
 
 
-
-    <!-- Hero Particle Canvas -->
-    <script>
-    (function(){
-        const canvas = document.getElementById('hero-canvas');
-        if(!canvas) return;
-        const ctx = canvas.getContext('2d');
-        let W, H, particles = [];
-        const N = 80;
-
-        function resize(){
-            W = canvas.width = canvas.offsetWidth;
-            H = canvas.height = canvas.offsetHeight;
-        }
-
-        function Particle(){
-            this.reset();
-        }
-        Particle.prototype.reset = function(){
-            this.x = Math.random()*W;
-            this.y = Math.random()*H;
-            this.r = Math.random()*2+0.5;
-            this.vx = (Math.random()-0.5)*0.4;
-            this.vy = (Math.random()-0.5)*0.4;
-            this.alpha = Math.random()*0.6+0.2;
-            const palette = ['59,130,246','139,92,246','236,72,153','255,255,255'];
-            this.color = palette[Math.floor(Math.random()*palette.length)];
-        };
-        Particle.prototype.update = function(){
-            this.x += this.vx;
-            this.y += this.vy;
-            if(this.x<0||this.x>W||this.y<0||this.y>H) this.reset();
-        };
-
-        for(let i=0;i<N;i++) particles.push(new Particle());
-
-        function draw(){
-            ctx.clearRect(0,0,W,H);
-            // Draw connection lines
-            for(let i=0;i<N;i++){
-                for(let j=i+1;j<N;j++){
-                    const dx=particles[i].x-particles[j].x;
-                    const dy=particles[i].y-particles[j].y;
-                    const dist=Math.sqrt(dx*dx+dy*dy);
-                    if(dist<120){
-                        ctx.beginPath();
-                        ctx.strokeStyle=`rgba(59,130,246,${0.15*(1-dist/120)})`;
-                        ctx.lineWidth=0.5;
-                        ctx.moveTo(particles[i].x,particles[i].y);
-                        ctx.lineTo(particles[j].x,particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            // Draw particles
-            particles.forEach(p=>{
-                p.update();
-                ctx.beginPath();
-                ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-                ctx.fillStyle=`rgba(${p.color},${p.alpha})`;
-                ctx.fill();
-            });
-            requestAnimationFrame(draw);
-        }
-
-        window.addEventListener('resize', ()=>{ resize(); });
-        resize();
-        draw();
-    })();
-    </script>
 </body>
 </html>
