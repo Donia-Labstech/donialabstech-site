@@ -30,7 +30,6 @@
       "sameAs": [
         "https://www.linkedin.com/in/daoud-touina-8a9049134",
         "https://www.facebook.com/share/1An6GhVd56/",
-        "https://www.youtube.com/@DONIAEMARKETING",
         "https://www.instagram.com/daoud_touina",
         "https://t.me/donialabstech"
       ]
@@ -2096,49 +2095,67 @@
             position: fixed; inset: 0; z-index: 99999;
             display: flex; align-items: stretch;
             pointer-events: all;
+            perspective: 2400px;
         }
         #intro-overlay.done { display: none; }
+        
+        /* 3D Hinged Door Effect */
         .intro-door {
             width: 50%; height: 100%;
             background: linear-gradient(170deg, #020617 0%, #0a0f2e 40%, #060c24 70%, #000510 100%);
-            display: flex; align-items: center; justify-content: center;
             overflow: hidden; position: relative;
-            transition: transform 1.3s cubic-bezier(0.76, 0, 0.24, 1);
+            transition: transform 1.4s cubic-bezier(0.68, -0.1, 0.27, 1.05),
+                        opacity 1.4s ease;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
         }
+        /* Scanlines */
         .intro-door::before {
             content: '';
             position: absolute; inset: 0;
             background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 3px,
-                rgba(129,140,248,0.03) 3px,
-                rgba(129,140,248,0.03) 4px
+                0deg, transparent, transparent 3px,
+                rgba(129,140,248,0.03) 3px, rgba(129,140,248,0.03) 4px
             );
+            pointer-events: none;
         }
-        /* Neon edge lines */
+        /* Left door — hinge on left edge */
+        .intro-door-left {
+            transform-origin: left center;
+        }
         .intro-door-left::after {
             content: '';
             position: absolute; right: 0; top: 0; bottom: 0;
             width: 2px;
             background: linear-gradient(180deg,
-                transparent 0%, rgba(129,140,248,0.8) 20%,
+                transparent 0%, rgba(129,140,248,0.9) 20%,
                 rgba(192,132,252,1) 50%,
-                rgba(129,140,248,0.8) 80%, transparent 100%);
-            box-shadow: 0 0 20px rgba(129,140,248,0.8), 0 0 60px rgba(129,140,248,0.4);
+                rgba(129,140,248,0.9) 80%, transparent 100%);
+            box-shadow: 0 0 24px rgba(129,140,248,0.9), 0 0 70px rgba(129,140,248,0.4);
+        }
+        /* Right door — hinge on right edge */
+        .intro-door-right {
+            transform-origin: right center;
         }
         .intro-door-right::after {
             content: '';
             position: absolute; left: 0; top: 0; bottom: 0;
             width: 2px;
             background: linear-gradient(180deg,
-                transparent 0%, rgba(192,132,252,0.8) 20%,
+                transparent 0%, rgba(192,132,252,0.9) 20%,
                 rgba(129,140,248,1) 50%,
-                rgba(192,132,252,0.8) 80%, transparent 100%);
-            box-shadow: 0 0 20px rgba(192,132,252,0.8), 0 0 60px rgba(192,132,252,0.4);
+                rgba(192,132,252,0.9) 80%, transparent 100%);
+            box-shadow: 0 0 24px rgba(192,132,252,0.9), 0 0 70px rgba(192,132,252,0.4);
         }
-        #intro-overlay.opening .intro-door-left  { transform: translateX(-100%); }
-        #intro-overlay.opening .intro-door-right { transform: translateX(100%); }
+        /* Opening: 3D rotation like real hinged doors */
+        #intro-overlay.opening .intro-door-left  {
+            transform: perspective(2400px) rotateY(-115deg);
+            opacity: 0.3;
+        }
+        #intro-overlay.opening .intro-door-right {
+            transform: perspective(2400px) rotateY(115deg);
+            opacity: 0.3;
+        } }
         /* Center welcome text */
         .intro-center {
             position: fixed;
@@ -2397,14 +2414,18 @@
 
         
         .navbar-logo .logo-img {
-            width: 52px !important; height: 52px !important;
+            width: 72px !important; height: 72px !important;
             border-radius: 50%;
             object-fit: contain;
             background: transparent;
-            border: 2px solid rgba(129,140,248,0.4);
-            box-shadow: 0 0 16px rgba(129,140,248,0.3), 0 0 30px rgba(192,132,252,0.15);
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: logo-pulse 4s ease-in-out infinite;
+            border: 2.5px solid rgba(129,140,248,0.6);
+            box-shadow: 0 0 24px rgba(129,140,248,0.5), 0 0 50px rgba(192,132,252,0.25), 0 0 80px rgba(56,189,248,0.1);
+            animation: logo-pulse 3.5s ease-in-out infinite;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .navbar-logo .logo-img:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 32px rgba(129,140,248,0.7), 0 0 70px rgba(192,132,252,0.4);
         }
         .navbar-logo .logo-img:hover {
             transform: scale(1.08) rotate(5deg);
@@ -2474,12 +2495,299 @@
             filter: drop-shadow(0 0 8px rgba(129,140,248,0.4));
         }
 
+        
+        /* ===== ELEGANT HAMBURGER MENU ===== */
+        .custom-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background 0.3s;
+            z-index: 1001;
+        }
+        .custom-hamburger:hover { background: rgba(129,140,248,0.15); }
+        .custom-hamburger span {
+            display: block;
+            width: 26px; height: 2px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 2px;
+            transition: all 0.35s cubic-bezier(0.68,-0.6,0.32,1.6);
+            transform-origin: center;
+        }
+        .custom-hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .custom-hamburger.open span:nth-child(2) {
+            opacity: 0; transform: scaleX(0);
+        }
+        .custom-hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* Mobile menu panel */
+        .navbar-custom-menu {
+            display: flex !important;
+            align-items: center;
+        }
+        
+        @media (max-width: 991px) {
+            .custom-hamburger { display: flex !important; }
+            .navbar-custom-menu {
+                position: fixed !important;
+                top: 0 !important; right: -100% !important;
+                width: 280px !important; height: 100vh !important;
+                background: rgba(2,6,23,0.97) !important;
+                backdrop-filter: blur(30px) !important;
+                -webkit-backdrop-filter: blur(30px) !important;
+                border-left: 1px solid rgba(129,140,248,0.2) !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                padding: 100px 24px 40px !important;
+                gap: 4px !important;
+                transition: right 0.4s cubic-bezier(0.68,-0.1,0.27,1) !important;
+                z-index: 1000 !important;
+                overflow-y: auto !important;
+            }
+            .navbar-custom-menu.menu-open {
+                right: 0 !important;
+            }
+            .navbar-custom-menu .navbar-nav {
+                flex-direction: column !important;
+                width: 100% !important;
+            }
+            .navbar-custom-menu .nav-item {
+                width: 100%;
+                opacity: 0;
+                transform: translateX(30px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+            .navbar-custom-menu.menu-open .nav-item {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            .navbar-custom-menu.menu-open .nav-item:nth-child(1) { transition-delay: 0.05s; }
+            .navbar-custom-menu.menu-open .nav-item:nth-child(2) { transition-delay: 0.1s; }
+            .navbar-custom-menu.menu-open .nav-item:nth-child(3) { transition-delay: 0.15s; }
+            .navbar-custom-menu.menu-open .nav-item:nth-child(4) { transition-delay: 0.2s; }
+            .navbar-custom-menu.menu-open .nav-item:nth-child(5) { transition-delay: 0.25s; }
+            .navbar-custom-menu.menu-open .nav-item:nth-child(6) { transition-delay: 0.3s; }
+            .navbar-custom-menu.menu-open .nav-item:nth-child(7) { transition-delay: 0.35s; }
+            .navbar-custom-menu .nav-link {
+                font-size: 1.1rem !important;
+                padding: 14px 16px !important;
+                border-radius: 12px !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 12px !important;
+                color: rgba(255,255,255,0.8) !important;
+                transition: all 0.25s !important;
+                border: 1px solid transparent !important;
+                width: 100% !important;
+            }
+            .navbar-custom-menu .nav-link:hover,
+            .navbar-custom-menu .nav-link.active {
+                background: rgba(129,140,248,0.12) !important;
+                border-color: rgba(129,140,248,0.2) !important;
+                color: white !important;
+            }
+            /* Menu overlay backdrop */
+            .menu-backdrop {
+                display: none;
+                position: fixed; inset: 0;
+                background: rgba(0,0,0,0.5);
+                z-index: 999;
+                backdrop-filter: blur(2px);
+            }
+            .menu-backdrop.show { display: block; }
+        }
+
+        /* ===== ENHANCED MOBILE RESPONSIVENESS ===== */
+        @media (max-width: 768px) {
+            .hero-section { padding: 120px 0 80px; }
+            .hero-section h1 { font-size: 2rem !important; line-height: 1.3; }
+            .hero-section .display-4 { font-size: 1.8rem !important; }
+            .hero-section .lead { font-size: 1rem !important; }
+            .hero-btns { flex-direction: column; gap: 12px; align-items: center; }
+            .hero-btns .btn { width: 100%; max-width: 280px; justify-content: center; }
+            
+            .section-title { font-size: 1.6rem !important; }
+            
+            .portfolio-card { margin-bottom: 24px; }
+            .product-preview { height: 160px; }
+            
+            .service-card { padding: 24px 20px; }
+            
+            .contact-form { padding: 24px 20px; }
+            
+            .footer-content { text-align: center; }
+            .footer-links { justify-content: center; }
+            
+            .navbar-brand .brand-text { font-size: 0.85rem !important; }
+            .navbar-logo .logo-img { width: 52px !important; height: 52px !important; }
+            
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            
+            .youtube-grid .col-lg-4 { margin-bottom: 24px; }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-section h1 { font-size: 1.6rem !important; }
+            .hero-section { padding: 100px 0 60px; }
+            .section-title { font-size: 1.3rem !important; }
+            .product-preview { height: 140px; }
+            .pp-logo-text { font-size: 0.85rem !important; }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Navbar always visible on scroll */
+        .navbar-scrolled {
+            background: rgba(2,6,23,0.98) !important;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.5) !important;
+        }
+        
+
+        
+        /* ===== YOUTUBE CARDS ===== */
+        .youtube-section { padding: 100px 0; background: linear-gradient(180deg, #020617 0%, #0a0f2e 100%); }
+        .yt-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .yt-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 30px rgba(255,0,0,0.1);
+        }
+        .yt-thumb-wrap { position: relative; overflow: hidden; }
+        .yt-thumb-link { display: block; }
+        .yt-placeholder {
+            height: 200px;
+            background: linear-gradient(135deg,#1a0a00,#3d1500,#5c1c00);
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 12px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        .yt-card:hover .yt-placeholder { transform: scale(1.03); }
+        .yt-play-big {
+            font-size: 3.5rem;
+            color: rgba(255,255,255,0.9);
+            filter: drop-shadow(0 0 20px rgba(255,0,0,0.6));
+            transition: transform 0.3s ease;
+        }
+        .yt-card:hover .yt-play-big { transform: scale(1.15); }
+        .yt-placeholder-text { font-size: 1rem; font-weight: 700; color: white; letter-spacing: 0.05em; }
+        .yt-placeholder-sub { font-size: 0.75rem; color: rgba(255,255,255,0.6); }
+        .yt-card-body { padding: 20px; }
+        .yt-card-body h5 { color: white; font-size: 0.95rem; font-weight: 600; margin-bottom: 8px; }
+        .btn-yt-channel {
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white; border: none;
+            padding: 16px 40px; border-radius: 50px;
+            font-size: 1.1rem; font-weight: 600;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(255,0,0,0.3);
+        }
+        .btn-yt-channel:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255,0,0,0.5);
+            color: white;
+        }
+
+        
+        /* Founder CSS avatar */
+        .founder-avatar {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #818cf8, #c084fc);
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 0.8rem; font-weight: 800;
+            color: white; flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(129,140,248,0.4);
+        }
+        /* Blog read-more */
+        .btn-read-more {
+            background: transparent;
+            border: 1px solid rgba(129,140,248,0.4);
+            color: rgba(129,140,248,0.9);
+            padding: 8px 20px; border-radius: 50px;
+            font-size: 0.85rem; font-weight: 600;
+            cursor: pointer; transition: all 0.3s;
+            display: inline-flex; align-items: center; gap: 6px;
+            margin-top: 12px;
+        }
+        .btn-read-more:hover {
+            background: rgba(129,140,248,0.15);
+            border-color: rgba(129,140,248,0.7);
+            color: white;
+            transform: translateX(-4px);
+        }
+        /* Blog Modal */
+        #blogModal {
+            display: none;
+            position: fixed; inset: 0;
+            z-index: 9999;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        #blogModal.show { display: flex; align-items: center; justify-content: center; }
+        .blog-modal-backdrop {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(8px);
+            z-index: 0;
+        }
+        .blog-modal-box {
+            position: relative; z-index: 1;
+            background: linear-gradient(135deg, #0d1117, #161b2e);
+            border: 1px solid rgba(129,140,248,0.2);
+            border-radius: 24px;
+            max-width: 760px; width: 100%;
+            padding: 48px 48px 40px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+            animation: modalSlideIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        @keyframes modalSlideIn {
+            from { opacity:0; transform: translateY(40px) scale(0.95); }
+            to   { opacity:1; transform: translateY(0) scale(1); }
+        }
+        .blog-modal-close {
+            position: absolute; top: 20px; left: 20px;
+            width: 36px; height: 36px;
+            background: rgba(255,255,255,0.08);
+            border: none; border-radius: 50%;
+            color: white; font-size: 1.2rem;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+        }
+        .blog-modal-close:hover { background: rgba(255,255,255,0.15); transform: rotate(90deg); }
+        .blog-modal-img {
+            width: 100%; height: 220px;
+            object-fit: cover; border-radius: 16px;
+            margin-bottom: 28px;
+        }
+        .blog-modal-title { color: white; font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; }
+        .blog-modal-meta { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; flex-wrap: wrap; }
+        .blog-modal-body { color: rgba(255,255,255,0.8); line-height: 2; font-size: 1rem; }
+        .blog-modal-body p { margin-bottom: 16px; }
+        @media (max-width: 600px) {
+            .blog-modal-box { padding: 32px 24px 28px; }
+            .blog-modal-title { font-size: 1.2rem; }
+        }
         </style>
 </head>
 <body>
     <!-- =====================================================
          INTRO DOOR ANIMATION
     ===================================================== -->
+    <div class="menu-backdrop" id="menuBackdrop"></div>
     <div class="intro-scan"></div>
     <div id="intro-center" class="intro-center">
         <div class="intro-logo-wrap">
@@ -2665,11 +2973,13 @@
                 <button class="lang-btn" data-lang="en">English</button>
             </div>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            <button class="custom-hamburger" id="hamburgerBtn" aria-label="القائمة" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
             
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-custom-menu" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link active" href="#home" data-section="home">
@@ -2686,11 +2996,7 @@
                             <i class="fas fa-users me-2"></i><span class="nav-text">المجتمع</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#subscriptions" data-section="subscriptions">
-                            <i class="fas fa-crown me-2"></i><span class="nav-text">الباقات</span>
-                        </a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="#blog" data-section="blog">
                             <i class="fas fa-blog me-2"></i><span class="nav-text">المدونة</span>
@@ -2704,6 +3010,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#portfolio" data-section="portfolio">
                             <i class="fas fa-briefcase me-2"></i><span class="nav-text" data-translate="nav.portfolio">معرض الأعمال</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#youtube" data-section="youtube">
+                            <i class="fab fa-youtube me-2"></i><span class="nav-text" data-translate="navYoutube">يوتيوب</span>
                         </a>
                     </li>
                 </ul>
@@ -2987,7 +3298,79 @@
                 </div>
             </div>
 
-            <!-- P4: ATAA Platform -->
+            <!-- P3b: INTELLI CORE -->
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="220">
+                <div class="portfolio-card">
+                    <div class="portfolio-img-wrap">
+                        <div class="product-preview" style="background:linear-gradient(135deg,#0d2149,#1e3a5f,#2d5a8e);">
+                        <div class="pp-topbar">
+                            <div class="pp-dot" style="background:#38bdf8;"></div>
+                            <div class="pp-dot" style="background:#0ea5e9;"></div>
+                            <div class="pp-dot" style="background:#0284c7;"></div>
+                            <div class="pp-url"></div>
+                        </div>
+                        <div class="pp-body">
+                            <div class="pp-lines"></div>
+                            <div class="pp-glow" style="width:150px;height:150px;top:-30px;right:-30px;background:rgba(56,189,248,0.6);"></div>
+                            <div class="pp-glow" style="width:120px;height:120px;bottom:-20px;left:-20px;background:rgba(14,165,233,0.4);"></div>
+                            <div style="font-size:2.5rem;z-index:1;">🧠</div>
+                            <div class="pp-logo-text">INTELLI CORE</div>
+                            <div class="pp-badge">ConsultTech</div>
+                        </div>
+                    </div>
+                        <span class="portfolio-category">ConsultTech</span>
+                        <span class="portfolio-live-badge">LIVE</span>
+                    </div>
+                    <div class="portfolio-body">
+                        <h4 class="fw-bold">INTELLI CORE — منصة الاستشارة</h4>
+                        <p class="text-muted small">منصة استشارية من 6 خبراء متخصصين لتطوير الأفكار وإيجاد المساهمين — مع بصمة رقمية لكل فكرة.</p>
+                        <div class="portfolio-tech"><span>AI</span><span>SaaS</span><span>Consulting</span><span>Experts</span></div>
+                        <div class="portfolio-actions">
+                            <a href="https://donialabstech.online" target="_blank" rel="noopener" class="btn btn-visit">
+                                <i class="fas fa-external-link-alt"></i> زيارة المنصة
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- P3c: QURAN MADRASA -->
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="260">
+                <div class="portfolio-card">
+                    <div class="portfolio-img-wrap">
+                        <div class="product-preview" style="background:linear-gradient(135deg,#1a3300,#2d5a00,#3d7a00);">
+                        <div class="pp-topbar">
+                            <div class="pp-dot" style="background:#86efac;"></div>
+                            <div class="pp-dot" style="background:#4ade80;"></div>
+                            <div class="pp-dot" style="background:#22c55e;"></div>
+                            <div class="pp-url"></div>
+                        </div>
+                        <div class="pp-body">
+                            <div class="pp-lines"></div>
+                            <div class="pp-glow" style="width:150px;height:150px;top:-30px;right:-30px;background:rgba(134,239,172,0.5);"></div>
+                            <div class="pp-glow" style="width:120px;height:120px;bottom:-20px;left:-20px;background:rgba(74,222,128,0.3);"></div>
+                            <div style="font-size:2.5rem;z-index:1;">📖</div>
+                            <div class="pp-logo-text">مدارس القرآن</div>
+                            <div class="pp-badge">وقف لله تعالى</div>
+                        </div>
+                    </div>
+                        <span class="portfolio-category">EdTech</span>
+                        <span class="portfolio-live-badge">LIVE</span>
+                    </div>
+                    <div class="portfolio-body">
+                        <h4 class="fw-bold">مدارس القرآن الكريم</h4>
+                        <p class="text-muted small">منصة تعليمية لمدارس القرآن الكريم — وقف لله تعالى، تقنية التتبع الذكي للطلاب وإدارة الحلقات القرآنية.</p>
+                        <div class="portfolio-tech"><span>EdTech</span><span>AI</span><span>وقف</span><span>قرآن</span></div>
+                        <div class="portfolio-actions">
+                            <a href="https://quran-madrasa-swart.vercel.app/#dash" target="_blank" rel="noopener" class="btn btn-visit">
+                                <i class="fas fa-external-link-alt"></i> زيارة المنصة
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<!-- P4: ATAA Platform -->
             <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrap">
@@ -3133,35 +3516,35 @@
                 </div>
             </div>
 
-            <!-- P7: RESIDENCE -->
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="320">
+            <!-- P9: DONIA VOTE -->
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="380">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrap">
-                        <div class="product-preview" style="background:linear-gradient(135deg,#1a1200,#3d2c00,#5c3d00);">
+                        <div class="product-preview" style="background:linear-gradient(135deg,#0d1a0d,#1a3a1a,#2d5a2d);">
                         <div class="pp-topbar">
-                            <div class="pp-dot" style="background:#fbbf24;"></div>
-                            <div class="pp-dot" style="background:#f97316;"></div>
-                            <div class="pp-dot" style="background:#fb923c;"></div>
+                            <div class="pp-dot" style="background:#4ade80;"></div>
+                            <div class="pp-dot" style="background:#22c55e;"></div>
+                            <div class="pp-dot" style="background:#16a34a;"></div>
                             <div class="pp-url"></div>
                         </div>
                         <div class="pp-body">
                             <div class="pp-lines"></div>
-                            <div class="pp-glow" style="width:150px;height:150px;top:-30px;right:-30px;background:rgba(251,191,36,0.5);"></div>
-                            <div class="pp-glow" style="width:120px;height:120px;bottom:-20px;left:-20px;background:rgba(249,115,22,0.3);"></div>
-                            <div style="font-size:2.5rem;z-index:1;">🏠</div>
-                            <div class="pp-logo-text">RESIDENCE</div>
-                            <div class="pp-badge">PropTech</div>
+                            <div class="pp-glow" style="width:150px;height:150px;top:-30px;right:-30px;background:rgba(74,222,128,0.5);"></div>
+                            <div class="pp-glow" style="width:120px;height:120px;bottom:-20px;left:-20px;background:rgba(34,197,94,0.3);"></div>
+                            <div style="font-size:2.5rem;z-index:1;">🗳️</div>
+                            <div class="pp-logo-text">DONIA VOTE</div>
+                            <div class="pp-badge">ElecTech</div>
                         </div>
                     </div>
-                        <span class="portfolio-category">PropTech</span>
+                        <span class="portfolio-category">ElecTech</span>
                         <span class="portfolio-live-badge">LIVE</span>
                     </div>
                     <div class="portfolio-body">
-                        <h4 class="fw-bold">RESIDENCE — العقار الذكي</h4>
-                        <p class="text-muted small">منصة إدارة العقارات الذكية — بحث، تقييم، وإدارة ملفات السكن والمكاتب بأدوات ذكية متكاملة.</p>
-                        <div class="portfolio-tech"><span>PropTech</span><span>AI</span><span>Maps</span><span>JS</span></div>
+                        <h4 class="fw-bold">DONIA VOTE — الحملات الانتخابية</h4>
+                        <p class="text-muted small" data-translate="doniaVoteDesc">منصة ذكية لإدارة الحملات الانتخابية المحلية (APC/APW) — تتبع الناخبين، تحليل البيانات، وأدوات التواصل الانتخابي.</p>
+                        <div class="portfolio-tech"><span>ElecTech</span><span>AI</span><span>Analytics</span><span>SaaS</span></div>
                         <div class="portfolio-actions">
-                            <a href="https://donia-labstech.github.io/RESIDENCE/" target="_blank" rel="noopener" class="btn btn-visit">
+                            <a href="https://donia-vote.vercel.app" target="_blank" rel="noopener" class="btn btn-visit">
                                 <i class="fas fa-external-link-alt"></i> زيارة المنصة
                             </a>
                         </div>
@@ -3169,9 +3552,7 @@
                 </div>
             </div>
 
-            
-
-            <!-- P10: DONIA PRINCIPAL AGENT -->
+<!-- P10: DONIA PRINCIPAL AGENT -->
             <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="440">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrap">
@@ -3272,321 +3653,198 @@
     </section>
 
     <!-- Payment Methods Section -->
-    <section id="payment" class="payment-section">
+    <section id="youtube" class="youtube-section" data-aos="fade-up">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up"><span id="paymentMethodsTitle">طرق الدفع المتاحة</span></h2>
-            <p class="text-center mb-5 fs-5" data-aos="fade-up" data-aos-delay="100" id="paymentMethodsDescription">
-                نوفر لكم العديد من طرق الدفع الآمنة والمتاحة في الجزائر والعالم
+            <h2 class="section-title text-white" data-aos="fade-up">
+                <i class="fab fa-youtube me-3" style="color:#ff0000;"></i>
+                <span data-translate="youtubeTitle">قناتنا على يوتيوب</span>
+            </h2>
+            <p class="section-subtitle text-white-50 mb-5" data-aos="fade-up" data-translate="youtubeSubtitle">
+                تابع أحدث مشاريعنا وشروحاتنا التقنية
             </p>
             
-            <div class="payment-methods">
-                <div class="payment-method" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="payment-icon">
-                        <i class="fas fa-university"></i>
+            <div class="row g-4 justify-content-center mb-5" data-aos="fade-up">
+                <!-- Video 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="yt-card">
+                        <div class="yt-thumb-wrap">
+                            <a href="https://www.youtube.com/@Donialabstech" target="_blank" rel="noopener" class="yt-thumb-link">
+                                <div class="yt-placeholder">
+                                    <i class="fab fa-youtube yt-play-big"></i>
+                                    <div class="yt-placeholder-text">DONIA LABS TECH</div>
+                                    <div class="yt-placeholder-sub">مشاريع الذكاء الاصطناعي</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="yt-card-body">
+                            <h5 data-translate="ytVid1Title">مشاريع الذكاء الاصطناعي والتحول الرقمي</h5>
+                            <p class="text-muted small" data-translate="ytVid1Desc">تابع أحدث مشاريع المختبر في مجال الذكاء الاصطناعي والبرمجيات المتقدمة</p>
+                        </div>
                     </div>
-                    <div class="payment-name" id="paymentMethod1">التحويل البنكي</div>
                 </div>
-                
-                <div class="payment-method" data-aos="zoom-in" data-aos-delay="250">
-                    <div class="payment-icon">
-                        <i class="fas fa-mobile-alt"></i>
+                <!-- Video 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="yt-card">
+                        <div class="yt-thumb-wrap">
+                            <a href="https://www.youtube.com/@Donialabstech" target="_blank" rel="noopener" class="yt-thumb-link">
+                                <div class="yt-placeholder" style="background:linear-gradient(135deg,#1a0533,#2d1b69);">
+                                    <i class="fab fa-youtube yt-play-big"></i>
+                                    <div class="yt-placeholder-text">DONIA LABS TECH</div>
+                                    <div class="yt-placeholder-sub">شروحات تقنية متقدمة</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="yt-card-body">
+                            <h5 data-translate="ytVid2Title">شروحات تقنية وبرمجية متقدمة</h5>
+                            <p class="text-muted small" data-translate="ytVid2Desc">دروس ومحتوى تعليمي في مجالات التقنية والذكاء الاصطناعي</p>
+                        </div>
                     </div>
-                    <div class="payment-name" id="paymentMethod2">دفع عبر الهاتف</div>
                 </div>
-                
-                <div class="payment-method" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="payment-icon">
-                        <i class="fab fa-cc-paypal"></i>
+                <!-- Video 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="yt-card">
+                        <div class="yt-thumb-wrap">
+                            <a href="https://www.youtube.com/@Donialabstech" target="_blank" rel="noopener" class="yt-thumb-link">
+                                <div class="yt-placeholder" style="background:linear-gradient(135deg,#0d2149,#1e3a5f);">
+                                    <i class="fab fa-youtube yt-play-big"></i>
+                                    <div class="yt-placeholder-text">DONIA LABS TECH</div>
+                                    <div class="yt-placeholder-sub">ابتكارات المختبر</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="yt-card-body">
+                            <h5 data-translate="ytVid3Title">ابتكارات ومنصات المختبر</h5>
+                            <p class="text-muted small" data-translate="ytVid3Desc">استعراض لأحدث المنصات والمشاريع التي طورها فريق DONIA LABS TECH</p>
+                        </div>
                     </div>
-                    <div class="payment-name" id="paymentMethod3">PayPal</div>
-                </div>
-                
-                <div class="payment-method" data-aos="zoom-in" data-aos-delay="350">
-                    <div class="payment-icon">
-                        <i class="fas fa-money-bill-wave"></i>
-                    </div>
-                    <div class="payment-name" id="paymentMethod4">الدفع نقداً</div>
-                </div>
-                
-                <div class="payment-method" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="payment-icon">
-                        <i class="fas fa-qrcode"></i>
-                    </div>
-                    <div class="payment-name" id="paymentMethod5">QR Code</div>
-                </div>
-                
-                <div class="payment-method" data-aos="zoom-in" data-aos-delay="450">
-                    <div class="payment-icon">
-                        <i class="fas fa-credit-card"></i>
-                    </div>
-                    <div class="payment-name" id="paymentMethod6">البطاقات البنكية</div>
                 </div>
             </div>
             
-            <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="500">
-                <p class="text-muted" id="paymentSecurityText">
-                    <i class="fas fa-shield-alt me-2"></i>
-                    جميع طرق الدفع لدينا آمنة ومشفرة بنظام SSL 256-bit
-                </p>
+            <div class="text-center" data-aos="fade-up">
+                <a href="https://www.youtube.com/@Donialabstech" target="_blank" rel="noopener" class="btn btn-yt-channel">
+                    <i class="fab fa-youtube me-2"></i>
+                    <span data-translate="visitChannel">زيارة القناة</span>
+                    <i class="fas fa-arrow-left ms-2" style="transform:rotate(180deg);"></i>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Subscriptions Section -->
-    <section id="subscriptions" class="subscriptions-section">
+    <section id="blog" class="blog-section">
         <div class="container">
-            <h2 class="section-title text-white" data-aos="fade-up"><span id="subscriptionsTitle">باقات خدماتنا</span></h2>
-            <p class="text-center mb-5 fs-5 text-white opacity-85" data-aos="fade-up" data-aos-delay="100" id="subscriptionsDescription">
-                اختر الباقة التي تناسبك <span class="path-to-top">لطريقك نحو القمة</span> في النجاح الرقمي
-            </p>
-            
-            <div class="row">
-                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="pricing-card">
-                        <h3 class="text-center text-white" id="basicPlanTitle">الباقة الأساسية</h3>
-                        <div class="text-center my-4">
-                            <div class="service-icon mx-auto" style="width: 60px; height: 60px;">
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                        <ul class="pricing-features">
-                            <li id="basicFeature1">تصميم موقع ويب أساسي</li>
-                            <li id="basicFeature2">ساعات محددة من المونتاج</li>
-                            <li id="basicFeature3">إدارة حسابات التواصل الاجتماعي</li>
-                            <li id="basicFeature4">تقارير أداء شهرية</li>
-                            <li id="basicFeature5">دعم فني عبر البريد الإلكتروني</li>
-                        </ul>
-                        <div class="text-center mt-4">
-                            <a href="#contact" class="btn btn-outline-light w-100" data-section="contact">
-                                <span id="getBasicPriceBtn">احصل على سعر الباقة</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="pricing-card">
-                        <div class="pricing-badge" id="mostPopularBadge">الأكثر طلباً</div>
-                        <h3 class="text-center text-white" id="proPlanTitle">الباقة الاحترافية</h3>
-                        <div class="text-center my-4">
-                            <div class="service-icon mx-auto" style="width: 60px; height: 60px;">
-                                <i class="fas fa-crown"></i>
-                            </div>
-                        </div>
-                        <ul class="pricing-features">
-                            <li id="proFeature1">كل ما في الباقة الأساسية</li>
-                            <li id="proFeature2">موقع ويب متكامل مع لوحة تحكم</li>
-                            <li id="proFeature3">ساعات إضافية من المونتاج</li>
-                            <li id="proFeature4">حملات إعلانية ممولة</li>
-                            <li id="proFeature5">حلول ذكاء اصطناعي مخصصة</li>
-                            <li id="proFeature6">دعم فني هاتفي</li>
-                            <li id="proFeature7">دخول مجتمع رواد الأعمال</li>
-                        </ul>
-                        <div class="text-center mt-4">
-                            <a href="#contact" class="btn btn-gold w-100" style="background: var(--gradient-gold); color: white;" data-section="contact">
-                                <span id="getProPriceBtn">احصل على سعر الباقة</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="pricing-card">
-                        <h3 class="text-center text-white" id="enterprisePlanTitle">الباقة المؤسسية</h3>
-                        <div class="text-center my-4">
-                            <div class="service-icon mx-auto" style="width: 60px; height: 60px;">
-                                <i class="fas fa-building"></i>
-                            </div>
-                        </div>
-                        <ul class="pricing-features">
-                            <li id="enterpriseFeature1">كل ما في الباقة الاحترافية</li>
-                            <li id="enterpriseFeature2">منصة رقمية متكاملة</li>
-                            <li id="enterpriseFeature3">مونتاج غير محدود</li>
-                            <li id="enterpriseFeature4">حملات تسويقية شاملة</li>
-                            <li id="enterpriseFeature5">حلول ذكاء اصطناعي متقدمة</li>
-                            <li id="enterpriseFeature6">دعم فني على مدار الساعة</li>
-                            <li id="enterpriseFeature7">مدير مشروع مخصص</li>
-                            <li id="enterpriseFeature8">تحليل تنافسي شامل</li>
-                        </ul>
-                        <div class="text-center mt-4">
-                            <a href="#contact" class="btn btn-outline-light w-100" data-section="contact">
-                                <span id="getEnterprisePriceBtn">احصل على سعر الباقة</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Guarantee Section -->
-    <section id="guarantee" class="guarantee-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10" data-aos="zoom-in">
-                    <div class="guarantee-badge">
-                        <i class="fas fa-shield-alt me-2"></i>
-                        <span id="guaranteeBadgeText">ضمان استرجاع الأموال لمدة 30 يوم</span>
-                    </div>
-                    <h2 class="text-white mb-4" id="guaranteeTitle">نحن نضمن رضاك التام</h2>
-                    <p class="text-white fs-5 mb-4 opacity-90" id="guaranteeDescription">
-                        نثق في جودة خدماتنا ونقدم لك ضمان استرجاع أموالك بالكامل خلال 30 يوماً إذا لم تكن راضياً عن الخدمة.
-                        نحن نؤمن بأن <strong>طريقك نحو القمة</strong> يبدأ بالثقة المتبادلة.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Blog Section -->
-    
-        <!-- =====================================================
-             YOUTUBE CHANNEL SECTION
-             ➜ Replace VIDEO_ID_1/2/3 with your actual video IDs
-               e.g. https://youtu.be/ABC123XYZ → VIDEO_ID = ABC123XYZ
-        ===================================================== -->
-        <section id="youtube" class="youtube-section" data-aos="fade-up">
-            <div class="container position-relative">
-                <div class="text-center mb-5">
-                    <span style="display:inline-flex;align-items:center;gap:10px;background:rgba(255,0,0,0.1);border:1px solid rgba(255,0,0,0.3);padding:6px 20px;border-radius:30px;margin-bottom:16px;">
-                        <i class="fab fa-youtube" style="color:#ff4444;font-size:1.2rem;"></i>
-                        <span style="color:#ff6666;font-size:0.85rem;font-weight:700;letter-spacing:0.1em;">YOUTUBE CHANNEL</span>
-                    </span>
-                    <h2 class="section-title" id="ytTitle">قناتنا على يوتيوب</h2>
-                    <p class="text-center mb-0 fs-5" style="color:rgba(255,255,255,0.65);" id="ytDesc">
-                        دروس تقنية، مشاريع ذكاء اصطناعي، وأحدث الحلول الرقمية
-                    </p>
-                </div>
-
-                <div class="row g-4 justify-content-center">
-                    <!-- VIDEO 1 — Replace dQw4w9WgXcQ with your video ID -->
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="yt-card">
-                            <div class="yt-iframe-wrap">
-                                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
-                                    title="DONIA LABS TECH - Video 1"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen loading="lazy"></iframe>
-                            </div>
-                            <div class="p-3">
-                                <p class="mb-0" style="color:rgba(255,255,255,0.7);font-size:0.9rem;" id="ytVideo1Title">فيديو تقني من DONIA LABS TECH</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- VIDEO 2 — Replace with your video ID -->
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="yt-card">
-                            <div class="yt-iframe-wrap">
-                                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
-                                    title="DONIA LABS TECH - Video 2"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen loading="lazy"></iframe>
-                            </div>
-                            <div class="p-3">
-                                <p class="mb-0" style="color:rgba(255,255,255,0.7);font-size:0.9rem;" id="ytVideo2Title">مشروع ذكاء اصطناعي جديد</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- VIDEO 3 — Replace with your video ID -->
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="yt-card">
-                            <div class="yt-iframe-wrap">
-                                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
-                                    title="DONIA LABS TECH - Video 3"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen loading="lazy"></iframe>
-                            </div>
-                            <div class="p-3">
-                                <p class="mb-0" style="color:rgba(255,255,255,0.7);font-size:0.9rem;" id="ytVideo3Title">حلول رقمية للمستقبل</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="400">
-                    <!-- Replace YOUR_CHANNEL with your YouTube channel handle -->
-                    <a href="https://www.youtube.com/@Donialabstech" target="_blank" class="yt-channel-btn" id="ytChannelBtn">
-                        <i class="fab fa-youtube"></i>
-                        اشترك في القناة | Subscribe
-                    </a>
-                </div>
-            </div>
-        </section>
-
-<section id="blog" class="blog-section">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up"><span id="blogTitle">مدونتنا الرقمية</span></h2>
-            <p class="text-center mb-5 fs-5" data-aos="fade-up" data-aos-delay="100" id="blogDescription">
-                اكتشف أحدث المقالات والتقنيات في عالم الرقمية <span class="path-to-top">لطريقك نحو القمة</span> المعرفية
+            <h2 class="section-title" data-aos="fade-up"><span data-translate="blogTitle">مدونتنا الرقمية</span></h2>
+            <p class="text-center mb-5 fs-5" data-aos="fade-up" data-aos-delay="100">
+                اكتشف أحدث المقالات والتقنيات في عالم الرقمية — <span style="color:var(--primary);">لطريقك نحو القمة</span>
             </p>
             
             <div class="row">
+                <!-- Blog 1 -->
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="blog-card">
-                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1070&q=80" 
-                             alt="الذكاء الاصطناعي" 
-                             class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=75" 
+                             alt="الذكاء الاصطناعي" class="blog-img"
+                             loading="lazy">
                         <div class="blog-content">
-                            <h4 id="blog1Title">مستقبل الذكاء الاصطناعي في الأعمال</h4>
+                            <h4 data-translate="blog1Title">مستقبل الذكاء الاصطناعي في الأعمال</h4>
                             <div class="blog-meta">
-                                <span style="display:flex;align-items:center;gap:6px;"><img src="https://ui-avatars.com/api/?name=Daoud+Touina&background=818cf8&color=fff&size=36&bold=true&rounded=true" alt="Daoud" class="blog-author-avatar" onerror="this.style.display='none'"> <i class="fas fa-user" style="display:none;"></i> <span id="blog1Author">فريق DONIA LABS</span></span>
-                                <span><i class="fas fa-eye"></i> <span id="blog1Views">1.2K مشاهدة</span></span>
+                                <span style="display:flex;align-items:center;gap:8px;">
+                                    <span class="founder-avatar">DT</span>
+                                    <span data-translate="blog1Author">داود تويينة</span>
+                                </span>
+                                <span><i class="fas fa-eye"></i> 1.2K</span>
                             </div>
-                            <p id="blog1Desc">كيف يمكن للذكاء الاصطناعي أن يحول عملك ويوفر وقتك ويزيد أرباحك؟ اكتشف أحدث التقنيات...</p>
+                            <p data-translate="blog1Desc">كيف يمكن للذكاء الاصطناعي أن يحول عملك ويوفر وقتك ويزيد أرباحك؟ اكتشف أحدث التقنيات...</p>
                             <div class="blog-tags">
-                                <span class="blog-tag" id="blog1Tag1">الذكاء الاصطناعي</span>
-                                <span class="blog-tag" id="blog1Tag2">التقنية</span>
-                                <span class="blog-tag" id="blog1Tag3">الأعمال</span>
+                                <span class="blog-tag">الذكاء الاصطناعي</span>
+                                <span class="blog-tag">التقنية</span>
+                                <span class="blog-tag">الأعمال</span>
                             </div>
+                            <button class="btn-read-more" onclick="openBlogModal(1)">
+                                <i class="fas fa-book-open"></i>
+                                <span data-translate="readMore">اقرأ المزيد</span>
+                            </button>
                         </div>
                     </div>
                 </div>
                 
+                <!-- Blog 2 -->
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="blog-card">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1070&q=80" 
-                             alt="التسويق الرقمي" 
-                             class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=75" 
+                             alt="التسويق الرقمي" class="blog-img"
+                             loading="lazy">
                         <div class="blog-content">
-                            <h4 id="blog2Title">استراتيجيات التسويق الرقمي الفعالة</h4>
+                            <h4 data-translate="blog2Title">استراتيجيات التسويق الرقمي الفعالة</h4>
                             <div class="blog-meta">
-                                <span style="display:flex;align-items:center;gap:6px;"><img src="https://ui-avatars.com/api/?name=Daoud+Touina&background=818cf8&color=fff&size=36&bold=true&rounded=true" alt="Daoud" class="blog-author-avatar" onerror="this.style.display='none'"> <i class="fas fa-user" style="display:none;"></i> <span id="blog2Author">فريق DONIA LABS</span></span>
-                                <span><i class="fas fa-eye"></i> <span id="blog2Views">980 مشاهدة</span></span>
+                                <span style="display:flex;align-items:center;gap:8px;">
+                                    <span class="founder-avatar">DT</span>
+                                    <span data-translate="blog2Author">داود تويينة</span>
+                                </span>
+                                <span><i class="fas fa-eye"></i> 980</span>
                             </div>
-                            <p id="blog2Desc">تعرف على أحدث استراتيجيات التسويق الرقمي التي تضمن وصولك للعملاء المستهدفين...</p>
+                            <p data-translate="blog2Desc">تعرف على أحدث استراتيجيات التسويق الرقمي التي تضمن وصولك للعملاء المستهدفين...</p>
                             <div class="blog-tags">
-                                <span class="blog-tag" id="blog2Tag1">التسويق</span>
-                                <span class="blog-tag" id="blog2Tag2">الرقمي</span>
-                                <span class="blog-tag" id="blog2Tag3">استراتيجيات</span>
+                                <span class="blog-tag">التسويق</span>
+                                <span class="blog-tag">الرقمي</span>
+                                <span class="blog-tag">استراتيجيات</span>
                             </div>
+                            <button class="btn-read-more" onclick="openBlogModal(2)">
+                                <i class="fas fa-book-open"></i>
+                                <span data-translate="readMore">اقرأ المزيد</span>
+                            </button>
                         </div>
                     </div>
                 </div>
                 
+                <!-- Blog 3 -->
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
                     <div class="blog-card">
-                        <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1169&q=80" 
-                             alt="تصميم المواقع" 
-                             class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=800&q=75" 
+                             alt="تصميم المواقع" class="blog-img"
+                             loading="lazy">
                         <div class="blog-content">
-                            <h4 id="blog3Title">أهمية تجربة المستخدم في تصميم المواقع</h4>
+                            <h4 data-translate="blog3Title">أهمية تجربة المستخدم في تصميم المواقع</h4>
                             <div class="blog-meta">
-                                <span style="display:flex;align-items:center;gap:6px;"><img src="https://ui-avatars.com/api/?name=Daoud+Touina&background=818cf8&color=fff&size=36&bold=true&rounded=true" alt="Daoud" class="blog-author-avatar" onerror="this.style.display='none'"> <i class="fas fa-user" style="display:none;"></i> <span id="blog3Author">فريق DONIA LABS</span></span>
-                                <span><i class="fas fa-eye"></i> <span id="blog3Views">1.5K مشاهدة</span></span>
+                                <span style="display:flex;align-items:center;gap:8px;">
+                                    <span class="founder-avatar">DT</span>
+                                    <span data-translate="blog3Author">داود تويينة</span>
+                                </span>
+                                <span><i class="fas fa-eye"></i> 1.5K</span>
                             </div>
-                            <p id="blog3Desc">كيف تؤثر تجربة المستخدم على نجاح موقعك الإلكتروني وما أفضل الممارسات؟...</p>
+                            <p data-translate="blog3Desc">كيف تؤثر تجربة المستخدم على نجاح موقعك الإلكتروني وما أفضل الممارسات؟...</p>
                             <div class="blog-tags">
-                                <span class="blog-tag" id="blog3Tag1">تصميم</span>
-                                <span class="blog-tag" id="blog3Tag2">مواقع</span>
-                                <span class="blog-tag" id="blog3Tag3">تجربة مستخدم</span>
+                                <span class="blog-tag">تصميم</span>
+                                <span class="blog-tag">مواقع</span>
+                                <span class="blog-tag">تجربة مستخدم</span>
                             </div>
+                            <button class="btn-read-more" onclick="openBlogModal(3)">
+                                <i class="fas fa-book-open"></i>
+                                <span data-translate="readMore">اقرأ المزيد</span>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Blog Modal -->
+    <div id="blogModal" role="dialog" aria-modal="true">
+        <div class="blog-modal-backdrop" onclick="closeBlogModal()"></div>
+        <div class="blog-modal-box">
+            <button class="blog-modal-close" onclick="closeBlogModal()" aria-label="إغلاق">✕</button>
+            <img id="modalImg" src="" alt="" class="blog-modal-img">
+            <div class="blog-modal-meta">
+                <span style="display:flex;align-items:center;gap:8px;">
+                    <span class="founder-avatar" style="width:44px;height:44px;font-size:1rem;">DT</span>
+                    <span style="color:white;font-weight:600;">داود تويينة</span>
+                </span>
+                <span style="color:rgba(255,255,255,0.5);font-size:0.85rem;" id="modalDate"></span>
+            </div>
+            <h2 class="blog-modal-title" id="modalTitle"></h2>
+            <div class="blog-modal-body" id="modalBody"></div>
+        </div>
+    </div>
 
     <!-- CTA Section -->
     <section class="cta-section">
@@ -3655,9 +3913,7 @@
                                         <a href="https://www.facebook.com/share/1An6GhVd56/" class="social-icon" target="_blank" title="فيسبوك">
                                             <i class="fab fa-facebook-f"></i>
                                         </a>
-                                        <a href="https://www.youtube.com/@DONIAEMARKETING" class="social-icon" target="_blank" title="يوتيوب">
-                                            <i class="fab fa-youtube"></i>
-                                        </a>
+                                        
                                         <a href="https://www.instagram.com/daoud_touina" class="social-icon" target="_blank" title="إنستغرام">
                                             <i class="fab fa-instagram"></i>
                                         </a>
@@ -3735,9 +3991,7 @@
                         <a href="https://www.facebook.com/share/1An6GhVd56/" class="social-icon" target="_blank" title="فيسبوك">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.youtube.com/@DONIAEMARKETING" class="social-icon" target="_blank" title="يوتيوب">
-                            <i class="fab fa-youtube"></i>
-                        </a>
+                        
                         <a href="https://www.instagram.com/daoud_touina" class="social-icon" target="_blank" title="إنستغرام">
                             <i class="fab fa-instagram"></i>
                         </a>
@@ -5150,8 +5404,6 @@
                     📱 <strong>الواتساب:</strong> <a href="https://wa.me/213674661737" target="_blank">+213 674 66 17 37</a>
                     📧 <strong>البريد:</strong> <a href="mailto:contact@donialabstech.online">contact@donialabstech.online</a>
                     📱 <strong>فيسبوك:</strong> <a href="https://www.facebook.com/share/1An6GhVd56/" target="_blank">DONIA LABS TECH</a>
-                    🎥 <strong>يوتيوب:</strong> <a href="https://www.youtube.com/@DONIAEMARKETING" target="_blank">DONIA E-MARKETING</a>
-                    📸 <strong>إنستغرام:</strong> <a href="https://www.instagram.com/daoud_touina" target="_blank">daoud_touina</a>
                     💼 <strong>لينكدإن:</strong> <a href="https://www.linkedin.com/in/daoud-touina-8a9049134" target="_blank">Daoud Touina</a>
                     📱 <strong>تلغرام:</strong> <a href="https://t.me/donialabstech" target="_blank">donialabstech</a>
                     
@@ -5246,8 +5498,6 @@
                     📱 <strong>WhatsApp:</strong> <a href="https://wa.me/213674661737" target="_blank">+213 674 66 17 37</a>
                     📧 <strong>Email:</strong> <a href="mailto:contact@donialabstech.online">contact@donialabstech.online</a>
                     📱 <strong>Facebook:</strong> <a href="https://www.facebook.com/share/1An6GhVd56/" target="_blank">DONIA LABS TECH</a>
-                    🎥 <strong>YouTube:</strong> <a href="https://www.youtube.com/@DONIAEMARKETING" target="_blank">DONIA E-MARKETING</a>
-                    📸 <strong>Instagram:</strong> <a href="https://www.instagram.com/daoud_touina" target="_blank">daoud_touina</a>
                     💼 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/daoud-touina-8a9049134" target="_blank">Daoud Touina</a>
                     📱 <strong>Telegram:</strong> <a href="https://t.me/donialabstech" target="_blank">donialabstech</a>
                     
@@ -5342,8 +5592,6 @@
                     📱 <strong>WhatsApp:</strong> <a href="https://wa.me/213674661737" target="_blank">+213 674 66 17 37</a>
                     📧 <strong>Email:</strong> <a href="mailto:contact@donialabstech.online">contact@donialabstech.online</a>
                     📱 <strong>Facebook:</strong> <a href="https://www.facebook.com/share/1An6GhVd56/" target="_blank">DONIA LABS TECH</a>
-                    🎥 <strong>YouTube:</strong> <a href="https://www.youtube.com/@DONIAEMARKETING" target="_blank">DONIA E-MARKETING</a>
-                    📸 <strong>Instagram:</strong> <a href="https://www.instagram.com/daoud_touina" target="_blank">daoud_touina</a>
                     💼 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/daoud-touina-8a9049134" target="_blank">Daoud Touina</a>
                     📱 <strong>Telegram:</strong> <a href="https://t.me/donialabstech" target="_blank">donialabstech</a>
                     
@@ -7109,10 +7357,18 @@ ${kb.services.join(" | ")}
             ar: {
                 ytTitle: 'قناتنا على يوتيوب',
                 ytDesc: 'دروس تقنية، مشاريع ذكاء اصطناعي، وأحدث الحلول الرقمية',
-                ytChannelBtn: '<i class="fab fa-youtube me-2"></i>اشترك في القناة | Subscribe',
-                ytVideo1Title: 'فيديو تقني من DONIA LABS TECH',
-                ytVideo2Title: 'مشروع ذكاء اصطناعي جديد',
-                ytVideo3Title: 'حلول رقمية للمستقبل'
+                youtubeTitle: 'قناتنا على يوتيوب',
+                youtubeSubtitle: 'تابع أحدث مشاريعنا وشروحاتنا التقنية',
+                visitChannel: 'زيارة القناة',
+                ytVid1Title: 'مشاريع الذكاء الاصطناعي والتحول الرقمي',
+                ytVid1Desc: 'تابع أحدث مشاريع المختبر في مجال الذكاء الاصطناعي',
+                ytVid2Title: 'شروحات تقنية وبرمجية متقدمة',
+                ytVid2Desc: 'دروس ومحتوى تعليمي في مجالات التقنية',
+                ytVid3Title: 'ابتكارات ومنصات المختبر',
+                ytVid3Desc: 'استعراض لأحدث المنصات والمشاريع',
+                doniaVoteDesc: 'منصة ذكية لإدارة الحملات الانتخابية — تتبع الناخبين وتحليل البيانات',
+                readMore: 'اقرأ المزيد',
+                navYoutube: 'يوتيوب'
             },
             fr: {
                 ytTitle: 'Notre Chaîne YouTube',
@@ -7121,6 +7377,19 @@ ${kb.services.join(" | ")}
                 ytVideo1Title: 'Vidéo tech de DONIA LABS TECH',
                 ytVideo2Title: 'Nouveau projet d'intelligence artificielle',
                 ytVideo3Title: 'Solutions numériques du futur'
+            ,
+                youtubeTitle: 'Notre Chaîne YouTube',
+                youtubeSubtitle: 'Suivez nos derniers projets et tutoriels',
+                visitChannel: 'Visiter la Chaîne',
+                ytVid1Title: 'Projets IA & Transformation Digitale',
+                ytVid1Desc: 'Découvrez les derniers projets du laboratoire',
+                ytVid2Title: 'Tutoriels Techniques Avancés',
+                ytVid2Desc: 'Contenu pédagogique en technologie et IA',
+                ytVid3Title: 'Innovations du Laboratoire',
+                ytVid3Desc: 'Présentation des dernières plateformes créées',
+                doniaVoteDesc: 'Plateforme de gestion de campagnes électorales locale (APC/APW)',
+                readMore: 'Lire Plus',
+                navYoutube: 'YouTube'
             },
             en: {
                 ytTitle: 'Our YouTube Channel',
@@ -7129,6 +7398,19 @@ ${kb.services.join(" | ")}
                 ytVideo1Title: 'Tech video by DONIA LABS TECH',
                 ytVideo2Title: 'New AI project',
                 ytVideo3Title: 'Digital solutions of the future'
+            ,
+                youtubeTitle: 'Our YouTube Channel',
+                youtubeSubtitle: 'Follow our latest projects and technical tutorials',
+                visitChannel: 'Visit Channel',
+                ytVid1Title: 'AI Projects & Digital Transformation',
+                ytVid1Desc: 'Follow the latest lab projects in AI and software',
+                ytVid2Title: 'Advanced Technical Tutorials',
+                ytVid2Desc: 'Educational content in technology and AI',
+                ytVid3Title: 'Lab Innovations & Platforms',
+                ytVid3Desc: 'Showcase of the latest platforms developed by DONIA LABS TECH',
+                doniaVoteDesc: 'Smart platform for managing local election campaigns (APC/APW)',
+                readMore: 'Read More',
+                navYoutube: 'YouTube'
             }
         };
 
@@ -7143,7 +7425,98 @@ ${kb.services.join(" | ")}
             });
         };
     });
-    </script>
+    
+    // ===== HAMBURGER MENU =====
+    (function() {
+        const btn = document.getElementById('hamburgerBtn');
+        const menu = document.getElementById('navbarNav');
+        const backdrop = document.getElementById('menuBackdrop');
+        
+        function openMenu() {
+            btn.classList.add('open');
+            btn.setAttribute('aria-expanded','true');
+            menu.classList.add('menu-open');
+            backdrop.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+            btn.classList.remove('open');
+            btn.setAttribute('aria-expanded','false');
+            menu.classList.remove('menu-open');
+            backdrop.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+        
+        if (btn) {
+            btn.addEventListener('click', function() {
+                if (menu.classList.contains('menu-open')) closeMenu();
+                else openMenu();
+            });
+        }
+        if (backdrop) backdrop.addEventListener('click', closeMenu);
+        
+        // Close on nav link click
+        document.querySelectorAll('#navbarNav .nav-link').forEach(function(link) {
+            link.addEventListener('click', closeMenu);
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.navbar');
+            if (nav) {
+                if (window.scrollY > 50) nav.classList.add('navbar-scrolled');
+                else nav.classList.remove('navbar-scrolled');
+            }
+        });
+    })();
+    
+
+    // ===== BLOG MODAL =====
+    var blogData = {
+        1: {
+            title: 'مستقبل الذكاء الاصطناعي في الأعمال',
+            img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80',
+            date: 'نوفمبر 2026',
+            body: '<p>يشهد عالم الأعمال ثورة حقيقية بفضل تقنيات الذكاء الاصطناعي. لم تعد هذه التقنيات حكراً على الشركات الكبرى، بل باتت متاحة للمؤسسات الصغيرة والمتوسطة أيضاً.</p><p>من أبرز تطبيقات الذكاء الاصطناعي في الأعمال: أتمتة خدمة العملاء عبر الشات بوت الذكي، تحليل البيانات الضخمة واستخراج قرارات استراتيجية، التنبؤ بالمبيعات وإدارة المخزون، وأتمتة العمليات التكرارية.</p><p>في DONIA LABS TECH، نؤمن بأن الذكاء الاصطناعي ليس بديلاً عن الإنسان، بل هو أداة تُضاعف قدراته وتُحرره للتركيز على الإبداع واتخاذ القرارات الاستراتيجية.</p><p>إذا كنت تريد معرفة كيف يمكن للذكاء الاصطناعي أن يحوّل عملك، تواصل معنا اليوم للحصول على استشارة مجانية.</p>'
+        },
+        2: {
+            title: 'استراتيجيات التسويق الرقمي الفعالة',
+            img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80',
+            date: 'أكتوبر 2026',
+            body: '<p>التسويق الرقمي لم يعد خياراً بل ضرورة. في عالم يقضي فيه المستخدم أكثر من 6 ساعات يومياً على الإنترنت، يجب أن يكون وجودك الرقمي قوياً ومؤثراً.</p><p>أهم استراتيجيات التسويق الرقمي الناجحة: تحسين محركات البحث (SEO) لضمان ظهورك في النتائج الأولى، التسويق عبر المحتوى الذي يُقدم قيمة حقيقية للجمهور، إدارة وسائل التواصل الاجتماعي بشكل استراتيجي، والتسويق عبر البريد الإلكتروني.</p><p>الفرق بين النجاح والفشل في التسويق الرقمي يكمن في فهم جمهورك المستهدف بعمق، وتقديم المحتوى الصحيح في الوقت الصحيح وعبر القناة الصحيحة.</p>'
+        },
+        3: {
+            title: 'أهمية تجربة المستخدم في تصميم المواقع',
+            img: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=1200&q=80',
+            date: 'سبتمبر 2026',
+            body: '<p>تجربة المستخدم (UX) هي العامل الأكثر تأثيراً في نجاح أي موقع إلكتروني. الموقع الجميل بصرياً لكن الصعب الاستخدام محكوم عليه بالفشل.</p><p>أساسيات تجربة المستخدم الممتازة: سرعة التحميل — 53% من المستخدمين يغادرون المواقع التي تستغرق أكثر من 3 ثوان في التحميل. سهولة التنقل والوضوح في تنظيم المحتوى. التصميم المتجاوب الذي يعمل بشكل مثالي على جميع الأجهزة. وإمكانية الوصول لذوي الاحتياجات الخاصة.</p><p>في DONIA LABS TECH، نضع تجربة المستخدم في قلب كل مشروع نطوره، لأننا نؤمن أن التقنية يجب أن تخدم الإنسان وليس العكس.</p>'
+        }
+    };
+    
+    function openBlogModal(id) {
+        var d = blogData[id];
+        if (!d) return;
+        document.getElementById('modalTitle').textContent = d.title;
+        document.getElementById('modalImg').src = d.img;
+        document.getElementById('modalImg').alt = d.title;
+        document.getElementById('modalDate').textContent = d.date;
+        document.getElementById('modalBody').innerHTML = d.body;
+        var modal = document.getElementById('blogModal');
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+        // Focus for accessibility
+        modal.querySelector('.blog-modal-close').focus();
+    }
+    function closeBlogModal() {
+        document.getElementById('blogModal').classList.remove('show');
+        document.body.style.overflow = '';
+    }
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeBlogModal();
+    });
+    
+</script>
 
 </body>
 </html>
