@@ -2352,22 +2352,24 @@
 
         
         .navbar-logo .logo-img {
-            width: 72px !important; height: 72px !important;
+            width: 90px !important; height: 90px !important;
             border-radius: 50%;
-            object-fit: contain;
-            background: transparent;
-            border: 2.5px solid rgba(129,140,248,0.6);
-            box-shadow: 0 0 24px rgba(129,140,248,0.5), 0 0 50px rgba(192,132,252,0.25), 0 0 80px rgba(56,189,248,0.1);
+            object-fit: cover;
+            background: #fff;
+            border: 3px solid rgba(129,140,248,0.8);
+            box-shadow: 0 0 28px rgba(129,140,248,0.6), 0 0 60px rgba(192,132,252,0.3);
             animation: logo-pulse 3.5s ease-in-out infinite;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
         }
         .navbar-logo .logo-img:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 32px rgba(129,140,248,0.7), 0 0 70px rgba(192,132,252,0.4);
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgba(129,140,248,0.8), 0 0 80px rgba(192,132,252,0.5);
         }
         .navbar-logo .logo-img:hover {
-            transform: scale(1.08) rotate(5deg);
-            box-shadow: 0 0 24px rgba(129,140,248,0.6), 0 0 50px rgba(192,132,252,0.3);
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 32px rgba(129,140,248,0.7), 0 0 60px rgba(192,132,252,0.4);
         }
         @keyframes logo-pulse {
             0%,100% { box-shadow: 0 0 16px rgba(129,140,248,0.3), 0 0 30px rgba(192,132,252,0.15); }
@@ -3274,45 +3276,7 @@
             <!-- P2: DONIA SMART TEACHER -->
             
 
-                <!-- INTELLI CORE -->
-                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-                <div class="portfolio-card">
-                    <div class="portfolio-img-wrap">
-                        <div class="product-preview" style="background:linear-gradient(135deg,#020617,#0d1b35,#1e3a5f);">
-                            <div class="pp-topbar">
-                                <div class="pp-dot" style="background:#38bdf8;"></div>
-                                <div class="pp-dot" style="background:#6366f1;"></div>
-                                <div class="pp-dot" style="background:#22d3ee;"></div>
-                                <div class="pp-url"></div>
-                            </div>
-                            <div class="pp-body">
-                                <div class="pp-lines"></div>
-                                <div class="pp-glow" style="width:150px;height:150px;top:-30px;right:-30px;background:rgba(56,189,248,0.6);"></div>
-                                <div class="pp-glow" style="width:120px;height:120px;bottom:-20px;left:-20px;background:rgba(99,102,241,0.4);"></div>
-                                <div style="font-size:2.5rem;z-index:1;">🧠</div>
-                                <div class="pp-logo-text">INTELLI CORE</div>
-                                <div class="pp-badge">Advisory Platform</div>
-                            </div>
-                        </div>
-                        <span class="portfolio-category">AI Consulting</span>
-                        <span class="portfolio-live-badge">LIVE</span>
-                    </div>
-                    <div class="portfolio-body">
-                        <h4 class="fw-bold">INTELLI CORE</h4>
-                        <p class="text-muted small">منصة استشارية بـ6 خبراء لتطوير الأفكار وإيجاد المساهمين — مع بصمة رقمية فريدة لكل فكرة.</p>
-                        <div class="portfolio-tech"><span>AI Agents</span><span>LLM</span><span>Strategy</span><span>Startup</span></div>
-                        <div class="d-flex gap-2 mt-3">
-                            <a href="https://donialabstech.online" target="_blank" class="btn btn-sm btn-visit flex-fill">
-                                <i class="fas fa-external-link-alt me-1"></i>زيارة المنصة
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-shine"></div>
-                </div>
-                </div>
-
-
-            <!-- P3: DONIA MENTOR -->
+                <!-- P3: DONIA MENTOR -->
             <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="160">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrap">
@@ -3328,7 +3292,7 @@
                             <div class="pp-glow" style="width:150px;height:150px;top:-30px;right:-30px;background:rgba(192,132,252,0.7);"></div>
                             <div class="pp-glow" style="width:120px;height:120px;bottom:-20px;left:-20px;background:rgba(236,72,153,0.4);"></div>
                             <div style="font-size:2.5rem;z-index:1;">🤖</div>
-                            <div class="pp-logo-text" style="color:white;">DONIA AI PLUS</div>
+                            <div class="pp-logo-text" style="color:white;">المدرب الرقمي</div>
                             <div class="pp-badge">AI Assistant</div>
                         </div>
                     </div>
@@ -3336,7 +3300,7 @@
                         <span class="portfolio-live-badge">LIVE</span>
                     </div>
                     <div class="portfolio-body">
-                        <h4 class="fw-bold">DONIA AI PLUS — وكلاء واتساب</h4>
+                        <h4 class="fw-bold">المدرب الرقمي</h4>
                         <p class="text-muted small">وكلاء واتساب ذكية بالذكاء الاصطناعي. المدرب الرقمي ضمن المنظومة — مجاني ومتاح للجميع.</p>
                         <div class="portfolio-tech"><span>AI</span><span>Coaching</span><span>Python</span><span>API</span></div>
                         <div class="portfolio-actions">
@@ -3376,7 +3340,7 @@
                         <p class="text-muted small">منصة استشارية من 6 خبراء متخصصين لتطوير الأفكار وإيجاد المساهمين — مع بصمة رقمية لكل فكرة.</p>
                         <div class="portfolio-tech"><span>AI</span><span>SaaS</span><span>Consulting</span><span>Experts</span></div>
                         <div class="portfolio-actions">
-                            <a href="https://donialabstech.online" target="_blank" rel="noopener" class="btn btn-visit">
+                            <a href="https://intellicore.donialabstech.online/" target="_blank" rel="noopener" class="btn btn-visit">
                                 <i class="fas fa-external-link-alt"></i> زيارة المنصة
                             </a>
                         </div>
@@ -3456,45 +3420,7 @@
                 </div>
             </div>
 
-                <!-- QURAN MADRASA — Waqf -->
-                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-                <div class="portfolio-card">
-                    <div class="portfolio-img-wrap">
-                        <div class="product-preview" style="background:linear-gradient(135deg,#0d2612,#1a4731,#1b6b4a);">
-                            <div class="pp-topbar">
-                                <div class="pp-dot" style="background:#34d399;"></div>
-                                <div class="pp-dot" style="background:#10b981;"></div>
-                                <div class="pp-dot" style="background:#6ee7b7;"></div>
-                                <div class="pp-url"></div>
-                            </div>
-                            <div class="pp-body">
-                                <div class="pp-lines"></div>
-                                <div class="pp-glow" style="width:150px;height:150px;top:-30px;right:-30px;background:rgba(52,211,153,0.5);"></div>
-                                <div style="font-size:2.5rem;z-index:1;">📖</div>
-                                <div class="pp-logo-text">QURAN MADRASA</div>
-                                <div class="pp-badge">وقف لله تعالى</div>
-                            </div>
-                        </div>
-                        <span class="portfolio-category">EdTech Islamic</span>
-                        <span class="portfolio-live-badge">LIVE</span>
-                    </div>
-                    <div class="portfolio-body">
-                        <h4 class="fw-bold">مدارس القرآن الكريم</h4>
-                        <p class="text-muted small">منصة وقفية لله — تعليم القرآن الكريم والعلوم الإسلامية مجاناً للجميع إلى الأبد.</p>
-                        <div class="portfolio-tech"><span>Quran</span><span>Waqf</span><span>Education</span><span>Free</span></div>
-                        <div class="d-flex gap-2 mt-3">
-                            <a href="https://quran-madrasa-swart.vercel.app/#dash" target="_blank"
-                               class="btn btn-sm btn-visit flex-fill">
-                                <i class="fas fa-external-link-alt me-1"></i>زيارة المنصة
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-shine"></div>
-                </div>
-                </div>
-
-
-            <!-- P5: TABIBAK -->
+                <!-- P5: TABIBAK -->
             <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="240">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrap">
@@ -4078,7 +4004,6 @@
                         <li><a href="#portfolio">INTELLI CORE ↗</a></li>
                         <li><a href="#portfolio" data-translate="madrasa_quran">مدرسة القرآن ↗</a></li>
                         <li><a href="#portfolio">DONIA VOTE ↗</a></li>
-                        <li><a href="#portfolio">DONIA HEALTH ↗</a></li>
                     </ul>
                 </div>
 
@@ -5138,22 +5063,23 @@
         
         // Enhanced Navigation with Scroll Spy
         function updateActiveNavLink() {
-            const sections = $('section[id]');
             const navLinks = $('.nav-link');
-            
+            const scrollPos = $(window).scrollTop();
+
+            // Reverse order: first match = deepest section whose top is above scroll
+            const sections = $('section[id]').get().reverse();
             let current = '';
-            
-            sections.each(function() {
-                const sectionTop = $(this).offset().top;
-                const sectionHeight = $(this).outerHeight();
-                
-                if ($(window).scrollTop() >= (sectionTop - 150)) {
-                    current = $(this).attr('id');
+
+            for (let i = 0; i < sections.length; i++) {
+                const sectionTop = $(sections[i]).offset().top;
+                if (scrollPos >= (sectionTop - 150)) {
+                    current = $(sections[i]).attr('id');
+                    break;
                 }
-            });
-            
+            }
+
             navLinks.removeClass('active');
-            $(`.nav-link[href="#${current}"]`).addClass('active');
+            if (current) $(`.nav-link[href="#${current}"]`).addClass('active');
         }
         
         // Enhanced Smooth Scrolling with Offset
@@ -6521,9 +6447,7 @@
                             <i class="fas fa-clock me-1"></i>
                             ينشر يومياً عند الساعة 18:00 GMT
                         </span>
-                        <button class="ai-blog-trigger-btn" onclick="window.__blogAgentTrigger && window.__blogAgentTrigger()" title="نشر مقال الآن (للاختبار)">
-                            <i class="fas fa-play-circle me-1"></i>نشر مقال الآن
-                        </button>
+                        
                     </div>
                     <div id="ai-blog-articles-list" class="ai-blog-articles-list">
                         <div class="ai-blog-empty-state">
@@ -6582,22 +6506,7 @@
                     font-size: 0.85rem;
                     font-weight: 600;
                 }
-                .ai-blog-trigger-btn {
-                    background: var(--gradient-ai);
-                    border: none;
-                    color: white;
-                    padding: 8px 18px;
-                    border-radius: 25px;
-                    font-size: 0.85rem;
-                    font-weight: 600;
-                    cursor: pointer;
-                    transition: var(--transition);
-                    font-family: 'Tajawal', sans-serif;
-                }
-                .ai-blog-trigger-btn:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 8px 20px rgba(6,182,212,0.3);
-                }
+
                 .ai-blog-articles-list {
                     display: flex;
                     flex-direction: column;
