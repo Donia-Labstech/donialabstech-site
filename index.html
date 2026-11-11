@@ -2087,9 +2087,336 @@
         }
 
         /* ===== [END ADDITION 5 - CSS] ===== */
-    </style>
+    
+        /* ===================================================
+           INTRO DOOR ANIMATION — WORLD CLASS
+        =================================================== */
+        #intro-overlay {
+            position: fixed; inset: 0; z-index: 99999;
+            display: flex; align-items: stretch;
+            pointer-events: all;
+        }
+        #intro-overlay.done { display: none; }
+        .intro-door {
+            width: 50%; height: 100%;
+            background: linear-gradient(170deg, #020617 0%, #0a0f2e 40%, #060c24 70%, #000510 100%);
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; position: relative;
+            transition: transform 1.3s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+        .intro-door::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 3px,
+                rgba(129,140,248,0.03) 3px,
+                rgba(129,140,248,0.03) 4px
+            );
+        }
+        /* Neon edge lines */
+        .intro-door-left::after {
+            content: '';
+            position: absolute; right: 0; top: 0; bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg,
+                transparent 0%, rgba(129,140,248,0.8) 20%,
+                rgba(192,132,252,1) 50%,
+                rgba(129,140,248,0.8) 80%, transparent 100%);
+            box-shadow: 0 0 20px rgba(129,140,248,0.8), 0 0 60px rgba(129,140,248,0.4);
+        }
+        .intro-door-right::after {
+            content: '';
+            position: absolute; left: 0; top: 0; bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg,
+                transparent 0%, rgba(192,132,252,0.8) 20%,
+                rgba(129,140,248,1) 50%,
+                rgba(192,132,252,0.8) 80%, transparent 100%);
+            box-shadow: 0 0 20px rgba(192,132,252,0.8), 0 0 60px rgba(192,132,252,0.4);
+        }
+        #intro-overlay.opening .intro-door-left  { transform: translateX(-100%); }
+        #intro-overlay.opening .intro-door-right { transform: translateX(100%); }
+        /* Center welcome text */
+        .intro-center {
+            position: fixed;
+            inset: 0; z-index: 100000;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            pointer-events: none;
+        }
+        .intro-logo-wrap {
+            position: relative; margin-bottom: 24px;
+        }
+        .intro-logo-icon {
+            font-size: 4rem;
+            animation: intro-spin-pulse 3s ease-in-out infinite;
+            display: block; text-align: center;
+            filter: drop-shadow(0 0 24px rgba(129,140,248,0.9))
+                    drop-shadow(0 0 60px rgba(192,132,252,0.5));
+        }
+        .intro-ring {
+            position: absolute; inset: -16px;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            border-top-color: rgba(129,140,248,0.9);
+            border-right-color: rgba(192,132,252,0.6);
+            animation: intro-rotate 2s linear infinite;
+        }
+        @keyframes intro-spin-pulse {
+            0%,100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+        @keyframes intro-rotate { to { transform: rotate(360deg); } }
+        .intro-welcome-ar {
+            font-family: 'Tajawal', 'Cairo', sans-serif;
+            font-size: clamp(1.6rem, 4vw, 3rem);
+            font-weight: 900;
+            color: #fff;
+            text-align: center;
+            line-height: 1.4;
+            text-shadow: 0 0 30px rgba(129,140,248,0.9),
+                         0 0 80px rgba(192,132,252,0.5),
+                         0 0 120px rgba(56,189,248,0.3);
+            opacity: 0;
+            animation: intro-fade-glow 0.8s ease forwards 0.4s;
+        }
+        .intro-welcome-en {
+            font-size: clamp(0.9rem, 2vw, 1.3rem);
+            font-weight: 300;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(192,132,252,0.9);
+            text-align: center;
+            margin-top: 8px;
+            text-shadow: 0 0 20px rgba(192,132,252,0.7);
+            opacity: 0;
+            animation: intro-fade-glow 0.8s ease forwards 0.9s;
+        }
+        .intro-lab-name {
+            font-size: clamp(0.75rem, 1.5vw, 1rem);
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: rgba(129,140,248,0.7);
+            margin-top: 20px;
+            text-align: center;
+            opacity: 0;
+            animation: intro-fade-glow 0.8s ease forwards 1.4s;
+        }
+        .intro-progress {
+            width: 200px; height: 2px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            margin-top: 32px;
+            overflow: hidden;
+            opacity: 0;
+            animation: intro-fade-glow 0.5s ease forwards 1.8s;
+        }
+        .intro-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #818cf8, #a855f7, #38bdf8);
+            border-radius: 2px;
+            width: 0%;
+            animation: intro-load 1.5s ease forwards 2s;
+            box-shadow: 0 0 8px rgba(129,140,248,0.8);
+        }
+        @keyframes intro-fade-glow {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes intro-load { to { width: 100%; } }
+        /* Scan line sweep effect */
+        .intro-scan {
+            position: fixed; inset: 0; z-index: 99998; pointer-events: none;
+            background: linear-gradient(0deg,
+                transparent 0%,
+                rgba(129,140,248,0.04) 50%,
+                transparent 100%);
+            background-size: 100% 60px;
+            animation: scan-sweep 2s linear infinite;
+        }
+        @keyframes scan-sweep {
+            from { background-position: 0 0; }
+            to   { background-position: 0 100vh; }
+        }
+
+        
+        /* ===================================================
+           3D TILT PORTFOLIO CARDS
+        =================================================== */
+        .portfolio-card {
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease, box-shadow 0.3s ease;
+            will-change: transform;
+        }
+        .portfolio-card:hover {
+            box-shadow:
+                0 30px 80px rgba(129,140,248,0.25),
+                0 0 0 1px rgba(129,140,248,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.1) !important;
+        }
+        .portfolio-card .card-shine {
+            position: absolute; inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(circle at var(--mx,50%) var(--my,50%),
+                rgba(255,255,255,0.08) 0%, transparent 60%);
+            pointer-events: none; z-index: 10;
+            transition: opacity 0.3s;
+            opacity: 0;
+        }
+        .portfolio-card:hover .card-shine { opacity: 1; }
+        /* Product preview image wrapper */
+        .portfolio-img-wrap {
+            position: relative; overflow: hidden;
+            height: 200px; border-radius: 12px 12px 0 0;
+        }
+        .portfolio-img-wrap img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .portfolio-card:hover .portfolio-img-wrap img { transform: scale(1.06); }
+        /* Fallback product preview — CSS art */
+        .product-preview {
+            width: 100%; height: 200px;
+            display: flex; flex-direction: column;
+            overflow: hidden; position: relative;
+        }
+        .pp-topbar {
+            height: 32px; display: flex; align-items: center;
+            padding: 0 12px; gap: 6px;
+            background: rgba(0,0,0,0.5);
+            flex-shrink: 0;
+        }
+        .pp-dot { width:10px; height:10px; border-radius:50%; }
+        .pp-url {
+            flex:1; height:16px; border-radius:8px;
+            background: rgba(255,255,255,0.08);
+            margin: 0 8px;
+        }
+        .pp-body {
+            flex:1; display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            padding: 16px;
+            gap: 10px; position: relative; overflow: hidden;
+        }
+        .pp-logo-text {
+            font-size: 1.1rem; font-weight: 800;
+            color: white; letter-spacing: 0.05em;
+            text-align: center; text-shadow: 0 0 20px currentColor;
+            z-index: 1;
+        }
+        .pp-badge {
+            font-size: 0.6rem; padding: 2px 8px;
+            border-radius: 20px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.8);
+            z-index: 1;
+        }
+        .pp-lines {
+            position: absolute; inset: 0;
+            background:
+                repeating-linear-gradient(90deg,
+                    rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px,
+                    transparent 1px, transparent 60px),
+                repeating-linear-gradient(0deg,
+                    rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px,
+                    transparent 1px, transparent 40px);
+        }
+        .pp-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.5;
+        }
+
+        /* ===================================================
+           YOUTUBE SECTION
+        =================================================== */
+        .youtube-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #030b1a 0%, #060d24 50%, #020917 100%);
+            position: relative; overflow: hidden;
+        }
+        .youtube-section::before {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse 60% 60% at 20% 50%, rgba(255,0,0,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 50% at 80% 50%, rgba(129,140,248,0.08) 0%, transparent 60%);
+        }
+        .yt-card {
+            background: linear-gradient(135deg, rgba(20,20,40,0.8), rgba(10,10,25,0.9));
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .yt-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(129,140,248,0.2);
+        }
+        .yt-iframe-wrap {
+            position: relative; padding-bottom: 56.25%; height: 0;
+            overflow: hidden; background: #000;
+        }
+        .yt-iframe-wrap iframe {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: 0;
+        }
+        .yt-channel-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: #ff0000;
+            color: white; font-weight: 700;
+            padding: 14px 32px; border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1rem;
+            box-shadow: 0 8px 30px rgba(255,0,0,0.3);
+        }
+        .yt-channel-btn:hover {
+            background: #cc0000; color: white;
+            box-shadow: 0 12px 40px rgba(255,0,0,0.5);
+            transform: translateY(-2px);
+        }
+        /* Blog author avatar */
+        .blog-author-avatar {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #818cf8, #a855f7);
+            display: inline-flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.85rem; color: white;
+            margin-left: 6px; vertical-align: middle;
+            box-shadow: 0 0 12px rgba(129,140,248,0.5);
+            flex-shrink: 0;
+        }
+
+        </style>
 </head>
 <body>
+    <!-- =====================================================
+         INTRO DOOR ANIMATION
+    ===================================================== -->
+    <div class="intro-scan"></div>
+    <div id="intro-center" class="intro-center">
+        <div class="intro-logo-wrap">
+            <span class="intro-logo-icon">⚡</span>
+            <div class="intro-ring"></div>
+        </div>
+        <div class="intro-welcome-ar">مرحباً بكم في<br>مختبر الأفكار الذكية</div>
+        <div class="intro-welcome-en">Welcome to the Lab of Smart Ideas</div>
+        <div class="intro-lab-name">DONIA LABS TECH &nbsp;•&nbsp; donialabstech.online</div>
+        <div class="intro-progress"><div class="intro-progress-bar"></div></div>
+    </div>
+    <div id="intro-overlay">
+        <div class="intro-door intro-door-left"></div>
+        <div class="intro-door intro-door-right"></div>
+    </div>
+
+
     <!-- Loading Screen -->
     <div class="loader">
         <div class="loader-logo">
@@ -2438,7 +2765,22 @@
             <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="80">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrap">
-                        <img src="assets/img/portfolio/dss.jpg" alt="DONIA SMART SCHOOL" loading="lazy" onerror="this.src='assets/img/school-bg.jpg'">
+                        <div class="product-preview" style="background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);">
+                        <div class="pp-topbar">
+                            <div class="pp-dot" style="background:#38bdf8;"></div>
+                            <div class="pp-dot" style="background:#818cf8;"></div>
+                            <div class="pp-dot" style="background:#10b981;"></div>
+                            <div class="pp-url"></div>
+                        </div>
+                        <div class="pp-body">
+                            <div class="pp-lines"></div>
+                            <div class="pp-glow" style="width:150px;height:150px;top:-30px;right:-30px;background:rgba(56,189,248,0.6);"></div>
+                            <div class="pp-glow" style="width:120px;height:120px;bottom:-20px;left:-20px;background:rgba(129,140,248,0.4);"></div>
+                            <div style="font-size:2.5rem;z-index:1;">🏫</div>
+                            <div class="pp-logo-text" style="color:white;">DONIA SMART SCHOOL</div>
+                            <div class="pp-badge">EdTech</div>
+                        </div>
+                    </div>
                         <span class="portfolio-category">EdTech</span>
                         <span class="portfolio-live-badge">LIVE</span>
                     </div>
@@ -2459,7 +2801,22 @@
             <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="120">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrap">
-                        <img src="assets/img/portfolio/dst.jpg" alt="DONIA SMART TEACHER" loading="lazy" onerror="this.src='assets/img/teacher-bg.jpg'">
+                        <div class="product-preview" style="background:linear-gradient(135deg,#0f172a,#1e1b4b,#312e81);">
+                        <div class="pp-topbar">
+                            <div class="pp-dot" style="background:#818cf8;"></div>
+                            <div class="pp-dot" style="background:#a855f7;"></div>
+                            <div class="pp-dot" style="background:#e879f9;"></div>
+                            <div class="pp-url"></div>
+                        </div>
+                        <div class="pp-body">
+                            <div class="pp-lines"></div>
+                            <div class="pp-glow" style="width:150px;height:150px;top:-30px;right:-30px;background:rgba(129,140,248,0.7);"></div>
+                            <div class="pp-glow" style="width:120px;height:120px;bottom:-20px;left:-20px;background:rgba(192,132,252,0.4);"></div>
+                            <div style="font-size:2.5rem;z-index:1;">👩‍🏫</div>
+                            <div class="pp-logo-text" style="color:white;">DONIA SMART TEACHER</div>
+                            <div class="pp-badge">EdTech AI</div>
+                        </div>
+                    </div>
                         <span class="portfolio-category">EdTech</span>
                         <span class="portfolio-live-badge">LIVE</span>
                     </div>
@@ -2480,7 +2837,22 @@
             <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="160">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrap">
-                        <img src="assets/img/portfolio/mentor.jpg" alt="DONIA MENTOR" loading="lazy" onerror="this.src='assets/img/mentor-bg.jpg'">
+                        <div class="product-preview" style="background:linear-gradient(135deg,#1a0533,#2d1b69,#4c1d95);">
+                        <div class="pp-topbar">
+                            <div class="pp-dot" style="background:#c084fc;"></div>
+                            <div class="pp-dot" style="background:#ec4899;"></div>
+                            <div class="pp-dot" style="background:#818cf8;"></div>
+                            <div class="pp-url"></div>
+                        </div>
+                        <div class="pp-body">
+                            <div class="pp-lines"></div>
+                            <div class="pp-glow" style="width:150px;height:150px;top:-30px;right:-30px;background:rgba(192,132,252,0.7);"></div>
+                            <div class="pp-glow" style="width:120px;height:120px;bottom:-20px;left:-20px;background:rgba(236,72,153,0.4);"></div>
+                            <div style="font-size:2.5rem;z-index:1;">🤖</div>
+                            <div class="pp-logo-text" style="color:white;">DONIA AI PLUS</div>
+                            <div class="pp-badge">AI Assistant</div>
+                        </div>
+                    </div>
                         <span class="portfolio-category">AI Coaching</span>
                         <span class="portfolio-live-badge">LIVE</span>
                     </div>
@@ -2501,7 +2873,22 @@
             <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrap">
-                        <img src="assets/img/portfolio/ataa.jpg" alt="ATAA Platform" loading="lazy" onerror="this.src='assets/img/ataa-bg.jpg'">
+                        <div class="product-preview" style="background:linear-gradient(135deg,#0d2137,#1a3a52,#1e4976);">
+                        <div class="pp-topbar">
+                            <div class="pp-dot" style="background:#38bdf8;"></div>
+                            <div class="pp-dot" style="background:#818cf8;"></div>
+                            <div class="pp-dot" style="background:#34d399;"></div>
+                            <div class="pp-url"></div>
+                        </div>
+                        <div class="pp-body">
+                            <div class="pp-lines"></div>
+                            <div class="pp-glow" style="width:150px;height:150px;top:-30px;right:-30px;background:rgba(56,189,248,0.6);"></div>
+                            <div class="pp-glow" style="width:120px;height:120px;bottom:-20px;left:-20px;background:rgba(129,140,248,0.3);"></div>
+                            <div style="font-size:2.5rem;z-index:1;">🎓</div>
+                            <div class="pp-logo-text">ATAA PLATFORM</div>
+                            <div class="pp-badge">EdTech</div>
+                        </div>
+                    </div>
                         <span class="portfolio-category">Social Tech</span>
                         <span class="portfolio-live-badge">LIVE</span>
                     </div>
@@ -2522,7 +2909,22 @@
             <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="240">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrap">
-                        <img src="assets/img/portfolio/tabibak.jpg" alt="TABIBAK" loading="lazy" onerror="this.src='assets/img/health-bg.jpg'">
+                        <div class="product-preview" style="background:linear-gradient(135deg,#0f1f2e,#1a3a3a,#0d4040);">
+                        <div class="pp-topbar">
+                            <div class="pp-dot" style="background:#34d399;"></div>
+                            <div class="pp-dot" style="background:#10b981;"></div>
+                            <div class="pp-dot" style="background:#38bdf8;"></div>
+                            <div class="pp-url"></div>
+                        </div>
+                        <div class="pp-body">
+                            <div class="pp-lines"></div>
+                            <div class="pp-glow" style="width:150px;height:150px;top:-30px;right:-30px;background:rgba(52,211,153,0.6);"></div>
+                            <div class="pp-glow" style="width:120px;height:120px;bottom:-20px;left:-20px;background:rgba(16,185,129,0.4);"></div>
+                            <div style="font-size:2.5rem;z-index:1;">🩺</div>
+                            <div class="pp-logo-text">TABIBAK</div>
+                            <div class="pp-badge">HealthTech</div>
+                        </div>
+                    </div>
                         <span class="portfolio-category">HealthTech</span>
                         <span class="portfolio-live-badge">LIVE</span>
                     </div>
@@ -2543,7 +2945,22 @@
             <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="280">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrap">
-                        <img src="assets/img/portfolio/qualtech.jpg" alt="QualTech" loading="lazy" onerror="this.src='assets/img/farm-bg.jpg'">
+                        <div class="product-preview" style="background:linear-gradient(135deg,#052e16,#14532d,#166534);">
+                        <div class="pp-topbar">
+                            <div class="pp-dot" style="background:#34d399;"></div>
+                            <div class="pp-dot" style="background:#a3e635;"></div>
+                            <div class="pp-dot" style="background:#10b981;"></div>
+                            <div class="pp-url"></div>
+                        </div>
+                        <div class="pp-body">
+                            <div class="pp-lines"></div>
+                            <div class="pp-glow" style="width:150px;height:150px;top:-30px;right:-30px;background:rgba(52,211,153,0.6);"></div>
+                            <div class="pp-glow" style="width:120px;height:120px;bottom:-20px;left:-20px;background:rgba(163,230,53,0.3);"></div>
+                            <div style="font-size:2.5rem;z-index:1;">🌾</div>
+                            <div class="pp-logo-text">QUALTECH</div>
+                            <div class="pp-badge">AgriTech AI</div>
+                        </div>
+                    </div>
                         <span class="portfolio-category">AgriTech</span>
                         <span class="portfolio-live-badge">LIVE</span>
                     </div>
@@ -2564,7 +2981,22 @@
             <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="320">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrap">
-                        <img src="assets/img/portfolio/residence.jpg" alt="RESIDENCE" loading="lazy" onerror="this.src='assets/img/real-estate-bg.jpg'">
+                        <div class="product-preview" style="background:linear-gradient(135deg,#1a1200,#3d2c00,#5c3d00);">
+                        <div class="pp-topbar">
+                            <div class="pp-dot" style="background:#fbbf24;"></div>
+                            <div class="pp-dot" style="background:#f97316;"></div>
+                            <div class="pp-dot" style="background:#fb923c;"></div>
+                            <div class="pp-url"></div>
+                        </div>
+                        <div class="pp-body">
+                            <div class="pp-lines"></div>
+                            <div class="pp-glow" style="width:150px;height:150px;top:-30px;right:-30px;background:rgba(251,191,36,0.5);"></div>
+                            <div class="pp-glow" style="width:120px;height:120px;bottom:-20px;left:-20px;background:rgba(249,115,22,0.3);"></div>
+                            <div style="font-size:2.5rem;z-index:1;">🏠</div>
+                            <div class="pp-logo-text">RESIDENCE</div>
+                            <div class="pp-badge">PropTech</div>
+                        </div>
+                    </div>
                         <span class="portfolio-category">PropTech</span>
                         <span class="portfolio-live-badge">LIVE</span>
                     </div>
@@ -2585,7 +3017,22 @@
             <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="360">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrap">
-                        <img src="assets/img/portfolio/intellicore.jpg" alt="INTELLI CORE" loading="lazy" onerror="this.src='assets/img/ai-bg.jpg'">
+                        <div class="product-preview" style="background:linear-gradient(135deg,#020617,#0d1b35,#1e3a5f);">
+                        <div class="pp-topbar">
+                            <div class="pp-dot" style="background:#38bdf8;"></div>
+                            <div class="pp-dot" style="background:#6366f1;"></div>
+                            <div class="pp-dot" style="background:#22d3ee;"></div>
+                            <div class="pp-url"></div>
+                        </div>
+                        <div class="pp-body">
+                            <div class="pp-lines"></div>
+                            <div class="pp-glow" style="width:150px;height:150px;top:-30px;right:-30px;background:rgba(56,189,248,0.6);"></div>
+                            <div class="pp-glow" style="width:120px;height:120px;bottom:-20px;left:-20px;background:rgba(99,102,241,0.4);"></div>
+                            <div style="font-size:2.5rem;z-index:1;">🧠</div>
+                            <div class="pp-logo-text" style="color:white;">INTELLI CORE</div>
+                            <div class="pp-badge">AI Platform</div>
+                        </div>
+                    </div>
                         <span class="portfolio-category">AI Engine</span>
                         <span class="portfolio-live-badge">LIVE</span>
                     </div>
@@ -2606,7 +3053,22 @@
             <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrap">
-                        <img src="assets/img/portfolio/vote.jpg" alt="DONIA VOTE" loading="lazy" onerror="this.src='assets/img/vote-bg.jpg'">
+                        <div class="product-preview" style="background:linear-gradient(135deg,#0d1117,#161b22,#21262d);">
+                        <div class="pp-topbar">
+                            <div class="pp-dot" style="background:#818cf8;"></div>
+                            <div class="pp-dot" style="background:#38bdf8;"></div>
+                            <div class="pp-dot" style="background:#34d399;"></div>
+                            <div class="pp-url"></div>
+                        </div>
+                        <div class="pp-body">
+                            <div class="pp-lines"></div>
+                            <div class="pp-glow" style="width:150px;height:150px;top:-30px;right:-30px;background:rgba(129,140,248,0.5);"></div>
+                            <div class="pp-glow" style="width:120px;height:120px;bottom:-20px;left:-20px;background:rgba(56,189,248,0.3);"></div>
+                            <div style="font-size:2.5rem;z-index:1;">⚡</div>
+                            <div class="pp-logo-text" style="color:white;">DONIA LABS TECH</div>
+                            <div class="pp-badge">Platform</div>
+                        </div>
+                    </div>
                         <span class="portfolio-category">GovTech</span>
                         <span class="portfolio-live-badge">LIVE</span>
                     </div>
@@ -2627,7 +3089,22 @@
             <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="440">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrap">
-                        <img src="assets/img/portfolio/principal.jpg" alt="DONIA Principal Agent" loading="lazy" onerror="this.src='assets/img/admin-bg.jpg'">
+                        <div class="product-preview" style="background:linear-gradient(135deg,#1a0533,#2d1b69,#4c1d95);">
+                        <div class="pp-topbar">
+                            <div class="pp-dot" style="background:#c084fc;"></div>
+                            <div class="pp-dot" style="background:#ec4899;"></div>
+                            <div class="pp-dot" style="background:#818cf8;"></div>
+                            <div class="pp-url"></div>
+                        </div>
+                        <div class="pp-body">
+                            <div class="pp-lines"></div>
+                            <div class="pp-glow" style="width:150px;height:150px;top:-30px;right:-30px;background:rgba(192,132,252,0.7);"></div>
+                            <div class="pp-glow" style="width:120px;height:120px;bottom:-20px;left:-20px;background:rgba(236,72,153,0.4);"></div>
+                            <div style="font-size:2.5rem;z-index:1;">🤖</div>
+                            <div class="pp-logo-text">DONIA PRINCIPAL AGENT</div>
+                            <div class="pp-badge">AI Agent</div>
+                        </div>
+                    </div>
                         <span class="portfolio-category">AI Agent</span>
                         <span class="portfolio-live-badge">LIVE</span>
                     </div>
@@ -2877,7 +3354,81 @@
 
 
     <!-- Blog Section -->
-    <section id="blog" class="blog-section">
+    
+        <!-- =====================================================
+             YOUTUBE CHANNEL SECTION
+             ➜ Replace VIDEO_ID_1/2/3 with your actual video IDs
+               e.g. https://youtu.be/ABC123XYZ → VIDEO_ID = ABC123XYZ
+        ===================================================== -->
+        <section id="youtube" class="youtube-section" data-aos="fade-up">
+            <div class="container position-relative">
+                <div class="text-center mb-5">
+                    <span style="display:inline-flex;align-items:center;gap:10px;background:rgba(255,0,0,0.1);border:1px solid rgba(255,0,0,0.3);padding:6px 20px;border-radius:30px;margin-bottom:16px;">
+                        <i class="fab fa-youtube" style="color:#ff4444;font-size:1.2rem;"></i>
+                        <span style="color:#ff6666;font-size:0.85rem;font-weight:700;letter-spacing:0.1em;">YOUTUBE CHANNEL</span>
+                    </span>
+                    <h2 class="section-title" id="ytTitle">قناتنا على يوتيوب</h2>
+                    <p class="text-center mb-0 fs-5" style="color:rgba(255,255,255,0.65);" id="ytDesc">
+                        دروس تقنية، مشاريع ذكاء اصطناعي، وأحدث الحلول الرقمية
+                    </p>
+                </div>
+
+                <div class="row g-4 justify-content-center">
+                    <!-- VIDEO 1 — Replace dQw4w9WgXcQ with your video ID -->
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="yt-card">
+                            <div class="yt-iframe-wrap">
+                                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
+                                    title="DONIA LABS TECH - Video 1"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <div class="p-3">
+                                <p class="mb-0" style="color:rgba(255,255,255,0.7);font-size:0.9rem;" id="ytVideo1Title">فيديو تقني من DONIA LABS TECH</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- VIDEO 2 — Replace with your video ID -->
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="yt-card">
+                            <div class="yt-iframe-wrap">
+                                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
+                                    title="DONIA LABS TECH - Video 2"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <div class="p-3">
+                                <p class="mb-0" style="color:rgba(255,255,255,0.7);font-size:0.9rem;" id="ytVideo2Title">مشروع ذكاء اصطناعي جديد</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- VIDEO 3 — Replace with your video ID -->
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="yt-card">
+                            <div class="yt-iframe-wrap">
+                                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
+                                    title="DONIA LABS TECH - Video 3"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <div class="p-3">
+                                <p class="mb-0" style="color:rgba(255,255,255,0.7);font-size:0.9rem;" id="ytVideo3Title">حلول رقمية للمستقبل</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="400">
+                    <!-- Replace YOUR_CHANNEL with your YouTube channel handle -->
+                    <a href="https://www.youtube.com/@YOUR_CHANNEL" target="_blank" class="yt-channel-btn" id="ytChannelBtn">
+                        <i class="fab fa-youtube"></i>
+                        اشترك في القناة | Subscribe
+                    </a>
+                </div>
+            </div>
+        </section>
+
+<section id="blog" class="blog-section">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up"><span id="blogTitle">مدونتنا الرقمية</span></h2>
             <p class="text-center mb-5 fs-5" data-aos="fade-up" data-aos-delay="100" id="blogDescription">
@@ -2893,7 +3444,7 @@
                         <div class="blog-content">
                             <h4 id="blog1Title">مستقبل الذكاء الاصطناعي في الأعمال</h4>
                             <div class="blog-meta">
-                                <span><i class="fas fa-user"></i> <span id="blog1Author">فريق DONIA LABS</span></span>
+                                <span style="display:flex;align-items:center;gap:6px;"><img src="https://ui-avatars.com/api/?name=Daoud+Touina&background=818cf8&color=fff&size=36&bold=true&rounded=true" alt="Daoud" class="blog-author-avatar" onerror="this.style.display='none'"> <i class="fas fa-user" style="display:none;"></i> <span id="blog1Author">فريق DONIA LABS</span></span>
                                 <span><i class="fas fa-eye"></i> <span id="blog1Views">1.2K مشاهدة</span></span>
                             </div>
                             <p id="blog1Desc">كيف يمكن للذكاء الاصطناعي أن يحول عملك ويوفر وقتك ويزيد أرباحك؟ اكتشف أحدث التقنيات...</p>
@@ -2914,7 +3465,7 @@
                         <div class="blog-content">
                             <h4 id="blog2Title">استراتيجيات التسويق الرقمي الفعالة</h4>
                             <div class="blog-meta">
-                                <span><i class="fas fa-user"></i> <span id="blog2Author">فريق DONIA LABS</span></span>
+                                <span style="display:flex;align-items:center;gap:6px;"><img src="https://ui-avatars.com/api/?name=Daoud+Touina&background=818cf8&color=fff&size=36&bold=true&rounded=true" alt="Daoud" class="blog-author-avatar" onerror="this.style.display='none'"> <i class="fas fa-user" style="display:none;"></i> <span id="blog2Author">فريق DONIA LABS</span></span>
                                 <span><i class="fas fa-eye"></i> <span id="blog2Views">980 مشاهدة</span></span>
                             </div>
                             <p id="blog2Desc">تعرف على أحدث استراتيجيات التسويق الرقمي التي تضمن وصولك للعملاء المستهدفين...</p>
@@ -2935,7 +3486,7 @@
                         <div class="blog-content">
                             <h4 id="blog3Title">أهمية تجربة المستخدم في تصميم المواقع</h4>
                             <div class="blog-meta">
-                                <span><i class="fas fa-user"></i> <span id="blog3Author">فريق DONIA LABS</span></span>
+                                <span style="display:flex;align-items:center;gap:6px;"><img src="https://ui-avatars.com/api/?name=Daoud+Touina&background=818cf8&color=fff&size=36&bold=true&rounded=true" alt="Daoud" class="blog-author-avatar" onerror="this.style.display='none'"> <i class="fas fa-user" style="display:none;"></i> <span id="blog3Author">فريق DONIA LABS</span></span>
                                 <span><i class="fas fa-eye"></i> <span id="blog3Views">1.5K مشاهدة</span></span>
                             </div>
                             <p id="blog3Desc">كيف تؤثر تجربة المستخدم على نجاح موقعك الإلكتروني وما أفضل الممارسات؟...</p>
@@ -6392,5 +6943,121 @@ ${kb.services.join(" | ")}
         draw();
     })();
     </script>
+
+    <!-- =====================================================
+         INTRO DOOR ANIMATION JS
+    ===================================================== -->
+    <script>
+    (function() {
+        var overlay  = document.getElementById('intro-overlay');
+        var center   = document.getElementById('intro-center');
+        var scanEl   = document.querySelector('.intro-scan');
+        
+        // Session-based: show only once per session
+        if (sessionStorage.getItem('introDone')) {
+            if (overlay)  overlay.classList.add('done');
+            if (center)   center.style.display = 'none';
+            if (scanEl)   scanEl.style.display = 'none';
+            return;
+        }
+
+        // Open doors after 3.6 seconds (progress bar finishes at 3.5s)
+        setTimeout(function() {
+            if (overlay)  overlay.classList.add('opening');
+            if (center)   {
+                center.style.transition = 'opacity 0.6s ease';
+                center.style.opacity = '0';
+            }
+        }, 3600);
+
+        // Remove overlay entirely after animation
+        setTimeout(function() {
+            if (overlay)  overlay.classList.add('done');
+            if (center)   center.style.display = 'none';
+            if (scanEl)   scanEl.style.display = 'none';
+            sessionStorage.setItem('introDone', '1');
+        }, 5000);
+    })();
+    </script>
+
+    <!-- =====================================================
+         3D TILT CARDS JS
+    ===================================================== -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 3D card tilt
+        document.querySelectorAll('.portfolio-card').forEach(function(card) {
+            // Add shine div
+            var shine = document.createElement('div');
+            shine.className = 'card-shine';
+            card.style.position = 'relative';
+            card.appendChild(shine);
+
+            card.addEventListener('mousemove', function(e) {
+                var rect = card.getBoundingClientRect();
+                var x = e.clientX - rect.left;
+                var y = e.clientY - rect.top;
+                var cx = rect.width  / 2;
+                var cy = rect.height / 2;
+                var rx =  (y - cy) / 14;
+                var ry = -(x - cx) / 14;
+                card.style.transform =
+                    'perspective(900px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) scale3d(1.025,1.025,1.025)';
+                // Shine position
+                var pct_x = (x / rect.width  * 100).toFixed(1);
+                var pct_y = (y / rect.height * 100).toFixed(1);
+                card.style.setProperty('--mx', pct_x + '%');
+                card.style.setProperty('--my', pct_y + '%');
+            });
+            card.addEventListener('mouseleave', function() {
+                card.style.transform =
+                    'perspective(900px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+            });
+            card.addEventListener('mouseenter', function() {
+                card.style.transition = 'transform 0.1s ease, box-shadow 0.3s ease';
+            });
+        });
+
+        // Multilingual YouTube section translations
+        var ytTranslations = {
+            ar: {
+                ytTitle: 'قناتنا على يوتيوب',
+                ytDesc: 'دروس تقنية، مشاريع ذكاء اصطناعي، وأحدث الحلول الرقمية',
+                ytChannelBtn: '<i class="fab fa-youtube me-2"></i>اشترك في القناة | Subscribe',
+                ytVideo1Title: 'فيديو تقني من DONIA LABS TECH',
+                ytVideo2Title: 'مشروع ذكاء اصطناعي جديد',
+                ytVideo3Title: 'حلول رقمية للمستقبل'
+            },
+            fr: {
+                ytTitle: 'Notre Chaîne YouTube',
+                ytDesc: 'Tutoriels tech, projets IA et les dernières solutions numériques',
+                ytChannelBtn: '<i class="fab fa-youtube me-2"></i>S'abonner à la chaîne',
+                ytVideo1Title: 'Vidéo tech de DONIA LABS TECH',
+                ytVideo2Title: 'Nouveau projet d'intelligence artificielle',
+                ytVideo3Title: 'Solutions numériques du futur'
+            },
+            en: {
+                ytTitle: 'Our YouTube Channel',
+                ytDesc: 'Tech tutorials, AI projects, and the latest digital solutions',
+                ytChannelBtn: '<i class="fab fa-youtube me-2"></i>Subscribe to Channel',
+                ytVideo1Title: 'Tech video by DONIA LABS TECH',
+                ytVideo2Title: 'New AI project',
+                ytVideo3Title: 'Digital solutions of the future'
+            }
+        };
+
+        // Extend translation switch to cover YouTube section
+        var origLangSwitch = window.switchLanguage;
+        window.switchLanguage = function(lang) {
+            if (origLangSwitch) origLangSwitch(lang);
+            var t = ytTranslations[lang] || ytTranslations['ar'];
+            Object.keys(t).forEach(function(id) {
+                var el = document.getElementById(id);
+                if (el) el.innerHTML = t[id];
+            });
+        };
+    });
+    </script>
+
 </body>
 </html>
