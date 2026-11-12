@@ -316,6 +316,50 @@
             text-align: center;
         }
         
+        /* ─── Telegram Floating Button ─── */
+        .telegram-floating-btn {
+            position: fixed;
+            bottom: 160px;
+            right: 25px;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #0088cc 0%, #00aaff 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.4rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(0,136,204,0.5);
+            z-index: 999;
+            transition: all 0.3s ease;
+            animation: floatTelegram 3s ease-in-out infinite;
+        }
+        @keyframes floatTelegram {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        .telegram-floating-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 6px 28px rgba(0,136,204,0.7);
+            color: white;
+        }
+        .telegram-floating-btn .tg-tooltip {
+            position: absolute;
+            right: 65px;
+            background: #0088cc;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        .telegram-floating-btn:hover .tg-tooltip { opacity: 1; }
+
         /* Payment Methods Floating Button */
         .payment-floating-btn {
             position: fixed;
@@ -3005,6 +3049,12 @@
     </div>
 
     <!-- Payment Methods Floating Button -->
+    <!-- Telegram Floating Button -->
+    <a href="https://t.me/donialabstech_bot" target="_blank" class="telegram-floating-btn auto-hide" id="telegramFloatBtn" title="تحدث معنا على تيلغرام">
+        <span class="tg-tooltip">تحدث مع دونيا 🤖</span>
+        <i class="fab fa-telegram-plane"></i>
+    </a>
+
     <div class="payment-floating-btn auto-hide" id="paymentButton">
         <i class="fas fa-credit-card fa-lg"></i>
     </div>
@@ -3102,6 +3152,11 @@
                 <button class="quick-action" data-question="ضمان" id="qaGuarantee">الضمان</button>
                 <button class="quick-action" data-question="مجتمع" id="qaCommunity">المجتمع</button>
                 <button class="quick-action" data-question="تواصل" id="qaContact">التواصل</button>
+            </div>
+            <div style="text-align:center; margin-top:10px;">
+                <a href="https://t.me/donialabstech_bot" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#0088cc,#00aaff);color:#fff;padding:7px 16px;border-radius:20px;font-size:0.82rem;text-decoration:none;font-weight:600;transition:all 0.3s;">
+                    <i class="fab fa-telegram-plane"></i> تحدث على تيلغرام
+                </a>
             </div>
         </div>
         <div class="ai-input">
@@ -3684,8 +3739,8 @@
                             <li id="benefit6">دعوات لحضور الفعاليات والمؤتمرات</li>
                         </ul>
                         <div class="text-center mt-4">
-                            <a href="#contact" class="btn btn-community" data-section="contact">
-                                <i class="fas fa-user-plus me-2"></i><span id="joinCommunityBtn">انضم للمجتمع الآن</span>
+                            <a href="https://t.me/donialabstech_bot" target="_blank" class="btn btn-community">
+                                <i class="fab fa-telegram-plane me-2"></i><span id="joinCommunityBtn">انضم عبر تيلغرام 🤖</span>
                             </a>
                         </div>
                     </div>
