@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
-generate_daily_article.py v2 — Diverse topics, premium quality
-----------------------------------------------------------------
-3 topic areas rotate in a planned schedule so content stays diverse
+generate_daily_article.py v3 — Diverse topics + DONIA LABS TECH products
+--------------------------------------------------------------------------
+4 topic areas rotate in a planned schedule so content stays diverse
 and consistent with the brand identity of DONIA LABS TECH:
-  Week A: Digital Marketing & Community
-  Week B: Platform Building & Technology
-  Week C: Entrepreneurship & AI Business
+  Mon/Thu → Digital Marketing & Community
+  Tue/Fri → Platform Building & Technology
+  Wed/Sat → Entrepreneurship & AI Business
+  Sun     → DONIA LABS TECH Products (IntelliCore, DSS, QualTech, VOTE…)
 
 Required env var:
   DEEPSEEK_API_KEY — set as GitHub secret
@@ -23,7 +24,7 @@ AUTHOR_NAME    = "Daoud Touina"
 AUTHOR_TITLE   = "رائد أعمال | مؤسس مختبر الأفكار الذكية وقائد المشاريع"
 MAX_ARTICLES   = 60
 
-# ─── 3 rotating areas, 6 topics each = 18 total, cycling weekly ───────────────
+# ─── 4 rotating areas — the 4th (products) runs every Sunday ─────────────────
 TOPIC_ROTATION = {
     # Area A — Digital Marketing & Community (days: Mon, Thu)
     "marketing": [
@@ -184,6 +185,49 @@ TOPIC_ROTATION = {
         "متى يجب أن تفكر جدياً في تقييم فرص السوق الجزائري",
         "متى يجب أن تفكر جدياً في إدارة الوقت كمؤسس منفرد",
     ],
+
+    # Area D — DONIA LABS TECH Products (day: Sun = weekday 6)
+    # مقالات موجّهة مباشرة لعملاء كل منتج — تعريف، مزايا، دعوة للتجربة
+    "products": [
+        # ── DONIA SMART SCHOOL ──────────────────────────────────────────────
+        "DONIA SMART SCHOOL: كيف يوفّر نظام الحضور الرقمي 3 ساعات يومياً على المدير الجزائري",
+        "تتبع التلاميذ بـ GPS: هل يحق للمدير معرفة أين ذهب تلميذه وكيف يفعل ذلك قانونياً؟",
+        "مقارنة بين السجل الورقي و DONIA SMART SCHOOL: أيهما يخدم فعلاً المدير الجزائري؟",
+        "بوابة الأولياء الرقمية: كيف يتابع ولي الأمر غيابات ونتائج ابنه دون زيارة المدرسة",
+        "الحضور بالبصمة أو البطاقة: تقنية تُنهي فوضى دفتر الغياب في المؤسسات الجزائرية",
+        "مساعد المدير الذكي في DSS: كيف يُنجز تقرير التسيير 9.1 في أقل من 10 دقائق",
+
+        # ── IntelliCore ─────────────────────────────────────────────────────
+        "IntelliCore: لماذا فكرتك تستحق مجلس خبراء وليس مجرد رأي صاحب في المقهى",
+        "البصمة الرقمية SHA-256: كيف تحمي فكرتك قبل أن تشاركها مع أي مستثمر",
+        "من فكرة إلى مشروع: رحلة شاب جزائري مع IntelliCore من التفكير إلى العرض الاستثماري",
+        "6 خبراء ذكاء اصطناعي يناقشون فكرتك: ما الذي يُقدّمه IntelliCore ولا يقدّمه أي مستشار بشري",
+        "كيف يبني IntelliCore بنك أفكار آمن يحميك من سرقة الأفكار في السوق الجزائري",
+
+        # ── QualTech ────────────────────────────────────────────────────────
+        "QualTech: عندما يبدأ الذكاء الاصطناعي يفهم أرضك أكثر منك ويُخبرك بما تحتاجه",
+        "مستشعرات NPK و pH: كيف تعرف تربتك ماذا تريد قبل أن يموت الزرع",
+        "الري التلقائي بـ ESP32: كيف توفّر 40% من المياه دون أن تكون مهندساً",
+        "QualTech بدون إنترنت: تقنية IoT تعمل في الحقل الجزائري حتى في المناطق النائية",
+        "الفلاح الجزائري والذكاء الاصطناعي: كيف يُغيّر QualTech معادلة الزراعة التقليدية",
+
+        # ── DONIA VOTE ──────────────────────────────────────────────────────
+        "DONIA VOTE: كيف تبني موقع قائمتك الانتخابية في 15 دقيقة بدون مبرمج ولا مصمم",
+        "الحضور الرقمي في محليات 2026: لماذا القائمة بدون موقع كالمرشح بدون برنامج",
+        "ملصقات QR في الحملة الانتخابية: تقنية بسيطة تضاعف وصولك للناخبين بدون تكلفة إضافية",
+        "مواعيد التجمعات ونتائج الانتخابات: كيف يُدير DONIA VOTE تواصل القائمة مع المواطنين",
+
+        # ── مساعد المدير الذكي ──────────────────────────────────────────────
+        "مساعد المدير الذكي: تقرير التسيير 9.1 في 5 دقائق بدل 5 ساعات من العمل الورقي",
+        "استدعاء الأولياء بالذكاء الاصطناعي: كيف يكتب لك المساعد الرسالة بالصيغة الرسمية",
+        "محضر الاجتماع التلقائي: أداة تُغيّر طريقة عمل كل مدير ومستشار تربوي جزائري",
+        "كل المراسلات الإدارية بضغطة زر: ما الذي يُنجزه مساعد المدير الذكي خلال يوم عمل واحد",
+
+        # ── DoniaNova / عامة ────────────────────────────────────────────────
+        "DONIA LABS TECH: قصة شركة ناشئة جزائرية تبني الذكاء الاصطناعي لمشاكل حقيقية",
+        "لماذا نبني منتجات جزائرية بدل استيراد حلول أجنبية لا تفهم واقعنا ولا لغتنا",
+        "5 منتجات رقمية جزائرية من DONIA LABS TECH تحتاجها قبل نهاية 2026",
+    ],
 }
 
 AR_MONTHS = {1:"جانفي",2:"فيفري",3:"مارس",4:"أفريل",5:"ماي",6:"جوان",
@@ -194,6 +238,17 @@ IMAGE_POOL = {
     "marketing":       "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80",
     "tech":            "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200&q=80",
     "entrepreneurship":"https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&q=80",
+    "products":        "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80",
+}
+
+# روابط منتجات DONIA LABS TECH — تُضمَّن في prompt قسم products
+PRODUCT_LINKS = {
+    "DONIA SMART SCHOOL": "https://dss-license-server.onrender.com",
+    "IntelliCore":         "https://intellicore-five.vercel.app",
+    "QualTech":            "https://donia-labstech.github.io/QualTech/",
+    "DONIA VOTE":          "https://donia-vote.vercel.app",
+    "مساعد المدير الذكي": "https://donia-principal-agent.vercel.app",
+    "DoniaNova":           "https://donianova.vercel.app",
 }
 
 def ar_date(dt):
@@ -201,9 +256,10 @@ def ar_date(dt):
 
 def pick_area_and_topic(existing_titles, now):
     """Pick topic area based on weekday, then rotate through unused topics."""
-    weekday = now.weekday()  # 0=Mon
+    weekday = now.weekday()  # 0=Mon … 6=Sun
     if weekday in (0, 3):   area = "marketing"
     elif weekday in (1, 4): area = "tech"
+    elif weekday == 6:      area = "products"       # الأحد = منتجات DONIA LABS TECH
     else:                   area = "entrepreneurship"
 
     forced_area  = os.environ.get("FORCED_AREA") or area
@@ -219,6 +275,34 @@ def pick_area_and_topic(existing_titles, now):
     return forced_area, candidates[0]
 
 def build_prompt(topic, area, date_str):
+    # قسم المنتجات — prompt خاص يذكر الروابط ويُنتج مقال تسويقي تقني
+    if area == "products":
+        links_block = "\n".join(
+            f"  • {name}: {url}" for name, url in PRODUCT_LINKS.items()
+        )
+        return f"""أنت كاتب محتوى تقني لشركة DONIA LABS TECH الجزائرية الناشئة.
+اكتب مقالاً تقنياً تسويقياً عملياً حول: "{topic}"
+تاريخ اليوم: {date_str}
+
+روابط منتجات DONIA LABS TECH (استخدم الرابط المناسب للمنتج المذكور في الموضوع):
+{links_block}
+
+القواعد الإلزامية:
+- ابدأ بمشكلة حقيقية يعاني منها الجمهور المستهدف (مدير، فلاح، مرشح، صاحب فكرة...)
+- اشرح كيف يحلّ منتج DONIA LABS TECH هذه المشكلة بالتحديد
+- اذكر 3-4 مزايا ملموسة بأمثلة واقعية أو أرقام تقريبية
+- في الخاتمة: ضع رابط المنتج المباشر + دعوة للتجربة
+- أسلوب مباشر وحماسي لكن احترافي — ليس إعلاناً بل محتوى مفيد
+- لا تبدأ بـ "في عصر..." أو عبارات مبهمة
+
+أعد الإجابة بهذا الشكل فقط (بدون أي نص إضافي):
+
+عنوان: <عنوان جذاب يذكر اسم المنتج>
+ملخص: <جملتان تُغريان بالقراءة وتذكران الفائدة الرئيسية>
+وسوم: <3 وسوم مفصولة بفاصلة تشمل اسم المنتج>
+---
+<محتوى Markdown: يبدأ بـ ## (لا #)، 4 أقسام، 600-800 كلمة، يختتم برابط المنتج>"""
+
     area_context = {
         "marketing":       "التسويق الرقمي وبناء المجتمعات",
         "tech":            "بناء المنصات والتكنولوجيا",
