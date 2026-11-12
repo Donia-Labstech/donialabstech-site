@@ -7581,52 +7581,55 @@ ${kb.services.join(" | ")}
 
 </script>
 
-<!-- BLOG MODAL SCRIPT – single consolidated implementation -->
+<!-- BLOG MODAL SCRIPT — plain global functions, no closure wrapper -->
 <script>
-(function(){
-    var bd = {
-        1: {
-            title: 'مستقبل الذكاء الاصطناعي في الأعمال',
-            img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80',
-            date: 'نوفمبر 2026',
-            body: '<p>يشهد عالم الأعمال ثورة حقيقية بفضل تقنيات الذكاء الاصطناعي. لم تعد هذه التقنيات حكراً على الشركات الكبرى، بل باتت متاحة للمؤسسات الصغيرة والمتوسطة أيضاً.</p><p>من أبرز تطبيقات الذكاء الاصطناعي في الأعمال: أتمتة خدمة العملاء عبر الشات بوت الذكي، تحليل البيانات الضخمة واستخراج قرارات استراتيجية، التنبؤ بالمبيعات وإدارة المخزون، وأتمتة العمليات التكرارية.</p><p>في DONIA LABS TECH، نؤمن بأن الذكاء الاصطناعي ليس بديلاً عن الإنسان، بل هو أداة تُضاعف قدراته وتُحرره للتركيز على الإبداع واتخاذ القرارات الاستراتيجية.</p>'
-        },
-        2: {
-            title: 'استراتيجيات التسويق الرقمي الفعالة',
-            img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80',
-            date: 'أكتوبر 2026',
-            body: '<p>التسويق الرقمي لم يعد خياراً بل ضرورة. في عالم يقضي فيه المستخدم أكثر من 6 ساعات يومياً على الإنترنت، يجب أن يكون وجودك الرقمي قوياً ومؤثراً.</p><p>أهم استراتيجيات التسويق الرقمي الناجحة: تحسين محركات البحث (SEO) لضمان ظهورك في النتائج الأولى، التسويق عبر المحتوى الذي يُقدم قيمة حقيقية للجمهور، إدارة وسائل التواصل الاجتماعي بشكل استراتيجي، والتسويق عبر البريد الإلكتروني.</p>'
-        },
-        3: {
-            title: 'أهمية تجربة المستخدم في تصميم المواقع',
-            img: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=1200&q=80',
-            date: 'سبتمبر 2026',
-            body: '<p>تجربة المستخدم (UX) هي العامل الأكثر تأثيراً في نجاح أي موقع إلكتروني. الموقع الجميل بصرياً لكن الصعب الاستخدام محكوم عليه بالفشل.</p><p>أساسيات تجربة المستخدم الممتازة: سرعة التحميل — 53% من المستخدمين يغادرون المواقع التي تستغرق أكثر من 3 ثوان في التحميل. سهولة التنقل والوضوح في تنظيم المحتوى. التصميم المتجاوب الذي يعمل بشكل مثالي على جميع الأجهزة.</p>'
-        }
-    };
-    function openBlogModal(id) {
-        var d = bd[id]; if (!d) return;
-        document.getElementById('modalTitle').textContent = d.title;
-        document.getElementById('modalImg').src = d.img;
-        document.getElementById('modalImg').alt = d.title;
-        document.getElementById('modalDate').textContent = d.date;
-        document.getElementById('modalBody').innerHTML = d.body;
-        var m = document.getElementById('blogModal');
-        m.style.display = 'flex';
-        m.style.alignItems = 'center';
-        m.style.justifyContent = 'center';
-        document.body.style.overflow = 'hidden';
-        try { m.querySelector('.blog-modal-close').focus(); } catch(e) {}
+var _blogData = {
+    1: {
+        title: 'مستقبل الذكاء الاصطناعي في الأعمال',
+        img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80',
+        date: 'نوفمبر 2026',
+        body: '<p>يشهد عالم الأعمال ثورة حقيقية بفضل تقنيات الذكاء الاصطناعي. لم تعد هذه التقنيات حكراً على الشركات الكبرى، بل باتت متاحة للمؤسسات الصغيرة والمتوسطة أيضاً.</p><p>من أبرز تطبيقات الذكاء الاصطناعي في الأعمال: أتمتة خدمة العملاء عبر الشات بوت الذكي، تحليل البيانات الضخمة واستخراج قرارات استراتيجية، التنبؤ بالمبيعات وإدارة المخزون، وأتمتة العمليات التكرارية.</p><p>في DONIA LABS TECH، نؤمن بأن الذكاء الاصطناعي ليس بديلاً عن الإنسان، بل هو أداة تُضاعف قدراته وتُحرره للتركيز على الإبداع واتخاذ القرارات الاستراتيجية.</p><p>إذا كنت تريد معرفة كيف يمكن للذكاء الاصطناعي أن يحوّل عملك، تواصل معنا اليوم للحصول على استشارة مجانية.</p>'
+    },
+    2: {
+        title: 'استراتيجيات التسويق الرقمي الفعالة',
+        img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80',
+        date: 'أكتوبر 2026',
+        body: '<p>التسويق الرقمي لم يعد خياراً بل ضرورة. في عالم يقضي فيه المستخدم أكثر من 6 ساعات يومياً على الإنترنت، يجب أن يكون وجودك الرقمي قوياً ومؤثراً.</p><p>أهم استراتيجيات التسويق الرقمي الناجحة: تحسين محركات البحث (SEO) لضمان ظهورك في النتائج الأولى، التسويق عبر المحتوى الذي يُقدم قيمة حقيقية للجمهور، إدارة وسائل التواصل الاجتماعي بشكل استراتيجي، والتسويق عبر البريد الإلكتروني.</p><p>الفرق بين النجاح والفشل في التسويق الرقمي يكمن في فهم جمهورك المستهدف بعمق، وتقديم المحتوى الصحيح في الوقت الصحيح وعبر القناة الصحيحة.</p>'
+    },
+    3: {
+        title: 'أهمية تجربة المستخدم في تصميم المواقع',
+        img: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=1200&q=80',
+        date: 'سبتمبر 2026',
+        body: '<p>تجربة المستخدم (UX) هي العامل الأكثر تأثيراً في نجاح أي موقع إلكتروني. الموقع الجميل بصرياً لكن الصعب الاستخدام محكوم عليه بالفشل.</p><p>أساسيات تجربة المستخدم الممتازة: سرعة التحميل — 53% من المستخدمين يغادرون المواقع التي تستغرق أكثر من 3 ثوان في التحميل. سهولة التنقل والوضوح في تنظيم المحتوى. التصميم المتجاوب الذي يعمل بشكل مثالي على جميع الأجهزة. وإمكانية الوصول لذوي الاحتياجات الخاصة.</p><p>في DONIA LABS TECH، نضع تجربة المستخدم في قلب كل مشروع نطوره، لأننا نؤمن أن التقنية يجب أن تخدم الإنسان وليس العكس.</p>'
     }
-    function closeBlogModal() {
-        var m = document.getElementById('blogModal');
-        m.style.display = 'none';
-        document.body.style.overflow = '';
-    }
-    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeBlogModal(); });
-    window.openBlogModal = openBlogModal;
-    window.closeBlogModal = closeBlogModal;
-})();
+};
+
+function openBlogModal(id) {
+    var d = _blogData[id];
+    if (!d) return;
+    document.getElementById('modalTitle').textContent = d.title;
+    document.getElementById('modalImg').src = d.img;
+    document.getElementById('modalImg').alt = d.title;
+    document.getElementById('modalDate').textContent = d.date;
+    document.getElementById('modalBody').innerHTML = d.body;
+    var m = document.getElementById('blogModal');
+    m.classList.add('show');
+    m.style.display = 'flex';
+    m.style.alignItems = 'center';
+    m.style.justifyContent = 'center';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeBlogModal() {
+    var m = document.getElementById('blogModal');
+    m.classList.remove('show');
+    m.style.display = 'none';
+    document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeBlogModal();
+});
 </script>
 
 </body>
