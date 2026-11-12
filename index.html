@@ -2534,17 +2534,15 @@
         .navbar-custom-menu .d-flex { width: 100%; margin-top: 20px !important; }
         .navbar-custom-menu .journey-start-btn { width: 100% !important; justify-content: center; }
 
-        @media (max-width: 991px) {
-            /* Menu overlay backdrop */
-            .menu-backdrop {
-                display: none;
-                position: fixed; inset: 0;
-                background: rgba(0,0,0,0.5);
-                z-index: 999;
-                backdrop-filter: blur(2px);
-            }
-            .menu-backdrop.show { display: block; }
+        /* Menu overlay backdrop — global (hamburger shows on all screen sizes) */
+        .menu-backdrop {
+            display: none;
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 999;
+            backdrop-filter: blur(3px);
         }
+        .menu-backdrop.show { display: block; }
 
         /* ===== ENHANCED MOBILE RESPONSIVENESS ===== */
         @media (max-width: 768px) {
@@ -3810,23 +3808,23 @@
                 <!-- Blog 1 -->
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="blog-card">
-                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=75" 
-                             alt="الذكاء الاصطناعي" class="blog-img"
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=75"
+                             alt="INTELLI CORE وكيل ذكاء اصطناعي" class="blog-img"
                              loading="lazy">
                         <div class="blog-content">
-                            <h4 data-translate="blog1Title">كيف يُغير الذكاء الاصطناعي سوق العمل الجزائري؟</h4>
+                            <h4 data-translate="blog1Title">INTELLI CORE: وكيلك الذكي الذي يعمل بدلاً عنك 24/7</h4>
                             <div class="blog-meta">
                                 <span style="display:flex;align-items:center;gap:8px;">
-                                    <img src="https://raw.githubusercontent.com/donia-labstech/donia-labstech.github.io/main/IMAGE/DAOUD%20TOUINA.jpg" class="founder-avatar" alt="داود طوينة" onerror="if(!this._tried){this._tried=1;this.src='https://raw.githubusercontent.com/donia-labstech/donia-labstech.github.io/main/IMAGE/DAOUD%20TOUINA.png'}else if(this._tried==1){this._tried=2;this.src='https://raw.githubusercontent.com/donia-labstech/donia-labstech.github.io/main/IMAGE/DAOUD%20TOUINA.jpeg'}else{this.style.display='none'}">
+                                    <img src="https://raw.githubusercontent.com/Donia-Labstech/donialabstech-site/main/images/daoud-touina.jpg" class="founder-avatar" alt="داود طوينة" onerror="this.style.display='none'">
                                     <span data-translate="blog1Author">داود طوينة</span>
                                 </span>
                                 <span><i class="fas fa-eye"></i> 1.2K</span>
                             </div>
-                            <p data-translate="blog1Desc">ما الوظائف التي ستختفي؟ وما الفرص الجديدة التي يفتحها الذكاء الاصطناعي للجزائريين؟ نحلل الواقع بصدق...</p>
+                            <p data-translate="blog1Desc">وكيل ذكاء اصطناعي يعمل 24/7 بالعربية والفرنسية — يرد على العملاء، يتابع الطلبات، يوفّر 60% من وقت فريق الدعم...</p>
                             <div class="blog-tags">
+                                <span class="blog-tag">INTELLI CORE</span>
                                 <span class="blog-tag">ذكاء اصطناعي</span>
-                                <span class="blog-tag">الجزائر</span>
-                                <span class="blog-tag">مستقبل العمل</span>
+                                <span class="blog-tag">أتمتة الأعمال</span>
                             </div>
                             <button class="btn-read-more" onclick="openBlogModal(1)">
                                 <i class="fas fa-book-open"></i>
@@ -3839,23 +3837,23 @@
                 <!-- Blog 2 -->
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="blog-card">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=75" 
-                             alt="التسويق الرقمي" class="blog-img"
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=75"
+                             alt="DONIA SMART SCHOOL تعليم ذكي" class="blog-img"
                              loading="lazy">
                         <div class="blog-content">
-                            <h4 data-translate="blog2Title">التسويق بالمحتوى: كيف تبني جمهوراً وفياً من الصفر</h4>
+                            <h4 data-translate="blog2Title">DONIA SMART SCHOOL: ثورة التعليم الرقمي في الجزائر</h4>
                             <div class="blog-meta">
                                 <span style="display:flex;align-items:center;gap:8px;">
-                                    <img src="https://raw.githubusercontent.com/donia-labstech/donia-labstech.github.io/main/IMAGE/DAOUD%20TOUINA.jpg" class="founder-avatar" alt="داود طوينة" onerror="if(!this._tried){this._tried=1;this.src='https://raw.githubusercontent.com/donia-labstech/donia-labstech.github.io/main/IMAGE/DAOUD%20TOUINA.png'}else if(this._tried==1){this._tried=2;this.src='https://raw.githubusercontent.com/donia-labstech/donia-labstech.github.io/main/IMAGE/DAOUD%20TOUINA.jpeg'}else{this.style.display='none'}">
+                                    <img src="https://raw.githubusercontent.com/Donia-Labstech/donialabstech-site/main/images/daoud-touina.jpg" class="founder-avatar" alt="داود طوينة" onerror="this.style.display='none'">
                                     <span data-translate="blog2Author">داود طوينة</span>
                                 </span>
                                 <span><i class="fas fa-eye"></i> 980</span>
                             </div>
-                            <p data-translate="blog2Desc">خطة 90 يوماً عملية لبناء جمهور حقيقي ومتفاعل على وسائل التواصل الاجتماعي من الصفر...</p>
+                            <p data-translate="blog2Desc">منصة تعليمية ذكية للمدارس والمراكز — تصحيح تلقائي، تمارين مُخصَّصة، ونتائج ترتفع 40% في أول فصل...</p>
                             <div class="blog-tags">
-                                <span class="blog-tag">تسويق محتوى</span>
-                                <span class="blog-tag">فيسبوك</span>
-                                <span class="blog-tag">نمو رقمي</span>
+                                <span class="blog-tag">SMART SCHOOL</span>
+                                <span class="blog-tag">تعليم رقمي</span>
+                                <span class="blog-tag">مدارس ذكية</span>
                             </div>
                             <button class="btn-read-more" onclick="openBlogModal(2)">
                                 <i class="fas fa-book-open"></i>
@@ -3868,23 +3866,23 @@
                 <!-- Blog 3 -->
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
                     <div class="blog-card">
-                        <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=800&q=75" 
-                             alt="تصميم المواقع" class="blog-img"
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=75"
+                             alt="QualTech و DONIA AI PLUS" class="blog-img"
                              loading="lazy">
                         <div class="blog-content">
-                            <h4 data-translate="blog3Title">من فكرة إلى منتج رقمي: مسار المؤسس الجزائري</h4>
+                            <h4 data-translate="blog3Title">QualTech و DONIA AI PLUS: أدوات القياس والذكاء لمؤسستك</h4>
                             <div class="blog-meta">
                                 <span style="display:flex;align-items:center;gap:8px;">
-                                    <img src="https://raw.githubusercontent.com/donia-labstech/donia-labstech.github.io/main/IMAGE/DAOUD%20TOUINA.jpg" class="founder-avatar" alt="داود طوينة" onerror="if(!this._tried){this._tried=1;this.src='https://raw.githubusercontent.com/donia-labstech/donia-labstech.github.io/main/IMAGE/DAOUD%20TOUINA.png'}else if(this._tried==1){this._tried=2;this.src='https://raw.githubusercontent.com/donia-labstech/donia-labstech.github.io/main/IMAGE/DAOUD%20TOUINA.jpeg'}else{this.style.display='none'}">
+                                    <img src="https://raw.githubusercontent.com/Donia-Labstech/donialabstech-site/main/images/daoud-touina.jpg" class="founder-avatar" alt="داود طوينة" onerror="this.style.display='none'">
                                     <span data-translate="blog3Author">داود طوينة</span>
                                 </span>
                                 <span><i class="fas fa-eye"></i> 1.5K</span>
                             </div>
-                            <p data-translate="blog3Desc">تجربة شخصية: كيف حولنا أفكاراً بسيطة إلى منتجات رقمية تخدم آلاف المستخدمين في الجزائر...</p>
+                            <p data-translate="blog3Desc">ضمان الجودة الذكي + مساعد تحليل البيانات — قرارات مبنية على أرقام حقيقية، لا تخمين...</p>
                             <div class="blog-tags">
-                                <span class="blog-tag">ريادة أعمال</span>
-                                <span class="blog-tag">منتجات رقمية</span>
-                                <span class="blog-tag">تجربة حقيقية</span>
+                                <span class="blog-tag">QualTech</span>
+                                <span class="blog-tag">DONIA AI PLUS</span>
+                                <span class="blog-tag">تحليل بيانات</span>
                             </div>
                             <button class="btn-read-more" onclick="openBlogModal(3)">
                                 <i class="fas fa-book-open"></i>
@@ -3902,10 +3900,11 @@
         <div class="blog-modal-backdrop" onclick="closeBlogModal()"></div>
         <div class="blog-modal-box">
             <button class="blog-modal-close" onclick="closeBlogModal()" aria-label="إغلاق">✕</button>
+            <button onclick="closeBlogModal()" style="display:inline-flex;align-items:center;gap:7px;background:rgba(129,140,248,0.12);border:1px solid rgba(129,140,248,0.3);color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;font-size:0.82rem;padding:7px 16px;border-radius:30px;cursor:pointer;margin-bottom:16px;transition:all 0.2s;" onmouseover="this.style.background='rgba(129,140,248,0.22)';this.style.color='white';" onmouseout="this.style.background='rgba(129,140,248,0.12)';this.style.color='rgba(255,255,255,0.75)';">&#8594; العودة للموقع</button>
             <img id="modalImg" src="" alt="" class="blog-modal-img">
             <div class="blog-modal-meta">
                 <span style="display:flex;align-items:center;gap:8px;">
-                    <img src="https://raw.githubusercontent.com/donia-labstech/donia-labstech.github.io/main/IMAGE/DAOUD%20TOUINA.jpg" class="founder-avatar" alt="داود طوينة" style="width:44px;height:44px;" onerror="this.style.display='none'">
+                    <img src="https://raw.githubusercontent.com/Donia-Labstech/donialabstech-site/main/images/daoud-touina.jpg" class="founder-avatar" alt="داود طوينة" style="width:44px;height:44px;" onerror="this.style.display='none'">
                     <span style="color:white;font-weight:600;">داود طوينة</span>
                 </span>
                 <span style="color:rgba(255,255,255,0.5);font-size:0.85rem;" id="modalDate"></span>
@@ -7728,22 +7727,22 @@ ${kb.services.join(" | ")}
 <script>
 var _blogData = {
     1: {
-        title: 'كيف يُغير الذكاء الاصطناعي سوق العمل الجزائري؟',
+        title: 'INTELLI CORE: وكيلك الذكي الذي يعمل بدلاً عنك 24/7',
         img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80',
         date: 'نوفمبر 2026',
-        body: '<p>يشهد سوق العمل الجزائري تحولات جوهرية بفعل موجة الذكاء الاصطناعي. المؤسسات التي تُدمج هذه التقنيات اليوم ستكون هي الرابحة في غد قريب.</p><p><strong>ما الذي يتغير فعلاً؟</strong></p><ul><li>خدمة العملاء: وكلاء ذكاء اصطناعي يعملون 24/7 ويردون بالعربية الدارجة والفصحى</li><li>المحاسبة والإدارة: أتمتة الفواتير والتقارير وتوفير ساعات من العمل اليومي</li><li>التسويق: محتوى مُخصَّص لكل شريحة من الجمهور بضغطة زر</li><li>التعليم: أدوات تقييم ذكية تُكيّف نفسها مع مستوى كل طالب</li></ul><p>في <strong>DONIA LABS TECH</strong>، نبني وكلاء ذكاء اصطناعي مخصَّصين للسوق الجزائري. تابعنا على <a href="https://www.facebook.com/share/1BnXCMnQfs/" target="_blank" rel="noopener" style="color:#818cf8;font-weight:700;">صفحة فيسبوك DONIA LABS TECH</a> للاطلاع على أحدث ما ننجزه.</p>'
+        body: '<p>تخيّل موظفاً لا يتعب، لا ينام، ويُجيب عن كل سؤال لزبائنك بالعربية، الفرنسية والإنجليزية — هذا بالضبط ما يقدمه <strong>INTELLI CORE</strong>، وكيل الذكاء الاصطناعي الذي طوّرناه في <strong>DONIA LABS TECH</strong> خصيصاً للسوق الجزائري.</p><p><strong>ماذا يفعل INTELLI CORE لعملك؟</strong></p><ul><li>✅ يرد على استفسارات العملاء فورياً عبر الموقع أو واتساب أو فيسبوك</li><li>✅ يُتابع الطلبات والمواعيد تلقائياً دون تدخل بشري</li><li>✅ يُقدّم تقارير أسبوعية عن أكثر الأسئلة تكراراً وسلوك المستخدمين</li><li>✅ يتعلم من كل محادثة ويُحسّن أداءه باستمرار</li></ul><p>المؤسسات الجزائرية التي جرّبت INTELLI CORE وفّرت أكثر من 60% من وقت فريق الدعم. <strong>الآن هو الوقت المناسب لتكون أنت التالي.</strong></p><div style="margin:20px 0;padding:16px;background:rgba(129,140,248,0.1);border:1px solid rgba(129,140,248,0.3);border-radius:12px;text-align:center;"><p style="margin:0 0 12px;font-weight:700;color:white;">جاهز لتجربة INTELLI CORE في مؤسستك؟</p><a href="https://wa.me/213674661737?text=أريد%20معرفة%20المزيد%20عن%20INTELLI%20CORE" target="_blank" rel="noopener" style="display:inline-block;background:linear-gradient(135deg,#818cf8,#6366f1);color:white;font-weight:700;padding:10px 24px;border-radius:30px;text-decoration:none;font-size:0.95rem;">ابدأ تجربتك المجانية — واتساب</a></div><p style="font-size:0.85rem;color:rgba(255,255,255,0.6);">تابع آخر التحديثات على <a href="https://www.facebook.com/share/1BnXCMnQfs/" target="_blank" rel="noopener" style="color:#818cf8;">صفحة فيسبوك DONIA LABS TECH</a></p>'
     },
     2: {
-        title: 'التسويق بالمحتوى: كيف تبني جمهوراً وفياً من الصفر',
-        img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80',
+        title: 'DONIA SMART SCHOOL: ثورة التعليم الرقمي في الجزائر',
+        img: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80',
         date: 'أكتوبر 2026',
-        body: '<p>المحتوى هو ملك الإنترنت — لكن ليس أي محتوى. المحتوى الذي يبني جمهوراً حقيقياً هو المحتوى الذي يحل مشكلة أو يُجيب عن سؤال أو يُلهم بشكل مختلف.</p><p><strong>خطة عملية لبناء حضور رقمي خلال 90 يوماً:</strong></p><ol><li><strong>الأسبوع 1-2:</strong> حدد نيشك بدقة — من جمهورك؟ ما مشكلتهم الأكبر؟</li><li><strong>الشهر الأول:</strong> أنتج محتوى أسبوعياً (مقال + ريلز + قصة) وتتبع التفاعل</li><li><strong>الشهر الثاني:</strong> ضاعف ما نجح، توقف عما لم ينجح</li><li><strong>الشهر الثالث:</strong> أطلق عرضاً مدفوعاً لجمهورك المتفاعل</li></ol><p>تريد محتوى احترافياً يُعبّر عن علامتك التجارية؟ تابع تجاربنا الميدانية على <a href="https://www.facebook.com/share/1BnXCMnQfs/" target="_blank" rel="noopener" style="color:#818cf8;font-weight:700;">صفحة DONIA LABS TECH</a> وتواصل معنا.</p>'
+        body: '<p>يُعاني كثير من المعلمين والمدارس من نفس المشكلة: تصحيح يدوي يستغرق ساعات، متابعة فردية مستحيلة لكل طالب، وغياب بيانات واضحة عن مستوى الفصل. <strong>DONIA SMART SCHOOL</strong> حلّ هذه المشكلة.</p><p><strong>ما الذي يُقدّمه DONIA SMART SCHOOL؟</strong></p><ul><li>📊 لوحة تحكم للأستاذ: نتائج كل طالب لحظة بلحظة</li><li>🤖 تصحيح تلقائي للاختبارات وتوليد تقارير المستوى</li><li>🎯 تمارين مُخصَّصة تتكيّف مع نقاط ضعف كل طالب بالذكاء الاصطناعي</li><li>📱 واجهة سهلة على الهاتف — لا حاجة لكمبيوتر محمول</li><li>🌐 دعم كامل للغة العربية والفرنسية</li></ul><p>المدارس التي تستخدم DONIA SMART SCHOOL تُبلّغ عن ارتفاع 40% في نتائج الطلاب خلال الفصل الأول. <strong>مناسب للمدارس الخاصة، المراكز التعليمية، والأساتذة الخصوصيين.</strong></p><div style="margin:20px 0;padding:16px;background:rgba(129,140,248,0.1);border:1px solid rgba(129,140,248,0.3);border-radius:12px;text-align:center;"><p style="margin:0 0 12px;font-weight:700;color:white;">هل أنت مدير مدرسة أو أستاذ وتريد رؤية DONIA SMART SCHOOL على أرض الواقع؟</p><a href="https://wa.me/213674661737?text=أريد%20عرضاً%20تجريبياً%20لـ%20DONIA%20SMART%20SCHOOL" target="_blank" rel="noopener" style="display:inline-block;background:linear-gradient(135deg,#818cf8,#6366f1);color:white;font-weight:700;padding:10px 24px;border-radius:30px;text-decoration:none;font-size:0.95rem;">طلب عرض تجريبي مجاني</a></div><p style="font-size:0.85rem;color:rgba(255,255,255,0.6);">انضم لمجتمعنا على <a href="https://www.facebook.com/share/1BnXCMnQfs/" target="_blank" rel="noopener" style="color:#818cf8;">فيسبوك DONIA LABS TECH</a></p>'
     },
     3: {
-        title: 'من فكرة إلى منتج رقمي: مسار المؤسس الجزائري',
-        img: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=1200&q=80',
+        title: 'QualTech و DONIA AI PLUS: أدوات القياس والذكاء لمؤسستك',
+        img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
         date: 'سبتمبر 2026',
-        body: '<p>كيف تتحول فكرة عندك في الرأس إلى منتج رقمي يجني أرباحاً فعلية؟ هذا السؤال طرحته على نفسي منذ سنوات، وهذا ما تعلمته.</p><p><strong>المراحل الحقيقية (بدون تجميل):</strong></p><ol><li><strong>التحقق من الفكرة:</strong> تكلم مع 10 أشخاص من جمهورك المستهدف قبل أن تكتب سطراً واحداً من الكود</li><li><strong>النموذج الأولي:</strong> ابنِ أبسط نسخة ممكنة (MVP) في أسبوعين لا أكثر</li><li><strong>أول مبيعة:</strong> هذه هي اللحظة التي تؤكد أن فكرتك قابلة للحياة — قبلها أنت تُخمّن</li><li><strong>التحسين المستمر:</strong> استمع لمستخدميك أكثر مما تستمع لأفكارك</li></ol><p>في DONIA LABS TECH بنينا عدة منتجات رقمية بهذه الطريقة. إذا كانت لديك فكرة وتريد شريكاً تقنياً، <a href="https://wa.me/213674661737" target="_blank" rel="noopener" style="color:#818cf8;font-weight:700;">تواصل معنا عبر واتساب</a> أو تابعنا على <a href="https://www.facebook.com/share/1BnXCMnQfs/" target="_blank" rel="noopener" style="color:#818cf8;font-weight:700;">فيسبوك</a>.</p>'
+        body: '<p>المؤسسات الناجحة تعمل بالبيانات لا بالتخمين. في <strong>DONIA LABS TECH</strong>، طوّرنا حلّين متكاملين للمؤسسات الجزائرية التي تريد الارتقاء بأدائها إلى مستوى احترافي.</p><p><strong>QualTech — منصة ضمان الجودة الذكية:</strong></p><ul><li>📋 تتبّع مؤشرات الجودة في خطوط الإنتاج والخدمات</li><li>⚠️ تنبيهات فورية عند انحراف أي معيار عن النطاق المقبول</li><li>📈 تقارير جاهزة للطباعة وفق معايير ISO</li><li>🔗 تكامل مع أنظمة ERP الموجودة لديك</li></ul><p><strong>DONIA AI PLUS — المساعد الذكي للمديرين:</strong></p><ul><li>💬 يُجيب عن أسئلتك بناءً على بيانات مؤسستك الفعلية</li><li>📊 يُولّد تقارير تحليلية بالعربية في ثوانٍ</li><li>🎯 يُقترح قرارات مبنية على أنماط البيانات التاريخية</li></ul><p><strong>هل مؤسستك جاهزة للقفزة التقنية؟</strong> لا تنتظر — كل يوم بدون هذه الأدوات هو تكلفة مخفية.</p><div style="margin:20px 0;padding:16px;background:rgba(129,140,248,0.1);border:1px solid rgba(129,140,248,0.3);border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-weight:700;color:white;">تحدّث مع فريقنا واحصل على عرض مخصّص لمؤسستك</p><p style="margin:0 0 14px;font-size:0.85rem;color:rgba(255,255,255,0.6);">نسمع منك، نفهم احتياجاتك، نُقدّم الحل المناسب — بدون التزام</p><a href="https://wa.me/213674661737?text=أريد%20معرفة%20المزيد%20عن%20QualTech%20و%20DONIA%20AI%20PLUS" target="_blank" rel="noopener" style="display:inline-block;background:linear-gradient(135deg,#818cf8,#6366f1);color:white;font-weight:700;padding:10px 24px;border-radius:30px;text-decoration:none;font-size:0.95rem;">تواصل معنا الآن — واتساب</a></div><p style="font-size:0.85rem;color:rgba(255,255,255,0.6);">تابع كل جديد على <a href="https://www.facebook.com/share/1BnXCMnQfs/" target="_blank" rel="noopener" style="color:#818cf8;">صفحة فيسبوك DONIA LABS TECH</a></p>'
     }
 };
 
