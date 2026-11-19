@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Thu, 19 Nov 2026 00:38:22 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 19 Nov 2026 08:01:15 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>دور التقارير الذكية في اتخاذ قرارات أعمال أسرع</title>
+    <link>https://donialabstech.online/blog/2026-11-19-am.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-11-19-am.html</guid>
+    <description>📝 دور التقارير الذكية في اتخاذ قرارات أعمال أسرع
+
+كيف تحوّل التقارير الذكية بيانات شركتك المبعثرة إلى قرارات تنفيذية سريعة، مع أمثلة عملية من السوق الجزائري وأدوات قابلة للتطبيق فوراً.
+
+🔗 https://donialabstech.online/blog/2026-11-19-am.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Thu, 19 Nov 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>التمويل الذاتي: عندما يصبح الخيار الوحيد الذكي لمشروعك الرقمي</title>
     <link>https://donialabstech.online/blog/2026-11-18.html</link>
@@ -258,19 +271,6 @@
 🔗 https://donialabstech.online/blog/2026-11-08-am.html</description>
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Sun, 08 Nov 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>كيف توسّع فريقك عن بعد دون أن تفقد السيطرة: دروس من رواد أعمال دفعوا الثمن</title>
-    <link>https://donialabstech.online/blog/2026-11-07.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-11-07.html</guid>
-    <description>📝 كيف توسّع فريقك عن بعد دون أن تفقد السيطرة: دروس من رواد أعمال دفعوا الثمن
-
-التوسع عن بعد ليس توظيفاً أكثر، بل نظام تشغيل جديد كامل. هذه دروس مستخلصة من تجارب مؤسسين حقيقية حوّلوا أخطاءهم في التوظيف البعيد إلى قواعد عمل صارمة.
-
-🔗 https://donialabstech.online/blog/2026-11-07.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Sat, 07 Nov 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
