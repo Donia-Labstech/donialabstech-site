@@ -6,13 +6,26 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Sat, 21 Nov 2026 08:01:18 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 21 Nov 2026 22:51:15 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
     <title>DONIA LABS TECH — مدونة مختبر الأفكار الذكية</title>
     <link>https://donialabstech.online</link>
   </image>
+  <item>
+    <title>متى تتوقف عن التخمين وتبدأ بدراسة جدوى مصغرة؟</title>
+    <link>https://donialabstech.online/blog/2026-11-21.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-11-21.html</guid>
+    <description>📝 متى تتوقف عن التخمين وتبدأ بدراسة جدوى مصغرة؟
+
+القرارات الكبيرة لا تحتاج دائماً إلى تقارير من 80 صفحة، بل إلى إشارة واضحة قبل حرق المال والوقت. إليك ستة مواقف عملية يكون فيها &amp;quot;الاختبار المصغر&amp;quot; أرخص من الندم.
+
+🔗 https://donialabstech.online/blog/2026-11-21.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Sat, 21 Nov 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>أخطاء شائعة في إدارة المشاريع الرقمية وكيف تتجنبها</title>
     <link>https://donialabstech.online/blog/2026-11-21-am.html</link>
@@ -259,19 +272,6 @@
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Tue, 10 Nov 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>لماذا يهمل أغلب أصحاب المشاريع جداول العمل الأسبوعية وكيف تتجنب ذلك</title>
-    <link>https://donialabstech.online/blog/2026-11-10-am.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-11-10-am.html</guid>
-    <description>📝 لماذا يهمل أغلب أصحاب المشاريع جداول العمل الأسبوعية وكيف تتجنب ذلك
-
-لأعمال الرقمية، حيث تتسارع المهام وتتكدس الالتزامات، يجد كثير من أصحاب المشاريع أنفسهم غارقين في ردود الفعل بدل التخطيط الاستباقي. ورغم أن جداول العمل الأسبوعية تُعد من أبسط الأدوات وأكثرها فعالية، إلا أن نسبة كبيرة من روّاد الأعم
-
-🔗 https://donialabstech.online/blog/2026-11-10-am.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Tue, 10 Nov 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
 </rss>
