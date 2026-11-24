@@ -6,7 +6,7 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Tue, 24 Nov 2026 04:00:27 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 24 Nov 2026 08:02:00 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
@@ -25,6 +25,19 @@
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Tue, 24 Nov 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
+  <item>
+    <title>النمو السريع مقابل النمو المستدام: كيف تختار المسار الصحيح لمشروعك الرقمي؟</title>
+    <link>https://donialabstech.online/blog/2026-11-24-am.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-11-24-am.html</guid>
+    <description>📝 النمو السريع مقابل النمو المستدام: كيف تختار المسار الصحيح لمشروعك الرقمي؟
+
+دليل عملي لرواد الأعمال الجزائريين يشرح الفرق الجوهري بين التوسع المتسرع القائم على الأرقام والنمو المستدام المبني على أسس صلبة، مع أمثلة واقعية من السوق الجزائ
+
+🔗 https://donialabstech.online/blog/2026-11-24-am.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Tue, 24 Nov 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
   <item>
     <title>كيف تحمي بياناتك الرقمية كصاحب مشروع صغير</title>
@@ -259,19 +272,6 @@
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Fri, 13 Nov 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>كيف تحمي بياناتك الرقمية كصاحب مشروع صغير في الجزائر: دليل عملي</title>
-    <link>https://donialabstech.online/blog/2026-11-13-am.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-11-13-am.html</guid>
-    <description>📝 كيف تحمي بياناتك الرقمية كصاحب مشروع صغير في الجزائر: دليل عملي
-
-دليل عملي لرواد الأعمال الجزائريين لحماية بياناتهم الرقمية وبيانات عملائهم، من كلمات المرور والنسخ الاحتياطي إلى تأمين الهاتف والحسابات، مع خطوات قابلة للتطبيق
-
-🔗 https://donialabstech.online/blog/2026-11-13-am.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Fri, 13 Nov 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
 </rss>
