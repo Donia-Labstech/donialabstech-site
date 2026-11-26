@@ -6,7 +6,7 @@
   <link>https://donialabstech.online</link>
   <description>أحدث مقالات التكنولوجيا، الذكاء الاصطناعي، وريادة الأعمال الرقمية من مختبر DONIA LABS TECH</description>
   <language>ar</language>
-  <lastBuildDate>Thu, 26 Nov 2026 01:53:10 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 26 Nov 2026 08:01:22 +0000</lastBuildDate>
   <atom:link href="https://donialabstech.online/feed.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://donialabstech.online/images/daoud-touina.jpg</url>
@@ -25,6 +25,19 @@
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Thu, 26 Nov 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&amp;q=80" type="image/jpeg" length="0"/>
+  </item>
+  <item>
+    <title>كيف تبني علامة تجارية شخصية قوية في مجالك</title>
+    <link>https://donialabstech.online/blog/2026-11-26-am.html</link>
+    <guid isPermaLink="true">https://donialabstech.online/blog/2026-11-26-am.html</guid>
+    <description>📝 كيف تبني علامة تجارية شخصية قوية في مجالك
+
+دليل عملي لرواد الأعمال الجزائريين لبناء علامة تجارية شخصية تُحدث فرقاً في السوق، من تحديد التخصص والجمهور إلى صناعة المحتوى وقياس الأثر.
+
+🔗 https://donialabstech.online/blog/2026-11-26-am.html</description>
+    <author>noreply@donialabstech.online (Daoud Touina)</author>
+    <pubDate>Thu, 26 Nov 2026 00:00:00 +0000</pubDate>
+    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
   <item>
     <title>عرض القيمة الذي يبيع فعلاً: دليل عملي لرواد الأعمال الجزائريين</title>
@@ -259,19 +272,6 @@
     <author>noreply@donialabstech.online (Daoud Touina)</author>
     <pubDate>Sun, 15 Nov 2026 00:00:00 +0000</pubDate>
     <enclosure url="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>استخدام التحليلات الرقمية لفهم عملائك بشكل أعمق: دليل عملي لرواد الأعمال الجزائريين</title>
-    <link>https://donialabstech.online/blog/2026-11-15-am.html</link>
-    <guid isPermaLink="true">https://donialabstech.online/blog/2026-11-15-am.html</guid>
-    <description>📝 استخدام التحليلات الرقمية لفهم عملائك بشكل أعمق: دليل عملي لرواد الأعمال الجزائريين
-
-كيف تحوّل بيانات موقعك وحساباتك إلى قرارات تجارية ملموسة تفهم بها عميلك الجزائري وتزيد مبيعاتك، مع أدوات مجانية وأمثلة واقعية من السوق المحلي.
-
-🔗 https://donialabstech.online/blog/2026-11-15-am.html</description>
-    <author>noreply@donialabstech.online (Daoud Touina)</author>
-    <pubDate>Sun, 15 Nov 2026 00:00:00 +0000</pubDate>
-    <enclosure url="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&amp;q=80" type="image/jpeg" length="0"/>
   </item>
 </channel>
 </rss>
