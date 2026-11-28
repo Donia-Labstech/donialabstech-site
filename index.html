@@ -500,20 +500,27 @@
         /* Navigation with Enhanced Logo */
         .navbar {
             padding: 1rem 0;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
+            background: transparent;
+            backdrop-filter: none;
+            box-shadow: none;
+            transition: background 0.6s ease, backdrop-filter 0.6s ease, box-shadow 0.6s ease;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid transparent;
+        }
+        .navbar.nav-visible {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
         .navbar.scrolled {
             background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .navbar-logo {
@@ -2109,7 +2116,7 @@
         }
         #intro-overlay.done { display: none; pointer-events: none; }
 
-        /* The door panel — slides left to open */
+        /* The door panel — slides left to open — slow & cinematic */
         #intro-door {
             position: fixed; inset: 0; z-index: 99998;
             background:
@@ -2122,13 +2129,10 @@
             box-shadow: inset -40px 0 80px rgba(0,0,0,0.8),
                         4px 0 30px rgba(192,132,252,0.2);
             transform: translateX(0);
-            transition: transform 1.5s cubic-bezier(0.76, 0, 0.24, 1);
+            transition: transform 2.8s cubic-bezier(0.85, 0, 0.15, 1);
             pointer-events: none;
         }
-        #intro-door.opening {
-            transform: translateX(-100%);
-        }
-        /* Decorative door details */
+        #intro-door.opening { transform: translateX(-100%); }
         #intro-door::before {
             content: '';
             position: absolute;
@@ -2144,19 +2148,36 @@
             border-radius: 2px;
         }
 
-        /* Glow burst — appears as door swings open */
+        /* Lamp / glow burst — pulses between each language */
         #intro-glow {
             position: fixed; inset: 0; z-index: 99997;
-            background: radial-gradient(ellipse at 55% 50%,
-                rgba(192,132,252,0.45) 0%,
-                rgba(129,140,248,0.25) 35%,
-                rgba(56,189,248,0.1) 60%,
-                transparent 75%);
+            background: radial-gradient(ellipse at 50% 50%,
+                rgba(255,230,100,0.55) 0%,
+                rgba(192,132,252,0.35) 30%,
+                rgba(129,140,248,0.15) 60%,
+                transparent 80%);
             opacity: 0;
-            transition: opacity 0.9s ease 0.3s;
+            transition: opacity 0.5s ease;
             pointer-events: none;
         }
-        #intro-glow.visible { opacity: 1; }
+        #intro-glow.visible   { opacity: 1; }
+        #intro-glow.invisible { opacity: 0; }
+
+        /* Sequential welcome words — hidden by default, shown one by one */
+        .intro-welcome-ar,
+        .intro-welcome-fr,
+        .intro-welcome-en {
+            opacity: 0 !important;
+            animation: none !important;
+            transition: opacity 0.55s ease, transform 0.55s ease;
+            transform: translateY(16px);
+        }
+        .intro-welcome-ar.show,
+        .intro-welcome-fr.show,
+        .intro-welcome-en.show {
+            opacity: 1 !important;
+            transform: translateY(0);
+        }
 
         /* Centre content */
         .intro-center {
@@ -4092,7 +4113,7 @@
                     <div class="mb-2" style="color:rgba(192,132,252,0.7);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;" id="qrSectionLabel">امسح للوصول الفوري</div>
                     <h3 class="fw-bold mb-3" style="color:#fff;font-size:clamp(1.4rem,3vw,2rem);" id="qrSectionTitle">وصول سريع لمنصة دونيا لابس تك</h3>
                     <p class="mb-4" style="color:rgba(255,255,255,0.65);line-height:1.8;" id="qrSectionDesc">
-                        شارك هذا الرمز مع أئمة المساجد والقائمين على المدارس القرآنية للوصول الفوري إلى منصاتنا التعليمية الذكية — بدون رابط، بدون كتابة، مجرد مسح وانطلاق.
+                        امسح الرمز للوصول الفوري إلى منصة دونيا لابس تك — بدون رابط، بدون كتابة، مجرد مسح وانطلاق.
                     </p>
                     <div class="d-flex flex-wrap gap-2">
                         <a href="https://donialabstech.online" target="_blank" rel="noopener" class="btn" style="background:linear-gradient(135deg,#7c3aed,#a855f7);color:white;border:none;border-radius:10px;padding:0.55rem 1.4rem;font-weight:600;font-size:0.88rem;">
@@ -4627,7 +4648,7 @@
                     // Contact
                     "qrSectionLabel": "امسح للوصول الفوري",
                     "qrSectionTitle": "وصول سريع لمنصة دونيا لابس تك",
-                    "qrSectionDesc": "شارك هذا الرمز مع أئمة المساجد والقائمين على المدارس القرآنية للوصول الفوري إلى منصاتنا التعليمية الذكية — بدون رابط، بدون كتابة، مجرد مسح وانطلاق.",
+                    "qrSectionDesc": "امسح الرمز للوصول الفوري إلى منصة دونيا لابس تك — بدون رابط، بدون كتابة، مجرد مسح وانطلاق.",
                     "qrVisitBtn": "زيارة الموقع",
                     "qrBotBtn": "المدرب الذكي",
                     "contact.title": "تواصل معنا",
@@ -4859,7 +4880,7 @@
                     // Contact
                     "qrSectionLabel": "Scanner pour accès immédiat",
                     "qrSectionTitle": "Accès rapide à DONIA LABS TECH",
-                    "qrSectionDesc": "Partagez ce code avec les imams des mosquées et les responsables des écoles coraniques pour un accès instantané à nos plateformes éducatives intelligentes — sans lien, sans saisie, juste scanner et démarrer.",
+                    "qrSectionDesc": "Scannez ce code pour accéder instantanément à DONIA LABS TECH — sans lien, sans saisie, juste scanner et démarrer.",
                     "qrVisitBtn": "Visiter le site",
                     "qrBotBtn": "Formateur IA",
                     "contact.title": "Contactez-nous",
@@ -5091,7 +5112,7 @@
                     // QR Section
                     "qrSectionLabel": "Scan for instant access",
                     "qrSectionTitle": "Quick Access to DONIA LABS TECH",
-                    "qrSectionDesc": "Share this code with mosque imams and Quranic school administrators for instant access to our smart educational platforms — no link, no typing, just scan and go.",
+                    "qrSectionDesc": "Scan this code for instant access to DONIA LABS TECH — no link, no typing, just scan and go.",
                     "qrVisitBtn": "Visit Site",
                     "qrBotBtn": "AI Trainer",
                     // Contact
@@ -7721,28 +7742,53 @@ ${kb.services.join(" | ")}
         var doorEl  = document.getElementById('intro-door');
         var glowEl  = document.getElementById('intro-glow');
         var center  = document.querySelector('.intro-center');
+        var ar      = document.querySelector('.intro-welcome-ar');
+        var fr      = document.querySelector('.intro-welcome-fr');
+        var en      = document.querySelector('.intro-welcome-en');
+        var navbar  = document.querySelector('.navbar');
 
-        // Session-based: show only once per session
+        // Session-based: show once per session
         if (sessionStorage.getItem('introDone')) {
             if (overlay) overlay.classList.add('done');
+            if (navbar)  navbar.classList.add('nav-visible');
             return;
         }
 
-        // Door opens slowly after progress bar finishes (~2.8s)
-        setTimeout(function() {
-            if (doorEl) doorEl.classList.add('opening');  // slides left
-            if (glowEl) glowEl.classList.add('visible');  // glow burst appears
-            if (center) {
-                center.style.transition = 'opacity 0.6s ease';
-                center.style.opacity = '0';
-            }
-        }, 2800);
+        function lampOn()  { if (glowEl) { glowEl.classList.remove('invisible'); glowEl.classList.add('visible'); } }
+        function lampOff() { if (glowEl) { glowEl.classList.remove('visible'); glowEl.classList.add('invisible'); } }
+        function show(el)  { if (el) el.classList.add('show'); }
+        function hide(el)  { if (el) el.classList.remove('show'); }
 
-        // Remove overlay after door finishes (1.5s slide + buffer)
+        // ── SEQUENCE ──────────────────────────────────────────
+        // 0.0s  Progress bar starts
+        // 1.4s  Arabic welcome appears
+        // 2.0s  Lamp on → Arabic hides
+        // 2.6s  Lamp off → French appears
+        // 3.2s  Lamp on → French hides
+        // 3.8s  Lamp off → English appears
+        // 4.4s  Lamp on (door starts opening) → English hides
+        // 4.6s  Door begins slow slide left (2.8s duration)
+        // 7.6s  Overlay removed, navbar fades in
+
+        setTimeout(function() { show(ar); },              1400);
+        setTimeout(function() { lampOn();  hide(ar); },   2000);
+        setTimeout(function() { lampOff(); show(fr); },   2600);
+        setTimeout(function() { lampOn();  hide(fr); },   3200);
+        setTimeout(function() { lampOff(); show(en); },   3800);
+        setTimeout(function() { lampOn();  hide(en); },   4400);
+
+        // Door opens — slow and cinematic
+        setTimeout(function() {
+            if (doorEl) doorEl.classList.add('opening');
+            if (center) { center.style.transition = 'opacity 0.5s ease'; center.style.opacity = '0'; }
+        }, 4600);
+
+        // Overlay fully gone + navbar appears
         setTimeout(function() {
             if (overlay) overlay.classList.add('done');
+            if (navbar)  navbar.classList.add('nav-visible');
             sessionStorage.setItem('introDone', '1');
-        }, 4500);
+        }, 7600);
     })();
     </script>
 
