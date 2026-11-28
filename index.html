@@ -2100,27 +2100,63 @@
         /* ===== [END ADDITION 5 - CSS] ===== */
     
         /* ===================================================
-           IRIS PORTAL INTRO — WORLD CLASS
+           DOOR INTRO ANIMATION — WORLD CLASS
         =================================================== */
         #intro-overlay {
             position: fixed; inset: 0; z-index: 99999;
-            display: flex; align-items: center; justify-content: center;
-            background: #020617;
+            overflow: hidden;
             pointer-events: all;
         }
         #intro-overlay.done { display: none; pointer-events: none; }
 
-        /* The iris mask layer */
-        #intro-iris {
+        /* The door panel — slides left to open */
+        #intro-door {
             position: fixed; inset: 0; z-index: 99998;
-            background: #020617;
-            clip-path: circle(100% at 50% 50%);
-            transition: clip-path 1.1s cubic-bezier(0.76, 0, 0.24, 1);
+            background:
+                linear-gradient(165deg,
+                    #0a0a2e 0%,
+                    #020617 35%,
+                    #0d0528 65%,
+                    #020617 100%);
+            border-right: 2px solid rgba(192,132,252,0.35);
+            box-shadow: inset -40px 0 80px rgba(0,0,0,0.8),
+                        4px 0 30px rgba(192,132,252,0.2);
+            transform: translateX(0);
+            transition: transform 1.5s cubic-bezier(0.76, 0, 0.24, 1);
             pointer-events: none;
         }
-        #intro-iris.opening {
-            clip-path: circle(0% at 50% 50%);
+        #intro-door.opening {
+            transform: translateX(-100%);
         }
+        /* Decorative door details */
+        #intro-door::before {
+            content: '';
+            position: absolute;
+            top: 15%; left: 10%; right: 10%; bottom: 15%;
+            border: 1px solid rgba(192,132,252,0.12);
+            border-radius: 4px;
+        }
+        #intro-door::after {
+            content: '';
+            position: absolute;
+            top: 25%; left: 20%; right: 20%; bottom: 25%;
+            border: 1px solid rgba(192,132,252,0.08);
+            border-radius: 2px;
+        }
+
+        /* Glow burst — appears as door swings open */
+        #intro-glow {
+            position: fixed; inset: 0; z-index: 99997;
+            background: radial-gradient(ellipse at 55% 50%,
+                rgba(192,132,252,0.45) 0%,
+                rgba(129,140,248,0.25) 35%,
+                rgba(56,189,248,0.1) 60%,
+                transparent 75%);
+            opacity: 0;
+            transition: opacity 0.9s ease 0.3s;
+            pointer-events: none;
+        }
+        #intro-glow.visible { opacity: 1; }
 
         /* Centre content */
         .intro-center {
@@ -2184,18 +2220,30 @@
             opacity: 0;
             animation: intro-fade-glow 0.9s ease forwards 0.5s;
         }
+        .intro-welcome-fr {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            font-size: clamp(0.75rem, 1.6vw, 1rem);
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: rgba(56,189,248,0.9);
+            text-align: center;
+            margin-top: 10px;
+            text-shadow: 0 0 20px rgba(56,189,248,0.6);
+            opacity: 0;
+            animation: intro-fade-glow 0.8s ease forwards 0.85s;
+        }
         .intro-welcome-en {
             font-family: 'Space Grotesk', 'Inter', sans-serif;
-            font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+            font-size: clamp(0.65rem, 1.3vw, 0.85rem);
             font-weight: 700;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             text-transform: uppercase;
-            color: rgba(192,132,252,0.9);
+            color: rgba(192,132,252,0.75);
             text-align: center;
-            margin-top: 8px;
-            text-shadow: 0 0 20px rgba(192,132,252,0.7);
+            margin-top: 6px;
+            text-shadow: 0 0 20px rgba(192,132,252,0.5);
             opacity: 0;
-            animation: intro-fade-glow 0.8s ease forwards 0.9s;
+            animation: intro-fade-glow 0.8s ease forwards 1.1s;
         }
         @keyframes intro-fade-glow {
             from { opacity: 0; transform: translateY(12px); }
@@ -3004,7 +3052,8 @@
     <div class="intro-scan"></div>
     <div id="intro-overlay">
         <!-- Iris mask -->
-        <div id="intro-iris"></div>
+        <div id="intro-door"></div>
+        <div id="intro-glow"></div>
         <!-- Center content -->
         <div class="intro-center">
             <div class="intro-logo-wrap">
@@ -3014,7 +3063,8 @@
                 <div class="intro-pulse-ring"></div>
             </div>
             <div class="intro-welcome-ar">مرحباً بكم في دونيا لابس تك</div>
-            <div class="intro-welcome-en">DONIA LABS TECH</div>
+            <div class="intro-welcome-fr">Bienvenue chez DONIA LABS TECH</div>
+            <div class="intro-welcome-en">WELCOME · DONIA LABS TECH</div>
             <div class="intro-progress"><div class="intro-progress-bar"></div></div>
         </div>
     </div>
@@ -3437,9 +3487,9 @@
                             <div class="pp-lines"></div>
                             <div class="pp-glow" style="width:150px;height:150px;top:-30px;right:-30px;background:rgba(192,132,252,0.7);"></div>
                             <div class="pp-glow" style="width:120px;height:120px;bottom:-20px;left:-20px;background:rgba(236,72,153,0.4);"></div>
-                            <div style="font-size:2.5rem;z-index:1;">🤖</div>
-                            <div class="pp-logo-text" style="color:white;">المدرب الرقمي</div>
-                            <div class="pp-badge">AI Assistant</div>
+                            <img src="data:image/jpeg;base64,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" alt="رائد — المدرب الرقمي" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid #c084fc;z-index:1;margin-bottom:4px;">
+                            <div class="pp-logo-text" style="color:white;">رائد — المدرب الرقمي</div>
+                            <div class="pp-badge">Digital Trainer</div>
                         </div>
                     </div>
                         <span class="portfolio-category">AI Coaching</span>
@@ -3447,8 +3497,8 @@
                     </div>
                     <div class="portfolio-body">
                         <h4 class="fw-bold">المدرب الرقمي</h4>
-                        <p class="text-muted small">وكلاء واتساب ذكية بالذكاء الاصطناعي. المدرب الرقمي ضمن المنظومة — مجاني ومتاح للجميع.</p>
-                        <div class="portfolio-tech"><span>AI</span><span>Coaching</span><span>Python</span><span>API</span></div>
+                        <p class="text-muted small">مدرب رقمي حقيقي، يمتلك <strong>17 مهارة دولية</strong> في التكنولوجيا والتصميم والتسويق — مطور معتمد في جوجل كروم وجوجل بلاي — منصة تدريبية مجانية للجميع.</p>
+                        <div class="portfolio-tech"><span>Google Certified</span><span>17 Skills</span><span>Coaching</span><span>AI</span></div>
                         <div class="portfolio-actions">
                             <a href="https://mentor.donialabstech.online/" target="_blank" rel="noopener" class="btn btn-visit">
                                 <i class="fas fa-external-link-alt"></i> زيارة المنصة
@@ -3522,7 +3572,7 @@
                         <p class="text-muted small">منصة تعليمية لمدارس القرآن الكريم — وقف لله تعالى، تقنية التتبع الذكي للطلاب وإدارة الحلقات القرآنية.</p>
                         <div class="portfolio-tech"><span>EdTech</span><span>AI</span><span>وقف</span><span>قرآن</span></div>
                         <div class="portfolio-actions">
-                            <a href="https://quran-madrasa-swart.vercel.app/#dash" target="_blank" rel="noopener" class="btn btn-visit">
+                            <a href="https://masjid-hassan.vercel.app/?demo=1" target="_blank" rel="noopener" class="btn btn-visit">
                                 <i class="fas fa-external-link-alt"></i> زيارة المنصة
                             </a>
                         </div>
@@ -3704,6 +3754,45 @@
                         <div class="portfolio-actions">
                             <a href="https://donia-principal-agent.vercel.app" target="_blank" rel="noopener" class="btn btn-visit">
                                 <i class="fas fa-external-link-alt"></i> تجربة الوكيل
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CALCTER PRO: Calculator Suite -->
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="460">
+                <div class="portfolio-card">
+                    <div class="portfolio-img-wrap">
+                        <div class="product-preview" style="background:linear-gradient(135deg,#0a1628,#1a2f5e,#2563eb);">
+                        <div class="pp-topbar">
+                            <div class="pp-dot" style="background:#60a5fa;"></div>
+                            <div class="pp-dot" style="background:#3b82f6;"></div>
+                            <div class="pp-dot" style="background:#1d4ed8;"></div>
+                            <div class="pp-url"></div>
+                        </div>
+                        <div class="pp-body">
+                            <div class="pp-lines"></div>
+                            <div class="pp-glow" style="width:150px;height:150px;top:-30px;right:-30px;background:rgba(96,165,250,0.6);"></div>
+                            <div class="pp-glow" style="width:120px;height:120px;bottom:-20px;left:-20px;background:rgba(59,130,246,0.4);"></div>
+                            <div style="font-size:2.5rem;z-index:1;">🧮</div>
+                            <div class="pp-logo-text">CALCTER PRO</div>
+                            <div class="pp-badge">Digital Product</div>
+                        </div>
+                    </div>
+                        <span class="portfolio-category">SaaS Tool</span>
+                        <span class="portfolio-live-badge" style="background:linear-gradient(90deg,#f59e0b,#d97706);">SALE $29</span>
+                    </div>
+                    <div class="portfolio-body">
+                        <h4 class="fw-bold">CALCTER PRO — الآلة الحاسبة الاحترافية</h4>
+                        <p class="text-muted small">أداة حسابية احترافية متقدمة — نسخة عربية RTL ونسخة أوروبية LTR. متاحة على متجر Payhip بـ <strong>$29 فقط</strong>.</p>
+                        <div class="portfolio-tech"><span>HTML</span><span>CSS</span><span>JS</span><span>RTL/LTR</span></div>
+                        <div class="portfolio-actions" style="gap:0.4rem;flex-wrap:wrap;">
+                            <a href="https://payhip.com/b/O51mK" target="_blank" rel="noopener" class="btn btn-visit" style="font-size:0.78rem;padding:0.4rem 0.8rem;">
+                                <i class="fas fa-shopping-cart"></i> عربي RTL
+                            </a>
+                            <a href="https://payhip.com/b/GiISl" target="_blank" rel="noopener" class="btn btn-outline-info btn-sm" style="font-size:0.78rem;padding:0.4rem 0.8rem;border-radius:8px;">
+                                <i class="fas fa-shopping-cart"></i> European LTR
                             </a>
                         </div>
                     </div>
@@ -3984,6 +4073,35 @@
                     <a href="#contact" class="btn btn-secondary" data-section="contact">
                         <i class="fas fa-envelope me-2"></i><span id="emailBtnText">ارسل رسالة بريدية</span>
                     </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QR Code Section -->
+    <section class="qr-promo-section py-5" style="background:linear-gradient(135deg,#020617 0%,#0d0528 50%,#020617 100%);border-top:1px solid rgba(192,132,252,0.15);border-bottom:1px solid rgba(192,132,252,0.15);">
+        <div class="container">
+            <div class="row align-items-center justify-content-center g-4">
+                <div class="col-lg-5 col-md-6 text-center" data-aos="zoom-in">
+                    <div style="display:inline-block;padding:16px;background:white;border-radius:16px;box-shadow:0 0 40px rgba(192,132,252,0.4),0 0 80px rgba(129,140,248,0.2);">
+                        <div id="site-qrcode"></div>
+                    </div>
+                    <p class="mt-3 mb-0" style="color:rgba(255,255,255,0.5);font-size:0.78rem;letter-spacing:1px;">donialabstech.online</p>
+                </div>
+                <div class="col-lg-5 col-md-6" data-aos="fade-left">
+                    <div class="mb-2" style="color:rgba(192,132,252,0.7);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;" id="qrSectionLabel">امسح للوصول الفوري</div>
+                    <h3 class="fw-bold mb-3" style="color:#fff;font-size:clamp(1.4rem,3vw,2rem);" id="qrSectionTitle">وصول سريع لمنصة دونيا لابس تك</h3>
+                    <p class="mb-4" style="color:rgba(255,255,255,0.65);line-height:1.8;" id="qrSectionDesc">
+                        شارك هذا الرمز مع أئمة المساجد والقائمين على المدارس القرآنية للوصول الفوري إلى منصاتنا التعليمية الذكية — بدون رابط، بدون كتابة، مجرد مسح وانطلاق.
+                    </p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="https://donialabstech.online" target="_blank" rel="noopener" class="btn" style="background:linear-gradient(135deg,#7c3aed,#a855f7);color:white;border:none;border-radius:10px;padding:0.55rem 1.4rem;font-weight:600;font-size:0.88rem;">
+                            <i class="fas fa-globe me-1"></i> <span id="qrVisitBtn">زيارة الموقع</span>
+                        </a>
+                        <a href="https://t.me/donialabstech_bot" target="_blank" rel="noopener" class="btn" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:0.55rem 1.4rem;font-size:0.88rem;">
+                            <i class="fab fa-telegram me-1"></i> <span id="qrBotBtn">المدرب الذكي</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -4321,7 +4439,23 @@
     <!-- ===== [NEW ADDITION 5] QR Code Engine ===== -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <!-- ===== [END ADDITION 5 - LIB] ===== -->
-    
+    <!-- Site QR Code Generator -->
+    <script>
+    (function() {
+        var el = document.getElementById('site-qrcode');
+        if (el && typeof QRCode !== 'undefined') {
+            new QRCode(el, {
+                text: 'https://donialabstech.online',
+                width: 180,
+                height: 180,
+                colorDark: '#1e0a3c',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+    })();
+    </script>
+
     <!-- Custom JavaScript -->
     <script>
         // Initialize AOS
@@ -4491,6 +4625,11 @@
                     "button.email": "ارسل رسالة بريدية",
                     
                     // Contact
+                    "qrSectionLabel": "امسح للوصول الفوري",
+                    "qrSectionTitle": "وصول سريع لمنصة دونيا لابس تك",
+                    "qrSectionDesc": "شارك هذا الرمز مع أئمة المساجد والقائمين على المدارس القرآنية للوصول الفوري إلى منصاتنا التعليمية الذكية — بدون رابط، بدون كتابة، مجرد مسح وانطلاق.",
+                    "qrVisitBtn": "زيارة الموقع",
+                    "qrBotBtn": "المدرب الذكي",
                     "contact.title": "تواصل معنا",
                     "contact.description": "ابدأ <span class='path-to-top'>طريقك نحو القمة</span> الرقمية معنا اليوم",
                     "contact.info.title": "معلومات التواصل",
@@ -4561,7 +4700,7 @@
                     "portfolio.p5.title": "INTELLI CORE",
                     "portfolio.p5.desc": "منصة استشارية بـ6 خبراء لتطوير الأفكار وإيجاد المساهمين — مع بصمة رقمية فريدة لكل فكرة.",
                     "portfolio.p6.title": "DONIA AI PLUS",
-                    "portfolio.p6.desc": "وكلاء واتساب ذكية بالذكاء الاصطناعي. المدرب الرقمي ضمن المنظومة — مجاني ومتاح للجميع.",
+                    "portfolio.p6.desc": "مدرب رقمي حقيقي يمتلك 17 مهارة دولية في التكنولوجيا والتصميم والتسويق — مطور معتمد في جوجل كروم وجوجل بلاي — مجاني ومتاح للجميع.",
                     "qr.download": "تحميل",
                     "qr.share": "مشاركة",
                     
@@ -4718,6 +4857,11 @@
                     "button.email": "Envoyez un email",
                     
                     // Contact
+                    "qrSectionLabel": "Scanner pour accès immédiat",
+                    "qrSectionTitle": "Accès rapide à DONIA LABS TECH",
+                    "qrSectionDesc": "Partagez ce code avec les imams des mosquées et les responsables des écoles coraniques pour un accès instantané à nos plateformes éducatives intelligentes — sans lien, sans saisie, juste scanner et démarrer.",
+                    "qrVisitBtn": "Visiter le site",
+                    "qrBotBtn": "Formateur IA",
                     "contact.title": "Contactez-nous",
                     "contact.description": "Commencez <span class='path-to-top'>votre chemin vers le sommet</span> numérique avec nous aujourd'hui",
                     "contact.info.title": "Informations de contact",
@@ -4787,8 +4931,8 @@
                     "portfolio.p4.desc": "Application de bureau pour la gestion des cantines scolaires : suivi des stocks, facturation, QR Code, et conformité totale au Ministère de l'Éducation.",
                     "portfolio.p5.title": "INTELLI CORE",
                     "portfolio.p5.desc": "Plateforme de conseil intelligente s'appuyant sur un conseil de quatre agents IA pour la prise de décision stratégique, avec chiffrement AES-256.",
-                    "portfolio.p6.title": "Planificateur de Surveillance d'Examens",
-                    "portfolio.p6.desc": "Outil interactif pour répartir automatiquement la surveillance des examens entre enseignants, avec export PDF instantané.",
+                    "portfolio.p6.title": "Raïd — Formateur Numérique",
+                    "portfolio.p6.desc": "Formateur numérique certifié, titulaire de 17 compétences internationales en technologie, design et marketing — développeur certifié Google Chrome et Google Play — plateforme gratuite pour tous.",
                     "qr.download": "Télécharger",
                     "qr.share": "Partager",
                     
@@ -4944,6 +5088,12 @@
                     "button.whatsapp": "Start WhatsApp Conversation",
                     "button.email": "Send Email Message",
                     
+                    // QR Section
+                    "qrSectionLabel": "Scan for instant access",
+                    "qrSectionTitle": "Quick Access to DONIA LABS TECH",
+                    "qrSectionDesc": "Share this code with mosque imams and Quranic school administrators for instant access to our smart educational platforms — no link, no typing, just scan and go.",
+                    "qrVisitBtn": "Visit Site",
+                    "qrBotBtn": "AI Trainer",
                     // Contact
                     "contact.title": "Contact Us",
                     "contact.description": "Start <span class='path-to-top'>your path to the summit</span> digital with us today",
@@ -5014,8 +5164,8 @@
                     "portfolio.p4.desc": "A desktop application for school canteen management: inventory tracking, billing, QR Code, and full compliance with Ministry of Education standards.",
                     "portfolio.p5.title": "INTELLI CORE",
                     "portfolio.p5.desc": "An intelligent advisory platform powered by a council of four AI agents for strategic decision-making, with AES-256 encryption.",
-                    "portfolio.p6.title": "Exam Supervision Scheduler",
-                    "portfolio.p6.desc": "An interactive tool for automatically assigning exam supervision duties to teachers, with instant PDF export.",
+                    "portfolio.p6.title": "Raïd — Digital Trainer",
+                    "portfolio.p6.desc": "Real certified digital trainer with 17 international skills in technology, design & marketing — Google Chrome & Google Play certified developer — free training platform for everyone.",
                     "qr.download": "Download",
                     "qr.share": "Share",
                     
@@ -5223,6 +5373,13 @@
                 $('#whatsappBtnText').text(t["button.whatsapp"]);
                 $('#emailBtnText').text(t["button.email"]);
                 
+                // QR Section
+                if (t["qrSectionLabel"])  $('#qrSectionLabel').text(t["qrSectionLabel"]);
+                if (t["qrSectionTitle"])  $('#qrSectionTitle').text(t["qrSectionTitle"]);
+                if (t["qrSectionDesc"])   $('#qrSectionDesc').text(t["qrSectionDesc"]);
+                if (t["qrVisitBtn"])      $('#qrVisitBtn').text(t["qrVisitBtn"]);
+                if (t["qrBotBtn"])        $('#qrBotBtn').text(t["qrBotBtn"]);
+
                 // Contact
                 $('#contactTitle').text(t["contact.title"]);
                 $('#contactDescription').html(t["contact.description"]);
@@ -7560,33 +7717,32 @@ ${kb.services.join(" | ")}
     ===================================================== -->
     <script>
     (function() {
-        var overlay  = document.getElementById('intro-overlay');
-        var irisEl   = document.getElementById('intro-iris');
-        var center   = document.querySelector('.intro-center');
+        var overlay = document.getElementById('intro-overlay');
+        var doorEl  = document.getElementById('intro-door');
+        var glowEl  = document.getElementById('intro-glow');
+        var center  = document.querySelector('.intro-center');
 
         // Session-based: show only once per session
         if (sessionStorage.getItem('introDone')) {
-            if (overlay)  overlay.classList.add('done');
-            if (irisEl)   irisEl.classList.add('opening');
-            if (center)   center.style.display = 'none';
+            if (overlay) overlay.classList.add('done');
             return;
         }
 
-        // Iris portal opens after 2.8s (progress finishes at ~2.8s)
+        // Door opens slowly after progress bar finishes (~2.8s)
         setTimeout(function() {
-            if (irisEl) irisEl.classList.add('opening');
+            if (doorEl) doorEl.classList.add('opening');  // slides left
+            if (glowEl) glowEl.classList.add('visible');  // glow burst appears
             if (center) {
-                center.style.transition = 'opacity 0.5s ease';
+                center.style.transition = 'opacity 0.6s ease';
                 center.style.opacity = '0';
             }
         }, 2800);
 
-        // Remove overlay entirely after animation completes
+        // Remove overlay after door finishes (1.5s slide + buffer)
         setTimeout(function() {
             if (overlay) overlay.classList.add('done');
-            if (center)  center.style.display = 'none';
             sessionStorage.setItem('introDone', '1');
-        }, 4100);
+        }, 4500);
     })();
     </script>
 
